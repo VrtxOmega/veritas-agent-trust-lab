@@ -22,6 +22,13 @@ The explorable lab covers:
 5. deletion of refuting evidence;
 6. silent monitoring after heartbeat expiry.
 
+The site also includes a separate
+[primary-source incident map](evidence/EVALUATION_SANDBOX_ESCAPE_CASE_STUDY.md)
+of the July 2026 OpenAI and Hugging Face agent-evaluation security incident. It
+separates disclosed facts from VERITAS interpretation, counterfactual controls,
+and unresolved evidence. The incident is not added to the fixed six-case blind
+score, and the mapping does not claim that VERITAS would have prevented it.
+
 ## Run and verify
 
 ```bash
