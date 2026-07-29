@@ -71,12 +71,12 @@ test("recomputes the strict 2/50 baseline", () => {
 test("recomputes the canonical public campaign ledger", async () => {
   assert.deepEqual(validateLedger(await loadLedger()), {
     campaign_id: "veritas-trust-lab-50-or-payment",
-    qualifying_events: 2,
-    distinct_validators: 2,
+    qualifying_events: 3,
+    distinct_validators: 3,
     verified_payment_usd: "0.00",
-    remaining_to_validation_target: 48,
+    remaining_to_validation_target: 47,
     terminal_state: "ACTIVE",
-    open_lanes: 8,
+    open_lanes: 9,
   });
 });
 

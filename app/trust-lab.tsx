@@ -592,11 +592,12 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>Two independent curators accepted the project&apos;s relevance.</h2>
+              <h2>Three independently attributable outside actions now qualify.</h2>
               <p>
-                On July 29, 2026, maintainers of two unrelated external
-                repositories merged scoped Trust Lab entries into their
-                AI-agent governance and AI-security catalogs.
+                Two maintainers merged scoped Trust Lab catalogue entries. A
+                third repository owner independently reproduced a concrete
+                security defect in a campaign-produced Action contribution and
+                issued a blocking technical review.
               </p>
             </div>
           </header>
@@ -625,16 +626,19 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Two non-author maintainers accepted neutral, source-linked entries.</h3>
+              <h3>Two curator decisions and one technical reproduction are public.</h3>
               <p>
                 GitHub records separate external merge actors for
                 systempromptio pull request #27 and gmh5225 pull request #18.
-                Each upstream README contains one scoped Trust Lab entry.
+                Each upstream README contains one scoped Trust Lab entry. The
+                AgentDoctor owner separately reported reproducing an
+                outside-workspace write through an output-file symlink and
+                requested a focused remediation matrix.
               </p>
             </article>
             <article>
               <span>WHAT REMAINS OPEN</span>
-              <h3>Discovery relevance is not technical validation.</h3>
+              <h3>External action is not VERITAS efficacy.</h3>
               <p>
                 No independent participant has contributed a pre-reveal label
                 set, and no customer has purchased the pilot. Efficacy,
@@ -664,13 +668,20 @@ export function TrustLab() {
               <span>Public catalogue readback at the recorded merge commit.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/pranee54/AgentDoctor/pull/18#pullrequestreview-4811661364" target="_blank" rel="noreferrer">
+              <b>Independent technical reproduction</b>
+              <span>External repository owner reproduced a concrete Action defect and issued blocking remediation criteria.</span>
+              <i>↗</i>
+            </a>
           </div>
           <p className="boundary">
-            <strong>SCOPE</strong> Qualifying external acceptances:{" "}
+            <strong>SCOPE</strong> Qualifying external validations:{" "}
             {campaignSummary.qualifying_events}, from{" "}
-            {campaignSummary.distinct_validators} distinct validators and
-            limited to curator fit. Independent blind label sets: 0. Verified
-            payments: ${campaignSummary.verified_payment_usd}.
+            {campaignSummary.distinct_validators} distinct validators: two
+            scoped curator-fit decisions and one independent technical
+            reproduction. These do not establish VERITAS efficacy,
+            endorsement, adoption, merge, or payment. Independent blind label
+            sets: 0. Verified payments: ${campaignSummary.verified_payment_usd}.
           </p>
         </div>
       </section>

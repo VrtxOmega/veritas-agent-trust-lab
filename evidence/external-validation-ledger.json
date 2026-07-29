@@ -9,10 +9,10 @@
     "started_at": "2026-07-29T09:33:26Z"
   },
   "summary": {
-    "qualifying_events": 2,
-    "distinct_validators": 2,
+    "qualifying_events": 3,
+    "distinct_validators": 3,
     "verified_payment_usd": "0.00",
-    "remaining_to_validation_target": 48,
+    "remaining_to_validation_target": 47,
     "terminal_state": "ACTIVE"
   },
   "counting_policy": {
@@ -111,6 +111,44 @@
       },
       "dedupe_key": "github:gmh5225|catalog_curator_acceptance|gmh5225/awesome-ai-security#18",
       "count_weight": 1
+    },
+    {
+      "id": "VTL-EXT-20260729-003",
+      "status": "qualifying",
+      "category": "independent_technical_reproduction",
+      "subject_id": "pranee54/AgentDoctor#18",
+      "actor": {
+        "id": "github:pranee54",
+        "platform": "github",
+        "account": "pranee54",
+        "type": "github_account",
+        "relationship": "independent",
+        "is_bot": false,
+        "independence_basis": "The actor owns the external AgentDoctor repository and submitted the blocking review from an account outside VrtxOmega."
+      },
+      "action": "reproduced_output_file_symlink_escape_and_requested_changes",
+      "validation_claim": "The external repository owner independently reproduced an outside-workspace write through an existing output-file symlink and issued a blocking technical review.",
+      "scope": "This validates one concrete external reproduction and actionable review of the campaign-produced Action contribution.",
+      "does_not_establish": [
+        "acceptance of the proposed fix",
+        "pull-request merge",
+        "product adoption",
+        "overall security assurance",
+        "technical correctness of VERITAS",
+        "endorsement of VERITAS",
+        "payment"
+      ],
+      "source_url": "https://github.com/pranee54/AgentDoctor/pull/18#pullrequestreview-4811661364",
+      "occurred_at": "2026-07-29T18:26:32Z",
+      "verification": {
+        "status": "verified",
+        "method": "GitHub pull-request review API and live PR readback",
+        "verified_at": "2026-07-29T18:42:33Z",
+        "immutable_ref_type": "issue_comment_id",
+        "immutable_ref": "PRR_kwDOTmlLDc8AAAABHswgNA"
+      },
+      "dedupe_key": "github:pranee54|independent_technical_reproduction|pranee54/AgentDoctor#18",
+      "count_weight": 1
     }
   ],
   "payments": [],
@@ -177,6 +215,14 @@
       "state": "pending",
       "source_url": "https://github.com/ProjectRecon/awesome-ai-agents-security/pull/83",
       "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
+    },
+    {
+      "id": "pranee54/AgentDoctor#18",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/pranee54/AgentDoctor/pull/18",
+      "reason_not_counted": "The open pull request is not counted; event 003 counts only the owner's independent technical reproduction and review.",
       "count_weight": 0
     }
   ]
