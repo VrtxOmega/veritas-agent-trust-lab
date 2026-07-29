@@ -64,6 +64,24 @@ interactive JavaScript assets. The in-app browser transport returned
 for the pre-publication artifact. The public deployment requires live asset,
 metadata, and interaction readbacks before it can be called launched.
 
+## Public deployment readback
+
+GitHub Actions run `30416123606` completed successfully after rerunning lint,
+the production build, 14 tests, the Pages export, artifact upload, and public
+deployment.
+
+Live HTTPS readbacks confirmed:
+
+- `https://vrtxomega.github.io/veritas-agent-trust-lab/` returned `200`;
+- the page contains the finished title and blind-challenge entry point;
+- the client-side trust-lab JavaScript asset returned `200`;
+- the public verification packet reports `PASSED`, 14 tests,
+  `execution_authorized: false`, and VERITAS `INCONCLUSIVE`;
+- `og.png` returned as a 1200x630 PNG with the locally recorded SHA-256;
+- the page exposes the absolute canonical URL and social image URL.
+
+This verifies public availability, not independent adoption.
+
 ## Public-claim boundary
 
 This evidence supports a deterministic public reference demonstrator. It does

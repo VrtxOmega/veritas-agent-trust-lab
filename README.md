@@ -5,6 +5,8 @@
 A zero-signup public reference demonstrator for the assurance boundary between
 an AI-agent evaluation and a consequential action.
 
+[Open the live trust lab](https://vrtxomega.github.io/veritas-agent-trust-lab/)
+
 Visitors first make six blinded allow/block judgments across a fixed
 three-clean/three-tampered challenge. Only after all labels are sealed locally
 does the site reveal the deterministic result, reason code, and score. Labels

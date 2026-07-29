@@ -20,7 +20,7 @@ independent audit, or execution authority. I also opened two bounded $750
 founding pilots for teams that want one real agent workflow mapped and
 attacked.
 
-Demo: [LIVE_URL]
+Demo: https://vrtxomega.github.io/veritas-agent-trust-lab/
 Source: https://github.com/VrtxOmega/veritas-agent-trust-lab
 
 #AIAgents #AISafety #OpenSource #Cybersecurity #VERITAS
@@ -35,4 +35,4 @@ silent monitoring.
 
 No signup. No model call. No execution.
 
-[LIVE_URL]
+https://vrtxomega.github.io/veritas-agent-trust-lab/

@@ -19,6 +19,6 @@ is not certification, an independent audit, or an execution engine.
 I would especially value adversarial feedback: which case is too artificial,
 and what should the seventh case be?
 
-Demo: [LIVE_URL]
+Demo: https://vrtxomega.github.io/veritas-agent-trust-lab/
 
 Source: https://github.com/VrtxOmega/veritas-agent-trust-lab

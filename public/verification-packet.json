@@ -1,6 +1,7 @@
 {
   "artifact": "VERITAS Omega Agent Trust Lab",
   "version": "0.1.0",
+  "public_url": "https://vrtxomega.github.io/veritas-agent-trust-lab/",
   "artifact_class": "public reference demonstrator",
   "cases": [
     "forged-verdict",

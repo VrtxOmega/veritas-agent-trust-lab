@@ -58,9 +58,9 @@ pilot, and activate at least one verifiable distribution surface.
   third-party use can create new evidence rather than another author-side claim.
 - [x] Build the social preview and public verification packet.
 - [x] Run automated, hostile, accessibility, content, and release checks.
-- [ ] Create the public source repository and release through one focused
+- [x] Create the public source repository and release through one focused
   publication path.
-- [ ] Deploy the production site and verify live behavior and artifacts.
+- [x] Deploy the production site and verify live behavior and artifacts.
 - [ ] Integrate the live proof into the existing portfolio/profile.
 - [ ] Activate the strongest available authenticated distribution surface and
   read it back; otherwise preserve exact ready-to-post launch packets.
