@@ -20,16 +20,20 @@ test("server renders the finished public lab", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /VERITAS Omega Agent Trust Lab/);
-  assert.match(html, /A verdict is/);
-  assert.match(html, /Take the blind challenge/);
-  assert.match(html, /When the evaluation boundary became the attack surface/);
-  assert.match(html, /No direct Internet access was not no path to the Internet/);
-  assert.match(html, /One independent curator accepted the project/);
-  assert.match(html, /Qualifying external acceptance: 1/);
-  assert.match(html, /Agent Action Assurance/);
-  assert.match(html, /execution_authorized/i);
-  assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/);
+  const visibleHtml = html.replaceAll("<!-- -->", "");
+  assert.match(visibleHtml, /VERITAS Omega Agent Trust Lab/);
+  assert.match(visibleHtml, /A verdict is/);
+  assert.match(visibleHtml, /Take the blind challenge/);
+  assert.match(visibleHtml, /When the evaluation boundary became the attack surface/);
+  assert.match(visibleHtml, /No direct Internet access was not no path to the Internet/);
+  assert.match(visibleHtml, /Two independent curators accepted the project/);
+  assert.match(visibleHtml, /FOUNDING 50 \/ VERIFIED/);
+  assert.match(visibleHtml, /<strong>2<small>\/50<\/small><\/strong>/);
+  assert.match(visibleHtml, /48 qualifying outside actions remain/);
+  assert.match(visibleHtml, /Qualifying external acceptances:\s+2/s);
+  assert.match(visibleHtml, /Agent Action Assurance/);
+  assert.match(visibleHtml, /execution_authorized/i);
+  assert.doesNotMatch(visibleHtml, /codex-preview|react-loading-skeleton|Starter Project/);
 });
 
 test("public source preserves commercial and assurance boundaries", async () => {
@@ -43,6 +47,9 @@ test("public source preserves commercial and assurance boundaries", async () => 
   ]);
   assert.match(page, /Not an independent audit/);
   assert.match(page, /Contribute publicly on GitHub/);
+  assert.match(page, /UNVERIFIED_SELF_REPORTED/);
+  assert.match(page, /does not count as independent validation/i);
+  assert.match(page, /nothing leaves this page/i);
   assert.match(page, /\$750 fixed/);
   assert.match(page, /not a claim that VERITAS would have prevented/);
   assert.match(page, /not independent\s+validation of VERITAS/);

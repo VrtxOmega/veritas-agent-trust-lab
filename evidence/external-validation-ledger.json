@@ -162,6 +162,22 @@
       "source_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304",
       "reason_not_counted": "The report is author-submitted and has no attributable outside technical response.",
       "count_weight": 0
+    },
+    {
+      "id": "LLMSecurity/awesome-agent-skills-security#43",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/LLMSecurity/awesome-agent-skills-security/pull/43",
+      "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
+    },
+    {
+      "id": "ProjectRecon/awesome-ai-agents-security#83",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/ProjectRecon/awesome-ai-agents-security/pull/83",
+      "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
     }
   ]
 }

@@ -8,6 +8,11 @@ import {
   evaluateCase,
   scorePredictions,
 } from "@/lib/trust-engine.js";
+import {
+  CHALLENGE_ID,
+  createChallengeReceipt,
+} from "@/lib/challenge-receipt.js";
+import validationLedger from "@/evidence/external-validation-ledger.json";
 
 type Stage = { name: string; state: "pass" | "fail"; detail: string };
 type Result = {
@@ -25,6 +30,24 @@ type Result = {
   assurance_boundary: string;
 };
 type Prediction = "ALLOW" | "BLOCK";
+type ChallengeReceipt = {
+  schema: string;
+  receipt_id: string;
+  challenge_id: string;
+  labels: { case_id: string; predicted: Prediction }[];
+  score: number;
+  total: number;
+  self_reported: true;
+  independence_status: "UNVERIFIED_SELF_REPORTED";
+  count_weight: 0;
+  personal_data_collected_by_lab: false;
+  execution_authorized: false;
+  verification_note: string;
+};
+
+const campaignSummary = validationLedger.summary;
+const campaignTarget = validationLedger.campaign.validation_target;
+const openLaneCount = validationLedger.open_lanes.length;
 
 const compact = (value: unknown) => {
   const text = String(value);
@@ -43,6 +66,21 @@ function downloadJson(name: string, value: unknown) {
   URL.revokeObjectURL(href);
 }
 
+async function copyText(value: string) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+  const textarea = document.createElement("textarea");
+  textarea.value = value;
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+}
+
 export function TrustLab() {
   const [activeId, setActiveId] = useState(CASES[0].id);
   const [tampered, setTampered] = useState(true);
@@ -51,12 +89,17 @@ export function TrustLab() {
   const [challengeResults, setChallengeResults] = useState<Result[]>([]);
   const [predictions, setPredictions] = useState<Record<string, Prediction>>({});
   const [revealed, setRevealed] = useState(false);
+  const [challengeReceipt, setChallengeReceipt] =
+    useState<ChallengeReceipt | null>(null);
+  const [shareState, setShareState] = useState("Invite one reviewer");
 
   const activeCase = useMemo(
     () => CASES.find((item) => item.id === activeId) ?? CASES[0],
     [activeId],
   );
   const challengeComplete = Object.keys(predictions).length === CASES.length;
+  const challengeReady =
+    challengeComplete && challengeResults.length === CASES.length;
   const score = useMemo(
     () => scorePredictions(predictions, challengeResults),
     [predictions, challengeResults],
@@ -80,10 +123,33 @@ export function TrustLab() {
     };
   }, [activeId, tampered]);
 
+  useEffect(() => {
+    let cancelled = false;
+    if (!revealed || score.total !== CASES.length) return;
+    createChallengeReceipt({
+      labels: score.rows.map(({ case_id, predicted }) => ({
+        case_id,
+        predicted,
+      })),
+      score: score.score,
+      total: score.total,
+    })
+      .then((receipt) => {
+        if (!cancelled) setChallengeReceipt(receipt as ChallengeReceipt);
+      })
+      .catch(() => {
+        if (!cancelled) setChallengeReceipt(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [revealed, score]);
+
   const calibrationRecord = useMemo(
     () => ({
-      schema: "veritas-omega-trust-lab-calibration/v0.1",
-      challenge_id: "mixed-six-v0.1",
+      schema: "veritas-omega-trust-lab-calibration/v0.2",
+      challenge_id: CHALLENGE_ID,
+      receipt: challengeReceipt,
       labels: score.rows.map((row) => ({
         case_id: row.case_id,
         predicted: row.predicted,
@@ -95,7 +161,7 @@ export function TrustLab() {
         "Generated locally. Nothing is uploaded unless the participant explicitly opens and submits the public GitHub issue.",
       personal_data_collected_by_lab: false,
     }),
-    [revealed, score],
+    [challengeReceipt, revealed, score],
   );
 
   const contributionUrl = useMemo(() => {
@@ -107,6 +173,7 @@ export function TrustLab() {
       "## VERITAS Omega Agent Trust Lab — voluntary calibration result",
       "",
       `Score after reveal: **${score.score}/${score.total}**`,
+      `Self-reported receipt: \`${challengeReceipt?.receipt_id ?? "pending"}\``,
       "",
       "### Blinded labels",
       rows,
@@ -116,17 +183,48 @@ export function TrustLab() {
       "- [ ] I understand this GitHub issue is public and attached to my GitHub identity.",
       "- [ ] I voluntarily contribute these labels for an author-side public calibration dataset.",
       "- [ ] I did not inspect the source or answer key before making these choices.",
+      "- [ ] I understand the local receipt is reproducible but is not a signature or proof of independence.",
       "",
-      "No claim of expert status or independent audit is implied.",
+      "This is a self-reported result. No claim of expert status, endorsement, certification, or independent audit is implied.",
     ].join("\n");
     return `https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?title=${encodeURIComponent(
       title,
     )}&body=${encodeURIComponent(body)}&labels=calibration`;
-  }, [score]);
+  }, [challengeReceipt, score]);
 
   function resetChallenge() {
     setPredictions({});
     setRevealed(false);
+    setChallengeReceipt(null);
+    setShareState("Invite one reviewer");
+  }
+
+  async function shareReviewerInvite() {
+    if (!challengeReceipt) return;
+    const pageUrl = `${window.location.href.split("#")[0]}#challenge`;
+    const text = [
+      `I took the six-case VERITAS Agent Trust Lab blind challenge and scored ${score.score}/${score.total}.`,
+      `Self-reported receipt: ${challengeReceipt.receipt_id}`,
+      "Can you take it before reading the source or answer key?",
+      "A receipt is reproducible but does not count as independent validation unless an outside participant voluntarily submits a verifiable label set.",
+    ].join("\n");
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "VERITAS Agent Trust Lab blind challenge",
+          text,
+          url: pageUrl,
+        });
+        setShareState("Invite shared");
+        return;
+      }
+      await copyText(`${text}\n${pageUrl}`);
+      setShareState("Invite copied");
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      await copyText(`${text}\n${pageUrl}`);
+      setShareState("Invite copied");
+    }
   }
 
   return (
@@ -137,12 +235,16 @@ export function TrustLab() {
           VERITAS / Trust Lab
         </a>
         <span className="header-index">Public reference demonstrator · V0.1</span>
-        <a className="header-link" href="#pilot">Founding pilot ↗</a>
+        <a className="header-link" href="#external-evidence">
+          {campaignSummary.qualifying_events} / {campaignTarget} verified ↗
+        </a>
       </header>
 
       <div className="status-strip" aria-label="Product boundaries">
         <span>Zero signup</span><span>Runs locally</span>
-        <span>Blind calibration</span><span>Execution: false</span>
+        <span>Blind calibration</span>
+        <span>{campaignSummary.qualifying_events}/{campaignTarget} verified</span>
+        <span>Execution: false</span>
       </div>
 
       <section className="hero" id="top">
@@ -234,7 +336,7 @@ export function TrustLab() {
             {!revealed ? (
               <>
                 <span>{Object.keys(predictions).length}/6 decisions sealed locally</span>
-                <button className="primary-link" disabled={!challengeComplete} onClick={() => setRevealed(true)} type="button">
+                <button className="primary-link" disabled={!challengeReady} onClick={() => setRevealed(true)} type="button">
                   Seal labels + reveal
                 </button>
               </>
@@ -242,13 +344,35 @@ export function TrustLab() {
               <div className="scoreboard">
                 <div><span>Your calibration score</span><strong>{score.score}<small>/6</small></strong></div>
                 <div className="score-actions">
-                  <button onClick={() => downloadJson("veritas-trust-lab-calibration.json", calibrationRecord)} type="button">
-                    Download labels ↓
+                  <button
+                    disabled={!challengeReceipt}
+                    onClick={() => downloadJson("veritas-trust-lab-calibration.json", calibrationRecord)}
+                    type="button"
+                  >
+                    Download receipt ↓
                   </button>
                   <a href={contributionUrl} target="_blank" rel="noreferrer">
                     Contribute publicly on GitHub ↗
                   </a>
+                  <button
+                    disabled={!challengeReceipt}
+                    onClick={shareReviewerInvite}
+                    type="button"
+                  >
+                    {shareState}
+                  </button>
                   <button onClick={resetChallenge} type="button">Try again</button>
+                </div>
+                <div className="receipt-card">
+                  <span>SELF-REPORTED CHALLENGE RECEIPT / WEIGHT 0</span>
+                  <code>
+                    {challengeReceipt?.receipt_id ?? "Computing local receipt…"}
+                  </code>
+                  <p>
+                    Deterministically commits to this challenge version, label
+                    set, and score. It is not signed and does not prove identity,
+                    independence, expertise, or correctness.
+                  </p>
                 </div>
                 <p>
                   Contribution is optional. GitHub will show your account and
@@ -430,22 +554,44 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>One independent curator accepted the project&apos;s relevance.</h2>
+              <h2>Two independent curators accepted the project&apos;s relevance.</h2>
               <p>
-                On July 29, 2026, Edward Burton merged the Trust Lab into the
-                systemprompt.io AI Agent Governance catalog&apos;s Security,
-                Red-Teaming, and Threat Models section.
+                On July 29, 2026, maintainers of two unrelated external
+                repositories merged scoped Trust Lab entries into their
+                AI-agent governance and AI-security catalogs.
               </p>
             </div>
           </header>
+          <div className="campaign-meter" aria-label="Founding 50 campaign state">
+            <div>
+              <span>FOUNDING 50 / VERIFIED</span>
+              <strong>
+                {campaignSummary.qualifying_events}
+                <small>/{campaignTarget}</small>
+              </strong>
+            </div>
+            <div>
+              <span
+                style={{
+                  width: `${(campaignSummary.qualifying_events / campaignTarget) * 100}%`,
+                }}
+              />
+            </div>
+            <p>
+              {campaignSummary.remaining_to_validation_target} qualifying
+              outside actions remain. {openLaneCount} open lanes, local
+              receipts, bots, traffic, outreach, and thanks stay at weight
+              zero. Verified payment: ${campaignSummary.verified_payment_usd}.
+            </p>
+          </div>
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>A non-author curator accepted the neutral, source-linked entry.</h3>
+              <h3>Two non-author maintainers accepted neutral, source-linked entries.</h3>
               <p>
-                GitHub records <code>Ejb503</code>—not the submitter—as the
-                merge actor for pull request #27. The final upstream README
-                contains exactly one VERITAS Trust Lab entry.
+                GitHub records separate external merge actors for
+                systempromptio pull request #27 and gmh5225 pull request #18.
+                Each upstream README contains one scoped Trust Lab entry.
               </p>
             </article>
             <article>
@@ -470,11 +616,23 @@ export function TrustLab() {
               <span>Security, Red-Teaming, and Threat Models section.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/gmh5225/awesome-ai-security/pull/18" target="_blank" rel="noreferrer">
+              <b>Second merged curator decision</b>
+              <span>Independent AI-security repository owner accepted the scoped entry.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/gmh5225/awesome-ai-security/blob/main/README.md" target="_blank" rel="noreferrer">
+              <b>Second live upstream entry</b>
+              <span>Public catalogue readback at the recorded merge commit.</span>
+              <i>↗</i>
+            </a>
           </div>
           <p className="boundary">
-            <strong>SCOPE</strong> Qualifying external acceptance: 1, limited
-            to curator fit. Independent blind label sets: 0. Verified payments:
-            $0.
+            <strong>SCOPE</strong> Qualifying external acceptances:{" "}
+            {campaignSummary.qualifying_events}, from{" "}
+            {campaignSummary.distinct_validators} distinct validators and
+            limited to curator fit. Independent blind label sets: 0. Verified
+            payments: ${campaignSummary.verified_payment_usd}.
           </p>
         </div>
       </section>
