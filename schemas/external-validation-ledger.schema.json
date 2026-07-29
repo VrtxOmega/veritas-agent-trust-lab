@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/VrtxOmega/veritas-agent-trust-lab/main/schemas/external-validation-ledger.schema.json",
+  "title": "VERITAS Agent Trust Lab external-validation ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "campaign",
+    "summary",
+    "counting_policy",
+    "events",
+    "payments",
+    "open_lanes"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0.0" },
+    "campaign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "subject", "validation_target", "payment_threshold", "started_at"],
+      "properties": {
+        "id": { "const": "veritas-trust-lab-50-or-payment" },
+        "subject": { "const": "VERITAS Omega Agent Trust Lab" },
+        "validation_target": { "type": "integer", "const": 50 },
+        "payment_threshold": { "const": "greater_than_0_usd" },
+        "started_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qualifying_events",
+        "distinct_validators",
+        "verified_payment_usd",
+        "remaining_to_validation_target",
+        "terminal_state"
+      ],
+      "properties": {
+        "qualifying_events": { "type": "integer", "minimum": 0 },
+        "distinct_validators": { "type": "integer", "minimum": 0 },
+        "verified_payment_usd": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+        },
+        "remaining_to_validation_target": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "terminal_state": { "enum": ["ACTIVE", "ACHIEVED"] }
+      }
+    },
+    "counting_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["qualifying_categories", "never_count", "independence_rule", "dedupe_rule", "scope_rule"],
+      "properties": {
+        "qualifying_categories": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "accepted_external_integration",
+              "catalog_curator_acceptance",
+              "editorial_coverage",
+              "external_adopter_report",
+              "independent_blind_label_set",
+              "independent_technical_reproduction",
+              "substantive_external_review"
+            ]
+          }
+        },
+        "never_count": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "author_activity",
+              "bot_or_ci",
+              "duplicate_signal",
+              "open_pr",
+              "outreach_sent",
+              "self_test",
+              "thanks_only",
+              "traffic"
+            ]
+          }
+        },
+        "independence_rule": { "type": "string", "minLength": 20 },
+        "dedupe_rule": { "type": "string", "minLength": 20 },
+        "scope_rule": { "type": "string", "minLength": 20 }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/event" }
+    },
+    "payments": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/payment" }
+    },
+    "open_lanes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/openLane" }
+    }
+  },
+  "$defs": {
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "platform", "account", "type", "relationship", "is_bot", "independence_basis"],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "platform": { "type": "string", "minLength": 2 },
+        "account": { "type": "string", "minLength": 1 },
+        "type": { "enum": ["person", "organization", "github_account"] },
+        "relationship": { "const": "independent" },
+        "is_bot": { "const": false },
+        "independence_basis": { "type": "string", "minLength": 20 }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "method", "verified_at", "immutable_ref_type", "immutable_ref"],
+      "properties": {
+        "status": { "const": "verified" },
+        "method": { "type": "string", "minLength": 8 },
+        "verified_at": { "type": "string", "format": "date-time" },
+        "immutable_ref_type": {
+          "enum": ["git_commit", "issue_comment_id", "publication_id", "sha256", "payment_receipt_id"]
+        },
+        "immutable_ref": { "type": "string", "minLength": 8 }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "category",
+        "subject_id",
+        "actor",
+        "action",
+        "validation_claim",
+        "scope",
+        "does_not_establish",
+        "source_url",
+        "occurred_at",
+        "verification",
+        "dedupe_key",
+        "count_weight"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^VTL-EXT-[0-9]{8}-[0-9]{3}$" },
+        "status": { "const": "qualifying" },
+        "category": {
+          "enum": [
+            "accepted_external_integration",
+            "catalog_curator_acceptance",
+            "editorial_coverage",
+            "external_adopter_report",
+            "independent_blind_label_set",
+            "independent_technical_reproduction",
+            "substantive_external_review"
+          ]
+        },
+        "subject_id": { "type": "string", "minLength": 3 },
+        "actor": { "$ref": "#/$defs/actor" },
+        "action": { "type": "string", "minLength": 8 },
+        "validation_claim": { "type": "string", "minLength": 30 },
+        "scope": { "type": "string", "minLength": 30 },
+        "does_not_establish": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "source_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "verification": { "$ref": "#/$defs/verification" },
+        "dedupe_key": { "type": "string", "minLength": 10 },
+        "count_weight": { "const": 1 }
+      }
+    },
+    "payment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "payer", "amount_usd", "purpose", "source_url", "verification"],
+      "properties": {
+        "id": { "type": "string", "minLength": 8 },
+        "status": { "const": "verified" },
+        "payer": { "$ref": "#/$defs/actor" },
+        "amount_usd": { "type": "string", "pattern": "^[1-9][0-9]*\\.[0-9]{2}$" },
+        "purpose": { "type": "string", "minLength": 10 },
+        "source_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "verification": { "$ref": "#/$defs/verification" }
+      }
+    },
+    "openLane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "signal_type", "state", "source_url", "reason_not_counted", "count_weight"],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "signal_type": {
+          "enum": [
+            "author_activity",
+            "bot_or_ci",
+            "duplicate_signal",
+            "open_pr",
+            "outreach_sent",
+            "self_test",
+            "thanks_only",
+            "traffic"
+          ]
+        },
+        "state": { "enum": ["pending", "noncounting", "no_submission"] },
+        "source_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "reason_not_counted": { "type": "string", "minLength": 20 },
+        "count_weight": { "const": 0 }
+      }
+    }
+  }
+}
