@@ -24,6 +24,7 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /VERITAS Omega Agent Trust Lab/);
   assert.match(visibleHtml, /A verdict is/);
   assert.match(visibleHtml, /Take the blind challenge/);
+  assert.match(visibleHtml, /Reveal privately \(weight 0\)/);
   assert.match(visibleHtml, /When the evaluation boundary became the attack surface/);
   assert.match(visibleHtml, /No direct Internet access was not no path to the Internet/);
   assert.match(visibleHtml, /Two independent curators accepted the project/);
@@ -37,8 +38,19 @@ test("server renders the finished public lab", async () => {
 });
 
 test("public source preserves commercial and assurance boundaries", async () => {
-  const [page, layout, packageJson, packet, incident, distribution] = await Promise.all([
+  const [
+    page,
+    challengeLibrary,
+    issueForm,
+    layout,
+    packageJson,
+    packet,
+    incident,
+    distribution,
+  ] = await Promise.all([
     readFile(new URL("../app/trust-lab.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../lib/challenge-receipt.js", import.meta.url), "utf8"),
+    readFile(new URL("../.github/ISSUE_TEMPLATE/blind-label-set.yml", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
     readFile(new URL("../public/verification-packet.json", import.meta.url), "utf8"),
@@ -46,10 +58,22 @@ test("public source preserves commercial and assurance boundaries", async () => 
     readFile(new URL("../evidence/DISTRIBUTION_EVIDENCE.md", import.meta.url), "utf8"),
   ]);
   assert.match(page, /Not an independent audit/);
-  assert.match(page, /Contribute publicly on GitHub/);
+  assert.match(page, /Commit labels publicly before reveal/);
+  assert.match(page, /Reveal privately \(weight 0\)/);
+  assert.match(page, /createBlindSubmissionUrl/);
+  assert.doesNotMatch(page, /Score after reveal:/);
+  assert.match(challengeLibrary, /template: "blind-label-set\.yml"/);
+  assert.match(challengeLibrary, /challenge_version: CHALLENGE_ID/);
+  assert.match(challengeLibrary, /commitment_id: commitment\.commitment_id/);
+  assert.doesNotMatch(challengeLibrary, /params\.set\("score"/);
+  assert.doesNotMatch(challengeLibrary, /params\.set\("total"/);
+  assert.doesNotMatch(challengeLibrary, /params\.set\("body"/);
   assert.match(page, /UNVERIFIED_SELF_REPORTED/);
   assert.match(page, /does not count as independent validation/i);
-  assert.match(page, /nothing leaves this page/i);
+  assert.match(
+    page,
+    /Your labels stay\s+on your device unless you explicitly contribute them on GitHub/i,
+  );
   assert.match(page, /\$750 fixed/);
   assert.match(page, /not a claim that VERITAS would have prevented/);
   assert.match(page, /not independent\s+validation of VERITAS/);
@@ -59,6 +83,9 @@ test("public source preserves commercial and assurance boundaries", async () => 
   assert.match(incident, /VERITAS adoption determination: `INCONCLUSIVE`/);
   assert.match(incident, /do \*\*not\*\* independently validate VERITAS/i);
   assert.match(incident, /Why this is not a seventh blind-calibration case/);
+  assert.match(issueForm, /Submit this issue before using the reveal control/);
+  assert.match(issueForm, /does not prove\s+independence, expertise, honesty/is);
+  assert.match(issueForm, /id: commitment_id/);
   assert.match(distribution, /ONE SCOPED EXTERNAL ACCEPTANCE/);
   assert.match(distribution, /product efficacy.*remain `INCONCLUSIVE`/is);
   assert.match(distribution, /independent pre-reveal label sets: \*\*0\*\*/);
