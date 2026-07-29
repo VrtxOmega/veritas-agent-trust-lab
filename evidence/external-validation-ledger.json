@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0.0",
+  "campaign": {
+    "id": "veritas-trust-lab-50-or-payment",
+    "subject": "VERITAS Omega Agent Trust Lab",
+    "validation_target": 50,
+    "payment_threshold": "greater_than_0_usd",
+    "started_at": "2026-07-29T09:33:26Z"
+  },
+  "summary": {
+    "qualifying_events": 2,
+    "distinct_validators": 2,
+    "verified_payment_usd": "0.00",
+    "remaining_to_validation_target": 48,
+    "terminal_state": "ACTIVE"
+  },
+  "counting_policy": {
+    "qualifying_categories": [
+      "accepted_external_integration",
+      "catalog_curator_acceptance",
+      "editorial_coverage",
+      "external_adopter_report",
+      "independent_blind_label_set",
+      "independent_technical_reproduction",
+      "substantive_external_review"
+    ],
+    "never_count": [
+      "author_activity",
+      "bot_or_ci",
+      "duplicate_signal",
+      "open_pr",
+      "outreach_sent",
+      "self_test",
+      "thanks_only",
+      "traffic"
+    ],
+    "independence_rule": "The counted action must be attributable to a person or organization outside VrtxOmega and its AI agents, with a public or independently verifiable source.",
+    "dedupe_rule": "Count one independently attributable action per actor, category, and subject. Repeated comments, reruns, mirrors, and duplicate submissions remain one event.",
+    "scope_rule": "Every event states only what the observed action validates and lists the adoption, correctness, endorsement, payment, or certification claims it does not establish."
+  },
+  "events": [
+    {
+      "id": "VTL-EXT-20260729-001",
+      "status": "qualifying",
+      "category": "catalog_curator_acceptance",
+      "subject_id": "systempromptio/awesome-ai-agent-governance#27",
+      "actor": {
+        "id": "github:Ejb503",
+        "platform": "github",
+        "account": "Ejb503",
+        "type": "github_account",
+        "relationship": "independent",
+        "is_bot": false,
+        "independence_basis": "The actor had merge authority in an external repository not controlled by VrtxOmega."
+      },
+      "action": "merged_curated_listing",
+      "validation_claim": "An external curator accepted the Trust Lab as relevant to the repository's AI-agent governance catalogue.",
+      "scope": "This validates scoped catalogue fit and discoverability inside that external repository at the recorded commit.",
+      "does_not_establish": [
+        "product adoption",
+        "technical correctness",
+        "security assurance",
+        "endorsement of VERITAS",
+        "payment"
+      ],
+      "source_url": "https://github.com/systempromptio/awesome-ai-agent-governance/pull/27",
+      "occurred_at": "2026-07-29T09:33:26Z",
+      "verification": {
+        "status": "verified",
+        "method": "GitHub pull-request API and live main-branch readback",
+        "verified_at": "2026-07-29T12:48:00Z",
+        "immutable_ref_type": "git_commit",
+        "immutable_ref": "2a2fd6d84c1b57b89faf8e786615c8f6d7a3ed69"
+      },
+      "dedupe_key": "github:Ejb503|catalog_curator_acceptance|systempromptio/awesome-ai-agent-governance#27",
+      "count_weight": 1
+    },
+    {
+      "id": "VTL-EXT-20260729-002",
+      "status": "qualifying",
+      "category": "catalog_curator_acceptance",
+      "subject_id": "gmh5225/awesome-ai-security#18",
+      "actor": {
+        "id": "github:gmh5225",
+        "platform": "github",
+        "account": "gmh5225",
+        "type": "github_account",
+        "relationship": "independent",
+        "is_bot": false,
+        "independence_basis": "The actor owns and had merge authority in an external repository not controlled by VrtxOmega."
+      },
+      "action": "merged_curated_listing",
+      "validation_claim": "An external repository owner accepted the Trust Lab as relevant to the repository's AI-security catalogue.",
+      "scope": "This validates scoped catalogue fit and discoverability inside that external repository at the recorded commit.",
+      "does_not_establish": [
+        "product adoption",
+        "technical correctness",
+        "security assurance",
+        "endorsement of VERITAS",
+        "payment"
+      ],
+      "source_url": "https://github.com/gmh5225/awesome-ai-security/pull/18",
+      "occurred_at": "2026-07-29T11:43:46Z",
+      "verification": {
+        "status": "verified",
+        "method": "GitHub pull-request API and live main-branch readback",
+        "verified_at": "2026-07-29T12:48:00Z",
+        "immutable_ref_type": "git_commit",
+        "immutable_ref": "0a48d9a8e20cdcb92f0796d7df45e0a55ef3200c"
+      },
+      "dedupe_key": "github:gmh5225|catalog_curator_acceptance|gmh5225/awesome-ai-security#18",
+      "count_weight": 1
+    }
+  ],
+  "payments": [],
+  "open_lanes": [
+    {
+      "id": "github/awesome-copilot#2476",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/github/awesome-copilot/pull/2476",
+      "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
+    },
+    {
+      "id": "agentrust-io/awesome-ai-governance#48",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/agentrust-io/awesome-ai-governance/pull/48",
+      "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
+    },
+    {
+      "id": "scadastrangelove/awesome-ai-security-tools#29",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/scadastrangelove/awesome-ai-security-tools/pull/29",
+      "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
+    },
+    {
+      "id": "matheusht/redthread#22",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/matheusht/redthread/pull/22",
+      "reason_not_counted": "The pull request is open; bot and author reviews are not independent validation.",
+      "count_weight": 0
+    },
+    {
+      "id": "VrtxOmega/veritas-agent-trust-lab#1",
+      "signal_type": "author_activity",
+      "state": "no_submission",
+      "source_url": "https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/1",
+      "reason_not_counted": "The issue contains author invitations but no outside blind-label submission.",
+      "count_weight": 0
+    },
+    {
+      "id": "msaleme/red-team-blue-team-agent-fabric#304",
+      "signal_type": "author_activity",
+      "state": "pending",
+      "source_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304",
+      "reason_not_counted": "The report is author-submitted and has no attributable outside technical response.",
+      "count_weight": 0
+    }
+  ]
+}

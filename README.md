@@ -89,6 +89,34 @@ payments remain **$0**.
 GitHub participation is public and attached to the participant's GitHub
 identity. The lab itself has no analytics or hidden label collection.
 
+## External-validation campaign
+
+The campaign terminal condition is deliberately harder than a launch metric:
+**50 qualifying outside validation events or one verified payment**.
+
+Current machine-checked state: **2/50 qualifying events, 2 distinct validators,
+$0 verified payments**.
+
+The canonical
+[external-validation ledger](evidence/external-validation-ledger.json) records
+the source, actor, scope, immutable evidence, nonclaims, and deduplication key
+for every counted event. It also keeps open lanes at weight zero. Recompute it:
+
+```bash
+npm run validate:external
+```
+
+Counted categories include a verified blind-label set, technical reproduction,
+accepted external integration, substantive review, adopter report, editorial
+coverage, or scoped curator acceptance. Bots, CI, traffic, author activity,
+open PRs, sent outreach, thanks-only comments, self-tests, and duplicate signals
+never count.
+
+The first two events are external curator decisions to merge Trust Lab listings.
+Each validates only catalogue fit and discoverability in that repository. They
+do not establish adoption, technical correctness, security assurance,
+endorsement, certification, or payment.
+
 ## Founding pilot
 
 The site offers a bounded **$750 Founding Agent Action Assurance Pilot**:
