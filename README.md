@@ -84,6 +84,8 @@ payments remain **$0**.
 - Take the blind challenge without reading the source.
 - Download the local label record, or explicitly submit the generated public
   GitHub issue after reading its consent boundary.
+- Or use the dedicated
+  [blind-label issue form](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=blind-label-set.yml).
 - Propose a seventh falsifiable case through the issue form.
 
 GitHub participation is public and attached to the participant's GitHub
