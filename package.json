@@ -12,6 +12,7 @@
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/*.test.mjs",
     "verify:rcl": "node scripts/verify-external-rcl.mjs --json-out evidence/external-rcl-cross-evaluation.json --markdown-out evidence/EXTERNAL_RCL_CROSS_EVALUATION.md",
+    "validate:external": "node scripts/verify-validation-ledger.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {
