@@ -79,6 +79,34 @@ technical efficacy, calibration, certification, adoption, endorsement, or
 commercial demand. Independent pre-reveal label sets remain **0** and verified
 payments remain **$0**.
 
+## Third-party corpus compatibility
+
+The separate Node verifier in `lib/rcl-verifier.js` consumes the public
+receipt-claim oracle fixtures exported by
+[`msaleme/red-team-blue-team-agent-fabric`](https://github.com/msaleme/red-team-blue-team-agent-fabric).
+Against the fixture file pinned to source commit
+`5e25bc6465ccced079ca6a6b8f54e065a1677a69`, it separately recomputes
+Ed25519 authority signatures, exact action and parameter digests,
+authorization and occurrence linkage, checker freshness, and the signed
+check-to-declared-tool-set binding.
+
+The recorded cross-run matches **11/11** upstream expectations: all nine
+semantic rejection vectors are detected and both acceptance controls survive.
+The latter matters because a verifier that rejects everything has not
+demonstrated correct claim validation.
+
+```bash
+npm run verify:rcl
+```
+
+- [Human-readable cross-evaluation](evidence/EXTERNAL_RCL_CROSS_EVALUATION.md)
+- [Machine-readable cross-evaluation](evidence/external-rcl-cross-evaluation.json)
+
+This is an author-run compatibility result over a genuinely third-party
+corpus—not independent validation of VERITAS, endorsement by the corpus author,
+or evidence of production security. It preserves the corpus's declared
+coverage gaps and fixes `execution_authorized` to `false`.
+
 ## Contribute evidence
 
 - Take the blind challenge without reading the source.

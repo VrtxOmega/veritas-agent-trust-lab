@@ -430,11 +430,13 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>One independent curator accepted the project&apos;s relevance.</h2>
+              <h2>External evidence, separated by what it actually proves.</h2>
               <p>
-                On July 29, 2026, Edward Burton merged the Trust Lab into the
-                systemprompt.io AI Agent Governance catalog&apos;s Security,
-                Red-Teaming, and Threat Models section.
+                One curator accepted the project&apos;s relevance. Separately,
+                the Trust Lab verifier reproduced an independently authored
+                eleven-vector receipt-claim corpus. Those are different
+                evidence classes, and neither is called independent efficacy
+                validation.
               </p>
             </div>
           </header>
@@ -449,13 +451,34 @@ export function TrustLab() {
               </p>
             </article>
             <article>
+              <span>THIRD-PARTY CORPUS</span>
+              <h3>Nine rejection vectors and two positive controls.</h3>
+              <p>
+                Michael Saleme&apos;s receipt-claim fixture set was designed
+                for outside verifiers. It tests validly signed but semantically
+                unsupported receipts, and includes two clean controls so a
+                reject-everything implementation cannot score full marks.
+              </p>
+            </article>
+            <article>
+              <span>AUTHOR-RUN CROSS-CHECK</span>
+              <h3>The separate Node verifier matched 11/11 recorded outcomes.</h3>
+              <p>
+                The run used only the pinned fixture data and exported public
+                keys. It recomputed signatures, action and parameter digests,
+                authority linkage, freshness, and the check-to-declared-tool-set
+                binding without importing the source harness.
+              </p>
+            </article>
+            <article>
               <span>WHAT REMAINS OPEN</span>
               <h3>Discovery relevance is not technical validation.</h3>
               <p>
-                No independent participant has contributed a pre-reveal label
-                set, and no customer has purchased the pilot. Efficacy,
-                calibration, certification, adoption, endorsement, and
-                commercial demand remain unproven.
+                The compatibility run is still authored and operated by
+                VrtxOmega. No independent participant has contributed a
+                pre-reveal label set, and no customer has purchased the pilot.
+                Efficacy, calibration, certification, adoption, endorsement,
+                and commercial demand remain unproven.
               </p>
             </article>
           </div>
@@ -470,11 +493,21 @@ export function TrustLab() {
               <span>Security, Red-Teaming, and Threat Models section.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/evidence/EXTERNAL_RCL_CROSS_EVALUATION.md" target="_blank" rel="noreferrer">
+              <b>Reproducible 11/11 cross-evaluation</b>
+              <span>Pinned source identity, per-vector results, positive controls, and exact nonclaims.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/msaleme/red-team-blue-team-agent-fabric/blob/5e25bc6465ccced079ca6a6b8f54e065a1677a69/fixtures/rcl/rcl-oracle-fixtures.v1.json" target="_blank" rel="noreferrer">
+              <b>Third-party RCL oracle fixture source</b>
+              <span>Eleven public receipt-claim vectors exported for external verifiers.</span>
+              <i>↗</i>
+            </a>
           </div>
           <p className="boundary">
             <strong>SCOPE</strong> Qualifying external acceptance: 1, limited
-            to curator fit. Independent blind label sets: 0. Verified payments:
-            $0.
+            to curator fit. Author-run third-party corpus compatibility: 11/11.
+            Independent blind label sets: 0. Verified payments: $0.
           </p>
         </div>
       </section>
