@@ -15,6 +15,7 @@ independent validation.
 | Release | <https://github.com/VrtxOmega/veritas-agent-trust-lab/releases/tag/v0.1.0> | Tagged `v0.1.0` release exists. |
 | Portfolio | <https://github.com/VrtxOmega/veritas-portfolio/pull/12> | Merged as `8d48be2cb9993d74776ae83e75a781c553fdf53e`; live portfolio readback contains the Trust Lab and its nonclaim. |
 | GitHub profile | <https://github.com/VrtxOmega/VrtxOmega/pull/5> | Merged as `cad4cf738342e452b4ba3903414d24a99056d517`; public profile readback contains the Trust Lab live/source links. |
+| Flagship site | <https://vrtxomega.tech/> | Public HTML hash `f240e246e58028197ad59888acb21511dcf8b7e123005b75dee7b0ea8bca2063` contains the Trust Lab, live/source links, and `Independent adoption remains INCONCLUSIVE`. |
 
 ## Independent review lanes
 
@@ -22,6 +23,7 @@ independent validation.
 | --- | --- | --- | --- |
 | [agentrust-io/awesome-ai-governance#48](https://github.com/agentrust-io/awesome-ai-governance/pull/48) | Open, mergeable, awaiting named-maintainer review. Automated contributor check reported high confidence. | A policy-compliant one-line submission exists and automated workflow checks ran. | No human acceptance, product efficacy, calibration, certification, or endorsement. |
 | [systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27) | Open, mergeable, no human review; GitGuardian passed. | A second policy-compliant one-line submission exists and secret scanning passed. | No human acceptance, product efficacy, calibration, certification, or endorsement. |
+| [scadastrangelove/awesome-ai-security-tools#29](https://github.com/scadastrangelove/awesome-ai-security-tools/pull/29) | Open and mergeable with one `WATCHLIST.md` line; awaiting curator review. | A contribution-policy-aligned submission exists in the catalog's required zero-star lane; local PCF preflight was `ready-for-maintainer` at 100/100. | No human acceptance, main-list eligibility, product efficacy, calibration, certification, or endorsement. |
 
 ## Independent-use lane
 

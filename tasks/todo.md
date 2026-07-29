@@ -148,6 +148,57 @@ The GitHub-hosted check must report success before merge.
   [VrtxOmega/veritas-agent-trust-lab#1](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/1)
   is open for the first ten eligible pre-reveal label sets; opening the cohort
   is not evidence that an independent person has used the lab.
-- A 15-minute task heartbeat monitors both directory PRs. No independent human
+- A 15-minute task heartbeat monitors the three directory PRs. No independent human
   acceptance, eligible external label set, or payment has been observed.
   Therefore external adoption and calibration remain `INCONCLUSIVE`.
+
+## AI security watchlist submission
+
+### Goal
+
+Submit the Trust Lab to one additional, demonstrably active and materially
+larger AI-security catalog whose published criteria explicitly route zero-star
+projects to a watchlist.
+
+### Scope
+
+- `scadastrangelove/awesome-ai-security-tools`
+- One factual line in `WATCHLIST.md`
+- One clean fork branch and one upstream pull request
+
+### Non-Goals
+
+- Do not request main-list placement before adoption evidence exists.
+- Do not edit generated `README.md` or structured catalog data.
+- Do not hide author affiliation or imply independent validation.
+- Do not submit to more catalogs in this lane.
+
+### Steps
+
+- [x] Start from current upstream `main` and confirm no existing entry.
+- [x] Add one neutral watchlist line stating why the zero-star project is being
+  watched.
+- [x] Inspect the exact one-file diff and run the repository's relevant checks.
+- [x] Run PCF contributor preflight against the final patch.
+- [x] Push one branch to the VrtxOmega fork and open one upstream PR.
+- [x] Read back the PR, checks, and maintainer-facing evidence.
+
+### Verification
+
+- `git diff --check`
+- exact one-file patch inspection
+- upstream generator check if the watchlist change does not require regeneration
+- PCF `ready-for-maintainer`
+- public PR readback from the independent repository
+
+Acceptance by the curator would validate catalog relevance and category fit,
+not product efficacy, calibration, certification, or paid adoption.
+
+Result: [scadastrangelove/awesome-ai-security-tools#29](https://github.com/scadastrangelove/awesome-ai-security-tools/pull/29)
+is open, mergeable, and awaiting curator review. The public patch is exactly
+one line in `WATCHLIST.md`, commit
+`c2991b6cff46d01dc835ba7323f064e33e245185`. `git diff --check`,
+`python3 gen_readme.py --check`, structured-data JSON validation, and both
+public URL checks passed. PCF classified the final maintainer-facing packet
+`ready-for-maintainer` at 100/100. This is a verified submission, not an
+independent acceptance.
