@@ -61,8 +61,8 @@ pilot, and activate at least one verifiable distribution surface.
 - [x] Create the public source repository and release through one focused
   publication path.
 - [x] Deploy the production site and verify live behavior and artifacts.
-- [ ] Integrate the live proof into the existing portfolio/profile.
-- [ ] Activate the strongest available authenticated distribution surface and
+- [x] Integrate the live proof into the existing portfolio/profile.
+- [x] Activate the strongest available authenticated distribution surface and
   read it back; otherwise preserve exact ready-to-post launch packets.
 - [ ] Seal the final outcome, record residual risks, and define the next
   evidence-driven growth experiment.
@@ -126,3 +126,28 @@ npm run build:pages
 ```
 
 The GitHub-hosted check must report success before merge.
+
+### Distribution evidence
+
+- Portfolio PR [VrtxOmega/veritas-portfolio#12](https://github.com/VrtxOmega/veritas-portfolio/pull/12)
+  merged as `8d48be2cb9993d74776ae83e75a781c553fdf53e`; the live
+  portfolio readback contains the Trust Lab, seven shipped proof surfaces, the
+  tagged release link, and the retained `INCONCLUSIVE` adoption boundary.
+- Profile PR [VrtxOmega/VrtxOmega#5](https://github.com/VrtxOmega/VrtxOmega/pull/5)
+  merged as `cad4cf738342e452b4ba3903414d24a99056d517`; the public
+  profile readback contains the Trust Lab live/source links and the verified
+  15-contribution count.
+- Independent directory PR
+  [agentrust-io/awesome-ai-governance#48](https://github.com/agentrust-io/awesome-ai-governance/pull/48)
+  is open, mergeable, and awaiting named-maintainer review. Automated
+  contributor checks are workflow evidence, not independent validation.
+- Independent directory PR
+  [systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27)
+  is open and mergeable with GitGuardian passing and no human review yet.
+- Public blind-calibration cohort
+  [VrtxOmega/veritas-agent-trust-lab#1](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/1)
+  is open for the first ten eligible pre-reveal label sets; opening the cohort
+  is not evidence that an independent person has used the lab.
+- A 15-minute task heartbeat monitors both directory PRs. No independent human
+  acceptance, eligible external label set, or payment has been observed.
+  Therefore external adoption and calibration remain `INCONCLUSIVE`.
