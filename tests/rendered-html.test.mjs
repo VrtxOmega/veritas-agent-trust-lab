@@ -27,11 +27,12 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /Reveal privately \(weight 0\)/);
   assert.match(visibleHtml, /When the evaluation boundary became the attack surface/);
   assert.match(visibleHtml, /No direct Internet access was not no path to the Internet/);
-  assert.match(visibleHtml, /Two independent curators accepted the project/);
+  assert.match(visibleHtml, /Three independently attributable outside actions now qualify/);
   assert.match(visibleHtml, /FOUNDING 50 \/ VERIFIED/);
-  assert.match(visibleHtml, /<strong>2<small>\/50<\/small><\/strong>/);
-  assert.match(visibleHtml, /48 qualifying outside actions remain/);
-  assert.match(visibleHtml, /Qualifying external acceptances:\s+2/s);
+  assert.match(visibleHtml, /<strong>3<small>\/50<\/small><\/strong>/);
+  assert.match(visibleHtml, /47 qualifying outside actions remain/);
+  assert.match(visibleHtml, /Qualifying external validations:\s+3/s);
+  assert.match(visibleHtml, /Independent technical reproduction/);
   assert.match(visibleHtml, /Agent Action Assurance/);
   assert.match(visibleHtml, /Inspect sample dossier/);
   assert.match(visibleHtml, /Machine-readable sample/);
