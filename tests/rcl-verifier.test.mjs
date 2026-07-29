@@ -151,12 +151,16 @@ test("rejects an emitter self-attested checker claim", () => {
   );
 });
 
-test("rejects stale, wrong-tool-set, and non-passing checks", () => {
+test("rejects stale, future, wrong-tool-set, and non-passing checks", () => {
   const keys = keySet();
   for (const [mutation, expected] of [
     [
       (body) => ({ ...body, issued_at: 1_749_999_699 }),
       "check: stale transcript (outside freshness window)",
+    ],
+    [
+      (body) => ({ ...body, issued_at: 1_750_000_001 }),
+      "check: transcript timestamp is in the future",
     ],
     [
       (body) => ({ ...body, input_digest: digest([{ name: "other" }]) }),
