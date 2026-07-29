@@ -30,6 +30,10 @@ npm test
 The Node test suite and the browser use the same engine in
 `lib/trust-engine.js`.
 
+`npm run build:pages` converts the already-built Vinext output into the public
+GitHub Pages artifact and rewrites asset references for the repository path.
+The deployment workflow reruns lint and all tests before publishing.
+
 ## Exact claim boundary
 
 The tests demonstrate, on synthetic author-designed fixtures, that:

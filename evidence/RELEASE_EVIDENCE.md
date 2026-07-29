@@ -5,7 +5,7 @@ Evidence date: 2026-07-28
 ## Verified
 
 - `npm run lint`: passed with no warnings.
-- `npm test`: 13 tests passed, 0 failed.
+- `npm test`: 14 tests passed, 0 failed.
 - The test command includes a production build before Node tests.
 - Six hostile fixtures block or revoke.
 - Six clean fixtures pass their declared local boundary.
@@ -55,6 +55,14 @@ The source repository is owner-controlled, so this does not route work into an
 external maintainer queue. The negative PCF result is preserved and will not be
 presented as a release pass. Any third-party listing contribution will be a
 separate, minimal, repository-aware patch.
+
+## Manual-browser limitation
+
+The exact GitHub Pages artifact passed local HTTP readbacks for its HTML and
+interactive JavaScript assets. The in-app browser transport returned
+`Transport closed` during setup, so no manual browser-interaction claim is made
+for the pre-publication artifact. The public deployment requires live asset,
+metadata, and interaction readbacks before it can be called launched.
 
 ## Public-claim boundary
 
