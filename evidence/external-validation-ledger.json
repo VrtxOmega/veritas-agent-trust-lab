@@ -9,10 +9,10 @@
     "started_at": "2026-07-29T09:33:26Z"
   },
   "summary": {
-    "qualifying_events": 3,
-    "distinct_validators": 3,
+    "qualifying_events": 4,
+    "distinct_validators": 4,
     "verified_payment_usd": "0.00",
-    "remaining_to_validation_target": 47,
+    "remaining_to_validation_target": 46,
     "terminal_state": "ACTIVE"
   },
   "counting_policy": {
@@ -148,6 +148,42 @@
         "immutable_ref": "PRR_kwDOTmlLDc8AAAABHswgNA"
       },
       "dedupe_key": "github:pranee54|independent_technical_reproduction|pranee54/AgentDoctor#18",
+      "count_weight": 1
+    },
+    {
+      "id": "VTL-EXT-20260729-004",
+      "status": "qualifying",
+      "category": "accepted_external_integration",
+      "subject_id": "mick-gsk/drift#792",
+      "actor": {
+        "id": "github:mick-gsk",
+        "platform": "github",
+        "account": "mick-gsk",
+        "type": "github_account",
+        "relationship": "independent",
+        "is_bot": false,
+        "independence_basis": "The actor owns the external Drift repository and merged the contribution from an account outside VrtxOmega."
+      },
+      "action": "merged_external_contribution",
+      "validation_claim": "The external repository owner accepted and merged the campaign-produced staleness sampling fix into Drift.",
+      "scope": "This validates the scoped contribution's acceptance and integration into the external repository at the recorded merge commit.",
+      "does_not_establish": [
+        "independent product adoption of VERITAS",
+        "technical correctness of VERITAS",
+        "overall security assurance",
+        "endorsement of VERITAS",
+        "payment"
+      ],
+      "source_url": "https://github.com/mick-gsk/drift/pull/792",
+      "occurred_at": "2026-07-29T23:46:58Z",
+      "verification": {
+        "status": "verified",
+        "method": "GitHub pull-request API and live merged-PR readback",
+        "verified_at": "2026-07-29T23:50:39Z",
+        "immutable_ref_type": "git_commit",
+        "immutable_ref": "9f0fc026738de2602bf972863d244a94970e9296"
+      },
+      "dedupe_key": "github:mick-gsk|accepted_external_integration|mick-gsk/drift#792",
       "count_weight": 1
     }
   ],

@@ -592,12 +592,13 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>Three independently attributable outside actions now qualify.</h2>
+              <h2>Four independently attributable outside actions now qualify.</h2>
               <p>
                 Two maintainers merged scoped Trust Lab catalogue entries. A
                 third repository owner independently reproduced a concrete
                 security defect in a campaign-produced Action contribution and
-                issued a blocking technical review.
+                issued a blocking technical review. A fourth external
+                repository owner merged a campaign-produced regression fix.
               </p>
             </div>
           </header>
@@ -626,14 +627,16 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Two curator decisions and one technical reproduction are public.</h3>
+              <h3>Two curator decisions, one technical reproduction, and one integration are public.</h3>
               <p>
                 GitHub records separate external merge actors for
                 systempromptio pull request #27 and gmh5225 pull request #18.
                 Each upstream README contains one scoped Trust Lab entry. The
                 AgentDoctor owner separately reported reproducing an
                 outside-workspace write through an output-file symlink and
-                requested a focused remediation matrix.
+                requested a focused remediation matrix. The Drift owner
+                separately merged the staleness sampling regression fix in
+                pull request #792.
               </p>
             </article>
             <article>
@@ -673,15 +676,20 @@ export function TrustLab() {
               <span>External repository owner reproduced a concrete Action defect and issued blocking remediation criteria.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/mick-gsk/drift/pull/792" target="_blank" rel="noreferrer">
+              <b>Merged external integration</b>
+              <span>External repository owner accepted the focused staleness sampling regression fix.</span>
+              <i>↗</i>
+            </a>
           </div>
           <p className="boundary">
             <strong>SCOPE</strong> Qualifying external validations:{" "}
             {campaignSummary.qualifying_events}, from{" "}
             {campaignSummary.distinct_validators} distinct validators: two
             scoped curator-fit decisions and one independent technical
-            reproduction. These do not establish VERITAS efficacy,
-            endorsement, adoption, merge, or payment. Independent blind label
-            sets: 0. Verified payments: ${campaignSummary.verified_payment_usd}.
+            reproduction, plus one accepted external integration. These do not
+            establish VERITAS efficacy, endorsement, product adoption, or
+            payment. Independent blind label sets: 0. Verified payments: ${campaignSummary.verified_payment_usd}.
           </p>
         </div>
       </section>
