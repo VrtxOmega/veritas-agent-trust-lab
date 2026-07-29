@@ -65,6 +65,20 @@ contributes them without answer-key exposure.
 The separate V4 implementation and VERITAS Codex Gate are not included. This
 repository's MIT license applies only to this public demonstrator.
 
+## External evidence
+
+On July 29, 2026, independent curator
+[Edward Burton (`Ejb503`)](https://github.com/Ejb503) merged
+[systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27).
+The merge placed the Trust Lab in the catalog's
+**Security, Red-Teaming, and Threat Models** section.
+
+That is one attributable external acceptance of the project's relevance to a
+curated AI-agent-governance resource. It does not establish challenge use,
+technical efficacy, calibration, certification, adoption, endorsement, or
+commercial demand. Independent pre-reveal label sets remain **0** and verified
+payments remain **$0**.
+
 ## Contribute evidence
 
 - Take the blind challenge without reading the source.

@@ -1,6 +1,6 @@
 # Distribution Evidence
 
-Observed state: 2026-07-28 (America/Chicago)
+Observed state: 2026-07-29 (America/Chicago)
 
 This register separates publication, automated workflow output, independent
 human action, and payment. A public link or an author-opened issue is not
@@ -22,7 +22,7 @@ independent validation.
 | Lane | Current state | What it proves now | What it does not prove |
 | --- | --- | --- | --- |
 | [agentrust-io/awesome-ai-governance#48](https://github.com/agentrust-io/awesome-ai-governance/pull/48) | Open, mergeable, awaiting named-maintainer review. Automated contributor check reported high confidence. | A policy-compliant one-line submission exists and automated workflow checks ran. | No human acceptance, product efficacy, calibration, certification, or endorsement. |
-| [systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27) | Open, mergeable, no human review; GitGuardian passed. | A second policy-compliant one-line submission exists and secret scanning passed. | No human acceptance, product efficacy, calibration, certification, or endorsement. |
+| [systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27) | Merged on 2026-07-29 by independent curator `Ejb503` as commit `2a2fd6d84c1b57b89faf8e786615c8f6d7a3ed69`; the final upstream README contains the neutral Trust Lab entry. | One attributable non-author curator accepted the project's relevance to the catalog's Security, Red-Teaming, and Threat Models section. | No challenge use, product efficacy, calibration, certification, adoption, endorsement, independent label set, or payment. |
 | [scadastrangelove/awesome-ai-security-tools#29](https://github.com/scadastrangelove/awesome-ai-security-tools/pull/29) | Open and mergeable with one `WATCHLIST.md` line; awaiting curator review. | A contribution-policy-aligned submission exists in the catalog's required zero-star lane; local PCF preflight was `ready-for-maintainer` at 100/100. | No human acceptance, main-list eligibility, product efficacy, calibration, certification, or endorsement. |
 
 ## Independent-use lane
@@ -33,7 +33,7 @@ invites the first ten eligible independent pre-reveal label sets and defines
 inclusion, exclusion, and analysis rules before any qualifying submissions
 exist.
 
-Current eligible external label sets: **0**
+Current eligible independent pre-reveal label sets: **0**
 
 ## Commercial lane
 
@@ -44,9 +44,11 @@ Verified payments: **$0**
 
 ## Current determination
 
-**INCONCLUSIVE**
+**PARTIAL — ONE SCOPED EXTERNAL ACCEPTANCE**
 
-Publication and distribution attempts are verified. Independent human
-acceptance, independent calibration use, and payment have not yet been
-observed. Automated checks and author-controlled publication must not be
-upgraded into external validation.
+One independent human curator accepted the Trust Lab as relevant to a public
+AI-agent-governance catalog. That changes discovery relevance from
+`INCONCLUSIVE` to `PARTIAL` within that narrow scope. Technical efficacy,
+independent calibration use, adoption, certification, endorsement, commercial
+demand, and payment remain `INCONCLUSIVE`. Automated checks and
+author-controlled publication must not be upgraded into external validation.

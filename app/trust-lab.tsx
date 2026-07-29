@@ -425,9 +425,63 @@ export function TrustLab() {
         </div>
       </section>
 
+      <section className="section" id="external-evidence">
+        <div className="section-inner">
+          <header className="section-heading">
+            <span>06 / EXTERNAL</span>
+            <div>
+              <h2>One independent curator accepted the project&apos;s relevance.</h2>
+              <p>
+                On July 29, 2026, Edward Burton merged the Trust Lab into the
+                systemprompt.io AI Agent Governance catalog&apos;s Security,
+                Red-Teaming, and Threat Models section.
+              </p>
+            </div>
+          </header>
+          <div className="principles">
+            <article>
+              <span>WHAT IT PROVES</span>
+              <h3>A non-author curator accepted the neutral, source-linked entry.</h3>
+              <p>
+                GitHub records <code>Ejb503</code>—not the submitter—as the
+                merge actor for pull request #27. The final upstream README
+                contains exactly one VERITAS Trust Lab entry.
+              </p>
+            </article>
+            <article>
+              <span>WHAT REMAINS OPEN</span>
+              <h3>Discovery relevance is not technical validation.</h3>
+              <p>
+                No independent participant has contributed a pre-reveal label
+                set, and no customer has purchased the pilot. Efficacy,
+                calibration, certification, adoption, endorsement, and
+                commercial demand remain unproven.
+              </p>
+            </article>
+          </div>
+          <div className="references">
+            <a href="https://github.com/systempromptio/awesome-ai-agent-governance/pull/27" target="_blank" rel="noreferrer">
+              <b>Merged curator decision</b>
+              <span>One-line, source-linked catalog submission merged by an independent maintainer.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/systempromptio/awesome-ai-agent-governance/blob/main/README.md" target="_blank" rel="noreferrer">
+              <b>Live upstream catalog entry</b>
+              <span>Security, Red-Teaming, and Threat Models section.</span>
+              <i>↗</i>
+            </a>
+          </div>
+          <p className="boundary">
+            <strong>SCOPE</strong> Qualifying external acceptance: 1, limited
+            to curator fit. Independent blind label sets: 0. Verified payments:
+            $0.
+          </p>
+        </div>
+      </section>
+
       <section className="section" id="pilot">
         <div className="section-inner">
-          <header className="section-heading"><span>06 / PILOT</span><div><h2>Put one real agent workflow under hostile review.</h2><p>The first commercial offer is deliberately small enough to finish, inspect, and falsify.</p></div></header>
+          <header className="section-heading"><span>07 / PILOT</span><div><h2>Put one real agent workflow under hostile review.</h2><p>The first commercial offer is deliberately small enough to finish, inspect, and falsify.</p></div></header>
           <div className="offer">
             <div className="offer-main">
               <p>FOUNDING PILOT / TWO SLOTS</p>
@@ -450,7 +504,7 @@ export function TrustLab() {
 
       <section className="section context">
         <div className="section-inner">
-          <header className="section-heading"><span>07 / CONTEXT</span><div><h2>Built between evaluation and action.</h2><p>Sandboxes, policy engines, identity systems, and standards work solve adjacent layers. These organizations do not endorse VERITAS.</p></div></header>
+          <header className="section-heading"><span>08 / CONTEXT</span><div><h2>Built between evaluation and action.</h2><p>Sandboxes, policy engines, identity systems, and standards work solve adjacent layers. These organizations do not endorse VERITAS.</p></div></header>
           <div className="references">
             <a href="https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative" target="_blank" rel="noreferrer"><b>NIST AI Agent Standards Initiative</b><span>Identity, authorization, security evaluation, interoperability.</span><i>↗</i></a>
             <a href="https://openai.com/index/running-codex-safely/" target="_blank" rel="noreferrer"><b>OpenAI — Running Codex safely</b><span>Sandboxing, approvals, network restrictions, identity, telemetry.</span><i>↗</i></a>
