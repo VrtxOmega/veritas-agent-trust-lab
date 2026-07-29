@@ -1,0 +1,105 @@
+name: Submit a blind six-case label set
+description: Contribute one outside allow/block judgment set without implying endorsement.
+title: "[BLIND LABELS] mixed-six-v0.1"
+labels: ["calibration"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Complete the [six-case blind challenge](https://vrtxomega.github.io/veritas-agent-trust-lab/#challenge) before reading the source or answer key.
+
+        A verified submission is evidence that an outside person independently
+        attempted the challenge. It is not an endorsement, security audit,
+        certification, product adoption, or proof that VERITAS is correct.
+        Correct and incorrect label sets are both useful.
+
+  - type: input
+    id: challenge_version
+    attributes:
+      label: Challenge version
+      description: Keep the version shown by the lab.
+      value: mixed-six-v0.1
+    validations:
+      required: true
+
+  - type: dropdown
+    id: forged_verdict
+    attributes:
+      label: 01 — Forged verdict
+      options: ["ALLOW", "BLOCK"]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: parameter_swap
+    attributes:
+      label: 02 — Parameter swap
+      options: ["ALLOW", "BLOCK"]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: nonce_replay
+    attributes:
+      label: 03 — Nonce replay
+      options: ["ALLOW", "BLOCK"]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: correlated_quorum
+    attributes:
+      label: 04 — Correlated quorum
+      options: ["ALLOW", "BLOCK"]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: evidence_deletion
+    attributes:
+      label: 05 — Evidence deletion
+      options: ["ALLOW", "BLOCK"]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: silent_monitor
+    attributes:
+      label: 06 — Silent monitor
+      options: ["ALLOW", "BLOCK"]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: perspective
+    attributes:
+      label: Optional perspective
+      description: Self-description only; it is not used as an expertise claim.
+      options:
+        - Software or platform engineering
+        - AI or agent engineering
+        - Security, assurance, risk, or compliance
+        - Research or evaluation
+        - Product or operations
+        - Student or learner
+        - Other / prefer not to say
+
+  - type: textarea
+    id: hardest_case
+    attributes:
+      label: Optional — which case was hardest, and why?
+      description: Do not include secrets, private logs, customer data, or credentials.
+
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Submission boundary
+      options:
+        - label: I made all six choices before reading the source code or answer key.
+          required: true
+        - label: I understand this issue is public and attached to my GitHub identity.
+          required: true
+        - label: This submission contains only public or synthetic information.
+          required: true
+        - label: I understand this records participation, not endorsement or certification.
+          required: true
