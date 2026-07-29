@@ -1,0 +1,190 @@
+{
+  "schema": "https://vrtxomega.tech/schemas/veritas-agent-trust-lab/rcl-cross-evaluation/v0.1",
+  "verifier": {
+    "name": "VERITAS Omega Agent Trust Lab RCL verifier",
+    "version": "0.1.0",
+    "implementation": "lib/rcl-verifier.js"
+  },
+  "source": {
+    "repository": "msaleme/red-team-blue-team-agent-fabric",
+    "commit": "5e25bc6465ccced079ca6a6b8f54e065a1677a69",
+    "path": "fixtures/rcl/rcl-oracle-fixtures.v1.json",
+    "license": "https://github.com/msaleme/red-team-blue-team-agent-fabric/blob/5e25bc6465ccced079ca6a6b8f54e065a1677a69/LICENSE",
+    "url": "https://raw.githubusercontent.com/msaleme/red-team-blue-team-agent-fabric/5e25bc6465ccced079ca6a6b8f54e065a1677a69/fixtures/rcl/rcl-oracle-fixtures.v1.json",
+    "fixture_sha256": "0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb"
+  },
+  "corpus": {
+    "schema_version": "1.0",
+    "generated_by": "protocol_tests/rcl_fixture_export.py",
+    "source_module": "protocol_tests/receipt_claim_harness.py",
+    "evaluation_time": 1750000000,
+    "freshness_window_seconds": 300,
+    "declared_counts": {
+      "total": 11,
+      "accept": 2,
+      "reject": 9
+    },
+    "observed_counts": {
+      "total": 11,
+      "accept": 2,
+      "reject": 9
+    },
+    "coverage_gaps": {
+      "families_with_no_negative_vector": [
+        "integrity_provenance"
+      ],
+      "note": "The decomposition defines four claim families. Families listed here are enforced by the verifier but have no negative vector in this set, so these fixtures do not exercise them."
+    }
+  },
+  "result": "PASS",
+  "summary": {
+    "matches": 11,
+    "total": 11,
+    "all_accept_controls_survive": true,
+    "all_reject_vectors_detected": true,
+    "declared_counts_match": true
+  },
+  "cases": [
+    {
+      "id": "RCL-001",
+      "name": "Omitted mandatory evidence",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "occurrence",
+      "actual_claim_family": "occurrence",
+      "expected_reason": "occurrence: missing evidence",
+      "actual_reason": "occurrence: missing evidence",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-002",
+      "name": "Substituted evidence, re-signed envelope",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "check_execution",
+      "actual_claim_family": "check_execution",
+      "expected_reason": "check: checker attestation does not verify (substituted or forged)",
+      "actual_reason": "check: checker attestation does not verify (substituted or forged)",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-003",
+      "name": "Stale checker transcript",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "check_execution",
+      "actual_claim_family": "check_execution",
+      "expected_reason": "check: stale transcript (outside freshness window)",
+      "actual_reason": "check: stale transcript (outside freshness window)",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-004",
+      "name": "Check bound to the wrong tool-set digest",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "check_execution",
+      "actual_claim_family": "check_execution",
+      "expected_reason": "check: result bound to the wrong tool-set digest",
+      "actual_reason": "check: result bound to the wrong tool-set digest",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-005",
+      "name": "Authorization bound to different parameters",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "authorization",
+      "actual_claim_family": "authorization",
+      "expected_reason": "authorization: params do not match the action",
+      "actual_reason": "authorization: params do not match the action",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-006",
+      "name": "Execution ack bound to another action",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "occurrence",
+      "actual_claim_family": "occurrence",
+      "expected_reason": "occurrence: acknowledgment bound to another action",
+      "actual_reason": "occurrence: acknowledgment bound to another action",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-007",
+      "name": "Emitter self-assertion, no independent attestation",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "check_execution",
+      "actual_claim_family": "check_execution",
+      "expected_reason": "check: attested by the emitter, not the checker authority",
+      "actual_reason": "check: attested by the emitter, not the checker authority",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-008",
+      "name": "Fully-supported receipt accepted (control)",
+      "expected_verdict": "accept",
+      "actual_verdict": "accept",
+      "expected_claim_family": null,
+      "actual_claim_family": null,
+      "expected_reason": "all four properties independently supported",
+      "actual_reason": "all four properties independently supported",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-009",
+      "name": "Wired MCP-019 check (clean) accepted",
+      "expected_verdict": "accept",
+      "actual_verdict": "accept",
+      "expected_claim_family": null,
+      "actual_claim_family": null,
+      "expected_reason": "all four properties independently supported",
+      "actual_reason": "all four properties independently supported",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-010",
+      "name": "Wired MCP-019 check (composite found) rejected",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "check_execution",
+      "actual_claim_family": "check_execution",
+      "expected_reason": "check: recorded output is not a pass",
+      "actual_reason": "check: recorded output is not a pass",
+      "envelope_valid": true,
+      "match": true
+    },
+    {
+      "id": "RCL-011",
+      "name": "Wired MCP-019 check bound to wrong tool set rejected",
+      "expected_verdict": "reject",
+      "actual_verdict": "reject",
+      "expected_claim_family": "check_execution",
+      "actual_claim_family": "check_execution",
+      "expected_reason": "check: result bound to the wrong tool-set digest",
+      "actual_reason": "check: result bound to the wrong tool-set digest",
+      "envelope_valid": true,
+      "match": true
+    }
+  ],
+  "execution_authorized": false,
+  "assurance_boundary": [
+    "This is an author-run compatibility result over a third-party corpus, not independent validation of VERITAS.",
+    "The result establishes agreement with the pinned corpus for the exercised vectors only.",
+    "It does not establish factual truth, operational key custody, production security, certification, endorsement, or execution authority.",
+    "The source fixture calls its encoding JCS; this verifier reproduces the source's sorted compact JSON encoding for its ASCII-only fixture values and does not claim full RFC 8785 conformance.",
+    "The corpus exposes a declared tool-set digest but not every underlying tool set; the verifier checks the signed check-to-digest binding and does not claim to reconstruct unavailable tool-set evidence.",
+    "The source verifier and corpus do not exercise future-dated checker timestamps or a negative integrity_provenance vector; this cross-evaluation preserves those declared coverage limits."
+  ]
+}
