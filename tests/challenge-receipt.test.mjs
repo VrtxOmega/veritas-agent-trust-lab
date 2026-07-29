@@ -3,6 +3,8 @@ import test from "node:test";
 
 import {
   CHALLENGE_ID,
+  createBlindCommitment,
+  createBlindSubmissionUrl,
   createChallengeReceipt,
 } from "../lib/challenge-receipt.js";
 
@@ -14,6 +16,68 @@ const labels = [
   { case_id: "evidence-deletion", predicted: "BLOCK" },
   { case_id: "silent-monitor", predicted: "ALLOW" },
 ];
+
+test("blind commitment is deterministic and excludes score", async () => {
+  const first = await createBlindCommitment({ labels });
+  const second = await createBlindCommitment({
+    labels: [...labels].reverse(),
+  });
+
+  assert.equal(first.challenge_id, CHALLENGE_ID);
+  assert.equal(first.commitment_id, second.commitment_id);
+  assert.match(first.commitment_id, /^vtlc:[a-f0-9]{64}$/);
+  assert.equal(first.verification_status, "LOCAL_UNSUBMITTED");
+  assert.equal(first.count_weight, 0);
+  assert.equal(first.execution_authorized, false);
+  assert.equal("score" in first, false);
+  assert.equal("total" in first, false);
+});
+
+test("blind commitment changes when a label changes", async () => {
+  const first = await createBlindCommitment({ labels });
+  const changed = structuredClone(labels);
+  changed[0].predicted = "ALLOW";
+  const second = await createBlindCommitment({ labels: changed });
+  assert.notEqual(first.commitment_id, second.commitment_id);
+});
+
+test("blind submission URL prefills every label without score data", async () => {
+  const commitment = await createBlindCommitment({ labels });
+  const submission = new URL(createBlindSubmissionUrl(commitment));
+
+  assert.equal(submission.origin, "https://github.com");
+  assert.equal(
+    submission.pathname,
+    "/VrtxOmega/veritas-agent-trust-lab/issues/new",
+  );
+  assert.equal(submission.searchParams.get("template"), "blind-label-set.yml");
+  assert.equal(submission.searchParams.get("challenge_version"), CHALLENGE_ID);
+  assert.equal(
+    submission.searchParams.get("commitment_id"),
+    commitment.commitment_id,
+  );
+  assert.equal(submission.searchParams.get("forged_verdict"), "BLOCK");
+  assert.equal(submission.searchParams.get("parameter_swap"), "ALLOW");
+  assert.equal(submission.searchParams.get("nonce_replay"), "BLOCK");
+  assert.equal(submission.searchParams.get("correlated_quorum"), "ALLOW");
+  assert.equal(submission.searchParams.get("evidence_deletion"), "BLOCK");
+  assert.equal(submission.searchParams.get("silent_monitor"), "ALLOW");
+  assert.equal(submission.searchParams.has("score"), false);
+  assert.equal(submission.searchParams.has("total"), false);
+  assert.equal(submission.searchParams.has("body"), false);
+});
+
+test("blind submission URL rejects invalid commitment identities", () => {
+  assert.throws(
+    () =>
+      createBlindSubmissionUrl({
+        challenge_id: CHALLENGE_ID,
+        commitment_id: "vtlc:forged",
+        labels,
+      }),
+    /identity is invalid/,
+  );
+});
 
 test("challenge receipt is deterministic across label ordering", async () => {
   const first = await createChallengeReceipt({ labels, score: 6, total: 6 });
@@ -44,6 +108,10 @@ test("challenge receipt changes when a sealed label changes", async () => {
 });
 
 test("challenge receipt rejects incomplete or duplicate label sets", async () => {
+  await assert.rejects(
+    createBlindCommitment({ labels: labels.slice(1) }),
+    /exactly 6/,
+  );
   await assert.rejects(
     createChallengeReceipt({ labels: labels.slice(1), score: 5, total: 6 }),
     /exactly 6/,

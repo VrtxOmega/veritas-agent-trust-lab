@@ -10,6 +10,8 @@ import {
 } from "@/lib/trust-engine.js";
 import {
   CHALLENGE_ID,
+  createBlindCommitment,
+  createBlindSubmissionUrl,
   createChallengeReceipt,
 } from "@/lib/challenge-receipt.js";
 import validationLedger from "@/evidence/external-validation-ledger.json";
@@ -30,6 +32,17 @@ type Result = {
   assurance_boundary: string;
 };
 type Prediction = "ALLOW" | "BLOCK";
+type BlindCommitment = {
+  schema: string;
+  commitment_id: string;
+  challenge_id: string;
+  labels: { case_id: string; predicted: Prediction }[];
+  verification_status: "LOCAL_UNSUBMITTED";
+  count_weight: 0;
+  personal_data_collected_by_lab: false;
+  execution_authorized: false;
+  verification_note: string;
+};
 type ChallengeReceipt = {
   schema: string;
   receipt_id: string;
@@ -89,6 +102,8 @@ export function TrustLab() {
   const [challengeResults, setChallengeResults] = useState<Result[]>([]);
   const [predictions, setPredictions] = useState<Record<string, Prediction>>({});
   const [revealed, setRevealed] = useState(false);
+  const [blindCommitment, setBlindCommitment] =
+    useState<BlindCommitment | null>(null);
   const [challengeReceipt, setChallengeReceipt] =
     useState<ChallengeReceipt | null>(null);
   const [shareState, setShareState] = useState("Invite one reviewer");
@@ -103,6 +118,14 @@ export function TrustLab() {
   const score = useMemo(
     () => scorePredictions(predictions, challengeResults),
     [predictions, challengeResults],
+  );
+  const sealedLabels = useMemo(
+    () =>
+      CASES.flatMap((item) => {
+        const predicted = predictions[item.id];
+        return predicted ? [{ case_id: item.id, predicted }] : [];
+      }),
+    [predictions],
   );
 
   useEffect(() => {
@@ -122,6 +145,21 @@ export function TrustLab() {
       cancelled = true;
     };
   }, [activeId, tampered]);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (sealedLabels.length !== CASES.length) return;
+    createBlindCommitment({ labels: sealedLabels })
+      .then((commitment) => {
+        if (!cancelled) setBlindCommitment(commitment as BlindCommitment);
+      })
+      .catch(() => {
+        if (!cancelled) setBlindCommitment(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [sealedLabels]);
 
   useEffect(() => {
     let cancelled = false;
@@ -164,37 +202,15 @@ export function TrustLab() {
     [challengeReceipt, revealed, score],
   );
 
-  const contributionUrl = useMemo(() => {
-    const title = `Calibration result: ${score.score}/${score.total}`;
-    const rows = score.rows
-      .map((row) => `- ${row.case_id}: ${row.predicted}`)
-      .join("\n");
-    const body = [
-      "## VERITAS Omega Agent Trust Lab — voluntary calibration result",
-      "",
-      `Score after reveal: **${score.score}/${score.total}**`,
-      `Self-reported receipt: \`${challengeReceipt?.receipt_id ?? "pending"}\``,
-      "",
-      "### Blinded labels",
-      rows,
-      "",
-      "### Consent",
-      "",
-      "- [ ] I understand this GitHub issue is public and attached to my GitHub identity.",
-      "- [ ] I voluntarily contribute these labels for an author-side public calibration dataset.",
-      "- [ ] I did not inspect the source or answer key before making these choices.",
-      "- [ ] I understand the local receipt is reproducible but is not a signature or proof of independence.",
-      "",
-      "This is a self-reported result. No claim of expert status, endorsement, certification, or independent audit is implied.",
-    ].join("\n");
-    return `https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?title=${encodeURIComponent(
-      title,
-    )}&body=${encodeURIComponent(body)}&labels=calibration`;
-  }, [challengeReceipt, score]);
+  const preRevealContributionUrl = useMemo(() => {
+    if (!blindCommitment) return "";
+    return createBlindSubmissionUrl(blindCommitment);
+  }, [blindCommitment]);
 
   function resetChallenge() {
     setPredictions({});
     setRevealed(false);
+    setBlindCommitment(null);
     setChallengeReceipt(null);
     setShareState("Invite one reviewer");
   }
@@ -335,10 +351,35 @@ export function TrustLab() {
           <div className="challenge-submit">
             {!revealed ? (
               <>
-                <span>{Object.keys(predictions).length}/6 decisions sealed locally</span>
-                <button className="primary-link" disabled={!challengeReady} onClick={() => setRevealed(true)} type="button">
-                  Seal labels + reveal
-                </button>
+                <div className="pre-reveal-copy">
+                  <span>{Object.keys(predictions).length}/6 decisions sealed locally</span>
+                  <p>
+                    To create a verifiable outside attempt, submit the public
+                    GitHub commitment before revealing. The issue timestamp
+                    records participation; it does not prove independence or
+                    that no source was inspected.
+                  </p>
+                </div>
+                <div className="pre-reveal-actions">
+                  {blindCommitment && (
+                    <a
+                      className="primary-link"
+                      href={preRevealContributionUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Commit labels publicly before reveal ↗
+                    </a>
+                  )}
+                  <button
+                    className="secondary-link"
+                    disabled={!challengeReady}
+                    onClick={() => setRevealed(true)}
+                    type="button"
+                  >
+                    Reveal privately (weight 0)
+                  </button>
+                </div>
               </>
             ) : (
               <div className="scoreboard">
@@ -351,9 +392,6 @@ export function TrustLab() {
                   >
                     Download receipt ↓
                   </button>
-                  <a href={contributionUrl} target="_blank" rel="noreferrer">
-                    Contribute publicly on GitHub ↗
-                  </a>
                   <button
                     disabled={!challengeReceipt}
                     onClick={shareReviewerInvite}
@@ -375,9 +413,9 @@ export function TrustLab() {
                   </p>
                 </div>
                 <p>
-                  Contribution is optional. GitHub will show your account and
-                  the issue publicly; nothing leaves this page until you choose
-                  that link and submit it yourself.
+                  This post-reveal record remains a self-report at weight zero.
+                  A qualifying public attempt must be submitted through the
+                  commitment action before the answer key is revealed.
                 </p>
               </div>
             )}

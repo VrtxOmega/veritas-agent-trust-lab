@@ -6,12 +6,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        Complete the [six-case blind challenge](https://vrtxomega.github.io/veritas-agent-trust-lab/#challenge) before reading the source or answer key.
+        Use the **Commit labels publicly before reveal** action in the
+        [six-case blind challenge](https://vrtxomega.github.io/veritas-agent-trust-lab/#challenge).
+        It prefills the exact label set and a score-free commitment identifier.
+        Submit this issue before using the reveal control.
 
-        A verified submission is evidence that an outside person independently
-        attempted the challenge. It is not an endorsement, security audit,
-        certification, product adoption, or proof that VERITAS is correct.
-        Correct and incorrect label sets are both useful.
+        A verified submission is evidence that an outside GitHub identity
+        publicly submitted a label set at the recorded time. It does not prove
+        independence, expertise, honesty, lack of prior source inspection,
+        endorsement, security audit, certification, product adoption, or that
+        VERITAS is correct. Correct and incorrect label sets are both useful.
 
   - type: input
     id: challenge_version
@@ -19,6 +23,15 @@ body:
       label: Challenge version
       description: Keep the version shown by the lab.
       value: mixed-six-v0.1
+    validations:
+      required: true
+
+  - type: input
+    id: commitment_id
+    attributes:
+      label: Score-free commitment identifier
+      description: Keep the vtlc identifier prefilled by the lab.
+      placeholder: "vtlc:<64 lowercase hexadecimal characters>"
     validations:
       required: true
 
@@ -95,6 +108,8 @@ body:
     attributes:
       label: Submission boundary
       options:
+        - label: I am submitting this issue before using the lab's reveal control.
+          required: true
         - label: I made all six choices before reading the source code or answer key.
           required: true
         - label: I understand this issue is public and attached to my GitHub identity.
