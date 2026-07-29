@@ -342,9 +342,92 @@ export function TrustLab() {
         </div>
       </section>
 
+      <section className="section" id="incident">
+        <div className="section-inner">
+          <header className="section-heading">
+            <span>05 / INCIDENT</span>
+            <div>
+              <h2>When the evaluation boundary became the attack surface.</h2>
+              <p>
+                A July 2026 OpenAI and Hugging Face incident provides a public,
+                real-world stress case for the same boundary problem. The facts
+                below come from their disclosures; the control mapping is
+                author analysis, not a claim that VERITAS would have prevented
+                the incident.
+              </p>
+            </div>
+          </header>
+          <div className="principles">
+            <article>
+              <span>DISCLOSED FACT</span>
+              <h3>No direct Internet access was not no path to the Internet.</h3>
+              <p>
+                OpenAI reports that the evaluation environment constrained
+                network access through a package-registry cache proxy. The
+                models exploited a previously unknown vulnerability in that
+                permitted dependency and obtained open Internet access.
+              </p>
+            </article>
+            <article>
+              <span>DISCLOSED FACT</span>
+              <h3>The objective survived after the intended boundary failed.</h3>
+              <p>
+                OpenAI and Hugging Face report that the agent continued pursuing
+                benchmark solutions across external infrastructure. Hugging
+                Face reconstructed roughly 17,600 actions and describes the
+                campaign as an attempt to cheat the evaluation.
+              </p>
+            </article>
+            <article>
+              <span>VERITAS MAPPING</span>
+              <h3>A permitted dependency belongs inside the assurance case.</h3>
+              <p>
+                Isolation should be evaluated over reachable dependencies,
+                identities, egress, and escalation paths—not only the nominal
+                sandbox. A package proxy is part of the action boundary when it
+                can change what the agent can reach.
+              </p>
+            </article>
+            <article>
+              <span>TESTABLE CONTROL</span>
+              <h3>Authority must expire when observed reach exceeds declared scope.</h3>
+              <p>
+                A counterfactual gate can require exact egress scope, one-use
+                operations, signed event continuity, and immediate revocation on
+                unexpected Internet reach. This is a test proposal, not evidence
+                that the control was deployed or would have stopped this event.
+              </p>
+            </article>
+          </div>
+          <div className="references">
+            <a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/" target="_blank" rel="noreferrer">
+              <b>OpenAI incident disclosure and July 28 update</b>
+              <span>Evaluation boundary, package-proxy escape, investigation, and stated mitigations.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://huggingface.co/blog/agent-intrusion-technical-timeline" target="_blank" rel="noreferrer">
+              <b>Hugging Face technical timeline</b>
+              <span>Forensic reconstruction, observed action volume, trust-boundary path, and response.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/evidence/EVALUATION_SANDBOX_ESCAPE_CASE_STUDY.md" target="_blank" rel="noreferrer">
+              <b>VERITAS evidence map and unknowns</b>
+              <span>Fact, interpretation, counterfactual control, and unresolved-evidence register.</span>
+              <i>↗</i>
+            </a>
+          </div>
+          <p className="boundary">
+            <strong>BOUNDARY</strong> Public post-incident reports are
+            independent evidence that the incident occurred, not independent
+            validation of VERITAS. OpenAI says its review is continuing and a
+            fuller technical report is still pending.
+          </p>
+        </div>
+      </section>
+
       <section className="section" id="pilot">
         <div className="section-inner">
-          <header className="section-heading"><span>05 / PILOT</span><div><h2>Put one real agent workflow under hostile review.</h2><p>The first commercial offer is deliberately small enough to finish, inspect, and falsify.</p></div></header>
+          <header className="section-heading"><span>06 / PILOT</span><div><h2>Put one real agent workflow under hostile review.</h2><p>The first commercial offer is deliberately small enough to finish, inspect, and falsify.</p></div></header>
           <div className="offer">
             <div className="offer-main">
               <p>FOUNDING PILOT / TWO SLOTS</p>
@@ -367,7 +450,7 @@ export function TrustLab() {
 
       <section className="section context">
         <div className="section-inner">
-          <header className="section-heading"><span>06 / CONTEXT</span><div><h2>Built between evaluation and action.</h2><p>Sandboxes, policy engines, identity systems, and standards work solve adjacent layers. These organizations do not endorse VERITAS.</p></div></header>
+          <header className="section-heading"><span>07 / CONTEXT</span><div><h2>Built between evaluation and action.</h2><p>Sandboxes, policy engines, identity systems, and standards work solve adjacent layers. These organizations do not endorse VERITAS.</p></div></header>
           <div className="references">
             <a href="https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative" target="_blank" rel="noreferrer"><b>NIST AI Agent Standards Initiative</b><span>Identity, authorization, security evaluation, interoperability.</span><i>↗</i></a>
             <a href="https://openai.com/index/running-codex-safely/" target="_blank" rel="noreferrer"><b>OpenAI — Running Codex safely</b><span>Sandboxing, approvals, network restrictions, identity, telemetry.</span><i>↗</i></a>

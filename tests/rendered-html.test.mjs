@@ -23,22 +23,30 @@ test("server renders the finished public lab", async () => {
   assert.match(html, /VERITAS Omega Agent Trust Lab/);
   assert.match(html, /A verdict is/);
   assert.match(html, /Take the blind challenge/);
+  assert.match(html, /When the evaluation boundary became the attack surface/);
+  assert.match(html, /No direct Internet access was not no path to the Internet/);
   assert.match(html, /Agent Action Assurance/);
   assert.match(html, /execution_authorized/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/);
 });
 
 test("public source preserves commercial and assurance boundaries", async () => {
-  const [page, layout, packageJson, packet] = await Promise.all([
+  const [page, layout, packageJson, packet, incident] = await Promise.all([
     readFile(new URL("../app/trust-lab.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
     readFile(new URL("../public/verification-packet.json", import.meta.url), "utf8"),
+    readFile(new URL("../evidence/EVALUATION_SANDBOX_ESCAPE_CASE_STUDY.md", import.meta.url), "utf8"),
   ]);
   assert.match(page, /Not an independent audit/);
   assert.match(page, /Contribute publicly on GitHub/);
   assert.match(page, /\$750 fixed/);
+  assert.match(page, /not a claim that VERITAS would have prevented/);
+  assert.match(page, /not independent\s+validation of VERITAS/);
   assert.match(layout, /VERITAS Omega Agent Trust Lab/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.match(packet, /"execution_authorized": false/);
+  assert.match(incident, /VERITAS adoption determination: `INCONCLUSIVE`/);
+  assert.match(incident, /do \*\*not\*\* independently validate VERITAS/i);
+  assert.match(incident, /Why this is not a seventh blind-calibration case/);
 });
