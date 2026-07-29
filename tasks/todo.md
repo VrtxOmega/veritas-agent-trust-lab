@@ -12,6 +12,9 @@ pilot, and activate at least one verifiable distribution surface.
 
 - A visitor can use the live lab without an account or local installation.
 - At least six adversarial cases produce deterministic, explainable outcomes.
+- A visitor makes a blinded allow/block judgment before seeing each VERITAS
+  answer, receives a scored calibration result, and can export or voluntarily
+  contribute the label set through a transparent public GitHub route.
 - Every public claim is traceable to local code, tests, or primary-source
   market research and retains explicit nonclaims.
 - A source repository, tagged release, production URL, portfolio/profile link,
@@ -23,6 +26,8 @@ pilot, and activate at least one verifiable distribution surface.
 
 - New `veritas-agent-trust-lab` site and public-safe source repository.
 - Browser-side deterministic challenge engine and six fixed attack cases.
+- Browser-side blind-review challenge, scorecard, share packet, and opt-in
+  public calibration-contribution route.
 - Primary-source standards/context references and a transparent comparison.
 - Downloadable verification packet and release evidence.
 - GitHub Pages or Sites production deployment and existing portfolio/profile
@@ -46,11 +51,13 @@ pilot, and activate at least one verifiable distribution surface.
   channels, open-source growth cases, and bounty alternatives.
 - [x] Run PCF against a current high-visibility contribution target and stop
   when it returns `NO_ACTION`.
-- [ ] Gate the selected product thesis through VERITAS.
-- [ ] Implement the lab, fixed cases, testable decision engine, and paid pilot
+- [x] Gate the selected product thesis through VERITAS.
+- [x] Implement the lab, fixed cases, testable decision engine, and paid pilot
   boundary.
-- [ ] Build the social preview and public verification packet.
-- [ ] Run automated, hostile, accessibility, content, and release checks.
+- [x] Implement the blind calibration loop and public contribution templates so
+  third-party use can create new evidence rather than another author-side claim.
+- [x] Build the social preview and public verification packet.
+- [x] Run automated, hostile, accessibility, content, and release checks.
 - [ ] Create the public source repository and release through one focused
   publication path.
 - [ ] Deploy the production site and verify live behavior and artifacts.

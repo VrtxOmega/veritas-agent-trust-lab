@@ -1,0 +1,68 @@
+{
+  "artifact": "VERITAS Omega Agent Trust Lab",
+  "version": "0.1.0",
+  "artifact_class": "public reference demonstrator",
+  "cases": [
+    "forged-verdict",
+    "parameter-swap",
+    "nonce-replay",
+    "correlated-quorum",
+    "evidence-deletion",
+    "silent-monitor"
+  ],
+  "blind_challenge": {
+    "case_count": 6,
+    "clean_count": 3,
+    "tampered_count": 3,
+    "answer_visibility": "after all six predictions are sealed locally",
+    "collection": "none by default",
+    "public_contribution": "explicit participant action through a public GitHub issue"
+  },
+  "expected_hostile_result": "Every tampered case blocks or revokes.",
+  "execution_authorized": false,
+  "claims": {
+    "deterministic_fixture_results": "author-side testable",
+    "production_agent_enforcement": false,
+    "independent_security_audit": false,
+    "certification": false,
+    "factual_truth_from_signatures": false,
+    "adoption_or_revenue_proven": false
+  },
+  "implementation_boundary": "This lab demonstrates selected VERITAS V4 mechanics. It is not the complete V4 kernel and does not issue signatures or execution authority.",
+  "license_boundary": "The MIT license covers this public demonstrator only. The separate V4 kernel and Codex Gate are not included.",
+  "verification": {
+    "commands": [
+      "npm run lint",
+      "npm test",
+      "git diff --check"
+    ],
+    "status": "PASSED",
+    "test_count": 13,
+    "test_failures": 0,
+    "production_build": "PASSED",
+    "verified_on": "2026-07-28"
+  },
+  "veritas_gate": {
+    "status": "INCONCLUSIVE",
+    "reason": "Author-side evidence is internally consistent but lacks independent participation.",
+    "adversary_result": "MODEL_BOUND",
+    "seal": "8f50df0eb1509a423f85d42112405d253beaaf6f35719a3d507902b2a999be6a"
+  },
+  "dependency_audit": {
+    "status": "RESIDUAL_RISK",
+    "all_dependencies": {
+      "total": 7,
+      "low": 1,
+      "high": 6
+    },
+    "production_dependencies": {
+      "high": 3
+    },
+    "boundary": "The remaining advisories are transitive framework/toolchain findings. They are not represented as fixed or irrelevant."
+  },
+  "visual_asset": {
+    "path": "/og.png",
+    "dimensions": "1200x630",
+    "sha256": "d01fdcd48f585fca3c912d7a0cc2bcd4c38376b76f467c882b5c769c8b31b4da"
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "project": "veritas-agent-trust-lab",
+  "version": "0.1.0-prebuild-thesis",
+  "commit": "cf12052",
+  "purpose": "Evaluate whether a zero-signup interactive Agent Trust Lab is a bounded, evidence-aligned market test of VERITAS's assurance boundary. This claim does not predict adoption, revenue, certification, or product-market fit.",
+  "primitives": [
+    {
+      "name": "primary_market_sources",
+      "domain": {"type": "Interval", "low": 0, "high": 50},
+      "units": "count",
+      "category": "EVIDENCE"
+    },
+    {
+      "name": "distinct_comparison_categories",
+      "domain": {"type": "Interval", "low": 0, "high": 20},
+      "units": "count",
+      "category": "EVIDENCE"
+    },
+    {
+      "name": "private_records_required",
+      "domain": {"type": "Interval", "low": 0, "high": 1000},
+      "units": "count",
+      "category": "PRIVACY"
+    },
+    {
+      "name": "live_execution_authorized",
+      "domain": {"type": "Interval", "low": 0, "high": 1},
+      "units": "flag",
+      "category": "AUTHORIZATION"
+    },
+    {
+      "name": "bounded_revenue_offers",
+      "domain": {"type": "Interval", "low": 0, "high": 10},
+      "units": "count",
+      "category": "INCENTIVE"
+    }
+  ],
+  "operators": [],
+  "regimes": [
+    {"name": "dev", "predicate": {}}
+  ],
+  "boundaries": [
+    {
+      "name": "market-context-is-primary-source-grounded",
+      "constraint": {"op": ">=", "left": "primary_market_sources", "right": 5},
+      "category": "EVIDENCE"
+    },
+    {
+      "name": "market-context-spans-adjacent-categories",
+      "constraint": {"op": ">=", "left": "distinct_comparison_categories", "right": 4},
+      "category": "EVIDENCE"
+    },
+    {
+      "name": "public-lab-requires-no-private-records",
+      "constraint": {"op": "==", "left": "private_records_required", "right": 0},
+      "category": "PRIVACY"
+    },
+    {
+      "name": "lab-never-authorizes-live-execution",
+      "constraint": {"op": "==", "left": "live_execution_authorized", "right": 0},
+      "category": "AUTHORIZATION"
+    },
+    {
+      "name": "revenue-path-is-specific",
+      "constraint": {"op": "==", "left": "bounded_revenue_offers", "right": 1},
+      "category": "INCENTIVE"
+    }
+  ],
+  "loss_models": [],
+  "evidence": [
+    {
+      "id": "author-primary-research",
+      "variable": "primary_market_sources",
+      "value": {"x": 8, "units": "count"},
+      "timestamp": "2026-07-28T22:00:00Z",
+      "method": {
+        "protocol": "Primary-source review of current agent standards, runtime controls, policy engines, identity/provenance systems, and launch-channel rules",
+        "parameters": {
+          "sources": [
+            "NIST AI Agent Standards Initiative",
+            "OpenAI Codex safety architecture",
+            "Microsoft open trust stack for AI agents",
+            "Linux Foundation agentgateway",
+            "OPA policy architecture",
+            "SPIFFE/SPIRE identity",
+            "Product Hunt featuring guidelines",
+            "Show HN guidelines"
+          ]
+        },
+        "repeatable": true,
+        "environment": {"scope": "public-web"}
+      },
+      "provenance": {
+        "source_id": "codex-author-research",
+        "source_type": "AUTHOR_SIDE_RESEARCH",
+        "acquisition": "web_primary_sources",
+        "tier": "A"
+      }
+    },
+    {
+      "id": "author-market-categories",
+      "variable": "distinct_comparison_categories",
+      "value": {"x": 6, "units": "count"},
+      "timestamp": "2026-07-28T22:00:00Z",
+      "method": {
+        "protocol": "Category comparison",
+        "parameters": {
+          "categories": [
+            "agent gateways",
+            "policy engines",
+            "AI evaluation and red teams",
+            "identity and attestation",
+            "assurance cases",
+            "enterprise AI governance"
+          ]
+        },
+        "repeatable": true,
+        "environment": {"scope": "public-web"}
+      },
+      "provenance": {
+        "source_id": "codex-author-research",
+        "source_type": "AUTHOR_SIDE_SYNTHESIS",
+        "acquisition": "structured_comparison",
+        "tier": "B"
+      }
+    },
+    {
+      "id": "author-public-data-boundary",
+      "variable": "private_records_required",
+      "value": {"x": 0, "units": "count"},
+      "timestamp": "2026-07-28T22:00:00Z",
+      "method": {
+        "protocol": "Design-scope inspection",
+        "parameters": {"fixtures": "synthetic_and_public_only"},
+        "repeatable": true,
+        "environment": {"scope": "planned-product"}
+      },
+      "provenance": {
+        "source_id": "codex-author-design",
+        "source_type": "AUTHOR_SIDE_INSPECTION",
+        "acquisition": "local_design",
+        "tier": "B"
+      }
+    },
+    {
+      "id": "author-nonexecution-boundary",
+      "variable": "live_execution_authorized",
+      "value": {"x": 0, "units": "flag"},
+      "timestamp": "2026-07-28T22:00:00Z",
+      "method": {
+        "protocol": "Design-scope inspection",
+        "parameters": {"execution_authorized": false},
+        "repeatable": true,
+        "environment": {"scope": "planned-product"}
+      },
+      "provenance": {
+        "source_id": "codex-author-design",
+        "source_type": "AUTHOR_SIDE_INSPECTION",
+        "acquisition": "local_design",
+        "tier": "A"
+      }
+    },
+    {
+      "id": "author-bounded-offer",
+      "variable": "bounded_revenue_offers",
+      "value": {"x": 1, "units": "count"},
+      "timestamp": "2026-07-28T22:00:00Z",
+      "method": {
+        "protocol": "Offer-boundary inspection",
+        "parameters": {
+          "price_usd": 750,
+          "scope": "one workflow, up to five consequential operations, six hostile cases, replayable packet, one findings walkthrough",
+          "nonclaims": ["not an audit", "not certification", "no live execution authority"]
+        },
+        "repeatable": true,
+        "environment": {"scope": "planned-offer"}
+      },
+      "provenance": {
+        "source_id": "codex-author-design",
+        "source_type": "AUTHOR_SIDE_INSPECTION",
+        "acquisition": "local_design",
+        "tier": "B"
+      }
+    }
+  ],
+  "cost": {
+    "test_time_s": 10,
+    "artifact_size_mb": 10,
+    "dependency_count": 0
+  },
+  "cost_bounds": {
+    "test_time_s": 120,
+    "artifact_size_mb": 50,
+    "dependency_count": 25
+  },
+  "dependencies": {
+    "packages": [],
+    "cve_scan": [],
+    "max_depth": 0,
+    "abandoned_packages": [],
+    "incompatible_licenses": []
+  },
+  "security": {
+    "sast": {"critical": 0, "high": 0},
+    "secrets_detected": [],
+    "unsanitized_inputs": [],
+    "missing_auth": [],
+    "weak_crypto": [],
+    "plaintext_external": []
+  },
+  "attack_suite": {
+    "suite_id": "thesis-attacks",
+    "attacks": [
+      {
+        "id": "remove-primary-research",
+        "category": "RemoveEvidence",
+        "transform": {"type": "RemoveEvidence", "evidence_id": "author-primary-research"}
+      },
+      {
+        "id": "remove-nonexecution-boundary",
+        "category": "RemoveEvidence",
+        "transform": {"type": "RemoveEvidence", "evidence_id": "author-nonexecution-boundary"}
+      }
+    ]
+  },
+  "policy": {
+    "framework_version": "4.0.0",
+    "hash_alg": "sha256",
+    "build_regime": "dev",
+    "environment": {
+      "assurance_source_count": 1,
+      "independence_claim": "INCONCLUSIVE"
+    }
+  },
+  "claims": [
+    {
+      "name": "public-lab-is-a-bounded-market-test",
+      "value": "MODEL_BOUND"
+    },
+    {
+      "name": "adoption-or-revenue-proven",
+      "value": false
+    },
+    {
+      "name": "independent-assurance",
+      "value": "INCONCLUSIVE"
+    },
+    {
+      "name": "execution-authorized",
+      "value": false
+    }
+  ]
+}

@@ -1,98 +1,82 @@
-# vinext-starter
+# VERITAS Omega Agent Trust Lab
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+> **A verdict is not authority.**
 
-## Prerequisites
+A zero-signup public reference demonstrator for the assurance boundary between
+an AI-agent evaluation and a consequential action.
 
-- Node.js `>=22.13.0`
+Visitors first make six blinded allow/block judgments across a fixed
+three-clean/three-tampered challenge. Only after all labels are sealed locally
+does the site reveal the deterministic result, reason code, and score. Labels
+stay in the browser unless the participant explicitly downloads them or submits
+a public GitHub issue.
 
-## Quick Start
+The explorable lab covers:
+
+1. forged derived verdict;
+2. exact-action parameter swap;
+3. one-use nonce replay;
+4. correlated evaluator quorum;
+5. deletion of refuting evidence;
+6. silent monitoring after heartbeat expiry.
+
+## Run and verify
 
 ```bash
-npm install
-npm run dev
-npm run build
+npm ci
+npm test
 ```
 
-This starter does not use `wrangler.jsonc`.
+The Node test suite and the browser use the same engine in
+`lib/trust-engine.js`.
 
-## Included Shape
+## Exact claim boundary
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+The tests demonstrate, on synthetic author-designed fixtures, that:
 
-## Workspace Auth Headers
+- every clean fixture passes its declared local boundary;
+- every tampered fixture blocks or revokes;
+- changed action parameters break exact binding;
+- replayed nonces fail;
+- correlated evaluators do not satisfy a two-independent-source quorum;
+- removed evidence changes sealed evidence identity;
+- stale monitoring revokes the lifecycle;
+- every result fixes `execution_authorized` to `false`.
 
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
+This browser lab is not the complete VERITAS Omega V4 kernel. It does not issue
+cryptographic signatures, establish factual truth, enforce an external policy,
+authorize an agent, certify a system, or constitute an independent security
+audit. Its labels are not independent until an outside participant makes and
+contributes them without answer-key exposure.
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+The separate V4 implementation and VERITAS Codex Gate are not included. This
+repository's MIT license applies only to this public demonstrator.
 
-Treat the full name as optional and fall back to email when it is absent:
+## Contribute evidence
 
-```tsx
-import { headers } from "next/headers";
+- Take the blind challenge without reading the source.
+- Download the local label record, or explicitly submit the generated public
+  GitHub issue after reading its consent boundary.
+- Propose a seventh falsifiable case through the issue form.
 
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
+GitHub participation is public and attached to the participant's GitHub
+identity. The lab itself has no analytics or hidden label collection.
 
-  const displayName = fullName ?? email;
-  // ...
-}
-```
+## Founding pilot
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+The site offers a bounded **$750 Founding Agent Action Assurance Pilot**:
+one workflow, up to five consequential operations, an evidence/risk/action
+schema, six tailored hostile cases, a replayable packet, a residual-risk
+register, and a 60-minute walkthrough.
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+It is an author-side technical pilot—not certification, compliance, or an
+independent audit. Contact `VrtxOmega@pm.me`.
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+## Primary context
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+- [NIST AI Agent Standards Initiative](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative)
+- [OpenAI: Running Codex safely](https://openai.com/index/running-codex-safely/)
+- [Microsoft open trust stack for AI agents](https://devblogs.microsoft.com/foundry/build-2026-open-trust-stack-ai-agents/)
+- [Open Policy Agent](https://www.openpolicyagent.org/docs/latest/)
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Those organizations do not endorse VERITAS.

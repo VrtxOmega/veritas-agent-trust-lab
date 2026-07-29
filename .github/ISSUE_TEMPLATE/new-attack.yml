@@ -1,0 +1,43 @@
+name: Propose the seventh hostile case
+description: Add a falsifiable agent-decision failure mode to the public catalogue.
+title: "[ATTACK] "
+labels: ["proposed-attack"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a narrow failure case that can be represented with synthetic data.
+        Do not include secrets, private logs, customer data, or live credentials.
+  - type: textarea
+    id: unsafe_confusion
+    attributes:
+      label: What unsafe confusion does the case expose?
+      placeholder: "Example: a valid signature is mistaken for evidence that the signer told the truth."
+    validations:
+      required: true
+  - type: textarea
+    id: clean_fixture
+    attributes:
+      label: What would the clean fixture contain?
+    validations:
+      required: true
+  - type: textarea
+    id: hostile_mutation
+    attributes:
+      label: What single hostile mutation should make it fail closed?
+    validations:
+      required: true
+  - type: input
+    id: expected_reason
+    attributes:
+      label: Expected reason code
+      placeholder: "EXACT_TARGET_MISMATCH"
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Public-data boundary
+      options:
+        - label: This proposal contains only public or synthetic information.
+          required: true
