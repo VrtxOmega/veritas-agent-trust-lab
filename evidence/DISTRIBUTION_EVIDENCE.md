@@ -23,6 +23,7 @@ independent validation.
 | --- | --- | --- | --- |
 | [agentrust-io/awesome-ai-governance#48](https://github.com/agentrust-io/awesome-ai-governance/pull/48) | Open, mergeable, awaiting named-maintainer review. Automated contributor check reported high confidence. | A policy-compliant one-line submission exists and automated workflow checks ran. | No human acceptance, product efficacy, calibration, certification, or endorsement. |
 | [systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27) | Merged on 2026-07-29 by independent curator `Ejb503` as commit `2a2fd6d84c1b57b89faf8e786615c8f6d7a3ed69`; the final upstream README contains the neutral Trust Lab entry. | One attributable non-author curator accepted the project's relevance to the catalog's Security, Red-Teaming, and Threat Models section. | No challenge use, product efficacy, calibration, certification, adoption, endorsement, independent label set, or payment. |
+| [gmh5225/awesome-ai-security#18](https://github.com/gmh5225/awesome-ai-security/pull/18) | Merged on 2026-07-29 by repository owner `gmh5225` as GitHub-verified commit `0a48d9a8e20cdcb92f0796d7df45e0a55ef3200c`; the owner followed with `thanks`, and the final upstream README contains the neutral Trust Lab entry. | A second, distinct non-author curator accepted the project's relevance to a separately maintained AI-security catalog. | No challenge use, product efficacy, calibration, certification, adoption, broad endorsement, independent label set, or payment. |
 | [scadastrangelove/awesome-ai-security-tools#29](https://github.com/scadastrangelove/awesome-ai-security-tools/pull/29) | Open and mergeable with one `WATCHLIST.md` line; awaiting curator review. | A contribution-policy-aligned submission exists in the catalog's required zero-star lane; local PCF preflight was `ready-for-maintainer` at 100/100. | No human acceptance, main-list eligibility, product efficacy, calibration, certification, or endorsement. |
 
 ## Independent-use lane
@@ -44,11 +45,12 @@ Verified payments: **$0**
 
 ## Current determination
 
-**PARTIAL — ONE SCOPED EXTERNAL ACCEPTANCE**
+**PARTIAL — TWO SCOPED EXTERNAL ACCEPTANCES**
 
-One independent human curator accepted the Trust Lab as relevant to a public
-AI-agent-governance catalog. That changes discovery relevance from
-`INCONCLUSIVE` to `PARTIAL` within that narrow scope. Technical efficacy,
-independent calibration use, adoption, certification, endorsement, commercial
-demand, and payment remain `INCONCLUSIVE`. Automated checks and
-author-controlled publication must not be upgraded into external validation.
+Two distinct non-author curators, acting in separately maintained repositories,
+accepted the Trust Lab as relevant to public AI-agent-governance and
+AI-security catalogs. That moves discovery relevance from a single observation
+to a repeated scoped result. Technical efficacy, independent calibration use,
+adoption, certification, broad endorsement, commercial demand, and payment
+remain `INCONCLUSIVE`. Automated checks and author-controlled publication must
+not be upgraded into external validation.

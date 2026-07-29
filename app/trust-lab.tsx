@@ -432,22 +432,24 @@ export function TrustLab() {
             <div>
               <h2>External evidence, separated by what it actually proves.</h2>
               <p>
-                One curator accepted the project&apos;s relevance. Separately,
-                the Trust Lab verifier reproduced an independently authored
-                eleven-vector receipt-claim corpus. Those are different
-                evidence classes, and neither is called independent efficacy
-                validation.
+                Two non-author curators accepted the project&apos;s relevance
+                in separately maintained catalogs. Separately, the Trust Lab
+                verifier reproduced an independently authored eleven-vector
+                receipt-claim corpus. Those are different evidence classes,
+                and neither is called independent efficacy validation.
               </p>
             </div>
           </header>
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>A non-author curator accepted the neutral, source-linked entry.</h3>
+              <h3>Two non-author curators accepted neutral, source-linked entries.</h3>
               <p>
-                GitHub records <code>Ejb503</code>—not the submitter—as the
-                merge actor for pull request #27. The final upstream README
-                contains exactly one VERITAS Trust Lab entry.
+                GitHub records <code>Ejb503</code> as the merge actor for
+                systempromptio pull request #27 and repository owner{" "}
+                <code>gmh5225</code> as the merge actor for awesome-ai-security
+                pull request #18. Both final upstream READMEs contain the Trust
+                Lab entry.
               </p>
             </article>
             <article>
@@ -493,6 +495,16 @@ export function TrustLab() {
               <span>Security, Red-Teaming, and Threat Models section.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/gmh5225/awesome-ai-security/pull/18" target="_blank" rel="noreferrer">
+              <b>Second merged curator decision</b>
+              <span>One-line security-catalog submission merged by repository owner gmh5225.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/gmh5225/awesome-ai-security/blob/main/README.md" target="_blank" rel="noreferrer">
+              <b>Second live upstream entry</b>
+              <span>Separate catalog readback on the default branch.</span>
+              <i>↗</i>
+            </a>
             <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/evidence/EXTERNAL_RCL_CROSS_EVALUATION.md" target="_blank" rel="noreferrer">
               <b>Reproducible 11/11 cross-evaluation</b>
               <span>Pinned source identity, per-vector results, positive controls, and exact nonclaims.</span>
@@ -505,7 +517,7 @@ export function TrustLab() {
             </a>
           </div>
           <p className="boundary">
-            <strong>SCOPE</strong> Qualifying external acceptance: 1, limited
+            <strong>SCOPE</strong> Qualifying external acceptances: 2, limited
             to curator fit. Author-run third-party corpus compatibility: 11/11.
             Independent blind label sets: 0. Verified payments: $0.
           </p>

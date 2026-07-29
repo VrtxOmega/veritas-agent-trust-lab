@@ -28,7 +28,9 @@ test("server renders the finished public lab", async () => {
   assert.match(html, /External evidence, separated by what it actually proves/);
   assert.match(html, /matched 11\/11 recorded outcomes/);
   assert.match(html, /Author-run third-party corpus compatibility: 11\/11/);
-  assert.match(html, /Qualifying external acceptance: 1/);
+  assert.match(html, /Qualifying external acceptances: 2/);
+  assert.match(html, /Ejb503/);
+  assert.match(html, /gmh5225/);
   assert.match(html, /Agent Action Assurance/);
   assert.match(html, /execution_authorized/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/);
@@ -65,7 +67,8 @@ test("public source preserves commercial and assurance boundaries", async () => 
   assert.match(incident, /VERITAS adoption determination: `INCONCLUSIVE`/);
   assert.match(incident, /do \*\*not\*\* independently validate VERITAS/i);
   assert.match(incident, /Why this is not a seventh blind-calibration case/);
-  assert.match(distribution, /ONE SCOPED EXTERNAL ACCEPTANCE/);
+  assert.match(distribution, /TWO SCOPED EXTERNAL ACCEPTANCES/);
+  assert.match(distribution, /0a48d9a8e20cdcb92f0796d7df45e0a55ef3200c/);
   assert.match(distribution, /product efficacy.*remain `INCONCLUSIVE`/is);
   assert.match(distribution, /independent pre-reveal label sets: \*\*0\*\*/);
   assert.match(distribution, /Verified payments: \*\*\$0\*\*/);

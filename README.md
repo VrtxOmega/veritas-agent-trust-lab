@@ -67,17 +67,21 @@ repository's MIT license applies only to this public demonstrator.
 
 ## External evidence
 
-On July 29, 2026, independent curator
-[Edward Burton (`Ejb503`)](https://github.com/Ejb503) merged
-[systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27).
-The merge placed the Trust Lab in the catalog's
-**Security, Red-Teaming, and Threat Models** section.
+On July 29, 2026, two distinct non-author curators accepted neutral,
+source-linked Trust Lab entries in separately maintained catalogs:
 
-That is one attributable external acceptance of the project's relevance to a
-curated AI-agent-governance resource. It does not establish challenge use,
-technical efficacy, calibration, certification, adoption, endorsement, or
-commercial demand. Independent pre-reveal label sets remain **0** and verified
-payments remain **$0**.
+- [Edward Burton (`Ejb503`)](https://github.com/Ejb503) merged
+  [systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27)
+  into the **Security, Red-Teaming, and Threat Models** section.
+- Repository owner [`gmh5225`](https://github.com/gmh5225) merged
+  [gmh5225/awesome-ai-security#18](https://github.com/gmh5225/awesome-ai-security/pull/18)
+  into the live security catalog and followed the merge with `thanks`.
+
+Those are two attributable external acceptances of the project's relevance to
+curated AI-agent-security resources. They do not establish challenge use,
+technical efficacy, calibration, certification, adoption, broad endorsement,
+or commercial demand. Independent pre-reveal label sets remain **0** and
+verified payments remain **$0**.
 
 ## Third-party corpus compatibility
 
