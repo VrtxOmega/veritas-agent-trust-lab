@@ -1,0 +1,117 @@
+{
+  "schema": "veritas-founding-pilot-sample/v0.1",
+  "status": "ILLUSTRATIVE_ONLY",
+  "not_client_work": true,
+  "independent_review": false,
+  "certification": false,
+  "compliance_assessment": false,
+  "penetration_test": false,
+  "adoption_evidence": false,
+  "payment_evidence": false,
+  "execution_authorized": false,
+  "commercial_boundary": {
+    "price_usd": 750,
+    "delivery_business_days": "7-10",
+    "production_credentials_required": false
+  },
+  "workflow": {
+    "name": "hypothetical repository release candidate",
+    "repository": "example/acme-agent",
+    "claim": "The exact five-operation release plan is eligible for operator review because the named commit passed the required tests, matches the approved release policy, has bound supply-chain artifacts, and has no unresolved defeaters.",
+    "operations": [
+      {
+        "operation": "github.pull_request.merge",
+        "target": "example/acme-agent#42",
+        "base": "main",
+        "commit": "0123456789abcdef0123456789abcdef01234567"
+      },
+      {
+        "operation": "git.tag.create",
+        "tag": "v0.1.0-rc.1",
+        "commit": "0123456789abcdef0123456789abcdef01234567",
+        "signed": true
+      },
+      {
+        "operation": "github.release.create",
+        "repository": "example/acme-agent",
+        "tag": "v0.1.0-rc.1",
+        "prerelease": true
+      },
+      {
+        "operation": "package.publish",
+        "package": "@example/acme-agent",
+        "version": "0.1.0-rc.1",
+        "channel": "prerelease"
+      },
+      {
+        "operation": "supply_chain_artifact.upload",
+        "artifacts": [
+          "sbom",
+          "provenance"
+        ],
+        "commit": "0123456789abcdef0123456789abcdef01234567"
+      }
+    ]
+  },
+  "action_boundary": {
+    "execution_count": 1,
+    "approval_lifetime_minutes": 10,
+    "network_scope": [
+      "declared GitHub endpoint",
+      "declared package-registry endpoint"
+    ],
+    "filesystem_scope": [
+      "disposable release workspace"
+    ],
+    "parameter_change_requires_reassessment": true
+  },
+  "required_evidence": [
+    "exact-commit CI result",
+    "versioned release-policy decision",
+    "commit-bound SBOM",
+    "source-and-artifact-bound provenance",
+    "exact-action operator approval",
+    "ordered monitor heartbeat chain"
+  ],
+  "hostile_cases": [
+    {
+      "id": "H-01",
+      "attack": "structurally valid forged CI result",
+      "expected_disposition": "BLOCK"
+    },
+    {
+      "id": "H-02",
+      "attack": "tag target changed after approval",
+      "expected_disposition": "BLOCK"
+    },
+    {
+      "id": "H-03",
+      "attack": "one-use approval replay",
+      "expected_disposition": "BLOCK"
+    },
+    {
+      "id": "H-04",
+      "attack": "correlated evaluators counted as independent",
+      "expected_disposition": "INCONCLUSIVE"
+    },
+    {
+      "id": "H-05",
+      "attack": "failed security evidence removed",
+      "expected_disposition": "BLOCK"
+    },
+    {
+      "id": "H-06",
+      "attack": "monitor heartbeat disappears",
+      "expected_disposition": "REVOKE"
+    }
+  ],
+  "residual_risks": [
+    "semantically false signed evidence",
+    "correlated evaluator blind spots",
+    "executor substitution or policy bypass",
+    "external registry state mutation",
+    "irreversible downstream propagation"
+  ],
+  "customer_decision_authority": true,
+  "assurance_boundary": "This synthetic packet demonstrates the proposed dossier shape only. It does not report a real customer system passing the hostile cases."
+}

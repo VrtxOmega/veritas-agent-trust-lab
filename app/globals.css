@@ -472,6 +472,21 @@ h1 span { display: block; color: var(--signal); }
 .offer-list span { padding: 17px 0; border-bottom: 1px solid var(--line); font-size: .82rem; }
 .offer-list span:nth-child(odd) { padding-right: 18px; }
 .offer-list span:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--line); }
+.pilot-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.secondary-link {
+  display: inline-flex;
+  min-height: 50px;
+  padding: 0 18px;
+  align-items: center;
+  border: 1px solid var(--ink);
+  font-family: var(--font-mono), monospace;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.secondary-link:hover { background: var(--paper-2); }
 .offer aside { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(28px, 4vw, 50px); background: var(--ink); color: var(--white); }
 .offer aside > p { color: #9eb9bd; font-size: .64rem; line-height: 1.65; }
 .offer aside ul { margin: 40px 0 0; padding: 0; list-style: none; }

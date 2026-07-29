@@ -688,11 +688,15 @@ export function TrustLab() {
                 <span>6 tailored hostile cases</span><span>Replayable demonstration packet</span>
                 <span>Residual-risk register</span><span>60-minute findings walkthrough</span>
               </div>
-              <a className="primary-link" href="mailto:VrtxOmega@pm.me?subject=VERITAS%20Founding%20Agent%20Action%20Assurance%20Pilot">Request the founding pilot ↗</a>
+              <div className="pilot-actions">
+                <a className="primary-link" href="mailto:VrtxOmega@pm.me?subject=VERITAS%20Founding%20Agent%20Action%20Assurance%20Pilot">Request the founding pilot ↗</a>
+                <a className="secondary-link" href="./founding-pilot-sample.md">Inspect sample dossier ↗</a>
+                <a className="secondary-link" href="./founding-pilot-sample.json">Machine-readable sample ↗</a>
+              </div>
             </div>
             <aside>
               <p>AUTHOR-SIDE TECHNICAL PILOT<br />DELIVERY / 7–10 BUSINESS DAYS</p>
-              <ul><li>Not an independent audit</li><li>Not certification or compliance</li><li>No production credentials</li><li>No execution authority</li><li>Customer keeps every final decision</li></ul>
+              <ul><li>Sample is illustrative, not client work</li><li>Not an independent audit</li><li>Not certification or compliance</li><li>No production credentials</li><li>No execution authority</li><li>Customer keeps every final decision</li></ul>
             </aside>
           </div>
         </div>
