@@ -90,3 +90,39 @@ pilot, and activate at least one verifiable distribution surface.
 - The selected wedge is the evidence boundary those systems do not make
   visually obvious: plausible output versus recomputable, exact-bound,
   replay-resistant, revocable assurance.
+
+## Pull-request verification repair
+
+### Goal
+
+Give every pull request a GitHub-hosted verification result without entering
+the production Pages deployment environment.
+
+### Scope
+
+- Add one read-only pull-request workflow.
+- Run the repository's existing install, lint, test, and Pages-build commands.
+
+### Non-Goals
+
+- Do not deploy from pull requests.
+- Do not change runtime code, dependencies, or the production deploy workflow.
+- Do not treat owner-side CI as independent validation.
+
+### Steps
+
+- [x] Confirm the production workflow is restricted to `main`.
+- [x] Add a separate least-privilege pull-request verification workflow.
+- [x] Verify the workflow syntax and local command sequence.
+- [x] Confirm the workflow passes on its own pull request.
+
+### Verification
+
+```bash
+npm ci
+npm run lint
+npm test
+npm run build:pages
+```
+
+The GitHub-hosted check must report success before merge.
