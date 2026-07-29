@@ -33,6 +33,9 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /48 qualifying outside actions remain/);
   assert.match(visibleHtml, /Qualifying external acceptances:\s+2/s);
   assert.match(visibleHtml, /Agent Action Assurance/);
+  assert.match(visibleHtml, /Inspect sample dossier/);
+  assert.match(visibleHtml, /Machine-readable sample/);
+  assert.match(visibleHtml, /Sample is illustrative, not client work/);
   assert.match(visibleHtml, /execution_authorized/i);
   assert.doesNotMatch(visibleHtml, /codex-preview|react-loading-skeleton|Starter Project/);
 });
@@ -47,6 +50,8 @@ test("public source preserves commercial and assurance boundaries", async () => 
     packet,
     incident,
     distribution,
+    sampleDossier,
+    samplePacketSource,
   ] = await Promise.all([
     readFile(new URL("../app/trust-lab.tsx", import.meta.url), "utf8"),
     readFile(new URL("../lib/challenge-receipt.js", import.meta.url), "utf8"),
@@ -56,7 +61,10 @@ test("public source preserves commercial and assurance boundaries", async () => 
     readFile(new URL("../public/verification-packet.json", import.meta.url), "utf8"),
     readFile(new URL("../evidence/EVALUATION_SANDBOX_ESCAPE_CASE_STUDY.md", import.meta.url), "utf8"),
     readFile(new URL("../evidence/DISTRIBUTION_EVIDENCE.md", import.meta.url), "utf8"),
+    readFile(new URL("../public/founding-pilot-sample.md", import.meta.url), "utf8"),
+    readFile(new URL("../public/founding-pilot-sample.json", import.meta.url), "utf8"),
   ]);
+  const samplePacket = JSON.parse(samplePacketSource);
   assert.match(page, /Not an independent audit/);
   assert.match(page, /Commit labels publicly before reveal/);
   assert.match(page, /Reveal privately \(weight 0\)/);
@@ -75,6 +83,8 @@ test("public source preserves commercial and assurance boundaries", async () => 
     /Your labels stay\s+on your device unless you explicitly contribute them on GitHub/i,
   );
   assert.match(page, /\$750 fixed/);
+  assert.match(page, /founding-pilot-sample\.md/);
+  assert.match(page, /founding-pilot-sample\.json/);
   assert.match(page, /not a claim that VERITAS would have prevented/);
   assert.match(page, /not independent\s+validation of VERITAS/);
   assert.match(layout, /VERITAS Omega Agent Trust Lab/);
@@ -90,4 +100,15 @@ test("public source preserves commercial and assurance boundaries", async () => 
   assert.match(distribution, /product efficacy.*remain `INCONCLUSIVE`/is);
   assert.match(distribution, /independent pre-reveal label sets: \*\*0\*\*/);
   assert.match(distribution, /Verified payments: \*\*\$0\*\*/);
+  assert.match(sampleDossier, /ILLUSTRATIVE_ONLY/);
+  assert.match(sampleDossier, /not client work/i);
+  assert.match(sampleDossier, /\*\*Execution authorized:\*\*\s+`false`/);
+  assert.equal(samplePacket.status, "ILLUSTRATIVE_ONLY");
+  assert.equal(samplePacket.not_client_work, true);
+  assert.equal(samplePacket.independent_review, false);
+  assert.equal(samplePacket.payment_evidence, false);
+  assert.equal(samplePacket.execution_authorized, false);
+  assert.equal(samplePacket.commercial_boundary.price_usd, 750);
+  assert.equal(samplePacket.workflow.operations.length, 5);
+  assert.equal(samplePacket.hostile_cases.length, 6);
 });

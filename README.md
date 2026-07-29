@@ -129,6 +129,12 @@ register, and a 60-minute walkthrough.
 It is an author-side technical pilot—not certification, compliance, or an
 independent audit. Contact `VrtxOmega@pm.me`.
 
+Before contacting the author, inspect the explicitly illustrative
+[sample dossier](public/founding-pilot-sample.md) and its
+[machine-readable companion](public/founding-pilot-sample.json). They show the
+promised artifact shape, not client work, adoption, payment, or an outside
+assessment.
+
 ## Primary context
 
 - [NIST AI Agent Standards Initiative](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative)
