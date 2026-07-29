@@ -1,4 +1,5 @@
 {
+  "$schema": "../schemas/external-validation-ledger.schema.json",
   "schema_version": "1.0.0",
   "campaign": {
     "id": "veritas-trust-lab-50-or-payment",
