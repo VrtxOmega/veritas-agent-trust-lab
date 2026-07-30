@@ -16,6 +16,7 @@ import {
   createChallengeReceipt,
 } from "@/lib/challenge-receipt.js";
 import validationLedger from "@/evidence/external-validation-ledger.json";
+import campaignLedgersV2 from "@/evidence/campaign-ledgers-v2.json";
 
 type Stage = { name: string; state: "pass" | "fail"; detail: string };
 type Result = {
@@ -62,6 +63,7 @@ type ChallengeReceipt = {
 const campaignSummary = validationLedger.summary;
 const campaignTarget = validationLedger.campaign.validation_target;
 const openLaneCount = validationLedger.open_lanes.length;
+const protocolProgress = campaignLedgersV2.progress;
 
 const compact = (value: unknown) => {
   const text = String(value);
@@ -258,13 +260,14 @@ export function TrustLab() {
         </a>
         <span className="header-index">Public reference demonstrator · V0.1</span>
         <a className="header-link" href="#external-evidence">
-          {campaignSummary.qualifying_events} / {campaignTarget} verified ↗
+          Protocol v2 / {protocolProgress.qualifying_events} verified ↗
         </a>
       </header>
 
       <div className="status-strip" aria-label="Product boundaries">
         <span>Zero signup</span><span>Runs locally</span>
-        <span>Blind calibration</span>
+        <span>About 5 minutes</span>
+        <span>Mobile-friendly</span>
         <span>{campaignSummary.qualifying_events}/{campaignTarget} verified</span>
         <span>Execution: false</span>
       </div>
@@ -311,8 +314,9 @@ export function TrustLab() {
             <div>
               <h2>Would you allow the agent to continue?</h2>
               <p>
-                Six packets. Three are clean and three are tampered. Make every
-                decision before the answer key appears.
+                About five minutes on phone or desktop. Six packets, no signup,
+                and no upload unless you explicitly submit. Make every decision
+                before the answer key appears.
               </p>
             </div>
           </header>
@@ -361,15 +365,30 @@ export function TrustLab() {
                 <div className="pre-reveal-copy">
                   <span>{Object.keys(predictions).length}/6 decisions sealed locally</span>
                   <p>
-                    To timestamp an outside attempt, submit either commitment
-                    before revealing. GitHub is public. Email is private,
-                    manually sent, and discloses your email address to the
-                    recipient. Either timestamp proves only receipt of the six
-                    labels—not independence, expertise, honesty, or source
-                    blindness.
+                    Download your score-free commitment first. To contribute an
+                    outside attempt, submit it through GitHub or email before
+                    revealing, then return here for your immediate personal
+                    result. GitHub is public. Email is private, manually sent,
+                    and discloses your email address to the recipient. Either
+                    timestamp proves only receipt of the six labels—not
+                    independence, expertise, honesty, or source blindness.
                   </p>
                 </div>
                 <div className="pre-reveal-actions">
+                  <button
+                    className="secondary-link"
+                    disabled={!blindCommitment}
+                    onClick={() =>
+                      blindCommitment &&
+                      downloadJson(
+                        "veritas-trust-lab-pre-reveal-commitment.json",
+                        blindCommitment,
+                      )
+                    }
+                    type="button"
+                  >
+                    Download pre-reveal commitment ↓
+                  </button>
                   {blindCommitment && (
                     <a
                       className="primary-link"
@@ -623,26 +642,34 @@ export function TrustLab() {
               </p>
             </div>
           </header>
-          <div className="campaign-meter" aria-label="Founding 50 campaign state">
+          <div className="campaign-meter" aria-label="Protocol v2 balanced evidence state">
             <div>
-              <span>FOUNDING 50 / VERIFIED</span>
+              <span>PROTOCOL V2 / BALANCED EVIDENCE</span>
               <strong>
-                {campaignSummary.qualifying_events}
+                {protocolProgress.qualifying_events}
                 <small>/{campaignTarget}</small>
               </strong>
             </div>
             <div>
               <span
                 style={{
-                  width: `${(campaignSummary.qualifying_events / campaignTarget) * 100}%`,
+                  width: `${(protocolProgress.qualifying_events / campaignTarget) * 100}%`,
                 }}
               />
             </div>
             <p>
               {campaignSummary.remaining_to_validation_target} qualifying
-              outside actions remain. {openLaneCount} open lanes, local
-              receipts, bots, traffic, outreach, and thanks stay at weight
-              zero. Verified payment: ${campaignSummary.verified_payment_usd}.
+              events remain. Blind labels:{" "}
+              {protocolProgress.pre_reveal_blind_label_sets}/15. Technical:{" "}
+              {protocolProgress.technical_reproductions_reviews_or_integrations}/10.
+              Adopter reports: {protocolProgress.structured_adopter_reports}/5.
+              Hostile cases:{" "}
+              {protocolProgress.independently_proposed_or_executed_hostile_cases}/5.
+              Verifier runs:{" "}
+              {protocolProgress.independent_verifier_runs_cross_evaluations_or_compatible_implementations}/3.
+              {" "}{openLaneCount} legacy open lanes, local receipts, bots,
+              traffic, outreach, and thanks stay at weight zero. Settled
+              arms-length pilot revenue: ${protocolProgress.settled_revenue_usd}/$750.
             </p>
           </div>
           <div className="principles">
@@ -717,6 +744,11 @@ export function TrustLab() {
               <span>External project member approved the fix and retained the merge decision for source-break consideration.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/protocol/campaign-protocol-v2.json" target="_blank" rel="noreferrer">
+              <b>Signed Campaign Protocol v2</b>
+              <span>Prospective diversity caps, evidence minima, commercial boundary, and negative stop rules.</span>
+              <i>↗</i>
+            </a>
           </div>
           <p className="boundary">
             <strong>SCOPE</strong> Qualifying external validations:{" "}
@@ -733,9 +765,78 @@ export function TrustLab() {
         </div>
       </section>
 
+      <section className="section" id="participate">
+        <div className="section-inner">
+          <header className="section-heading">
+            <span>07 / PARTICIPATE</span>
+            <div>
+              <h2>Contribute the evidence that is still missing.</h2>
+              <p>
+                Three narrow routes. No signup for the challenge, no claim that
+                a submission proves expertise or endorsement, and no automatic
+                promotion into the canonical six-case score.
+              </p>
+            </div>
+          </header>
+          <div className="principles">
+            <article>
+              <span>FIVE MINUTES / BLIND</span>
+              <h3>Commit six labels before reveal.</h3>
+              <p>
+                Works on phone or desktop. Download the score-free commitment,
+                choose public GitHub or private manual email, then reveal your
+                personal result immediately.
+              </p>
+              <a className="primary-link" href="#challenge">Take the blind challenge ↓</a>
+            </article>
+            <article>
+              <span>EXTERNAL CANDIDATE / HOSTILE</span>
+              <h3>Show us a failure mode the six cases miss.</h3>
+              <p>
+                Submit a synthetic or public scenario, expected safe outcome,
+                rationale, reproduction path, and conflicts. It enters the
+                candidate corpus first—not the canonical challenge.
+              </p>
+              <a
+                className="primary-link"
+                href="https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=new-attack.yml"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Propose a hostile case ↗
+              </a>
+            </article>
+            <article>
+              <span>REAL WORKFLOW / ADOPTER</span>
+              <h3>Report one consequential agent operation.</h3>
+              <p>
+                Record the operation, evidence, VERITAS and human decisions,
+                actual outcome, errors, usefulness, failures, and whether you
+                would use the method again.
+              </p>
+              <a
+                className="primary-link"
+                href="https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=adopter-report.yml"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Submit an adopter report ↗
+              </a>
+            </article>
+          </div>
+          <p className="boundary">
+            <strong>PRIVACY</strong> GitHub issue submissions are public and
+            attached to the submitter&apos;s account. Do not include secrets,
+            credentials, customer data, private logs, or production identifiers.
+            A submission remains uncounted until its identity, independence,
+            evidence, scope, and Protocol v2 caps are verified.
+          </p>
+        </div>
+      </section>
+
       <section className="section" id="pilot">
         <div className="section-inner">
-          <header className="section-heading"><span>07 / PILOT</span><div><h2>Put one real agent workflow under hostile review.</h2><p>The first commercial offer is deliberately small enough to finish, inspect, and falsify.</p></div></header>
+          <header className="section-heading"><span>08 / PILOT</span><div><h2>Put one real agent workflow under hostile review.</h2><p>The first commercial offer is deliberately small enough to finish, inspect, and falsify.</p></div></header>
           <div className="offer">
             <div className="offer-main">
               <p>FOUNDING PILOT / TWO SLOTS</p>
@@ -762,7 +863,7 @@ export function TrustLab() {
 
       <section className="section context">
         <div className="section-inner">
-          <header className="section-heading"><span>08 / CONTEXT</span><div><h2>Built between evaluation and action.</h2><p>Sandboxes, policy engines, identity systems, and standards work solve adjacent layers. These organizations do not endorse VERITAS.</p></div></header>
+          <header className="section-heading"><span>09 / CONTEXT</span><div><h2>Built between evaluation and action.</h2><p>Sandboxes, policy engines, identity systems, and standards work solve adjacent layers. These organizations do not endorse VERITAS.</p></div></header>
           <div className="references">
             <a href="https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative" target="_blank" rel="noreferrer"><b>NIST AI Agent Standards Initiative</b><span>Identity, authorization, security evaluation, interoperability.</span><i>↗</i></a>
             <a href="https://openai.com/index/running-codex-safely/" target="_blank" rel="noreferrer"><b>OpenAI — Running Codex safely</b><span>Sandboxing, approvals, network restrictions, identity, telemetry.</span><i>↗</i></a>
