@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-07-30T08:20:24Z",
+  "as_of": "2026-07-30T08:47:20Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -18,7 +18,36 @@
   "nonqualifying_signal_ledger": {
     "imported_historical_source": "evidence/external-validation-ledger.json#open_lanes",
     "imported_historical_count": 14,
-    "protocol_v2_records": []
+    "protocol_v2_records": [
+      {
+        "id": "VTL-NQ-20260730-001",
+        "organization_id": "bluedot",
+        "actor_id": "email:team@bluedot.org",
+        "signal_type": "substantive_routing_response",
+        "subject_id": "bluedot-rapid-grant-veritas-agent-action-calibration",
+        "occurred_at": "2026-07-30T08:19:59Z",
+        "response_scope": "BlueDot confirmed that the detailed proposal email was received and would be seen by the team, identified its authenticated form as the preferred intake route, and explicitly offered an alternative submission path if the form remained inaccessible.",
+        "invited_reply_at": "2026-07-30T08:47:20Z",
+        "verification": {
+          "method": "Exact Gmail thread readback",
+          "incoming_message_id": "19fb21bebb83aa0f",
+          "invited_reply_message_id": "19fb234ec873c3fc",
+          "public_program_url": "https://bluedot.org/programs/rapid-grants",
+          "verified_at": "2026-07-30T08:47:20Z"
+        },
+        "count_weight": 0,
+        "reason_not_counted": "A routing acknowledgement and invitation to use an alternative application path do not satisfy a qualifying technical category and do not establish an arms-length settled pilot payment.",
+        "does_not_establish": [
+          "formal grant application acceptance",
+          "grant approval",
+          "funding or settled revenue",
+          "commercial pilot purchase",
+          "technical validation",
+          "adoption",
+          "endorsement"
+        ]
+      }
+    ]
   },
   "negative_outcome_ledger": [],
   "decline_ledger": [],
@@ -202,7 +231,12 @@
       "channel": "email",
       "initial_contact_at": "2026-07-28T22:19:27-07:00",
       "tailored": true,
-      "status": "sent_no_substantive_response",
+      "status": "substantive_response_received_alternative_route_requested",
+      "substantive_response_at": "2026-07-30T08:19:59Z",
+      "substantive_response_message_id": "19fb21bebb83aa0f",
+      "invited_reply_at": "2026-07-30T08:47:20Z",
+      "invited_reply_message_id": "19fb234ec873c3fc",
+      "next_action": "await_alternative_submission_instructions",
       "follow_up_at": null,
       "count_weight": 0
     },
