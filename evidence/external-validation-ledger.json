@@ -380,6 +380,14 @@
       "source_url": "https://github.com/freedesktop-rs/nmrs/pull/521",
       "reason_not_counted": "The open pull request and assignment are not counted; event 006 counts only the member's independent APPROVED review. Merge remains pending source-break consideration.",
       "count_weight": 0
+    },
+    {
+      "id": "rask-lang/rask#469",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/rask-lang/rask/pull/469",
+      "reason_not_counted": "The signed one-commit pull request is open and mergeable, but has no qualifying independent human decision.",
+      "count_weight": 0
     }
   ]
 }

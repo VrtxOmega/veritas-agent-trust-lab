@@ -263,3 +263,50 @@ meta-claim remains `INCONCLUSIVE` because the locally recomputed totals and
 test/PCF receipts do not have two independent sources. The adversary gate also
 reported `MODEL_BOUND` fragility when required evidence was removed. That
 result is retained rather than upgraded into independent assurance.
+
+## Rask compiler acquisition lane
+
+### Goal
+
+Track the new `rask-lang/rask#469` compiler contribution without converting
+author activity, local verification, signing, mergeability, or an open pull
+request into independent external validation.
+
+### Scope
+
+- Add one zero-weight open lane to the canonical external-validation ledger.
+- Update the canonical-ledger count assertion from 14 to 15 open lanes.
+- Preserve the campaign total at `6/50`, six distinct validators, and `$0`.
+
+### Non-Goals
+
+- Do not count the fork, branch, commit, local tests, PCF result, VERITAS
+  result, open PR, mergeability, or future bot/CI results.
+- Do not claim maintainer acceptance, correctness, merge, release inclusion,
+  adoption, endorsement, certification, or payment.
+
+### Steps
+
+- [x] Verify the live PR URL, open state, mergeability, commit count, head SHA,
+  and exact three-file diff.
+- [x] Add the PR as one zero-weight open lane.
+- [x] Validate ledger schema and arithmetic.
+- [ ] Publish through one clean PR and read back main.
+
+### Verification
+
+```bash
+npm run validate:external
+npm run lint
+npm test
+npm run build:pages
+git diff --check
+```
+
+Expected campaign state remains `6/50`, six validators, `$0`, 44 remaining,
+and `ACTIVE`.
+
+The first GitHub-hosted run exposed the stale `open_lanes: 14` assertion after
+the ledger correctly recomputed 15. The assertion was updated to 15, then all
+43 tests, lint, the application build, the Pages build, ledger validation, and
+`git diff --check` passed locally.
