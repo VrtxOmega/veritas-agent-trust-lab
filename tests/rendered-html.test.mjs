@@ -37,11 +37,15 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /Technical:\s+4\/10/);
   assert.match(visibleHtml, /Settled\s+arms-length pilot revenue: \$0\.00\/\$750/);
   assert.match(visibleHtml, /Qualifying external validations:\s+6/s);
-  assert.match(visibleHtml, /Independent technical reproduction/);
+  assert.match(visibleHtml, /Reproduced, corrected, and merged/);
+  assert.match(
+    visibleHtml,
+    /reproduction, review, approval, and merge remain one event/i,
+  );
   assert.match(visibleHtml, /Merged external integration/);
   assert.match(visibleHtml, /Trail of Bits merged integration/);
   assert.match(visibleHtml, /14 legacy open lanes/);
-  assert.match(visibleHtml, /review and merge remain one event/i);
+  assert.match(visibleHtml, /review and merge also remain one event/i);
   assert.match(visibleHtml, /freedesktop-rs approval/);
   assert.match(visibleHtml, /Contribute the evidence that is still missing/);
   assert.match(visibleHtml, /Submit an adopter report/);

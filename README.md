@@ -72,7 +72,9 @@ Six independently attributable outside actions currently qualify:
 
 - two external curators merged scoped Trust Lab catalogue entries;
 - the AgentDoctor owner independently reproduced a concrete output-file
-  symlink escape and issued a blocking review;
+  symlink escape, required a focused remediation matrix, then re-reviewed,
+  approved, and merged the corrected Action contribution; that lifecycle
+  remains one counted technical event;
 - the Drift owner merged a campaign-produced staleness-sampling fix;
 - a Trail of Bits Dylint collaborator identified inaccurate rustdoc, required
   the generated README to be corrected with it, and merged the corrected fix;
