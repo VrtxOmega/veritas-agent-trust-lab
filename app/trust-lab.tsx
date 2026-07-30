@@ -634,11 +634,13 @@ export function TrustLab() {
                 Two maintainers merged scoped Trust Lab catalogue entries. A
                 third repository owner independently reproduced a concrete
                 security defect in a campaign-produced Action contribution and
-                issued a blocking technical review. A fourth external
-                repository owner merged a campaign-produced regression fix. A
-                Trail of Bits collaborator then required a concrete
-                documentation correction, and a freedesktop-rs member approved
-                a separate contribution while considering its source break.
+                issued a blocking technical review, then re-reviewed and merged
+                the corrected contribution. That lifecycle remains one event.
+                A fourth external repository owner merged a campaign-produced
+                regression fix. A Trail of Bits collaborator then required a
+                concrete documentation correction, and a freedesktop-rs member
+                approved a separate contribution while considering its source
+                break.
               </p>
             </div>
           </header>
@@ -682,14 +684,16 @@ export function TrustLab() {
                 Each upstream README contains one scoped Trust Lab entry. The
                 AgentDoctor owner separately reported reproducing an
                 outside-workspace write through an output-file symlink and
-                requested a focused remediation matrix. The Drift owner
-                separately merged the staleness sampling regression fix in
-                pull request #792. The Dylint collaborator separately required
-                synchronized rustdoc and generated README corrections, then
-                merged the corrected pull request. The review and merge remain
-                one event. The nmrs member separately approved pull request
-                #521 while retaining the merge decision for
-                source-compatibility review.
+                requested a focused remediation matrix, then independently
+                re-verified the corrected commit and merged pull request #18.
+                That reproduction, review, approval, and merge remain one
+                event. The Drift owner separately merged the staleness sampling
+                regression fix in pull request #792. The Dylint collaborator
+                separately required synchronized rustdoc and generated README
+                corrections, then merged the corrected pull request. Its review
+                and merge also remain one event. The nmrs member separately
+                approved pull request #521 while retaining the merge decision
+                for source-compatibility review.
               </p>
             </article>
             <article>
@@ -724,9 +728,9 @@ export function TrustLab() {
               <span>Public catalogue readback at the recorded merge commit.</span>
               <i>↗</i>
             </a>
-            <a href="https://github.com/pranee54/AgentDoctor/pull/18#pullrequestreview-4811661364" target="_blank" rel="noreferrer">
-              <b>Independent technical reproduction</b>
-              <span>External repository owner reproduced a concrete Action defect and issued blocking remediation criteria.</span>
+            <a href="https://github.com/pranee54/AgentDoctor/pull/18" target="_blank" rel="noreferrer">
+              <b>Reproduced, corrected, and merged</b>
+              <span>External repository owner reproduced the Action defect, required remediation, re-verified the fix, and merged it as one counted event.</span>
               <i>↗</i>
             </a>
             <a href="https://github.com/mick-gsk/drift/pull/792" target="_blank" rel="noreferrer">
@@ -757,9 +761,9 @@ export function TrustLab() {
             scoped curator-fit decisions and one independent technical
             reproduction, two accepted external integrations, and one
             substantive maintainer review. These do not establish VERITAS
-            efficacy, endorsement, product adoption, release inclusion, merge
-            of the remaining reviewed pull request, or payment. Independent
-            blind label sets: 0.
+            efficacy, endorsement, product adoption, release inclusion, deployed
+            use of the AgentDoctor Action, merge of the still-open nmrs pull
+            request, or payment. Independent blind label sets: 0.
             Verified payments: ${campaignSummary.verified_payment_usd}.
           </p>
         </div>
