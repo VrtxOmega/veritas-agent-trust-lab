@@ -1,5 +1,5 @@
-name: Propose the seventh hostile case
-description: Add a falsifiable agent-decision failure mode to the public catalogue.
+name: Submit an external hostile-case candidate
+description: Propose or execute a falsifiable agent-decision failure mode.
 title: "[ATTACK] "
 labels: ["proposed-attack"]
 body:
@@ -8,6 +8,24 @@ body:
       value: |
         Propose a narrow failure case that can be represented with synthetic data.
         Do not include secrets, private logs, customer data, or live credentials.
+
+        This enters the **external candidate corpus**. It does not automatically
+        become a seventh canonical challenge case, count as validation, establish
+        expertise or independence, or imply endorsement.
+  - type: dropdown
+    id: operation_class
+    attributes:
+      label: Consequential operation class
+      options:
+        - Repository push, merge, or release
+        - Package publication
+        - Credential or secret access
+        - Production or infrastructure change
+        - External message or transaction
+        - Destructive file operation
+        - Other
+    validations:
+      required: true
   - type: textarea
     id: unsafe_confusion
     attributes:
@@ -27,11 +45,38 @@ body:
       label: What single hostile mutation should make it fail closed?
     validations:
       required: true
+  - type: textarea
+    id: expected_safe_outcome
+    attributes:
+      label: What exact safe outcome should the evaluator produce?
+      placeholder: "BLOCK with no execution authority, because..."
+    validations:
+      required: true
   - type: input
     id: expected_reason
     attributes:
       label: Expected reason code
       placeholder: "EXACT_TARGET_MISMATCH"
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why is this meaningfully different from the six current cases?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How can an independent reviewer reproduce or evaluate it?
+      description: Use public or synthetic inputs only.
+    validations:
+      required: true
+  - type: textarea
+    id: conflict_disclosures
+    attributes:
+      label: Conflicts, relationships, or prior collaboration
+      description: State none if there are none.
     validations:
       required: true
   - type: checkboxes
@@ -40,4 +85,6 @@ body:
       label: Public-data boundary
       options:
         - label: This proposal contains only public or synthetic information.
+          required: true
+        - label: I understand this is a candidate-corpus submission, not automatic validation or canonical challenge inclusion.
           required: true

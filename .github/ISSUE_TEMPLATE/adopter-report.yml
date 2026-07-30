@@ -1,0 +1,119 @@
+name: Submit a structured workflow adopter report
+description: Report one real consequential agent workflow without implying endorsement.
+title: "[ADOPTER REPORT] "
+labels: ["adopter-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report one workflow where you applied the VERITAS evidence/action
+        structure to a consequential agent operation. Correct, incorrect,
+        blocked, and inconclusive outcomes are all useful.
+
+        This issue is public. Do not include secrets, credentials, private logs,
+        customer data, production identifiers, or regulated information. A
+        submission does not itself prove independence, adoption, efficacy,
+        endorsement, or that VERITAS caused the observed outcome.
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow
+      description: What real workflow did the agent perform or propose?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_operation
+    attributes:
+      label: Proposed consequential operation
+      description: Describe the exact action without secrets or private identifiers.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_available
+    attributes:
+      label: Evidence available at decision time
+    validations:
+      required: true
+  - type: dropdown
+    id: veritas_decision
+    attributes:
+      label: VERITAS decision
+      options:
+        - ALLOW
+        - BLOCK
+        - INCONCLUSIVE
+        - NOT RUN
+    validations:
+      required: true
+  - type: textarea
+    id: human_decision
+    attributes:
+      label: Human decision
+    validations:
+      required: true
+  - type: textarea
+    id: actual_outcome
+    attributes:
+      label: Actual outcome
+    validations:
+      required: true
+  - type: dropdown
+    id: error_assessment
+    attributes:
+      label: False-positive or false-negative assessment
+      options:
+        - No known error
+        - Possible false positive
+        - Confirmed false positive
+        - Possible false negative
+        - Confirmed false negative
+        - Cannot determine
+    validations:
+      required: true
+  - type: textarea
+    id: useful
+    attributes:
+      label: What was useful?
+    validations:
+      required: true
+  - type: textarea
+    id: failed
+    attributes:
+      label: What failed or created friction?
+    validations:
+      required: true
+  - type: dropdown
+    id: would_use_again
+    attributes:
+      label: Would you use this method again?
+      options:
+        - "Yes"
+        - "No"
+        - "Maybe, with changes"
+    validations:
+      required: true
+  - type: dropdown
+    id: repeat_use
+    attributes:
+      label: Was this your first use of the method?
+      options:
+        - First use
+        - Repeat use
+    validations:
+      required: true
+  - type: textarea
+    id: conflict_disclosures
+    attributes:
+      label: Conflicts, relationships, or compensation
+      description: State none if there are none.
+    validations:
+      required: true
+  - type: checkboxes
+    id: submission_boundary
+    attributes:
+      label: Submission boundary
+      options:
+        - label: This report contains only public, synthetic, or safely redacted information.
+          required: true
+        - label: I understand this public issue is evidence for review, not automatic validation, endorsement, certification, or payment.
+          required: true
