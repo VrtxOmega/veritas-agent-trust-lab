@@ -1,0 +1,266 @@
+{
+  "schema_version": "2.0.0",
+  "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
+  "as_of": "2026-07-30T05:02:47Z",
+  "qualifying_event_ledger": {
+    "historical_source": "evidence/external-validation-ledger.json",
+    "historical_event_ids": [
+      "VTL-EXT-20260729-001",
+      "VTL-EXT-20260729-002",
+      "VTL-EXT-20260729-003",
+      "VTL-EXT-20260729-004",
+      "VTL-EXT-20260730-005",
+      "VTL-EXT-20260730-006"
+    ],
+    "protocol_v2_events": []
+  },
+  "commercial_payment_ledger": [],
+  "nonqualifying_signal_ledger": {
+    "imported_historical_source": "evidence/external-validation-ledger.json#open_lanes",
+    "imported_historical_count": 14,
+    "protocol_v2_records": []
+  },
+  "negative_outcome_ledger": [],
+  "decline_ledger": [],
+  "closed_lane_ledger": [],
+  "outreach_denominator_ledger": {
+    "historical_protocol_v1_records": [
+    {
+      "organization_id": "promptfoo",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:05:57-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "agentdojo-eth",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:07:15-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "agent-security-bench-zhejiang-lab",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:07:39-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "trail-of-bits",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:08:08-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "dark-reading",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:12:58-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "injecagent-qiusi",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:15:43-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "agentauditor",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:16:05-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "planguard-sdu",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:16:32-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "pydantic",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:19:57-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "composio",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:20:23-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "crewai",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:20:51-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "portkey",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:22:17-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "langfuse",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T11:22:48-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "arcade",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T21:03:31-07:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "opensearch",
+      "channel": "email",
+      "initial_contact_at": "2026-07-29T04:25:31-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "schmidt-sciences",
+      "channel": "email",
+      "initial_contact_at": "2026-07-28T23:07:57-07:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "bluedot",
+      "channel": "email",
+      "initial_contact_at": "2026-07-28T22:19:27-07:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "owasp",
+      "channel": "email",
+      "initial_contact_at": "2026-07-28T23:28:35-05:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "help-net-security",
+      "channel": "email",
+      "initial_contact_at": "2026-07-28T21:27:32-07:00",
+      "tailored": true,
+      "status": "automatic_reply_only",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "foss-post",
+      "channel": "email",
+      "initial_contact_at": "2026-07-28T23:51:54-04:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "ai-tool-radar",
+      "channel": "email",
+      "initial_contact_at": "2026-07-28T23:50:55-04:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    },
+    {
+      "organization_id": "agents-guild",
+      "channel": "email",
+      "initial_contact_at": "2026-07-28T20:47:19-07:00",
+      "tailored": true,
+      "status": "sent_no_substantive_response",
+      "follow_up_at": null,
+      "count_weight": 0
+    }
+    ],
+    "protocol_v2_records": []
+  },
+  "protocol_v2_effort_ledger": {
+    "new_external_technical_contribution_lanes": [],
+    "tailored_commercial_proposals": []
+  },
+  "progress": {
+    "technical_state": "ACTIVE",
+    "commercial_state": "UNMET",
+    "qualifying_events": 6,
+    "distinct_independent_validators": 6,
+    "unrelated_organizations_or_communities": 6,
+    "pre_reveal_blind_label_sets": 0,
+    "technical_reproductions_reviews_or_integrations": 4,
+    "structured_adopter_reports": 0,
+    "repeat_use_adopter_reports": 0,
+    "independently_proposed_or_executed_hostile_cases": 0,
+    "independent_verifier_runs_cross_evaluations_or_compatible_implementations": 0,
+    "catalog_and_editorial_events": 2,
+    "maximum_single_category_share_basis_points": 3334,
+    "settled_revenue_usd": "0.00",
+    "outreach_initial_contacts": 22,
+    "outreach_follow_ups": 0,
+    "negative_outcomes": 0,
+    "declines": 0,
+    "closed_lanes": 0,
+    "remaining": {
+      "qualifying_events": 44,
+      "distinct_independent_validators": 19,
+      "unrelated_organizations_or_communities": 4,
+      "pre_reveal_blind_label_sets": 15,
+      "technical_reproductions_reviews_or_integrations": 6,
+      "structured_adopter_reports": 5,
+      "repeat_use_adopter_reports": 2,
+      "independently_proposed_or_executed_hostile_cases": 5,
+      "independent_verifier_runs_cross_evaluations_or_compatible_implementations": 3,
+      "commercial_revenue_usd": "750.00"
+    }
+  }
+}
