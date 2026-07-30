@@ -67,17 +67,22 @@ repository's MIT license applies only to this public demonstrator.
 
 ## External evidence
 
-On July 29, 2026, independent curator
-[Edward Burton (`Ejb503`)](https://github.com/Ejb503) merged
-[systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27).
-The merge placed the Trust Lab in the catalog's
-**Security, Red-Teaming, and Threat Models** section.
+Six independently attributable outside actions currently qualify:
 
-That is one attributable external acceptance of the project's relevance to a
-curated AI-agent-governance resource. It does not establish challenge use,
-technical efficacy, calibration, certification, adoption, endorsement, or
-commercial demand. Independent pre-reveal label sets remain **0** and verified
-payments remain **$0**.
+- two external curators merged scoped Trust Lab catalogue entries;
+- the AgentDoctor owner independently reproduced a concrete output-file
+  symlink escape and issued a blocking review;
+- the Drift owner merged a campaign-produced staleness-sampling fix;
+- a Trail of Bits Dylint collaborator identified inaccurate rustdoc and
+  required the generated README to be corrected with it;
+- a freedesktop-rs member approved the campaign-produced nmrs fix while holding
+  its merge to consider the intentional source-breaking API change.
+
+The canonical ledger links every actor and immutable source. These events
+validate only the action stated for each record. They do not establish
+challenge use, VERITAS efficacy, calibration, certification, adoption,
+endorsement, or commercial demand. Independent pre-reveal label sets remain
+**0** and verified payments remain **$0**.
 
 ## Contribute evidence
 
@@ -96,7 +101,7 @@ identity. The lab itself has no analytics or hidden label collection.
 The campaign terminal condition is deliberately harder than a launch metric:
 **50 qualifying outside validation events or one verified payment**.
 
-Current machine-checked state: **2/50 qualifying events, 2 distinct validators,
+Current machine-checked state: **6/50 qualifying events, 6 distinct validators,
 $0 verified payments**.
 
 The canonical
@@ -114,10 +119,9 @@ coverage, or scoped curator acceptance. Bots, CI, traffic, author activity,
 open PRs, sent outreach, thanks-only comments, self-tests, and duplicate signals
 never count.
 
-The first two events are external curator decisions to merge Trust Lab listings.
-Each validates only catalogue fit and discoverability in that repository. They
-do not establish adoption, technical correctness, security assurance,
-endorsement, certification, or payment.
+The six events comprise two scoped curator decisions, one independent technical
+reproduction, one accepted external integration, and two substantive
+maintainer reviews. Each record states its narrower claim and nonclaims.
 
 ## Founding pilot
 

@@ -9,10 +9,10 @@
     "started_at": "2026-07-29T09:33:26Z"
   },
   "summary": {
-    "qualifying_events": 4,
-    "distinct_validators": 4,
+    "qualifying_events": 6,
+    "distinct_validators": 6,
     "verified_payment_usd": "0.00",
-    "remaining_to_validation_target": 46,
+    "remaining_to_validation_target": 44,
     "terminal_state": "ACTIVE"
   },
   "counting_policy": {
@@ -185,6 +185,86 @@
       },
       "dedupe_key": "github:mick-gsk|accepted_external_integration|mick-gsk/drift#792",
       "count_weight": 1
+    },
+    {
+      "id": "VTL-EXT-20260730-005",
+      "status": "qualifying",
+      "category": "substantive_external_review",
+      "subject_id": "trailofbits/dylint#2016",
+      "actor": {
+        "id": "github:smoelius",
+        "platform": "github",
+        "account": "smoelius",
+        "type": "github_account",
+        "relationship": "independent",
+        "is_bot": false,
+        "independence_basis": "The actor is a collaborator in the external Dylint repository and posted the review from an account outside VrtxOmega."
+      },
+      "action": "identified_inaccurate_rustdoc_and_required_generated_readme_update",
+      "validation_claim": "An external Dylint collaborator materially reviewed the campaign-produced lint contribution, identified inaccurate user-facing documentation, and required the checked-in generated README to be updated with it.",
+      "scope": "This validates one substantive maintainer review and its concrete correction criteria at the recorded issue comment.",
+      "does_not_establish": [
+        "acceptance of the corrected pull request",
+        "pull-request merge",
+        "technical correctness of the contribution",
+        "product adoption",
+        "technical correctness of VERITAS",
+        "security assurance",
+        "endorsement of VERITAS",
+        "certification",
+        "payment"
+      ],
+      "source_url": "https://github.com/trailofbits/dylint/pull/2016#issuecomment-5125035264",
+      "occurred_at": "2026-07-30T00:54:04Z",
+      "verification": {
+        "status": "verified",
+        "method": "GitHub issue-comment API and live pull-request association readback",
+        "verified_at": "2026-07-30T01:23:41Z",
+        "immutable_ref_type": "issue_comment_id",
+        "immutable_ref": "IC_kwDOFNYEks8AAAABMXnVAA"
+      },
+      "dedupe_key": "github:smoelius|substantive_external_review|trailofbits/dylint#2016",
+      "count_weight": 1
+    },
+    {
+      "id": "VTL-EXT-20260730-006",
+      "status": "qualifying",
+      "category": "substantive_external_review",
+      "subject_id": "freedesktop-rs/nmrs#521",
+      "actor": {
+        "id": "github:cachebag",
+        "platform": "github",
+        "account": "cachebag",
+        "type": "github_account",
+        "relationship": "independent",
+        "is_bot": false,
+        "independence_basis": "The actor is a member of the external freedesktop-rs organization and submitted the approval from an account outside VrtxOmega."
+      },
+      "action": "approved_pull_request_and_flagged_source_break_for_merge_timing",
+      "validation_claim": "An external freedesktop-rs project member reviewed and approved the campaign-produced nmrs contribution while explicitly holding the merge to consider its intentional source-breaking API change.",
+      "scope": "This validates one independent maintainer approval of the recorded commit and a concrete architectural concern governing merge timing.",
+      "does_not_establish": [
+        "pull-request merge",
+        "release inclusion",
+        "technical correctness of the contribution",
+        "product adoption",
+        "technical correctness of VERITAS",
+        "security assurance",
+        "endorsement of VERITAS",
+        "certification",
+        "payment"
+      ],
+      "source_url": "https://github.com/freedesktop-rs/nmrs/pull/521#pullrequestreview-4814368955",
+      "occurred_at": "2026-07-30T01:22:23Z",
+      "verification": {
+        "status": "verified",
+        "method": "GitHub pull-request review API and live member-association readback",
+        "verified_at": "2026-07-30T01:23:41Z",
+        "immutable_ref_type": "issue_comment_id",
+        "immutable_ref": "PRR_kwDOP2SO-M8AAAABHvVwuw"
+      },
+      "dedupe_key": "github:cachebag|substantive_external_review|freedesktop-rs/nmrs#521",
+      "count_weight": 1
     }
   ],
   "payments": [],
@@ -259,6 +339,46 @@
       "state": "pending",
       "source_url": "https://github.com/pranee54/AgentDoctor/pull/18",
       "reason_not_counted": "The open pull request is not counted; event 003 counts only the owner's independent technical reproduction and review.",
+      "count_weight": 0
+    },
+    {
+      "id": "Portkey-AI/gateway#1755",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/Portkey-AI/gateway/pull/1755",
+      "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
+    },
+    {
+      "id": "mgdm/htmlq#87",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/mgdm/htmlq/pull/87",
+      "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
+    },
+    {
+      "id": "IBM/mcp-context-forge#5992",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/IBM/mcp-context-forge/pull/5992",
+      "reason_not_counted": "The pull request is open and has no qualifying human decision.",
+      "count_weight": 0
+    },
+    {
+      "id": "trailofbits/dylint#2016",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/trailofbits/dylint/pull/2016",
+      "reason_not_counted": "The open pull request, signed CLA, passing checks, and author repair are not counted; event 005 counts only the collaborator's substantive review.",
+      "count_weight": 0
+    },
+    {
+      "id": "freedesktop-rs/nmrs#521",
+      "signal_type": "open_pr",
+      "state": "pending",
+      "source_url": "https://github.com/freedesktop-rs/nmrs/pull/521",
+      "reason_not_counted": "The open pull request and assignment are not counted; event 006 counts only the member's independent APPROVED review. Merge remains pending source-break consideration.",
       "count_weight": 0
     }
   ]
