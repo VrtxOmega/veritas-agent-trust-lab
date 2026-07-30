@@ -11,7 +11,8 @@ Visitors first make six blinded allow/block judgments across a fixed
 three-clean/three-tampered challenge. Only after all labels are sealed locally
 does the site reveal the deterministic result, reason code, and score. Labels
 stay in the browser unless the participant explicitly downloads them or submits
-a public GitHub issue.
+a public GitHub issue or manually sends the private pre-reveal email
+commitment.
 
 The explorable lab covers:
 
@@ -89,12 +90,19 @@ endorsement, or commercial demand. Independent pre-reveal label sets remain
 - Take the blind challenge without reading the source.
 - Download the local label record, or explicitly submit the generated public
   GitHub issue after reading its consent boundary.
+- Without a GitHub account, use the private pre-reveal email action generated
+  by the site. Sending is manual, discloses the sender's email address to the
+  recipient, and permits retention of the message and delivery headers.
 - Or use the dedicated
   [blind-label issue form](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=blind-label-set.yml).
 - Propose a seventh falsifiable case through the issue form.
 
 GitHub participation is public and attached to the participant's GitHub
-identity. The lab itself has no analytics or hidden label collection.
+identity. The email route is private; the address or label set will not be
+published without explicit participant consent. A timestamped GitHub issue or
+email proves only receipt of the submitted six-label commitment—not
+independence, expertise, honesty, or lack of source inspection. The lab itself
+has no analytics, hosted form, automatic send, or hidden label collection.
 
 ## External-validation campaign
 

@@ -2,8 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  BLIND_COMMITMENT_EMAIL,
   CHALLENGE_ID,
   createBlindCommitment,
+  createBlindEmailSubmissionUrl,
   createBlindSubmissionUrl,
   createChallengeReceipt,
 } from "../lib/challenge-receipt.js";
@@ -71,6 +73,44 @@ test("blind submission URL rejects invalid commitment identities", () => {
   assert.throws(
     () =>
       createBlindSubmissionUrl({
+        challenge_id: CHALLENGE_ID,
+        commitment_id: "vtlc:forged",
+        labels,
+      }),
+    /identity is invalid/,
+  );
+});
+
+test("private email URL commits all six labels without score data", async () => {
+  const commitment = await createBlindCommitment({ labels });
+  const submission = new URL(createBlindEmailSubmissionUrl(commitment));
+  const body = submission.searchParams.get("body") ?? "";
+
+  assert.equal(submission.protocol, "mailto:");
+  assert.equal(submission.pathname, BLIND_COMMITMENT_EMAIL);
+  assert.match(
+    submission.searchParams.get("subject") ?? "",
+    new RegExp(`^\\[BLIND COMMITMENT\\] ${CHALLENGE_ID} [a-f0-9]{12}$`),
+  );
+  assert.match(body, new RegExp(`Challenge version: ${CHALLENGE_ID}`));
+  assert.match(body, new RegExp(`Commitment ID: ${commitment.commitment_id}`));
+  assert.equal(
+    body.match(/^- [a-z-]+: (?:ALLOW|BLOCK)$/gm)?.length,
+    labels.length,
+  );
+  for (const { case_id, predicted } of labels) {
+    assert.match(body, new RegExp(`^- ${case_id}: ${predicted}$`, "m"));
+  }
+  assert.match(body, /Do not publish my email address or label set without my explicit consent/);
+  assert.match(body, /does not prove my independence, expertise, honesty/);
+  assert.doesNotMatch(body, /^Score:/m);
+  assert.doesNotMatch(body, /^Correct answer:/m);
+});
+
+test("private email URL rejects invalid commitment identities", () => {
+  assert.throws(
+    () =>
+      createBlindEmailSubmissionUrl({
         challenge_id: CHALLENGE_ID,
         commitment_id: "vtlc:forged",
         labels,
