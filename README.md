@@ -104,13 +104,38 @@ email proves only receipt of the submitted six-label commitment—not
 independence, expertise, honesty, or lack of source inspection. The lab itself
 has no analytics, hosted form, automatic send, or hidden label collection.
 
-## External-validation campaign
+## External-evidence campaign
 
-The campaign terminal condition is deliberately harder than a launch metric:
-**50 qualifying outside validation events or one verified payment**.
+Campaign Protocol v1.0 began July 29, 2026 with the original condition of
+**50 qualifying outside validation events or one verified payment**. Its six
+events, six validators, original scopes, and $0 payment state are frozen by
+per-event SHA-256 digests.
 
-Current machine-checked state: **6/50 qualifying events, 6 distinct validators,
-$0 verified payments**.
+[Campaign Protocol v2.0](protocol/campaign-protocol-v2.json) replaces that
+terminal rule prospectively. It requires a balanced portfolio instead of
+allowing easy signals or one payment to substitute for missing evidence:
+
+- at least 50 qualifying events from 25 independent validators and 10 unrelated
+  organizations or communities;
+- at least 15 pre-reveal blind label sets;
+- at least 10 technical reproductions, substantive reviews, or accepted
+  integrations;
+- at least five structured real-workflow adopter reports, including two
+  repeat-use reports;
+- at least five independently proposed or executed hostile cases;
+- at least three independent verifier runs, cross-evaluations, or compatible
+  implementations;
+- no more than two events per person, five per organization, 40% in one
+  category, or five catalogue/editorial events counting toward completion.
+
+The commercial milestone is separate: at least **$750 settled at the published
+pilot price** from an unrelated arms-length buyer, followed by delivery and
+buyer acknowledgement. Payment does not end the technical campaign.
+
+Current machine-checked Protocol v2 baseline: **6/50 qualifying events, 6
+independent validators, 6 unrelated organizations or communities, 0/15 blind
+label sets, 4/10 technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3
+independent verifier runs, and $0/$750 settled revenue**.
 
 The canonical
 [external-validation ledger](evidence/external-validation-ledger.json) records
@@ -124,12 +149,29 @@ npm run validate:external
 Counted categories include a verified blind-label set, technical reproduction,
 accepted external integration, substantive review, adopter report, editorial
 coverage, or scoped curator acceptance. Bots, CI, traffic, author activity,
-open PRs, sent outreach, thanks-only comments, self-tests, and duplicate signals
-never count.
+open PRs, sent outreach, thanks-only comments, self-tests, CLA or legal
+signatures, reciprocal or paid engagement, and duplicate signals never count.
 
 The six events comprise two scoped curator decisions, one independent technical
 reproduction, one accepted external integration, and two substantive
 maintainer reviews. Each record states its narrower claim and nonclaims.
+
+The machine-readable
+[Protocol v2 ledgers](evidence/campaign-ledgers-v2.json) keep qualifying events,
+commercial payments, nonqualifying signals, negative outcomes, declines, closed
+lanes, and the outreach denominator logically separate. The signed public
+Protocol v2 commit is the prospective collection boundary. The legacy verifier
+continues to protect the original six-event ledger; a separate follow-up change
+will add automated recomputation of the new diversity caps, evidence minima,
+outreach spacing, and commercial boundary.
+
+The preregistered collection window closes November 30, 2026. The effort budget
+allows at most 100 tailored initial contacts, 100 follow-ups sent no sooner than
+seven days, 40 new technical contribution lanes, and 30 tailored commercial
+proposals. If the time window closes or all four effort caps are exhausted
+without meeting the technical requirements, the recorded outcome must be
+`PAUSED_FOR_REDESIGN` or `CLOSED_INCONCLUSIVE`; thresholds may not be relaxed
+retroactively.
 
 ## Founding pilot
 

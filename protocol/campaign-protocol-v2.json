@@ -1,0 +1,236 @@
+{
+  "schema_version": "2.0.0",
+  "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
+  "title": "VERITAS Omega Agent Trust Lab Campaign Protocol v2.0",
+  "preregistered_at": "2026-07-30T05:02:47Z",
+  "effective_boundary": {
+    "rule": "This protocol becomes effective at the first signed public Git commit on VrtxOmega/veritas-agent-trust-lab main that contains this exact file.",
+    "collection_rule": "No event occurring before that public commit may be added as a Protocol v2 event. The six Protocol v1 events are preserved only through the frozen historical snapshot below.",
+    "amendment_rule": "Any later protocol change requires a new version, a new public commit, a prospective effective timestamp, and an explicit change log. Historical records and scopes may not be edited, merged, reinterpreted, or discarded."
+  },
+  "protocol_v1_snapshot": {
+    "campaign_id": "veritas-trust-lab-50-or-payment",
+    "started_at": "2026-07-29T09:33:26Z",
+    "original_terminal_condition": "50 qualifying outside validation events or one verified payment greater than zero USD",
+    "state_at_amendment": {
+      "qualifying_events": 6,
+      "distinct_validators": 6,
+      "verified_payment_usd": "0.00"
+    },
+    "source_repository": "VrtxOmega/veritas-agent-trust-lab",
+    "source_commit": "244ba081a80d8120f5ef9842147052493a74a0e3",
+    "source_path": "evidence/external-validation-ledger.json",
+    "canonical_events_sha256": "ae9e9a4eed71ef378dc3fa713711554207ce1d0087dbff67cce573bec201546e",
+    "event_sha256": {
+      "VTL-EXT-20260729-001": "3b15a4e915f451d1ae16acc8a0d4264545e73b5603ac3c2681d18adf4f7d1142",
+      "VTL-EXT-20260729-002": "20e16c9cdaf61ec2d48115a97dea446043e5f39841ee8d57a831632cec3971e2",
+      "VTL-EXT-20260729-003": "02a01758ccbe81f747da350a440c10e5bc8023552156eb953808f2b25b0db3cf",
+      "VTL-EXT-20260729-004": "de42fa3867ca3bb136dd7671f1901152225aa6c6f4be1bd227aab1ddbc7dce57",
+      "VTL-EXT-20260730-005": "ed792e204e93c46f78ab71c0b659fcc61d1b7511c15f848848420ef63bd90cea",
+      "VTL-EXT-20260730-006": "af34ee047773197df1fb6065d0f8676e9678db3cf6e8f9f968a74381c48347ff"
+    }
+  },
+  "purpose": "Build a preregistered, balanced, independently verifiable evidence portfolio showing that VERITAS is discoverable, technically credible, adversarially useful, usable in real agent workflows, and commercially valuable without allowing easy signals to substitute for missing evidence.",
+  "technical_completion_requirements": {
+    "qualifying_events_minimum": 50,
+    "distinct_independent_validators_minimum": 25,
+    "unrelated_organizations_or_communities_minimum": 10,
+    "individual_event_cap": 2,
+    "organization_event_cap": 5,
+    "single_category_share_cap_basis_points": 4000,
+    "catalog_and_editorial_event_cap": 5,
+    "pre_reveal_blind_label_sets_minimum": 15,
+    "technical_reproductions_reviews_or_integrations_minimum": 10,
+    "structured_adopter_reports_minimum": 5,
+    "repeat_use_adopter_reports_minimum": 2,
+    "independently_proposed_or_executed_hostile_cases_minimum": 5,
+    "independent_verifier_runs_cross_evaluations_or_compatible_implementations_minimum": 3
+  },
+  "commercial_milestone": {
+    "settled_revenue_usd_minimum": "750.00",
+    "published_pilot_price_usd": "750.00",
+    "arms_length_required": true,
+    "unrelated_buyer_required": true,
+    "delivery_required": true,
+    "buyer_acknowledgement_required": true,
+    "prohibited_sources": [
+      "self_purchase",
+      "friend_or_family_purchase",
+      "donation",
+      "refunded_payment",
+      "barter",
+      "nominal_payment",
+      "paid_endorsement",
+      "quid_pro_quo"
+    ],
+    "technical_campaign_continues_after_payment": true,
+    "boundary": "Payment is recorded in a separate commercial ledger and never substitutes for any technical completion requirement."
+  },
+  "qualifying_categories": [
+    "accepted_external_integration",
+    "catalog_curator_acceptance",
+    "editorial_coverage",
+    "external_adopter_report",
+    "independent_blind_label_set",
+    "independent_hostile_case",
+    "independent_technical_reproduction",
+    "independent_verifier_run",
+    "substantive_external_review"
+  ],
+  "category_groups": {
+    "catalog_and_editorial": [
+      "catalog_curator_acceptance",
+      "editorial_coverage"
+    ],
+    "technical": [
+      "accepted_external_integration",
+      "independent_technical_reproduction",
+      "substantive_external_review"
+    ],
+    "blind": [
+      "independent_blind_label_set"
+    ],
+    "adopter": [
+      "external_adopter_report"
+    ],
+    "hostile": [
+      "independent_hostile_case"
+    ],
+    "verifier": [
+      "independent_verifier_run"
+    ]
+  },
+  "historical_event_mappings": [
+    {
+      "event_id": "VTL-EXT-20260729-001",
+      "organization_id": "github-repo:systempromptio/awesome-ai-agent-governance"
+    },
+    {
+      "event_id": "VTL-EXT-20260729-002",
+      "organization_id": "github-repo:gmh5225/awesome-ai-security"
+    },
+    {
+      "event_id": "VTL-EXT-20260729-003",
+      "organization_id": "github-repo:pranee54/AgentDoctor"
+    },
+    {
+      "event_id": "VTL-EXT-20260729-004",
+      "organization_id": "github-repo:mick-gsk/drift"
+    },
+    {
+      "event_id": "VTL-EXT-20260730-005",
+      "organization_id": "github-org:trailofbits"
+    },
+    {
+      "event_id": "VTL-EXT-20260730-006",
+      "organization_id": "github-org:freedesktop-rs"
+    }
+  ],
+  "event_requirements": {
+    "common": [
+      "one attributable independent human actor",
+      "one unrelated organization or community identifier",
+      "one exact subject and qualifying category",
+      "public or independently verifiable immutable evidence",
+      "an exact validation claim, scope, and at least three nonclaims",
+      "one actor-category-subject deduplication key",
+      "conflict disclosures",
+      "no inference of expertise, independence, honesty, endorsement, or source blindness beyond the evidence"
+    ],
+    "blind_label_set": [
+      "fixed challenge version",
+      "exactly six pre-reveal labels",
+      "valid score-free commitment identifier",
+      "account identity or privately verifiable email identity",
+      "submission timestamp before reveal",
+      "no answer-key or source-blindness inference from the submission alone"
+    ],
+    "hostile_case": [
+      "outside author",
+      "synthetic or public scenario",
+      "expected safe outcome",
+      "rationale",
+      "conflict disclosures",
+      "candidate-corpus status before any separately reviewed canonical-challenge amendment"
+    ],
+    "adopter_report": [
+      "workflow",
+      "proposed operation",
+      "evidence available",
+      "VERITAS decision",
+      "human decision",
+      "actual outcome",
+      "false-positive or false-negative assessment",
+      "what was useful",
+      "what failed",
+      "whether the adopter would use it again"
+    ],
+    "verifier_run": [
+      "independent implementation or execution environment",
+      "input identity",
+      "expected output",
+      "observed output",
+      "version and dependency identity",
+      "reproduction instructions",
+      "discrepancies and nonclaims"
+    ]
+  },
+  "never_count": [
+    "author_activity",
+    "bot_or_ci",
+    "catalog_or_editorial_events_above_cap",
+    "cla_or_legal_signature",
+    "duplicate_signal",
+    "individual_events_above_cap",
+    "open_issue_or_pull_request",
+    "organization_events_above_cap",
+    "outreach_sent",
+    "paid_engagement_or_reciprocal_validation",
+    "self_test",
+    "thanks_only",
+    "traffic"
+  ],
+  "separate_ledgers_required": [
+    "qualifying_events",
+    "commercial_payments",
+    "nonqualifying_signals",
+    "negative_outcomes",
+    "declines",
+    "closed_lanes",
+    "outreach_denominator"
+  ],
+  "outreach_policy": {
+    "tailored_initial_contact_maximum_per_person_or_organization": 1,
+    "follow_up_maximum_per_person_or_organization": 1,
+    "minimum_days_before_follow_up": 7,
+    "mass_random_solicitation_prohibited": true,
+    "same_day_reminders_prohibited": true,
+    "preferred_audiences": [
+      "agent_builders",
+      "security_practitioners",
+      "open_source_maintainers",
+      "evaluation_researchers"
+    ]
+  },
+  "preregistered_effort_and_time_budget": {
+    "collection_opens_at": "effective public commit timestamp",
+    "collection_closes_at": "2026-11-30T23:59:59Z",
+    "tailored_initial_contacts_maximum": 100,
+    "follow_ups_maximum": 100,
+    "new_external_technical_contribution_lanes_maximum": 40,
+    "tailored_commercial_proposals_maximum": 30,
+    "mandatory_stop_rule": "If the collection window closes, or all four effort caps are exhausted, while any technical completion requirement remains unmet, record PAUSED_FOR_REDESIGN or CLOSED_INCONCLUSIVE. Do not retroactively relax a threshold or reclassify prior evidence."
+  },
+  "campaign_states": [
+    "ACTIVE",
+    "ACHIEVED_TECHNICAL",
+    "PAUSED_FOR_REDESIGN",
+    "CLOSED_INCONCLUSIVE"
+  ],
+  "commercial_states": [
+    "UNMET",
+    "PAYMENT_SETTLED_AWAITING_DELIVERY",
+    "DELIVERED_AWAITING_BUYER_ACKNOWLEDGEMENT",
+    "ACHIEVED_COMMERCIAL"
+  ]
+}
