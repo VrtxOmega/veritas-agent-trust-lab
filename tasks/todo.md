@@ -202,3 +202,64 @@ one line in `WATCHLIST.md`, commit
 public URL checks passed. PCF classified the final maintainer-facing packet
 `ready-for-maintainer` at 100/100. This is a verified submission, not an
 independent acceptance.
+
+## Maintainer-review evidence update
+
+### Goal
+
+Record the fifth and sixth qualifying campaign events without promoting open
+pull requests, author activity, automated checks, or legal-signature status
+into external validation.
+
+### Scope
+
+- Canonical external-validation ledger and open-lane register.
+- Public README campaign state.
+- Trust Lab external-evidence section.
+
+### Non-Goals
+
+- Do not count the Dylint CLA, CI, author repair, or open pull request.
+- Do not count the nmrs assignment or open pull request separately.
+- Do not claim either reviewed pull request merged or shipped.
+- Do not claim VERITAS efficacy, adoption, endorsement, certification, or
+  payment.
+
+### Steps
+
+- [x] Verify the Dylint collaborator comment, actor association, immutable
+  comment identity, and timestamp.
+- [x] Verify the nmrs `APPROVED` review, member association, immutable review
+  identity, reviewed commit, and timestamp.
+- [x] Add one deduplicated `substantive_external_review` event for each actor.
+- [x] Add all current uncounted technical-contribution lanes at weight zero.
+- [x] Refresh the public evidence explanation and exact campaign count.
+- [x] Validate schema, summary arithmetic, site tests, lint, and production
+  builds.
+- [x] Run PCF and VERITAS gates against the exact public diff.
+- [ ] Publish through a clean pull request and verify live main/site readback.
+
+### Verification
+
+```bash
+npm run validate:external
+npm test
+npm run lint
+npm run build
+npm run build:pages
+git diff --check
+```
+
+The result is ready only when the machine ledger reports `6/50`, all public
+copy preserves the event-specific nonclaims, and the deployed site reads back
+the same count.
+
+Local verification passed with 43/43 Node tests, lint, the Pages build, and
+`git diff --check`. PCF classified the exact seven-file update
+`ready-for-maintainer` at 100/100 with no blockers. The full typed VERITAS
+pipeline satisfied all six numeric boundaries and passed intake, type,
+dependency, math, cost, incentive, security, and trace sealing; its aggregate
+meta-claim remains `INCONCLUSIVE` because the locally recomputed totals and
+test/PCF receipts do not have two independent sources. The adversary gate also
+reported `MODEL_BOUND` fragility when required evidence was removed. That
+result is retained rather than upgraded into independent assurance.

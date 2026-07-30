@@ -592,13 +592,16 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>Four independently attributable outside actions now qualify.</h2>
+              <h2>Six independently attributable outside actions now qualify.</h2>
               <p>
                 Two maintainers merged scoped Trust Lab catalogue entries. A
                 third repository owner independently reproduced a concrete
                 security defect in a campaign-produced Action contribution and
                 issued a blocking technical review. A fourth external
-                repository owner merged a campaign-produced regression fix.
+                repository owner merged a campaign-produced regression fix. A
+                Trail of Bits collaborator then required a concrete
+                documentation correction, and a freedesktop-rs member approved
+                a separate contribution while considering its source break.
               </p>
             </div>
           </header>
@@ -627,7 +630,7 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Two curator decisions, one technical reproduction, and one integration are public.</h3>
+              <h3>Two curator decisions, one reproduction, one integration, and two reviews are public.</h3>
               <p>
                 GitHub records separate external merge actors for
                 systempromptio pull request #27 and gmh5225 pull request #18.
@@ -636,7 +639,10 @@ export function TrustLab() {
                 outside-workspace write through an output-file symlink and
                 requested a focused remediation matrix. The Drift owner
                 separately merged the staleness sampling regression fix in
-                pull request #792.
+                pull request #792. The Dylint collaborator separately required
+                synchronized rustdoc and generated README corrections. The
+                nmrs member separately approved pull request #521 while
+                retaining the merge decision for source-compatibility review.
               </p>
             </article>
             <article>
@@ -681,15 +687,27 @@ export function TrustLab() {
               <span>External repository owner accepted the focused staleness sampling regression fix.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/trailofbits/dylint/pull/2016#issuecomment-5125035264" target="_blank" rel="noreferrer">
+              <b>Trail of Bits maintainer review</b>
+              <span>External collaborator identified inaccurate rustdoc and required its generated README to be updated.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/freedesktop-rs/nmrs/pull/521#pullrequestreview-4814368955" target="_blank" rel="noreferrer">
+              <b>freedesktop-rs approval</b>
+              <span>External project member approved the fix and retained the merge decision for source-break consideration.</span>
+              <i>↗</i>
+            </a>
           </div>
           <p className="boundary">
             <strong>SCOPE</strong> Qualifying external validations:{" "}
             {campaignSummary.qualifying_events}, from{" "}
             {campaignSummary.distinct_validators} distinct validators: two
             scoped curator-fit decisions and one independent technical
-            reproduction, plus one accepted external integration. These do not
-            establish VERITAS efficacy, endorsement, product adoption, or
-            payment. Independent blind label sets: 0. Verified payments: ${campaignSummary.verified_payment_usd}.
+            reproduction, one accepted external integration, and two
+            substantive maintainer reviews. These do not establish VERITAS
+            efficacy, endorsement, product adoption, merge of the reviewed
+            pull requests, or payment. Independent blind label sets: 0.
+            Verified payments: ${campaignSummary.verified_payment_usd}.
           </p>
         </div>
       </section>
