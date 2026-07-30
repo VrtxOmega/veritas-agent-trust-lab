@@ -648,7 +648,7 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Two curator decisions, one reproduction, one integration, and two reviews are public.</h3>
+              <h3>Two curator decisions, one reproduction, two integrations, and one review are public.</h3>
               <p>
                 GitHub records separate external merge actors for
                 systempromptio pull request #27 and gmh5225 pull request #18.
@@ -658,9 +658,11 @@ export function TrustLab() {
                 requested a focused remediation matrix. The Drift owner
                 separately merged the staleness sampling regression fix in
                 pull request #792. The Dylint collaborator separately required
-                synchronized rustdoc and generated README corrections. The
-                nmrs member separately approved pull request #521 while
-                retaining the merge decision for source-compatibility review.
+                synchronized rustdoc and generated README corrections, then
+                merged the corrected pull request. The review and merge remain
+                one event. The nmrs member separately approved pull request
+                #521 while retaining the merge decision for
+                source-compatibility review.
               </p>
             </article>
             <article>
@@ -705,9 +707,9 @@ export function TrustLab() {
               <span>External repository owner accepted the focused staleness sampling regression fix.</span>
               <i>↗</i>
             </a>
-            <a href="https://github.com/trailofbits/dylint/pull/2016#issuecomment-5125035264" target="_blank" rel="noreferrer">
-              <b>Trail of Bits maintainer review</b>
-              <span>External collaborator identified inaccurate rustdoc and required its generated README to be updated.</span>
+            <a href="https://github.com/trailofbits/dylint/pull/2016" target="_blank" rel="noreferrer">
+              <b>Trail of Bits merged integration</b>
+              <span>External collaborator reviewed, corrected, and merged the focused lint fix; this remains one counted event.</span>
               <i>↗</i>
             </a>
             <a href="https://github.com/freedesktop-rs/nmrs/pull/521#pullrequestreview-4814368955" target="_blank" rel="noreferrer">
@@ -721,10 +723,11 @@ export function TrustLab() {
             {campaignSummary.qualifying_events}, from{" "}
             {campaignSummary.distinct_validators} distinct validators: two
             scoped curator-fit decisions and one independent technical
-            reproduction, one accepted external integration, and two
-            substantive maintainer reviews. These do not establish VERITAS
-            efficacy, endorsement, product adoption, merge of the reviewed
-            pull requests, or payment. Independent blind label sets: 0.
+            reproduction, two accepted external integrations, and one
+            substantive maintainer review. These do not establish VERITAS
+            efficacy, endorsement, product adoption, release inclusion, merge
+            of the remaining reviewed pull request, or payment. Independent
+            blind label sets: 0.
             Verified payments: ${campaignSummary.verified_payment_usd}.
           </p>
         </div>

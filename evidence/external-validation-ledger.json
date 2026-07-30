@@ -189,7 +189,7 @@
     {
       "id": "VTL-EXT-20260730-005",
       "status": "qualifying",
-      "category": "substantive_external_review",
+      "category": "accepted_external_integration",
       "subject_id": "trailofbits/dylint#2016",
       "actor": {
         "id": "github:smoelius",
@@ -198,15 +198,16 @@
         "type": "github_account",
         "relationship": "independent",
         "is_bot": false,
-        "independence_basis": "The actor is a collaborator in the external Dylint repository and posted the review from an account outside VrtxOmega."
+        "independence_basis": "The actor is a collaborator in the external Dylint repository and merged the pull request from an account outside VrtxOmega."
       },
-      "action": "identified_inaccurate_rustdoc_and_required_generated_readme_update",
-      "validation_claim": "An external Dylint collaborator materially reviewed the campaign-produced lint contribution, identified inaccurate user-facing documentation, and required the checked-in generated README to be updated with it.",
-      "scope": "This validates one substantive maintainer review and its concrete correction criteria at the recorded issue comment.",
+      "action": "reviewed_corrected_and_merged_misleading_variable_name_fix",
+      "validation_claim": "An external Dylint collaborator materially reviewed the campaign-produced lint contribution, required synchronized rustdoc and generated README corrections, and then merged the corrected pull request.",
+      "scope": "This validates one accepted external integration after substantive maintainer review on the recorded Dylint pull request. The review and merge are one event because the same actor acted on the same subject.",
       "does_not_establish": [
-        "acceptance of the corrected pull request",
-        "pull-request merge",
+        "release inclusion",
+        "deployed availability",
         "technical correctness of the contribution",
+        "project-wide correctness",
         "product adoption",
         "technical correctness of VERITAS",
         "security assurance",
@@ -214,16 +215,16 @@
         "certification",
         "payment"
       ],
-      "source_url": "https://github.com/trailofbits/dylint/pull/2016#issuecomment-5125035264",
-      "occurred_at": "2026-07-30T00:54:04Z",
+      "source_url": "https://github.com/trailofbits/dylint/pull/2016",
+      "occurred_at": "2026-07-30T04:24:18Z",
       "verification": {
         "status": "verified",
-        "method": "GitHub issue-comment API and live pull-request association readback",
-        "verified_at": "2026-07-30T01:23:41Z",
-        "immutable_ref_type": "issue_comment_id",
-        "immutable_ref": "IC_kwDOFNYEks8AAAABMXnVAA"
+        "method": "GitHub pull-request API, merge-actor readback, and immutable merge-commit verification",
+        "verified_at": "2026-07-30T04:31:56Z",
+        "immutable_ref_type": "git_commit",
+        "immutable_ref": "41e2a17009a5cb329e9ab3e314a33fffeba5d67c"
       },
-      "dedupe_key": "github:smoelius|substantive_external_review|trailofbits/dylint#2016",
+      "dedupe_key": "github:smoelius|accepted_external_integration|trailofbits/dylint#2016",
       "count_weight": 1
     },
     {
@@ -363,14 +364,6 @@
       "state": "pending",
       "source_url": "https://github.com/IBM/mcp-context-forge/pull/5992",
       "reason_not_counted": "The pull request is open and has no qualifying human decision.",
-      "count_weight": 0
-    },
-    {
-      "id": "trailofbits/dylint#2016",
-      "signal_type": "open_pr",
-      "state": "pending",
-      "source_url": "https://github.com/trailofbits/dylint/pull/2016",
-      "reason_not_counted": "The open pull request, signed CLA, passing checks, and author repair are not counted; event 005 counts only the collaborator's substantive review.",
       "count_weight": 0
     },
     {

@@ -1,6 +1,6 @@
 # Distribution Evidence
 
-Observed state: 2026-07-29 20:23 (America/Chicago)
+Observed state: 2026-07-29 23:31 (America/Chicago)
 
 This register separates publication, automated workflow output, independent
 human action, and payment. A public link or an author-opened issue is not
@@ -27,7 +27,7 @@ independent validation.
 | [gmh5225/awesome-ai-security#18](https://github.com/gmh5225/awesome-ai-security/pull/18) | Merged on 2026-07-29 by independent repository owner `gmh5225`. | A second external curator accepted the scoped Trust Lab catalogue entry. | No challenge use, product efficacy, adoption, endorsement, certification, or payment. |
 | [pranee54/AgentDoctor#18](https://github.com/pranee54/AgentDoctor/pull/18#pullrequestreview-4811661364) | Repository owner independently reproduced an output-file symlink escape and issued a blocking review. | One concrete outside technical reproduction and actionable review. | No acceptance of the proposed repair, merge, product adoption, overall security assurance, endorsement, or payment. |
 | [mick-gsk/drift#792](https://github.com/mick-gsk/drift/pull/792) | Merged on 2026-07-29 by the external repository owner. | One campaign-produced technical contribution was accepted and integrated. | No independent adoption or technical validation of VERITAS, endorsement, certification, or payment. |
-| [trailofbits/dylint#2016](https://github.com/trailofbits/dylint/pull/2016#issuecomment-5125035264) | External collaborator identified inaccurate rustdoc and required the generated README to be corrected with it. | One substantive maintainer review with concrete correction criteria. | No corrected-PR acceptance, merge, release inclusion, technical correctness, endorsement, or payment. |
+| [trailofbits/dylint#2016](https://github.com/trailofbits/dylint/pull/2016) | Merged on 2026-07-29 by external collaborator `smoelius` as commit `41e2a17009a5cb329e9ab3e314a33fffeba5d67c` after requiring synchronized rustdoc and generated README corrections. | One campaign-produced technical contribution was materially reviewed, corrected, and accepted as one external integration. The review and merge are not counted twice. | No release inclusion, deployed availability, technical correctness, project-wide correctness, adoption, endorsement, certification, or payment. |
 | [freedesktop-rs/nmrs#521](https://github.com/freedesktop-rs/nmrs/pull/521#pullrequestreview-4814368955) | External project member submitted an `APPROVED` review and retained the merge decision to consider the source break. | One independent maintainer approval of the recorded commit and one explicit architectural concern governing merge timing. | No merge, release inclusion, product adoption, technical correctness, endorsement, certification, or payment. |
 
 ## Independent-use lane
@@ -52,8 +52,8 @@ Verified payments: **$0**
 **PARTIAL — SIX SCOPED EXTERNAL ACTIONS**
 
 Six independent human actions now qualify under the canonical ledger: two
-curator acceptances, one technical reproduction, one accepted integration, and
-two substantive maintainer reviews. Each action changes only its recorded
+curator acceptances, one technical reproduction, two accepted integrations,
+and one substantive maintainer review. Each action changes only its recorded
 narrow claim from `INCONCLUSIVE` to `PARTIAL` or accepted. VERITAS technical
 efficacy, independent calibration use, product adoption, certification,
 endorsement, commercial demand, and payment remain `INCONCLUSIVE`. Automated
