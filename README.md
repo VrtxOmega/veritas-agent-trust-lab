@@ -74,8 +74,8 @@ Six independently attributable outside actions currently qualify:
 - the AgentDoctor owner independently reproduced a concrete output-file
   symlink escape and issued a blocking review;
 - the Drift owner merged a campaign-produced staleness-sampling fix;
-- a Trail of Bits Dylint collaborator identified inaccurate rustdoc and
-  required the generated README to be corrected with it;
+- a Trail of Bits Dylint collaborator identified inaccurate rustdoc, required
+  the generated README to be corrected with it, and merged the corrected fix;
 - a freedesktop-rs member approved the campaign-produced nmrs fix while holding
   its merge to consider the intentional source-breaking API change.
 

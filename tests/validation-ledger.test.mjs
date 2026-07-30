@@ -76,8 +76,26 @@ test("recomputes the canonical public campaign ledger", async () => {
     verified_payment_usd: "0.00",
     remaining_to_validation_target: 44,
     terminal_state: "ACTIVE",
-    open_lanes: 15,
+    open_lanes: 14,
   });
+});
+
+test("counts the Dylint review and merge as one strengthened event", async () => {
+  const ledger = await loadLedger();
+  const dylintEvents = ledger.events.filter(
+    (entry) => entry.subject_id === "trailofbits/dylint#2016",
+  );
+
+  assert.equal(dylintEvents.length, 1);
+  assert.equal(dylintEvents[0].category, "accepted_external_integration");
+  assert.equal(
+    dylintEvents[0].verification.immutable_ref,
+    "41e2a17009a5cb329e9ab3e314a33fffeba5d67c",
+  );
+  assert.equal(
+    ledger.open_lanes.some((lane) => lane.id === "trailofbits/dylint#2016"),
+    false,
+  );
 });
 
 for (const [name, mutate, pattern] of [

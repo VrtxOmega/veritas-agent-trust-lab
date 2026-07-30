@@ -36,7 +36,9 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /Qualifying external validations:\s+6/s);
   assert.match(visibleHtml, /Independent technical reproduction/);
   assert.match(visibleHtml, /Merged external integration/);
-  assert.match(visibleHtml, /Trail of Bits maintainer review/);
+  assert.match(visibleHtml, /Trail of Bits merged integration/);
+  assert.match(visibleHtml, /14 open lanes/);
+  assert.match(visibleHtml, /review and merge remain one event/i);
   assert.match(visibleHtml, /freedesktop-rs approval/);
   assert.match(visibleHtml, /Agent Action Assurance/);
   assert.match(visibleHtml, /Inspect sample dossier/);
