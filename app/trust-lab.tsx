@@ -11,6 +11,7 @@ import {
 import {
   CHALLENGE_ID,
   createBlindCommitment,
+  createBlindEmailSubmissionUrl,
   createBlindSubmissionUrl,
   createChallengeReceipt,
 } from "@/lib/challenge-receipt.js";
@@ -196,7 +197,7 @@ export function TrustLab() {
       total: score.total,
       revealed,
       consent_boundary:
-        "Generated locally. Nothing is uploaded unless the participant explicitly opens and submits the public GitHub issue.",
+        "Generated locally. Nothing is uploaded unless the participant explicitly submits the public GitHub issue or manually sends the private email commitment.",
       personal_data_collected_by_lab: false,
     }),
     [challengeReceipt, revealed, score],
@@ -205,6 +206,11 @@ export function TrustLab() {
   const preRevealContributionUrl = useMemo(() => {
     if (!blindCommitment) return "";
     return createBlindSubmissionUrl(blindCommitment);
+  }, [blindCommitment]);
+
+  const preRevealEmailUrl = useMemo(() => {
+    if (!blindCommitment) return "";
+    return createBlindEmailSubmissionUrl(blindCommitment);
   }, [blindCommitment]);
 
   function resetChallenge() {
@@ -278,7 +284,8 @@ export function TrustLab() {
             <a className="primary-link" href="#challenge">Take the blind challenge ↓</a>
             <p className="hero-footnote">
               No model call. No signup. No production action. Your labels stay
-              on your device unless you explicitly contribute them on GitHub.
+              on your device unless you explicitly submit them on GitHub or
+              manually send the private email commitment.
             </p>
           </div>
         </div>
@@ -354,10 +361,12 @@ export function TrustLab() {
                 <div className="pre-reveal-copy">
                   <span>{Object.keys(predictions).length}/6 decisions sealed locally</span>
                   <p>
-                    To create a verifiable outside attempt, submit the public
-                    GitHub commitment before revealing. The issue timestamp
-                    records participation; it does not prove independence or
-                    that no source was inspected.
+                    To timestamp an outside attempt, submit either commitment
+                    before revealing. GitHub is public. Email is private,
+                    manually sent, and discloses your email address to the
+                    recipient. Either timestamp proves only receipt of the six
+                    labels—not independence, expertise, honesty, or source
+                    blindness.
                   </p>
                 </div>
                 <div className="pre-reveal-actions">
@@ -369,6 +378,14 @@ export function TrustLab() {
                       rel="noreferrer"
                     >
                       Commit labels publicly before reveal ↗
+                    </a>
+                  )}
+                  {blindCommitment && (
+                    <a
+                      className="secondary-link"
+                      href={preRevealEmailUrl}
+                    >
+                      Prepare private email commitment ↗
                     </a>
                   )}
                   <button
@@ -414,8 +431,9 @@ export function TrustLab() {
                 </div>
                 <p>
                   This post-reveal record remains a self-report at weight zero.
-                  A qualifying public attempt must be submitted through the
-                  commitment action before the answer key is revealed.
+                  A potentially qualifying attempt must be submitted through a
+                  pre-reveal commitment action and is counted only after its
+                  identity, independence evidence, and exact scope are verified.
                 </p>
               </div>
             )}

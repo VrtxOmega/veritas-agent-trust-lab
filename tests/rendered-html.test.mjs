@@ -24,6 +24,7 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /VERITAS Omega Agent Trust Lab/);
   assert.match(visibleHtml, /A verdict is/);
   assert.match(visibleHtml, /Take the blind challenge/);
+  assert.match(visibleHtml, /manually send the private email commitment/);
   assert.match(visibleHtml, /Reveal privately \(weight 0\)/);
   assert.match(visibleHtml, /When the evaluation boundary became the attack surface/);
   assert.match(visibleHtml, /No direct Internet access was not no path to the Internet/);
@@ -85,8 +86,15 @@ test("public source preserves commercial and assurance boundaries", async () => 
   assert.match(page, /does not count as independent validation/i);
   assert.match(
     page,
-    /Your labels stay\s+on your device unless you explicitly contribute them on GitHub/i,
+    /Your labels stay\s+on your device unless you explicitly submit them on GitHub or\s+manually send the private email commitment/i,
   );
+  assert.match(page, /Email is private,\s+manually sent/i);
+  assert.match(page, /discloses your email address to the\s+recipient/i);
+  assert.match(page, /identity, independence evidence, and exact scope are verified/i);
+  assert.match(challengeLibrary, /createBlindEmailSubmissionUrl/);
+  assert.match(challengeLibrary, /Do not publish my email address or label set without my explicit consent/);
+  assert.doesNotMatch(challengeLibrary, /^Score:/m);
+  assert.doesNotMatch(challengeLibrary, /^Correct answer:/m);
   assert.match(page, /\$750 fixed/);
   assert.match(page, /founding-pilot-sample\.md/);
   assert.match(page, /founding-pilot-sample\.json/);
