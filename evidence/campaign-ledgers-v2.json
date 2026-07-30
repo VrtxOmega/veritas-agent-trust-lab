@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-07-30T09:44:00Z",
+  "as_of": "2026-07-30T10:08:48Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -445,6 +445,27 @@
         },
         "count_weight": 0,
         "nonclaim": "Outreach is not participation, validation, hostile-case evidence, adoption, endorsement, or payment."
+      },
+      {
+        "organization_id": "tesslate-opensail",
+        "channel": "email",
+        "audience": "consequential_agent_workflow_operator",
+        "purpose": "structured_adopter_report_or_external_hostile_case",
+        "source_relevance": "OpenSail runs agents across Git, deployments, external messages, credentials, connectors, and MCP tools with execution contracts, approval boundaries, budgets, sandboxed workspaces, and audit trails.",
+        "public_basis_url": "https://github.com/TesslateAI/OpenSail",
+        "public_contact_basis_url": "https://github.com/TesslateAI",
+        "initial_contact_at": "2026-07-30T10:08:48Z",
+        "tailored": true,
+        "status": "sent_no_substantive_response",
+        "follow_up_eligible_at": "2026-08-06T10:08:48Z",
+        "follow_up_at": null,
+        "private_evidence": {
+          "provider": "gmail",
+          "message_id": "19fb27f81863d192",
+          "sent_readback_verified": true
+        },
+        "count_weight": 0,
+        "nonclaim": "Outreach is not participation, a completed adopter report, hostile-case evidence, adoption, endorsement, or payment."
       }
     ]
   },
@@ -467,7 +488,7 @@
     "catalog_and_editorial_events": 2,
     "maximum_single_category_share_basis_points": 3334,
     "settled_revenue_usd": "0.00",
-    "outreach_initial_contacts": 30,
+    "outreach_initial_contacts": 31,
     "outreach_follow_ups": 0,
     "negative_outcomes": 0,
     "declines": 0,
