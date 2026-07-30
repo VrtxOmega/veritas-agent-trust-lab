@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-07-30T06:07:53Z",
+  "as_of": "2026-07-30T06:40:47Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -22,7 +22,35 @@
   },
   "negative_outcome_ledger": [],
   "decline_ledger": [],
-  "closed_lane_ledger": [],
+  "closed_lane_ledger": [
+    {
+      "subject_id": "pranee54/AgentDoctor#18",
+      "organization_id": "github-repo:pranee54/AgentDoctor",
+      "actor_id": "github:pranee54",
+      "outcome": "independently_re_reviewed_approved_and_merged",
+      "closed_at": "2026-07-30T06:06:00Z",
+      "source_url": "https://github.com/pranee54/AgentDoctor/pull/18",
+      "verification": {
+        "method": "GitHub pull-request review and merge API readback",
+        "approved_commit": "e055eb720b4af7cd260ebb76b0d2146f4d765326",
+        "approval_review_id": "PRR_kwDOTmlLDc8AAAABHwtMow",
+        "merge_commit": "88367637cc452a882625f69b953f21da414082b7",
+        "merged_by": "pranee54",
+        "verified_at": "2026-07-30T06:40:47Z"
+      },
+      "related_qualifying_event_id": "VTL-EXT-20260729-003",
+      "count_weight": 0,
+      "reason_not_counted_as_new_event": "Historical event 003 already counts this independent actor and contribution lifecycle. The later approval and merge strengthen that event's technical context but are conservatively recorded as lane closure rather than a second event.",
+      "does_not_establish": [
+        "release inclusion",
+        "deployed use of the GitHub Action",
+        "external adoption of VERITAS",
+        "technical correctness of VERITAS",
+        "endorsement of VERITAS",
+        "payment"
+      ]
+    }
+  ],
   "outreach_denominator_ledger": {
     "historical_protocol_v1_records": [
     {
@@ -286,7 +314,7 @@
     "outreach_follow_ups": 0,
     "negative_outcomes": 0,
     "declines": 0,
-    "closed_lanes": 0,
+    "closed_lanes": 1,
     "remaining": {
       "qualifying_events": 44,
       "distinct_independent_validators": 19,
