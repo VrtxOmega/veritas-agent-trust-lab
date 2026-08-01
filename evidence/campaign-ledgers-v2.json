@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-08-01T22:12:26Z",
+  "as_of": "2026-08-01T23:37:49Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -164,6 +164,25 @@
             "total": 11,
             "accept": 2,
             "reject": 9
+          },
+          "upstream_resolution": {
+            "status": "merged_same_actor_same_subject_follow_up",
+            "source_comment_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5153753219",
+            "source_comment_id": "5153753219",
+            "source_comment_node_id": "IC_kwDOQWUPMs8AAAABMzAIgw",
+            "source_comment_at": "2026-08-01T22:30:37Z",
+            "correction_pr_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/pull/307",
+            "correction_merge_commit": "70a38a86dcfa65b66f04c5655c3c8244fec838fe",
+            "correction_merged_at": "2026-08-01T22:30:12Z",
+            "correction_merged_by": "msaleme",
+            "corrected_fixture_sha256": "4164151383605d9d68230d81cc9ae1dd31eb5cfb3fb1348289abf71ee64773ea",
+            "unchanged_corpus_sections": [
+              "fixtures",
+              "counts",
+              "public_keys"
+            ],
+            "resolution_scope": "The external repository owner merged the promised metadata correction without changing any verdict, receipt, signature, fixture, count, or public key. The original pinned hash remains valid at the immutable reviewed commit.",
+            "verified_at": "2026-08-01T23:37:49Z"
           }
         },
         "conflict_disclosures": {
@@ -235,6 +254,39 @@
           "substantive technical review",
           "endorsement or partnership",
           "payment or settled revenue"
+        ]
+      },
+      {
+        "id": "VTL-NQ-20260801-002",
+        "organization_id": "github-repo:msaleme/red-team-blue-team-agent-fabric",
+        "actor_id": "github:msaleme",
+        "signal_type": "same_actor_same_subject_upstream_resolution",
+        "subject_id": "msaleme/red-team-blue-team-agent-fabric#304",
+        "occurred_at": "2026-08-01T22:30:37Z",
+        "response_scope": "The repository owner reported that the encoding-label and future-timestamp coverage corrections prompted by issue #304 were merged through PR #307 at commit 70a38a86dcfa65b66f04c5655c3c8244fec838fe. The fixture self-description changed from hash 0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb to 4164151383605d9d68230d81cc9ae1dd31eb5cfb3fb1348289abf71ee64773ea, while fixtures, counts, and public keys remained unchanged.",
+        "verification": {
+          "method": "GitHub issue-comment, pull-request, merge-commit, changed-file, merge-actor, and commit API readback",
+          "source_comment_id": "5153753219",
+          "source_comment_node_id": "IC_kwDOQWUPMs8AAAABMzAIgw",
+          "correction_pr": "msaleme/red-team-blue-team-agent-fabric#307",
+          "correction_merge_commit": "70a38a86dcfa65b66f04c5655c3c8244fec838fe",
+          "correction_merged_at": "2026-08-01T22:30:12Z",
+          "correction_merged_by": "msaleme",
+          "verified_at": "2026-08-01T23:37:49Z"
+        },
+        "related_qualifying_event_id": "VTL-V2-20260801-003",
+        "count_weight": 0,
+        "reason_not_counted": "The same external actor resolved the same technical subject already counted once as VTL-V2-20260801-003. The merged correction strengthens that event's provenance and practical impact but is not a second independent validator, organization, category, subject, or verifier run.",
+        "does_not_establish": [
+          "an independent verifier run",
+          "a second independent validation event",
+          "full RFC 8785 conformance",
+          "behavior outside the pinned 11-case fixture corpus",
+          "technical correctness or efficacy of VERITAS",
+          "adoption",
+          "endorsement",
+          "certification",
+          "payment"
         ]
       }
     ]
