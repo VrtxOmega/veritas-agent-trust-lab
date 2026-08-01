@@ -1,6 +1,6 @@
 # Distribution Evidence
 
-Observed state: 2026-07-30 07:38 (America/Chicago)
+Observed state: 2026-07-31 23:05 (America/Chicago)
 
 This register separates publication, automated workflow output, independent
 human action, and payment. A public link or an author-opened issue is not
@@ -29,6 +29,7 @@ independent validation.
 | [mick-gsk/drift#792](https://github.com/mick-gsk/drift/pull/792) | Merged on 2026-07-29 by the external repository owner. | One campaign-produced technical contribution was accepted and integrated. | No independent adoption or technical validation of VERITAS, endorsement, certification, or payment. |
 | [trailofbits/dylint#2016](https://github.com/trailofbits/dylint/pull/2016) | Merged on 2026-07-29 by external collaborator `smoelius` as commit `41e2a17009a5cb329e9ab3e314a33fffeba5d67c` after requiring synchronized rustdoc and generated README corrections. | One campaign-produced technical contribution was materially reviewed, corrected, and accepted as one external integration. The review and merge are not counted twice. | No release inclusion, deployed availability, technical correctness, project-wide correctness, adoption, endorsement, certification, or payment. |
 | [freedesktop-rs/nmrs#521](https://github.com/freedesktop-rs/nmrs/pull/521#pullrequestreview-4814368955) | External project member submitted an `APPROVED` review and retained the merge decision to consider the source break. | One independent maintainer approval of the recorded commit and one explicit architectural concern governing merge timing. | No merge, release inclusion, product adoption, technical correctness, endorsement, certification, or payment. |
+| [rask-lang/rask#469](https://github.com/rask-lang/rask/pull/469#issuecomment-5133606097) | External repository actor `dritory` closed the pull request without merge, then stated that the fix addressed the symptom rather than the mangling collision. | One independently attributable substantive technical review identifying the missed root cause; the unfavorable lifecycle is separately recorded as one negative outcome and one closed lane. | No correctness of the rejected patch, acceptance, merge, release inclusion, adoption, endorsement, certification, or payment. |
 
 ## Independent-use lane
 
@@ -49,13 +50,15 @@ Verified payments: **$0**
 
 ## Current determination
 
-**PARTIAL — SIX SCOPED EXTERNAL ACTIONS**
+**PARTIAL — SEVEN SCOPED EXTERNAL ACTIONS**
 
-Six independent human actions now qualify under the canonical ledger: two
+Seven independent human actions now qualify under the canonical ledger: two
 curator acceptances, one technical reproduction, two accepted integrations,
-and one substantive maintainer review. Each action changes only its recorded
-narrow claim from `INCONCLUSIVE` to `PARTIAL` or accepted. VERITAS technical
-efficacy, independent calibration use, product adoption, certification,
-endorsement, commercial demand, and payment remain `INCONCLUSIVE`. Automated
-checks, assignments, open pull requests, legal signatures, and
-author-controlled publication must not be upgraded into external validation.
+and two substantive external reviews. The Rask review is unfavorable and
+identifies a missed mangling-collision root cause; it is not reframed as
+acceptance. Each action changes only its recorded narrow claim from
+`INCONCLUSIVE` to `PARTIAL`, accepted, or rejected. VERITAS technical efficacy,
+independent calibration use, product adoption, certification, endorsement,
+commercial demand, and payment remain `INCONCLUSIVE`. Automated checks,
+assignments, open pull requests, legal signatures, and author-controlled
+publication must not be upgraded into external validation.

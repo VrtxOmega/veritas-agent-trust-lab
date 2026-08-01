@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-07-30T12:14:32Z",
+  "as_of": "2026-07-30T16:34:33Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -12,7 +12,60 @@
       "VTL-EXT-20260730-005",
       "VTL-EXT-20260730-006"
     ],
-    "protocol_v2_events": []
+    "protocol_v2_events": [
+      {
+        "id": "VTL-V2-20260730-001",
+        "status": "qualifying",
+        "category": "substantive_external_review",
+        "category_group": "technical",
+        "subject_id": "rask-lang/rask#469",
+        "organization_id": "github-repo:rask-lang/rask",
+        "actor": {
+          "id": "github:dritory",
+          "platform": "github",
+          "account": "dritory",
+          "type": "github_account",
+          "relationship": "independent_external_repository_actor",
+          "is_bot": false,
+          "independence_basis": "The actor is distinct from VrtxOmega and exercised repository-controlled closure authority on the external rask-lang/rask pull request before posting the technical judgment."
+        },
+        "action": "closed_without_merge_and_identified_mangling_collision_as_the_unaddressed_root_cause",
+        "validation_claim": "An independently attributable external repository actor rejected the proposed reachability patch with a concrete root-cause judgment: it addressed the symptom rather than the mangling collision.",
+        "scope": "This validates one substantive external technical review of the campaign-produced Rask contribution and records an unfavorable maintainer-controlled outcome.",
+        "does_not_establish": [
+          "technical correctness of the rejected contribution",
+          "acceptance or merge",
+          "release inclusion",
+          "product adoption",
+          "technical correctness of VERITAS",
+          "endorsement of VERITAS",
+          "certification",
+          "payment"
+        ],
+        "source_url": "https://github.com/rask-lang/rask/pull/469#issuecomment-5133606097",
+        "occurred_at": "2026-07-30T16:34:33Z",
+        "verification": {
+          "status": "verified",
+          "method": "GitHub pull-request state, timeline-event, and issue-comment API readback",
+          "verified_at": "2026-08-01T04:05:49Z",
+          "immutable_ref_type": "issue_comment_id",
+          "immutable_ref": "5133606097",
+          "comment_node_id": "IC_kwDORLDTmM8AAAABMfyc0Q",
+          "pr_head_commit": "b2297f05abed08f9ee6549db8a76e574e4a73763",
+          "closed_at": "2026-07-30T16:34:13Z",
+          "closed_without_merge": true,
+          "closure_actor": "dritory"
+        },
+        "conflict_disclosures": {
+          "explicit_comment_disclosure": "No explicit conflict disclosure accompanied the public review comment.",
+          "observable_relationship": "The actor opened Rask issue #258 and closed PR #469; GitHub reports CONTRIBUTOR association on the comment.",
+          "campaign_records": "No payment, reciprocal validation, or campaign outreach to this actor is recorded.",
+          "boundary": "These observable facts do not establish expertise, honesty, endorsement, or independence beyond the separately controlled external repository action."
+        },
+        "dedupe_key": "github:dritory|substantive_external_review|rask-lang/rask#469",
+        "count_weight": 1
+      }
+    ]
   },
   "commercial_payment_ledger": [],
   "nonqualifying_signal_ledger": {
@@ -49,7 +102,39 @@
       }
     ]
   },
-  "negative_outcome_ledger": [],
+  "negative_outcome_ledger": [
+    {
+      "id": "VTL-NEG-20260730-001",
+      "subject_id": "rask-lang/rask#469",
+      "organization_id": "github-repo:rask-lang/rask",
+      "actor_id": "github:dritory",
+      "outcome": "closed_without_merge_after_root_cause_objection",
+      "occurred_at": "2026-07-30T16:34:33Z",
+      "source_url": "https://github.com/rask-lang/rask/pull/469#issuecomment-5133606097",
+      "verification": {
+        "method": "GitHub pull-request state, timeline-event, and issue-comment API readback",
+        "pr_head_commit": "b2297f05abed08f9ee6549db8a76e574e4a73763",
+        "closed_at": "2026-07-30T16:34:13Z",
+        "closed_without_merge": true,
+        "closure_actor": "dritory",
+        "root_cause_comment_id": "5133606097",
+        "root_cause_comment_at": "2026-07-30T16:34:33Z",
+        "verified_at": "2026-08-01T04:05:49Z"
+      },
+      "related_qualifying_event_id": "VTL-V2-20260730-001",
+      "count_weight": 0,
+      "reason_not_counted_as_additional_event": "The independently attributable technical judgment is counted exactly once as VTL-V2-20260730-001; the unfavorable lifecycle outcome is tracked separately to prevent favorable-outcome selection or double counting.",
+      "does_not_establish": [
+        "technical correctness of the rejected contribution",
+        "acceptance or merge",
+        "release inclusion",
+        "product adoption",
+        "endorsement",
+        "certification",
+        "payment"
+      ]
+    }
+  ],
   "decline_ledger": [],
   "closed_lane_ledger": [
     {
@@ -76,6 +161,36 @@
         "external adoption of VERITAS",
         "technical correctness of VERITAS",
         "endorsement of VERITAS",
+        "payment"
+      ]
+    },
+    {
+      "subject_id": "rask-lang/rask#469",
+      "organization_id": "github-repo:rask-lang/rask",
+      "actor_id": "github:dritory",
+      "outcome": "closed_without_merge_after_root_cause_objection",
+      "closed_at": "2026-07-30T16:34:13Z",
+      "source_url": "https://github.com/rask-lang/rask/pull/469",
+      "verification": {
+        "method": "GitHub pull-request state, timeline-event, and issue-comment API readback",
+        "pr_head_commit": "b2297f05abed08f9ee6549db8a76e574e4a73763",
+        "closed_without_merge": true,
+        "closure_actor": "dritory",
+        "root_cause_comment_id": "5133606097",
+        "root_cause_comment_url": "https://github.com/rask-lang/rask/pull/469#issuecomment-5133606097",
+        "root_cause_comment_at": "2026-07-30T16:34:33Z",
+        "verified_at": "2026-08-01T04:05:49Z"
+      },
+      "related_qualifying_event_id": "VTL-V2-20260730-001",
+      "count_weight": 0,
+      "reason_not_counted_as_new_event": "The independently attributable technical judgment is counted exactly once as VTL-V2-20260730-001. Closing the same contribution lifecycle is a separate denominator, not an eighth event.",
+      "does_not_establish": [
+        "technical correctness of the rejected contribution",
+        "acceptance or merge",
+        "release inclusion",
+        "product adoption",
+        "endorsement",
+        "certification",
         "payment"
       ]
     }
@@ -581,29 +696,29 @@
   "progress": {
     "technical_state": "ACTIVE",
     "commercial_state": "UNMET",
-    "qualifying_events": 6,
-    "distinct_independent_validators": 6,
-    "unrelated_organizations_or_communities": 6,
+    "qualifying_events": 7,
+    "distinct_independent_validators": 7,
+    "unrelated_organizations_or_communities": 7,
     "pre_reveal_blind_label_sets": 0,
-    "technical_reproductions_reviews_or_integrations": 4,
+    "technical_reproductions_reviews_or_integrations": 5,
     "structured_adopter_reports": 0,
     "repeat_use_adopter_reports": 0,
     "independently_proposed_or_executed_hostile_cases": 0,
     "independent_verifier_runs_cross_evaluations_or_compatible_implementations": 0,
     "catalog_and_editorial_events": 2,
-    "maximum_single_category_share_basis_points": 3334,
+    "maximum_single_category_share_basis_points": 2858,
     "settled_revenue_usd": "0.00",
     "outreach_initial_contacts": 36,
     "outreach_follow_ups": 0,
-    "negative_outcomes": 0,
+    "negative_outcomes": 1,
     "declines": 0,
-    "closed_lanes": 1,
+    "closed_lanes": 2,
     "remaining": {
-      "qualifying_events": 44,
-      "distinct_independent_validators": 19,
-      "unrelated_organizations_or_communities": 4,
+      "qualifying_events": 43,
+      "distinct_independent_validators": 18,
+      "unrelated_organizations_or_communities": 3,
       "pre_reveal_blind_label_sets": 15,
-      "technical_reproductions_reviews_or_integrations": 6,
+      "technical_reproductions_reviews_or_integrations": 5,
       "structured_adopter_reports": 5,
       "repeat_use_adopter_reports": 2,
       "independently_proposed_or_executed_hostile_cases": 5,

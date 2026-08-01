@@ -76,8 +76,17 @@ test("recomputes the canonical public campaign ledger", async () => {
     verified_payment_usd: "0.00",
     remaining_to_validation_target: 44,
     terminal_state: "ACTIVE",
-    open_lanes: 14,
+    open_lanes: 13,
   });
+});
+
+test("removes the closed Rask pull request from the legacy open lanes", async () => {
+  const ledger = await loadLedger();
+
+  assert.equal(
+    ledger.open_lanes.some((lane) => lane.id === "rask-lang/rask#469"),
+    false,
+  );
 });
 
 test("counts the Dylint review and merge as one strengthened event", async () => {
