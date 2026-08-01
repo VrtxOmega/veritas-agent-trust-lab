@@ -628,7 +628,7 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>Eight independently attributable outside actions now qualify.</h2>
+              <h2>Nine independently attributable outside actions now qualify.</h2>
               <p>
                 Three external curators merged scoped Trust Lab catalogue or
                 watchlist entries. A separate repository owner independently reproduced a concrete
@@ -642,7 +642,12 @@ export function TrustLab() {
                 break. A Rask repository actor then closed a reachability patch
                 without merge and identified the unaddressed root cause as the
                 mangling collision. That unfavorable review counts once and is
-                separately recorded as a negative outcome and closed lane.
+                separately recorded as a negative outcome and closed lane. The
+                red-team/blue-team repository owner also verified the pinned
+                RCL fixture provenance, confirmed the reported method and 11/11
+                result against the intended contract, and corrected the source
+                fixture&apos;s encoding label and coverage limit. That is one
+                substantive review, not an independent verifier run.
               </p>
             </div>
           </header>
@@ -679,7 +684,7 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Three curator decisions, one reproduction, two integrations, and two reviews are public.</h3>
+              <h3>Three curator decisions, one reproduction, two integrations, and three reviews are public.</h3>
               <p>
                 GitHub records separate external merge actors for
                 systempromptio pull request #27, gmh5225 pull request #18, and
@@ -701,6 +706,11 @@ export function TrustLab() {
                 separately closed pull request #469 without merge and stated
                 that the patch addressed the symptom rather than the mangling
                 collision. That negative root-cause review is counted once.
+                The red-team/blue-team repository owner separately verified the
+                pinned RCL fixture provenance and intended contract, then
+                corrected the fixture&apos;s JCS label and future-timestamp
+                coverage limit. That review does not establish an independent
+                verifier execution.
               </p>
             </article>
             <article>
@@ -765,6 +775,11 @@ export function TrustLab() {
               <span>External repository actor closed the patch without merge and identified the missed mangling-collision root cause.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5153257172" target="_blank" rel="noreferrer">
+              <b>RCL fixture-contract owner review</b>
+              <span>External repository owner verified the pinned provenance and intended contract, then corrected the fixture&apos;s encoding label and coverage limit.</span>
+              <i>↗</i>
+            </a>
             <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/protocol/campaign-protocol-v2.json" target="_blank" rel="noreferrer">
               <b>Signed Campaign Protocol v2</b>
               <span>Prospective diversity caps, evidence minima, commercial boundary, and negative stop rules.</span>
@@ -776,9 +791,11 @@ export function TrustLab() {
             {protocolProgress.qualifying_events}, from{" "}
             {protocolProgress.distinct_independent_validators} distinct validators: three
             scoped curator-fit decisions and one independent technical
-            reproduction, two accepted external integrations, and two
+            reproduction, two accepted external integrations, and three
             substantive external reviews. One review rejected the Rask patch
-            for missing the mangling-collision root cause. These do not establish VERITAS
+            for missing the mangling-collision root cause; another confirmed
+            the pinned RCL fixture contract without independently running the
+            verifier. These do not establish VERITAS
             efficacy, endorsement, product adoption, release inclusion, deployed
             use of the AgentDoctor Action, merge of the still-open nmrs pull
             request, correctness or acceptance of the rejected Rask patch, or

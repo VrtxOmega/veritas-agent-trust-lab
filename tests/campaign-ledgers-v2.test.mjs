@@ -62,6 +62,27 @@ test("records the awesome-ai-security-tools curator merge once", async () => {
   assert.equal(closed[0].related_qualifying_event_id, qualifying[0].id);
 });
 
+test("records the RCL fixture-contract owner review once without calling it a verifier run", async () => {
+  const ledger = await loadLedger();
+  const qualifying = ledger.qualifying_event_ledger.protocol_v2_events.filter(
+    (entry) => entry.subject_id === "msaleme/red-team-blue-team-agent-fabric#304",
+  );
+
+  assert.equal(qualifying.length, 1);
+  assert.equal(qualifying[0].category, "substantive_external_review");
+  assert.equal(qualifying[0].category_group, "technical");
+  assert.equal(qualifying[0].count_weight, 1);
+  assert.equal(qualifying[0].verification.immutable_ref, "5153257172");
+  assert.equal(
+    qualifying[0].dedupe_key,
+    "github:msaleme|substantive_external_review|msaleme/red-team-blue-team-agent-fabric#304",
+  );
+  assert.match(
+    qualifying[0].does_not_establish.join(" "),
+    /independent verifier run/,
+  );
+});
+
 test("records the OpenGuardrails reply as zero-weight nonparticipation", async () => {
   const ledger = await loadLedger();
   const outreach = ledger.outreach_denominator_ledger.protocol_v2_records.filter(
@@ -95,12 +116,12 @@ test("recomputes Protocol v2 progress without moving untouched evidence minima",
       0,
     );
 
-  assert.equal(qualifyingCount, 8);
+  assert.equal(qualifyingCount, 9);
   assert.equal(progress.qualifying_events, qualifyingCount);
-  assert.equal(progress.distinct_independent_validators, 8);
-  assert.equal(progress.unrelated_organizations_or_communities, 8);
-  assert.equal(progress.technical_reproductions_reviews_or_integrations, 5);
-  assert.equal(progress.maximum_single_category_share_basis_points, 3750);
+  assert.equal(progress.distinct_independent_validators, 9);
+  assert.equal(progress.unrelated_organizations_or_communities, 9);
+  assert.equal(progress.technical_reproductions_reviews_or_integrations, 6);
+  assert.equal(progress.maximum_single_category_share_basis_points, 3333);
   assert.equal(progress.negative_outcomes, ledger.negative_outcome_ledger.length);
   assert.equal(progress.closed_lanes, ledger.closed_lane_ledger.length);
   assert.equal(progress.pre_reveal_blind_label_sets, 0);
@@ -116,11 +137,11 @@ test("recomputes Protocol v2 progress without moving untouched evidence minima",
   assert.equal(progress.outreach_follow_ups, 0);
   assert.equal(progress.settled_revenue_usd, "0.00");
   assert.deepEqual(progress.remaining, {
-    qualifying_events: 42,
-    distinct_independent_validators: 17,
-    unrelated_organizations_or_communities: 2,
+    qualifying_events: 41,
+    distinct_independent_validators: 16,
+    unrelated_organizations_or_communities: 1,
     pre_reveal_blind_label_sets: 15,
-    technical_reproductions_reviews_or_integrations: 5,
+    technical_reproductions_reviews_or_integrations: 4,
     structured_adopter_reports: 5,
     repeat_use_adopter_reports: 2,
     independently_proposed_or_executed_hostile_cases: 5,
