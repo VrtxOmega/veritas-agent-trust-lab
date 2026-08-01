@@ -68,7 +68,7 @@ repository's MIT license applies only to this public demonstrator.
 
 ## External evidence
 
-Six independently attributable outside actions currently qualify:
+Seven independently attributable outside actions currently qualify:
 
 - two external curators merged scoped Trust Lab catalogue entries;
 - the AgentDoctor owner independently reproduced a concrete output-file
@@ -79,7 +79,11 @@ Six independently attributable outside actions currently qualify:
 - a Trail of Bits Dylint collaborator identified inaccurate rustdoc, required
   the generated README to be corrected with it, and merged the corrected fix;
 - a freedesktop-rs member approved the campaign-produced nmrs fix while holding
-  its merge to consider the intentional source-breaking API change.
+  its merge to consider the intentional source-breaking API change;
+- a Rask repository actor closed the campaign-produced reachability patch
+  without merge and identified the missed root cause as the mangling collision.
+  This unfavorable review is counted once and separately recorded as a negative
+  outcome and closed lane.
 
 The canonical ledger links every actor and immutable source. These events
 validate only the action stated for each record. They do not establish
@@ -134,9 +138,9 @@ The commercial milestone is separate: at least **$750 settled at the published
 pilot price** from an unrelated arms-length buyer, followed by delivery and
 buyer acknowledgement. Payment does not end the technical campaign.
 
-Current machine-checked Protocol v2 baseline: **6/50 qualifying events, 6
-independent validators, 6 unrelated organizations or communities, 0/15 blind
-label sets, 4/10 technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3
+Current machine-checked Protocol v2 baseline: **7/50 qualifying events, 7
+independent validators, 7 unrelated organizations or communities, 0/15 blind
+label sets, 5/10 technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3
 independent verifier runs, and $0/$750 settled revenue**.
 
 The canonical
@@ -154,9 +158,10 @@ coverage, or scoped curator acceptance. Bots, CI, traffic, author activity,
 open PRs, sent outreach, thanks-only comments, self-tests, CLA or legal
 signatures, reciprocal or paid engagement, and duplicate signals never count.
 
-The six events comprise two scoped curator decisions, one independent technical
-reproduction, one accepted external integration, and two substantive
-maintainer reviews. Each record states its narrower claim and nonclaims.
+The seven events comprise two scoped curator decisions, one independent
+technical reproduction, two accepted external integrations, and two
+substantive external reviews. One review is an unfavorable root-cause
+rejection; each record states its narrower claim and nonclaims.
 
 The machine-readable
 [Protocol v2 ledgers](evidence/campaign-ledgers-v2.json) keep qualifying events,

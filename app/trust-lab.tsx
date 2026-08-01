@@ -60,7 +60,6 @@ type ChallengeReceipt = {
   verification_note: string;
 };
 
-const campaignSummary = validationLedger.summary;
 const campaignTarget = validationLedger.campaign.validation_target;
 const openLaneCount = validationLedger.open_lanes.length;
 const protocolProgress = campaignLedgersV2.progress;
@@ -268,7 +267,7 @@ export function TrustLab() {
         <span>Zero signup</span><span>Runs locally</span>
         <span>About 5 minutes</span>
         <span>Mobile-friendly</span>
-        <span>{campaignSummary.qualifying_events}/{campaignTarget} verified</span>
+        <span>{protocolProgress.qualifying_events}/{campaignTarget} verified</span>
         <span>Execution: false</span>
       </div>
 
@@ -629,7 +628,7 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>Six independently attributable outside actions now qualify.</h2>
+              <h2>Seven independently attributable outside actions now qualify.</h2>
               <p>
                 Two maintainers merged scoped Trust Lab catalogue entries. A
                 third repository owner independently reproduced a concrete
@@ -640,7 +639,10 @@ export function TrustLab() {
                 regression fix. A Trail of Bits collaborator then required a
                 concrete documentation correction, and a freedesktop-rs member
                 approved a separate contribution while considering its source
-                break.
+                break. A Rask repository actor then closed a reachability patch
+                without merge and identified the unaddressed root cause as the
+                mangling collision. That unfavorable review counts once and is
+                separately recorded as a negative outcome and closed lane.
               </p>
             </div>
           </header>
@@ -660,7 +662,7 @@ export function TrustLab() {
               />
             </div>
             <p>
-              {campaignSummary.remaining_to_validation_target} qualifying
+              {protocolProgress.remaining.qualifying_events} qualifying
               events remain. Blind labels:{" "}
               {protocolProgress.pre_reveal_blind_label_sets}/15. Technical:{" "}
               {protocolProgress.technical_reproductions_reviews_or_integrations}/10.
@@ -677,7 +679,7 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Two curator decisions, one reproduction, two integrations, and one review are public.</h3>
+              <h3>Two curator decisions, one reproduction, two integrations, and two reviews are public.</h3>
               <p>
                 GitHub records separate external merge actors for
                 systempromptio pull request #27 and gmh5225 pull request #18.
@@ -693,7 +695,10 @@ export function TrustLab() {
                 corrections, then merged the corrected pull request. Its review
                 and merge also remain one event. The nmrs member separately
                 approved pull request #521 while retaining the merge decision
-                for source-compatibility review.
+                for source-compatibility review. The Rask repository actor
+                separately closed pull request #469 without merge and stated
+                that the patch addressed the symptom rather than the mangling
+                collision. That negative root-cause review is counted once.
               </p>
             </article>
             <article>
@@ -748,6 +753,11 @@ export function TrustLab() {
               <span>External project member approved the fix and retained the merge decision for source-break consideration.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/rask-lang/rask/pull/469#issuecomment-5133606097" target="_blank" rel="noreferrer">
+              <b>Rask root-cause rejection</b>
+              <span>External repository actor closed the patch without merge and identified the missed mangling-collision root cause.</span>
+              <i>↗</i>
+            </a>
             <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/protocol/campaign-protocol-v2.json" target="_blank" rel="noreferrer">
               <b>Signed Campaign Protocol v2</b>
               <span>Prospective diversity caps, evidence minima, commercial boundary, and negative stop rules.</span>
@@ -756,15 +766,17 @@ export function TrustLab() {
           </div>
           <p className="boundary">
             <strong>SCOPE</strong> Qualifying external validations:{" "}
-            {campaignSummary.qualifying_events}, from{" "}
-            {campaignSummary.distinct_validators} distinct validators: two
+            {protocolProgress.qualifying_events}, from{" "}
+            {protocolProgress.distinct_independent_validators} distinct validators: two
             scoped curator-fit decisions and one independent technical
-            reproduction, two accepted external integrations, and one
-            substantive maintainer review. These do not establish VERITAS
+            reproduction, two accepted external integrations, and two
+            substantive external reviews. One review rejected the Rask patch
+            for missing the mangling-collision root cause. These do not establish VERITAS
             efficacy, endorsement, product adoption, release inclusion, deployed
             use of the AgentDoctor Action, merge of the still-open nmrs pull
-            request, or payment. Independent blind label sets: 0.
-            Verified payments: ${campaignSummary.verified_payment_usd}.
+            request, correctness or acceptance of the rejected Rask patch, or
+            payment. Independent blind label sets: 0. Verified payments:
+            ${protocolProgress.settled_revenue_usd}.
           </p>
         </div>
       </section>
