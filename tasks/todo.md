@@ -386,3 +386,45 @@ merge state.
 - Residual risks: zero independent verifier runs, zero blind label sets, zero
   settled revenue, seven existing npm audit findings, and no authenticated
   in-app visual QA because the browser transport closed during both attempts.
+
+## RCL upstream-resolution evidence update
+
+### Goal
+
+Record the external repository owner's merged correction prompted by issue
+#304 without double-counting the same actor, subject, or technical review.
+
+### Scope
+
+- Protocol v2 event `VTL-V2-20260801-003` resolution metadata.
+- One explicit zero-weight same-subject follow-up record.
+- Focused regression coverage for the deduplicated resolution.
+- No public count, category, or campaign-state change.
+
+### Non-Goals
+
+- Do not count PR #307 or its follow-up comment as a tenth event.
+- Do not classify the correction as an independent verifier run.
+- Do not reply to a comment that explicitly says no reply is needed.
+- Do not send new outreach during this heartbeat.
+
+### Steps
+
+- [x] Verify the owner comment, PR #307, merge actor, merge commit, changed
+  files, old and new fixture hashes, and unchanged corpus boundary.
+- [x] Add exact resolution provenance to the existing qualifying event.
+- [x] Record the same-actor, same-subject follow-up at weight zero.
+- [x] Prove every Protocol v2 progress value remains unchanged.
+- [x] Run schema, arithmetic, regression, lint, and build checks.
+- [ ] Publish through one clean pull request and read back live main.
+
+### Verification
+
+- `npm run validate:external`
+- `npm run lint`
+- `npm test`
+- `npm run build:pages`
+- `git diff --check`
+- Live GitHub readback must remain 9 qualifying events, nine validators, six
+  technical events, three catalog events, 49 initial contacts, zero follow-ups,
+  one negative outcome, three closed lanes, and $0 settled revenue.

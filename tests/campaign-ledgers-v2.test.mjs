@@ -67,6 +67,9 @@ test("records the RCL fixture-contract owner review once without calling it a ve
   const qualifying = ledger.qualifying_event_ledger.protocol_v2_events.filter(
     (entry) => entry.subject_id === "msaleme/red-team-blue-team-agent-fabric#304",
   );
+  const nonqualifying = ledger.nonqualifying_signal_ledger.protocol_v2_records.filter(
+    (entry) => entry.subject_id === "msaleme/red-team-blue-team-agent-fabric#304",
+  );
 
   assert.equal(qualifying.length, 1);
   assert.equal(qualifying[0].category, "substantive_external_review");
@@ -81,6 +84,17 @@ test("records the RCL fixture-contract owner review once without calling it a ve
     qualifying[0].does_not_establish.join(" "),
     /independent verifier run/,
   );
+  assert.equal(
+    qualifying[0].verification.upstream_resolution.correction_merge_commit,
+    "70a38a86dcfa65b66f04c5655c3c8244fec838fe",
+  );
+  assert.equal(nonqualifying.length, 1);
+  assert.equal(
+    nonqualifying[0].signal_type,
+    "same_actor_same_subject_upstream_resolution",
+  );
+  assert.equal(nonqualifying[0].count_weight, 0);
+  assert.equal(nonqualifying[0].related_qualifying_event_id, qualifying[0].id);
 });
 
 test("records the OpenGuardrails reply as zero-weight nonparticipation", async () => {
