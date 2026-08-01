@@ -21,3 +21,15 @@ hard-coded open-lane count.
 the canonical public-ledger snapshot test in the same change. `validate:external`
 alone proves arithmetic and schema, not that all checked-in campaign
 expectations were updated.
+
+## Public evidence changes require synchronized proof and discovery
+
+**Mistake pattern:** Treating a newly verified external event or a public
+challenge as complete after updating only its source repository leaves profile,
+portfolio, reviewer intake, and search surfaces stale or effectively hidden.
+
+**Prevention rule:** After an external event is accepted, update every current
+public proof surface from the same scoped evidence without rewriting historical
+snapshots. When outside review is the objective, publish one focused GitHub
+intake issue with appropriate labels and repository topics; documentation alone
+is not a discoverability strategy.

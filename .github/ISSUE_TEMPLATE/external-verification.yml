@@ -1,0 +1,125 @@
+name: Submit an external VERITAS verification report
+description: Reproduce, challenge, or independently implement one bounded public contract.
+title: "[EXTERNAL VERIFICATION] "
+labels: ["external-verification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use the frozen [External Verification Challenge v1](https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/docs/EXTERNAL_VERIFICATION_CHALLENGE.md).
+
+        Positive controls are required. A verifier that rejects every packet has
+        not reproduced the contract. Matching, conflicting, partial, and bypass
+        results are all welcome.
+
+        This issue is public. Do not include secrets, credentials, private logs,
+        customer data, production identifiers, or live destructive instructions.
+        Submission does not imply endorsement, certification, independence,
+        efficacy, adoption, payment, or execution authority.
+
+  - type: dropdown
+    id: track
+    attributes:
+      label: Challenge track
+      options:
+        - Independent result recomputation
+        - Break the action boundary
+        - Break monitoring and revocation
+        - Compatible implementation spanning multiple tracks
+    validations:
+      required: true
+
+  - type: input
+    id: baseline_commit
+    attributes:
+      label: Pinned Trust Lab commit
+      value: 0f3c71fdb0e9078d8a5d8684411d0318fe600bb1
+    validations:
+      required: true
+
+  - type: textarea
+    id: artifact_hashes
+    attributes:
+      label: Verified artifact hashes
+      description: List every challenged artifact and the SHA-256 you computed.
+    validations:
+      required: true
+
+  - type: input
+    id: implementation
+    attributes:
+      label: Immutable implementation URL
+      description: Link the exact source commit for your separate implementation or review harness.
+    validations:
+      required: true
+
+  - type: textarea
+    id: method
+    attributes:
+      label: Method and implementation separation
+      description: Explain what you reimplemented, inspected, reused, and deliberately did not import.
+    validations:
+      required: true
+
+  - type: textarea
+    id: commands
+    attributes:
+      label: Exact reproduction commands
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: positive_controls
+    attributes:
+      label: Positive-control results
+      description: Show that valid clean packets can be accepted, not only that hostile packets are rejected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: hostile_results
+    attributes:
+      label: Hostile-case results
+      description: Give expected and observed outcomes with machine-readable result links when available.
+    validations:
+      required: true
+
+  - type: textarea
+    id: mismatches
+    attributes:
+      label: Mismatches, bypasses, or disagreements
+      description: State none if no mismatch was observed; do not omit inconvenient results.
+    validations:
+      required: true
+
+  - type: textarea
+    id: untested
+    attributes:
+      label: Untested boundaries and limitations
+    validations:
+      required: true
+
+  - type: textarea
+    id: disclosures
+    attributes:
+      label: Relationships, compensation, reused code, and AI assistance
+      description: State none where applicable and identify shared dependencies that may reduce independence.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: submission_boundary
+    attributes:
+      label: Submission boundary
+      options:
+        - label: I verified the pinned commit and artifact hashes before testing.
+          required: true
+        - label: My submitted implementation does not import, call, wrap, transpile, or vendor the reference evaluator.
+          required: true
+        - label: I ran clean positive controls as well as hostile cases.
+          required: true
+        - label: I understand this report remains uncounted until its identity, method, provenance, scope, and independence are reviewed.
+          required: true
+        - label: This report contains only public, synthetic, or safely redacted information.
+          required: true

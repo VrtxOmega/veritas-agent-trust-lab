@@ -812,7 +812,7 @@ export function TrustLab() {
             <div>
               <h2>Contribute the evidence that is still missing.</h2>
               <p>
-                Three narrow routes. No signup for the challenge, no claim that
+                Four narrow routes. No signup for the challenge, no claim that
                 a submission proves expertise or endorsement, and no automatic
                 promotion into the canonical six-case score.
               </p>
@@ -863,9 +863,36 @@ export function TrustLab() {
                 Submit an adopter report ↗
               </a>
             </article>
+            <article>
+              <span>INDEPENDENT IMPLEMENTATION / CHECKER</span>
+              <h3>Check the checker.</h3>
+              <p>
+                Rebuild one bounded verification path without importing the
+                reference evaluator. Run clean controls and hostile cases,
+                publish exact commands, and report every mismatch or bypass.
+              </p>
+              <a
+                className="primary-link"
+                href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/docs/EXTERNAL_VERIFICATION_CHALLENGE.md"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open the external challenge ↗
+              </a>
+              <a
+                className="secondary-link"
+                href="https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=external-verification.yml"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Submit a verification report ↗
+              </a>
+            </article>
           </div>
           <p className="boundary">
-            <strong>PRIVACY</strong> GitHub issue submissions are public and
+            <strong>SCOPE</strong> The external challenge covers this public
+            demonstrator, not the complete V4 kernel. <strong>PRIVACY</strong>{" "}
+            GitHub issue submissions are public and
             attached to the submitter&apos;s account. Do not include secrets,
             credentials, customer data, private logs, or production identifiers.
             A submission remains uncounted until its identity, independence,
