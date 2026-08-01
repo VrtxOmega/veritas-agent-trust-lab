@@ -344,16 +344,16 @@ merge state.
 - [x] Verify the external RCL lifecycle and the upstream metadata correction.
 - [x] Verify 20 externally merged pull requests authored by VrtxOmega; keep
   Hermes maintainer-reapplied authorship separate from that direct-PR count.
-- [ ] Publish a versioned, machine-readable three-track external verification
+- [x] Publish a versioned, machine-readable three-track external verification
   challenge with positive controls and exact nonclaims.
-- [ ] Add a low-friction public submission route for reproduction,
+- [x] Add a low-friction public submission route for reproduction,
   disagreement, bypass, or compatible implementation reports.
-- [ ] Update the Trust Lab README and rendered site without changing the
+- [x] Update the Trust Lab README and rendered site without changing the
   canonical 9/50 evidence count.
-- [ ] Update the GitHub profile and portfolio from their stale proof state.
-- [ ] Inspect all diffs and run repository-specific tests, lint, builds, and
+- [x] Update the GitHub profile and portfolio from their stale proof state.
+- [x] Inspect all diffs and run repository-specific tests, lint, builds, and
   stale-claim scans.
-- [ ] Run PCF, SSWP, and VERITAS gates, then publish and perform live readback.
+- [x] Run PCF, SSWP, and VERITAS gates, then publish and perform live readback.
 
 ### Verification
 
@@ -364,3 +364,25 @@ merge state.
 - Public readback must preserve 9/50, nine validators, zero blind label sets,
   zero independent verifier runs, and $0 settled revenue until new qualifying
   evidence actually arrives.
+
+### Outcome
+
+- Trust Lab PR #59 merged as `f9a32b16d03528a8a5aa0ac8ac5eb2644a135d3d`;
+  GitHub Pages and owner-only Sites version 28 were deployed from that exact
+  merge commit.
+- GitHub issue #60 is the labeled `help wanted` intake for independent
+  reproduction, disagreement, bypass, and compatible implementation reports.
+- Profile PR #8 and portfolio PR #15 merged, and their live readbacks preserve
+  20 direct external PR merges, separate Hermes maintainer-reapplied
+  authorship, Protocol v2 at 9/50, nine validators, 41 remaining, zero
+  independent verifier runs, and $0 settled revenue.
+- Trust Lab validation passed with 56/56 tests, lint, the Pages build, and the
+  focused external-challenge checks. The portfolio regression test and both
+  profile/portfolio stale-claim scans passed.
+- SSWP passed all five governed gates. VERITAS remained `INCONCLUSIVE` on
+  independent assurance, as required by the author-controlled evidence
+  boundary. PCF could not produce a governed result because the required
+  `CLEAN_PR_CONTRACT.md` was absent, so that gate remains explicitly degraded.
+- Residual risks: zero independent verifier runs, zero blind label sets, zero
+  settled revenue, seven existing npm audit findings, and no authenticated
+  in-app visual QA because the browser transport closed during both attempts.
