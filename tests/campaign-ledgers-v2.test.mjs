@@ -62,6 +62,29 @@ test("records the awesome-ai-security-tools curator merge once", async () => {
   assert.equal(closed[0].related_qualifying_event_id, qualifying[0].id);
 });
 
+test("records the OpenGuardrails reply as zero-weight nonparticipation", async () => {
+  const ledger = await loadLedger();
+  const outreach = ledger.outreach_denominator_ledger.protocol_v2_records.filter(
+    (entry) => entry.organization_id === "openguardrails",
+  );
+  const nonqualifying = ledger.nonqualifying_signal_ledger.protocol_v2_records.filter(
+    (entry) => entry.organization_id === "openguardrails",
+  );
+  const qualifying = ledger.qualifying_event_ledger.protocol_v2_events.filter(
+    (entry) => entry.organization_id === "openguardrails",
+  );
+
+  assert.equal(outreach.length, 1);
+  assert.equal(outreach[0].status, "human_thanks_only_nonparticipation_reply_received");
+  assert.equal(outreach[0].response_message_id, "19fb5fefdeca3706");
+  assert.equal(outreach[0].count_weight, 0);
+  assert.equal(nonqualifying.length, 1);
+  assert.equal(nonqualifying[0].signal_type, "human_thanks_only_nonparticipation_reply");
+  assert.equal(nonqualifying[0].verification.incoming_message_id, "19fb5fefdeca3706");
+  assert.equal(nonqualifying[0].count_weight, 0);
+  assert.equal(qualifying.length, 0);
+});
+
 test("recomputes Protocol v2 progress without moving untouched evidence minima", async () => {
   const ledger = await loadLedger();
   const progress = ledger.progress;

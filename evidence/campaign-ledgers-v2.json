@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-08-01T14:10:55Z",
+  "as_of": "2026-08-01T14:44:20Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -150,6 +150,33 @@
           "technical validation",
           "adoption",
           "endorsement"
+        ]
+      },
+      {
+        "id": "VTL-NQ-20260731-001",
+        "organization_id": "openguardrails",
+        "actor_id": "email:openguardrails-maintainer",
+        "signal_type": "human_thanks_only_nonparticipation_reply",
+        "subject_id": "openguardrails-blind-participation-or-hostile-case",
+        "occurred_at": "2026-07-31T02:26:46Z",
+        "response_scope": "A human reply acknowledged the invitation and described broad mission alignment, but supplied no label set, hostile case, adopter report, verifier run, technical review, payment, or invitation for continued coordination. The private message body and personal email identity are not published here.",
+        "verification": {
+          "method": "Exact Gmail thread readback",
+          "incoming_message_id": "19fb5fefdeca3706",
+          "thread_id": "19fb1eec672d86c2",
+          "verified_at": "2026-08-01T14:44:20Z"
+        },
+        "count_weight": 0,
+        "reason_not_counted": "A thanks-only mission-alignment response without any requested evidence artifact is nonparticipation and does not satisfy a qualifying technical, adopter, hostile-case, verifier, or commercial category.",
+        "does_not_establish": [
+          "understanding or completion of the six-case challenge",
+          "blind label set",
+          "independently proposed hostile case",
+          "structured adopter report or repeat use",
+          "independent verifier run or compatible implementation",
+          "substantive technical review",
+          "endorsement or partnership",
+          "payment or settled revenue"
         ]
       }
     ]
@@ -549,7 +576,10 @@
         "public_basis_url": "https://github.com/openguardrails/openguardrails",
         "initial_contact_at": "2026-07-30T07:30:43Z",
         "tailored": true,
-        "status": "sent_no_substantive_response",
+        "status": "human_thanks_only_nonparticipation_reply_received",
+        "response_at": "2026-07-31T02:26:46Z",
+        "response_message_id": "19fb5fefdeca3706",
+        "next_action": "No reply or follow-up before the existing eligibility boundary unless the maintainer explicitly invites continued communication.",
         "follow_up_eligible_at": "2026-08-06T07:30:43Z",
         "follow_up_at": null,
         "private_evidence": {
