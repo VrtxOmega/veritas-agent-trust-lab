@@ -89,7 +89,7 @@ test("recomputes Protocol v2 progress without moving untouched evidence minima",
     0,
   );
   assert.equal(progress.catalog_and_editorial_events, 3);
-  assert.equal(progress.outreach_initial_contacts, 36);
+  assert.equal(progress.outreach_initial_contacts, 37);
   assert.equal(progress.outreach_follow_ups, 0);
   assert.equal(progress.settled_revenue_usd, "0.00");
   assert.deepEqual(progress.remaining, {
