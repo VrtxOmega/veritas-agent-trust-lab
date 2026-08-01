@@ -68,7 +68,7 @@ repository's MIT license applies only to this public demonstrator.
 
 ## External evidence
 
-Eight independently attributable outside actions currently qualify:
+Nine independently attributable outside actions currently qualify:
 
 - three external curators merged scoped Trust Lab catalogue entries, including
   the project-owner merge of the explicitly new-project `WATCHLIST.md` entry in
@@ -86,6 +86,11 @@ Eight independently attributable outside actions currently qualify:
   without merge and identified the missed root cause as the mangling collision.
   This unfavorable review is counted once and separately recorded as a negative
   outcome and closed lane.
+- the red-team/blue-team repository owner independently verified the pinned RCL
+  fixture provenance, confirmed that the separate verifier's method and 11/11
+  result reflect the intended contract, and corrected the fixture's JCS label
+  and future-timestamp coverage limit. This is one substantive review, not an
+  independent verifier run.
 
 The canonical ledger links every actor and immutable source. These events
 validate only the action stated for each record. They do not establish
@@ -140,9 +145,9 @@ The commercial milestone is separate: at least **$750 settled at the published
 pilot price** from an unrelated arms-length buyer, followed by delivery and
 buyer acknowledgement. Payment does not end the technical campaign.
 
-Current machine-checked Protocol v2 baseline: **8/50 qualifying events, 8
-independent validators, 8 unrelated organizations or communities, 0/15 blind
-label sets, 5/10 technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3
+Current machine-checked Protocol v2 baseline: **9/50 qualifying events, 9
+independent validators, 9 unrelated organizations or communities, 0/15 blind
+label sets, 6/10 technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3
 independent verifier runs, and $0/$750 settled revenue**.
 
 The canonical
@@ -160,10 +165,11 @@ coverage, or scoped curator acceptance. Bots, CI, traffic, author activity,
 open PRs, sent outreach, thanks-only comments, self-tests, CLA or legal
 signatures, reciprocal or paid engagement, and duplicate signals never count.
 
-The eight events comprise three scoped curator decisions, one independent
+The nine events comprise three scoped curator decisions, one independent
 technical reproduction, two accepted external integrations, and two
-substantive external reviews. One review is an unfavorable root-cause
-rejection; each record states its narrower claim and nonclaims.
+substantive external reviews plus the RCL fixture-contract owner review. One
+review is an unfavorable root-cause rejection; the RCL review is not an
+independent verifier run. Each record states its narrower claim and nonclaims.
 
 The machine-readable
 [Protocol v2 ledgers](evidence/campaign-ledgers-v2.json) keep qualifying events,

@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-08-01T21:37:18Z",
+  "as_of": "2026-08-01T22:12:26Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -115,6 +115,64 @@
           "boundary": "These observable facts do not establish expertise, endorsement, use, source inspection, or independence beyond the separately controlled external repository action."
         },
         "dedupe_key": "github:scadastrangelove|catalog_curator_acceptance|scadastrangelove/awesome-ai-security-tools#29",
+        "count_weight": 1
+      },
+      {
+        "id": "VTL-V2-20260801-003",
+        "status": "qualifying",
+        "category": "substantive_external_review",
+        "category_group": "technical",
+        "subject_id": "msaleme/red-team-blue-team-agent-fabric#304",
+        "organization_id": "github-repo:msaleme/red-team-blue-team-agent-fabric",
+        "actor": {
+          "id": "github:msaleme",
+          "platform": "github",
+          "account": "msaleme",
+          "type": "github_account",
+          "relationship": "independent_external_repository_owner",
+          "is_bot": false,
+          "independence_basis": "The actor is distinct from VrtxOmega, owns the external repository containing the pinned RCL fixture corpus, and submitted the review with GitHub OWNER association."
+        },
+        "action": "verified_pinned_fixture_provenance_confirmed_the_reported_method_and_result_and_identified_a_fixture_contract_label_fault",
+        "validation_claim": "The external repository owner independently verified the pinned commit, fixture hash, corpus counts, and acceptance controls; confirmed that the separate verifier's method and 11/11 result reflect the intended fixture contract; and identified that the fixture incorrectly labels Python sorted compact JSON as JCS while omitting a future-dated checker-timestamp coverage limit.",
+        "scope": "This validates one substantive external technical review of the campaign-produced cross-evaluation against the pinned RCL fixture contract and records the owner's correction to the source fixture description.",
+        "does_not_establish": [
+          "an independent execution of the separate verifier",
+          "an independent verifier run",
+          "full RFC 8785 conformance",
+          "behavior outside the pinned 11-case fixture corpus",
+          "technical correctness or efficacy of VERITAS",
+          "adoption",
+          "endorsement",
+          "certification",
+          "payment",
+          "execution authority"
+        ],
+        "source_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5153257172",
+        "occurred_at": "2026-08-01T20:22:41Z",
+        "verification": {
+          "status": "verified",
+          "method": "GitHub issue-comment API, repository-owner association, pinned-commit, fixture-hash, and public contract readback",
+          "verified_at": "2026-08-01T22:12:26Z",
+          "immutable_ref_type": "issue_comment_id",
+          "immutable_ref": "5153257172",
+          "comment_node_id": "IC_kwDOQWUPMs8AAAABMyh21A",
+          "reviewed_source_commit": "5e25bc6465ccced079ca6a6b8f54e065a1677a69",
+          "fixture_path": "fixtures/rcl/rcl-oracle-fixtures.v1.json",
+          "fixture_sha256": "0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb",
+          "declared_case_counts": {
+            "total": 11,
+            "accept": 2,
+            "reject": 9
+          }
+        },
+        "conflict_disclosures": {
+          "explicit_comment_disclosure": "The owner explicitly scoped the result as a cross-implementation replay, not independent validation, endorsement, certification, adoption, or a security audit.",
+          "observable_relationship": "GitHub identifies the actor as repository owner; VrtxOmega authored the reproducibility report and separate verifier under review.",
+          "campaign_records": "No payment, reciprocal validation, or campaign outreach to this actor is recorded.",
+          "boundary": "These observable facts establish one repository-owner technical review of the pinned subject and do not establish expertise, honesty, endorsement, source blindness, or independence beyond that separately controlled response."
+        },
+        "dedupe_key": "github:msaleme|substantive_external_review|msaleme/red-team-blue-team-agent-fabric#304",
         "count_weight": 1
       }
     ]
@@ -1081,17 +1139,17 @@
   "progress": {
     "technical_state": "ACTIVE",
     "commercial_state": "UNMET",
-    "qualifying_events": 8,
-    "distinct_independent_validators": 8,
-    "unrelated_organizations_or_communities": 8,
+    "qualifying_events": 9,
+    "distinct_independent_validators": 9,
+    "unrelated_organizations_or_communities": 9,
     "pre_reveal_blind_label_sets": 0,
-    "technical_reproductions_reviews_or_integrations": 5,
+    "technical_reproductions_reviews_or_integrations": 6,
     "structured_adopter_reports": 0,
     "repeat_use_adopter_reports": 0,
     "independently_proposed_or_executed_hostile_cases": 0,
     "independent_verifier_runs_cross_evaluations_or_compatible_implementations": 0,
     "catalog_and_editorial_events": 3,
-    "maximum_single_category_share_basis_points": 3750,
+    "maximum_single_category_share_basis_points": 3333,
     "settled_revenue_usd": "0.00",
     "outreach_initial_contacts": 49,
     "outreach_follow_ups": 0,
@@ -1099,11 +1157,11 @@
     "declines": 0,
     "closed_lanes": 3,
     "remaining": {
-      "qualifying_events": 42,
-      "distinct_independent_validators": 17,
-      "unrelated_organizations_or_communities": 2,
+      "qualifying_events": 41,
+      "distinct_independent_validators": 16,
+      "unrelated_organizations_or_communities": 1,
       "pre_reveal_blind_label_sets": 15,
-      "technical_reproductions_reviews_or_integrations": 5,
+      "technical_reproductions_reviews_or_integrations": 4,
       "structured_adopter_reports": 5,
       "repeat_use_adopter_reports": 2,
       "independently_proposed_or_executed_hostile_cases": 5,

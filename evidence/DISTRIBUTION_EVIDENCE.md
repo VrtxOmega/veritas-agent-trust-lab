@@ -1,6 +1,6 @@
 # Distribution Evidence
 
-Observed state: 2026-08-01 00:30 (America/Chicago)
+Observed state: 2026-08-01 17:12 (America/Chicago)
 
 This register separates publication, automated workflow output, independent
 human action, and payment. A public link or an author-opened issue is not
@@ -30,6 +30,7 @@ independent validation.
 | [trailofbits/dylint#2016](https://github.com/trailofbits/dylint/pull/2016) | Merged on 2026-07-29 by external collaborator `smoelius` as commit `41e2a17009a5cb329e9ab3e314a33fffeba5d67c` after requiring synchronized rustdoc and generated README corrections. | One campaign-produced technical contribution was materially reviewed, corrected, and accepted as one external integration. The review and merge are not counted twice. | No release inclusion, deployed availability, technical correctness, project-wide correctness, adoption, endorsement, certification, or payment. |
 | [freedesktop-rs/nmrs#521](https://github.com/freedesktop-rs/nmrs/pull/521#pullrequestreview-4814368955) | External project member submitted an `APPROVED` review and retained the merge decision to consider the source break. | One independent maintainer approval of the recorded commit and one explicit architectural concern governing merge timing. | No merge, release inclusion, product adoption, technical correctness, endorsement, certification, or payment. |
 | [rask-lang/rask#469](https://github.com/rask-lang/rask/pull/469#issuecomment-5133606097) | External repository actor `dritory` closed the pull request without merge, then stated that the fix addressed the symptom rather than the mangling collision. | One independently attributable substantive technical review identifying the missed root cause; the unfavorable lifecycle is separately recorded as one negative outcome and one closed lane. | No correctness of the rejected patch, acceptance, merge, release inclusion, adoption, endorsement, certification, or payment. |
+| [msaleme/red-team-blue-team-agent-fabric#304](https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5153257172) | The external repository owner independently verified the pinned commit, fixture hash, corpus counts, and acceptance controls; confirmed that the separate verifier's method and 11/11 result reflect the intended RCL fixture contract; and identified that the source fixture mislabeled sorted compact JSON as JCS while omitting a future-timestamp coverage limit. | One substantive external technical review of the pinned cross-evaluation and one source-contract correction. | No independent verifier execution, full RFC 8785 conformance, behavior outside the 11 pinned cases, VERITAS efficacy, adoption, endorsement, certification, or payment. |
 
 ## Independent-use lane
 
@@ -50,13 +51,14 @@ Verified payments: **$0**
 
 ## Current determination
 
-**PARTIAL — EIGHT SCOPED EXTERNAL ACTIONS**
+**PARTIAL — NINE SCOPED EXTERNAL ACTIONS**
 
-Eight independent human actions now qualify under the canonical ledger: three
+Nine independent human actions now qualify under the canonical ledger: three
 curator acceptances, one technical reproduction, two accepted integrations,
-and two substantive external reviews. The Rask review is unfavorable and
-identifies a missed mangling-collision root cause; it is not reframed as
-acceptance. Each action changes only its recorded narrow claim from
+and three substantive external reviews. The Rask review is unfavorable and
+identifies a missed mangling-collision root cause; the RCL owner review confirms
+the pinned fixture contract while correcting its encoding label and coverage
+limits. Neither is reframed as broader acceptance. Each action changes only its recorded narrow claim from
 `INCONCLUSIVE` to `PARTIAL`, accepted, or rejected. VERITAS technical efficacy,
 independent calibration use, product adoption, certification, endorsement,
 commercial demand, and payment remain `INCONCLUSIVE`. Automated checks,
