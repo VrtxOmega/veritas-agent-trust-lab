@@ -628,10 +628,10 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>Seven independently attributable outside actions now qualify.</h2>
+              <h2>Eight independently attributable outside actions now qualify.</h2>
               <p>
-                Two maintainers merged scoped Trust Lab catalogue entries. A
-                third repository owner independently reproduced a concrete
+                Three external curators merged scoped Trust Lab catalogue or
+                watchlist entries. A separate repository owner independently reproduced a concrete
                 security defect in a campaign-produced Action contribution and
                 issued a blocking technical review, then re-reviewed and merged
                 the corrected contribution. That lifecycle remains one event.
@@ -679,11 +679,13 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Two curator decisions, one reproduction, two integrations, and two reviews are public.</h3>
+              <h3>Three curator decisions, one reproduction, two integrations, and two reviews are public.</h3>
               <p>
                 GitHub records separate external merge actors for
-                systempromptio pull request #27 and gmh5225 pull request #18.
-                Each upstream README contains one scoped Trust Lab entry. The
+                systempromptio pull request #27, gmh5225 pull request #18, and
+                scadastrangelove pull request #29. The first two upstream
+                READMEs and the third repository&apos;s WATCHLIST each contain one
+                scoped Trust Lab entry. The
                 AgentDoctor owner separately reported reproducing an
                 outside-workspace write through an output-file symlink and
                 requested a focused remediation matrix, then independently
@@ -733,6 +735,11 @@ export function TrustLab() {
               <span>Public catalogue readback at the recorded merge commit.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/scadastrangelove/awesome-ai-security-tools/pull/29" target="_blank" rel="noreferrer">
+              <b>Third merged curator decision</b>
+              <span>External repository owner accepted the scoped Trust Lab entry into the new-project watchlist.</span>
+              <i>↗</i>
+            </a>
             <a href="https://github.com/pranee54/AgentDoctor/pull/18" target="_blank" rel="noreferrer">
               <b>Reproduced, corrected, and merged</b>
               <span>External repository owner reproduced the Action defect, required remediation, re-verified the fix, and merged it as one counted event.</span>
@@ -767,7 +774,7 @@ export function TrustLab() {
           <p className="boundary">
             <strong>SCOPE</strong> Qualifying external validations:{" "}
             {protocolProgress.qualifying_events}, from{" "}
-            {protocolProgress.distinct_independent_validators} distinct validators: two
+            {protocolProgress.distinct_independent_validators} distinct validators: three
             scoped curator-fit decisions and one independent technical
             reproduction, two accepted external integrations, and two
             substantive external reviews. One review rejected the Rask patch

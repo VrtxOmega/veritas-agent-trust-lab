@@ -30,13 +30,14 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /Reveal privately \(weight 0\)/);
   assert.match(visibleHtml, /When the evaluation boundary became the attack surface/);
   assert.match(visibleHtml, /No direct Internet access was not no path to the Internet/);
-  assert.match(visibleHtml, /Seven independently attributable outside actions now qualify/);
+  assert.match(visibleHtml, /Eight independently attributable outside actions now qualify/);
   assert.match(visibleHtml, /PROTOCOL V2 \/ BALANCED EVIDENCE/);
-  assert.match(visibleHtml, /<strong>7<small>\/50<\/small><\/strong>/);
+  assert.match(visibleHtml, /<strong>8<small>\/50<\/small><\/strong>/);
   assert.match(visibleHtml, /Blind labels:\s+0\/15/);
   assert.match(visibleHtml, /Technical:\s+5\/10/);
   assert.match(visibleHtml, /Settled\s+arms-length pilot revenue: \$0\.00\/\$750/);
-  assert.match(visibleHtml, /Qualifying external validations:\s+7/s);
+  assert.match(visibleHtml, /Qualifying external validations:\s+8/s);
+  assert.match(visibleHtml, /Third merged curator decision/);
   assert.match(visibleHtml, /Reproduced, corrected, and merged/);
   assert.match(
     visibleHtml,
@@ -125,7 +126,8 @@ test("public source preserves commercial and assurance boundaries", async () => 
   assert.match(issueForm, /Submit this issue before using the reveal control/);
   assert.match(issueForm, /does not prove\s+independence, expertise, honesty/is);
   assert.match(issueForm, /id: commitment_id/);
-  assert.match(distribution, /SEVEN SCOPED EXTERNAL ACTIONS/);
+  assert.match(distribution, /EIGHT SCOPED EXTERNAL ACTIONS/);
+  assert.match(distribution, /scadastrangelove\/awesome-ai-security-tools#29/);
   assert.match(distribution, /rask-lang\/rask#469/);
   assert.match(distribution, /unfavorable.*mangling-collision root cause/is);
   assert.match(distribution, /product efficacy.*remain `INCONCLUSIVE`/is);

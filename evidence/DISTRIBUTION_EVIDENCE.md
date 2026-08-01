@@ -1,6 +1,6 @@
 # Distribution Evidence
 
-Observed state: 2026-07-31 23:05 (America/Chicago)
+Observed state: 2026-08-01 00:30 (America/Chicago)
 
 This register separates publication, automated workflow output, independent
 human action, and payment. A public link or an author-opened issue is not
@@ -23,7 +23,7 @@ independent validation.
 | --- | --- | --- | --- |
 | [agentrust-io/awesome-ai-governance#48](https://github.com/agentrust-io/awesome-ai-governance/pull/48) | Open, mergeable, awaiting named-maintainer review. Automated contributor check reported high confidence. | A policy-compliant one-line submission exists and automated workflow checks ran. | No human acceptance, product efficacy, calibration, certification, or endorsement. |
 | [systempromptio/awesome-ai-agent-governance#27](https://github.com/systempromptio/awesome-ai-agent-governance/pull/27) | Merged on 2026-07-29 by independent curator `Ejb503` as commit `2a2fd6d84c1b57b89faf8e786615c8f6d7a3ed69`; the final upstream README contains the neutral Trust Lab entry. | One attributable non-author curator accepted the project's relevance to the catalog's Security, Red-Teaming, and Threat Models section. | No challenge use, product efficacy, calibration, certification, adoption, endorsement, independent label set, or payment. |
-| [scadastrangelove/awesome-ai-security-tools#29](https://github.com/scadastrangelove/awesome-ai-security-tools/pull/29) | Open and mergeable with one `WATCHLIST.md` line; awaiting curator review. | A contribution-policy-aligned submission exists in the catalog's required zero-star lane; local PCF preflight was `ready-for-maintainer` at 100/100. | No human acceptance, main-list eligibility, product efficacy, calibration, certification, or endorsement. |
+| [scadastrangelove/awesome-ai-security-tools#29](https://github.com/scadastrangelove/awesome-ai-security-tools/pull/29) | Merged on 2026-07-30 by independent repository owner `scadastrangelove` as commit `50751844162f3284e34b0aced3130516be45c53b`; the accepted change is one scoped `WATCHLIST.md` entry. | One attributable external curator accepted the project's fit for the repository's published watchlist for new AI-security tools. | No challenge use, main-list eligibility, product efficacy, independent calibration, adoption, endorsement, certification, or payment. |
 | [gmh5225/awesome-ai-security#18](https://github.com/gmh5225/awesome-ai-security/pull/18) | Merged on 2026-07-29 by independent repository owner `gmh5225`. | A second external curator accepted the scoped Trust Lab catalogue entry. | No challenge use, product efficacy, adoption, endorsement, certification, or payment. |
 | [pranee54/AgentDoctor#18](https://github.com/pranee54/AgentDoctor/pull/18) | Repository owner independently reproduced an output-file symlink escape, required six focused remediation cases, then re-verified, approved, and merged the corrected commit `e055eb720b4af7cd260ebb76b0d2146f4d765326` as `88367637cc452a882625f69b953f21da414082b7`. The reproduction, review, approval, and merge remain one event. | One concrete outside technical reproduction, one actionable remediation boundary, and one independently verified contribution lifecycle through merge. | No release inclusion, deployed use of the Action, AgentDoctor adoption or validation of VERITAS, project-wide security assurance, endorsement, certification, or payment. |
 | [mick-gsk/drift#792](https://github.com/mick-gsk/drift/pull/792) | Merged on 2026-07-29 by the external repository owner. | One campaign-produced technical contribution was accepted and integrated. | No independent adoption or technical validation of VERITAS, endorsement, certification, or payment. |
@@ -50,9 +50,9 @@ Verified payments: **$0**
 
 ## Current determination
 
-**PARTIAL — SEVEN SCOPED EXTERNAL ACTIONS**
+**PARTIAL — EIGHT SCOPED EXTERNAL ACTIONS**
 
-Seven independent human actions now qualify under the canonical ledger: two
+Eight independent human actions now qualify under the canonical ledger: three
 curator acceptances, one technical reproduction, two accepted integrations,
 and two substantive external reviews. The Rask review is unfavorable and
 identifies a missed mangling-collision root cause; it is not reframed as
