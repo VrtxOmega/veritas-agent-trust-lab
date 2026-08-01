@@ -310,3 +310,57 @@ The first GitHub-hosted run exposed the stale `open_lanes: 14` assertion after
 the ledger correctly recomputed 15. The assertion was updated to 15, then all
 43 tests, lint, the application build, the Pages build, ledger validation, and
 `git diff --check` passed locally.
+
+## External VERITAS verification challenge and public-proof refresh
+
+### Goal
+
+Make a bounded, independently implementable "check the checker" challenge
+available for the public MIT-licensed Trust Lab contract, while synchronizing
+the active public portfolio surfaces to the verified Protocol v2 and GitHub
+merge state.
+
+### Scope
+
+- Trust Lab challenge protocol, contributor instructions, issue intake, site
+  entry point, and focused regression coverage.
+- GitHub profile proof counters and contribution table.
+- VERITAS portfolio Trust Lab proof point and regression assertions.
+
+### Non-Goals
+
+- Do not publish the all-rights-reserved V4 archive or select its license.
+- Do not imply that the browser Trust Lab is the complete V4 kernel.
+- Do not double-count the RCL owner review and its upstream correction.
+- Do not rewrite historical reports, ledgers, or release evidence that were
+  correct at their recorded commit.
+- Do not claim certification, broad VERITAS efficacy, adoption, endorsement,
+  payment, or execution authority.
+
+### Steps
+
+- [x] Verify current GitHub and canonical-ledger state: Protocol v2 is 9/50
+  from nine validators; the frozen Protocol v1 snapshot remains 6/50.
+- [x] Verify the external RCL lifecycle and the upstream metadata correction.
+- [x] Verify 20 externally merged pull requests authored by VrtxOmega; keep
+  Hermes maintainer-reapplied authorship separate from that direct-PR count.
+- [ ] Publish a versioned, machine-readable three-track external verification
+  challenge with positive controls and exact nonclaims.
+- [ ] Add a low-friction public submission route for reproduction,
+  disagreement, bypass, or compatible implementation reports.
+- [ ] Update the Trust Lab README and rendered site without changing the
+  canonical 9/50 evidence count.
+- [ ] Update the GitHub profile and portfolio from their stale proof state.
+- [ ] Inspect all diffs and run repository-specific tests, lint, builds, and
+  stale-claim scans.
+- [ ] Run PCF, SSWP, and VERITAS gates, then publish and perform live readback.
+
+### Verification
+
+- Trust Lab: `npm run validate:external`, `npm run lint`, `npm test`,
+  `npm run build:pages`, and `git diff --check`.
+- Profile: exact current/stale-string assertions and `git diff --check`.
+- Portfolio: `python3 tests/verify_portfolio.py` and `git diff --check`.
+- Public readback must preserve 9/50, nine validators, zero blind label sets,
+  zero independent verifier runs, and $0 settled revenue until new qualifying
+  evidence actually arrives.

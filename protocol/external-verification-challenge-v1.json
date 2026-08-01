@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "challenge_id": "veritas-public-contract-external-verification-v1",
+  "title": "Break VERITAS: External Verification Challenge",
+  "status": "OPEN",
+  "execution_authorized": false,
+  "reference_contract": {
+    "repository": "https://github.com/VrtxOmega/veritas-agent-trust-lab",
+    "commit": "0f3c71fdb0e9078d8a5d8684411d0318fe600bb1",
+    "license": "MIT",
+    "scope": "public browser demonstrator only",
+    "answer_key_visibility": "The reference implementation is public. Independence means a separately implemented verification path, not source blindness.",
+    "artifacts": [
+      {
+        "path": "lib/trust-engine.js",
+        "sha256": "60c8d7e26fa0a352401b391015618c56b9be39d59c4b7cc4d5b24ec3f8d726c2"
+      },
+      {
+        "path": "public/verification-packet.json",
+        "sha256": "87ff8f3784f7509e05ae19bc8f72236f061bff32ce79777c65343ac56609b54f"
+      },
+      {
+        "path": "lib/challenge-receipt.js",
+        "sha256": "21b8f565ee6155b7eec93e3fa490506f66453cfed7fb2b3c19eea8d4f0f4229e"
+      }
+    ]
+  },
+  "full_v4_boundary": {
+    "included": false,
+    "reason": "The complete V4 archive currently grants no public distribution or modification license.",
+    "required_next_step": "An explicit copyright-holder license and public release decision is required before a full-kernel track can open."
+  },
+  "independence_requirements": [
+    "Do not import, call, wrap, transpile, or vendor the reference evaluator as the submitted implementation.",
+    "Publish source, dependency lock, exact commands, and result artifacts at an immutable commit.",
+    "Exercise clean positive controls as well as hostile cases.",
+    "Report mismatches and untested boundaries without narrative repair.",
+    "Disclose relationships, compensation, reused code, AI assistance, and shared dependencies."
+  ],
+  "tracks": [
+    {
+      "id": "independent-result-recomputation",
+      "title": "Independent result recomputation",
+      "required_case_families": [
+        "forged-verdict",
+        "parameter-swap",
+        "nonce-replay",
+        "correlated-quorum",
+        "evidence-deletion",
+        "silent-monitor"
+      ],
+      "required_modes": ["CLEAN", "TAMPERED"],
+      "required_result_fields": [
+        "verified_result",
+        "disposition",
+        "reason_codes",
+        "packet",
+        "execution_authorized"
+      ],
+      "positive_controls": 6,
+      "hostile_cases": 6
+    },
+    {
+      "id": "action-boundary-mutation",
+      "title": "Break the action boundary",
+      "required_mutations": [
+        "operation_or_command_substitution",
+        "target_or_filesystem_root_broadening",
+        "consumed_nonce_reuse",
+        "correlated_evaluator_quorum",
+        "refuting_evidence_deletion"
+      ],
+      "positive_control_rule": "Pair every hostile mutation with the unchanged clean packet.",
+      "positive_controls": 5,
+      "hostile_cases": 5
+    },
+    {
+      "id": "monitoring-and-revocation",
+      "title": "Break monitoring and revocation",
+      "required_mutations": [
+        "heartbeat_outside_ttl",
+        "missing_heartbeat",
+        "future_dated_heartbeat"
+      ],
+      "optional_extension_mutations": [
+        "out_of_order_sequence",
+        "replayed_sequence",
+        "broken_predecessor_chain"
+      ],
+      "positive_control_rule": "Include a heartbeat inside its declared TTL.",
+      "positive_controls": 1,
+      "hostile_cases": 3
+    }
+  ],
+  "accepted_result_classes": [
+    "independent_reproduction",
+    "substantive_technical_review",
+    "externally_discovered_defect",
+    "compatible_implementation"
+  ],
+  "submission": {
+    "issue_template": "external-verification.yml",
+    "public_url": "https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=external-verification.yml",
+    "security_contact": "VrtxOmega@pm.me",
+    "automatic_validation_weight": 0,
+    "counting_rule": "A report remains uncounted until identity, independence, method, provenance, scope, deduplication, and Protocol v2 caps are verified."
+  },
+  "does_not_establish": [
+    "endorsement",
+    "certification",
+    "broad VERITAS efficacy",
+    "production security",
+    "factual truth",
+    "adoption",
+    "payment",
+    "execution authority"
+  ]
+}

@@ -109,6 +109,8 @@ endorsement, or commercial demand. Independent pre-reveal label sets remain
 - Or use the dedicated
   [blind-label issue form](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=blind-label-set.yml).
 - Propose a seventh falsifiable case through the issue form.
+- Independently reproduce or break one bounded contract through the
+  [External Verification Challenge](docs/EXTERNAL_VERIFICATION_CHALLENGE.md).
 
 GitHub participation is public and attached to the participant's GitHub
 identity. The email route is private; the address or label set will not be
@@ -116,6 +118,25 @@ published without explicit participant consent. A timestamped GitHub issue or
 email proves only receipt of the submitted six-label commitment—not
 independence, expertise, honesty, or lack of source inspection. The lab itself
 has no analytics, hosted form, automatic send, or hidden label collection.
+
+### Check the checker
+
+The versioned External Verification Challenge asks outside engineers and
+researchers to independently implement one of three tracks: result
+recomputation, exact action-boundary mutation, or monitoring and revocation.
+Each track requires clean positive controls as well as hostile cases, a pinned
+artifact hash, public reproduction commands, mismatch reporting, and
+relationship or AI-assistance disclosure.
+
+The challenge covers this MIT-licensed public demonstrator, not the complete
+V4 kernel. The V4 archive is not included because its current license notice
+does not grant public distribution or modification rights. A report remains
+uncounted until its identity, implementation separation, provenance, evidence,
+scope, deduplication, and Protocol v2 caps are reviewed.
+
+- [Read the challenge](docs/EXTERNAL_VERIFICATION_CHALLENGE.md)
+- [Inspect the machine-readable protocol](protocol/external-verification-challenge-v1.json)
+- [Submit an external verification report](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=external-verification.yml)
 
 ## External-evidence campaign
 
