@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-08-01T11:01:06Z",
+  "as_of": "2026-08-01T14:10:55Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -789,6 +789,27 @@
         },
         "count_weight": 0,
         "nonclaim": "Outreach is not participation, a blind label set, validation, hostile-case evidence, endorsement, or payment."
+      },
+      {
+        "organization_id": "aegis-tool-gating",
+        "channel": "email",
+        "audience": "pre_execution_tool_call_gating_maintainer",
+        "purpose": "blind_participation_or_external_hostile_case",
+        "source_relevance": "AEGIS intercepts proposed agent tool calls before execution, classifies their risk, can hold high-risk actions for human review, and records a tamper-evident audit trail.",
+        "public_basis_url": "https://github.com/Justin0504/Aegis",
+        "public_contact_basis_url": "https://github.com/Justin0504",
+        "initial_contact_at": "2026-08-01T14:10:55Z",
+        "tailored": true,
+        "status": "sent_no_substantive_response",
+        "follow_up_eligible_at": "2026-08-08T14:10:55Z",
+        "follow_up_at": null,
+        "private_evidence": {
+          "provider": "gmail",
+          "message_id": "19fbda9e4aa2de8f",
+          "sent_readback_verified": true
+        },
+        "count_weight": 0,
+        "nonclaim": "Outreach is not participation, a blind label set, validation, hostile-case evidence, endorsement, or payment."
       }
     ]
   },
@@ -811,7 +832,7 @@
     "catalog_and_editorial_events": 3,
     "maximum_single_category_share_basis_points": 3750,
     "settled_revenue_usd": "0.00",
-    "outreach_initial_contacts": 37,
+    "outreach_initial_contacts": 38,
     "outreach_follow_ups": 0,
     "negative_outcomes": 1,
     "declines": 0,
