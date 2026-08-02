@@ -625,7 +625,7 @@ with its verified downstream corpus impact without creating a duplicate event.
 - [x] Verify the owner's new comment and merged PRs #310, #311, and #312.
 - [x] Post and read back the exact discovery response.
 - [x] Enrich the existing qualifying and zero-weight lifecycle records.
-- [ ] Run JSON, regression, lint, build, diff, VERITAS, and SSWP gates.
+- [x] Run JSON, regression, lint, build, diff, VERITAS, and SSWP gates.
 - [ ] Publish one clean PR and live-read unchanged campaign counts.
 
 ### Verification
@@ -641,3 +641,18 @@ with its verified downstream corpus impact without creating a duplicate event.
   0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
   0 verifier runs, 3 catalog events, 52 initial contacts, and $0 settled
   revenue.
+
+### Local gate outcome
+
+- `npm run validate:external`, lint, all 59 Node tests, the Pages build, and
+  `git diff --check` passed on the scoped three-file change.
+- Signed commit `2fdf3cd72b016a2d810a38dafb152be97a715c39` has a good
+  signature from `VrtxOmega@pm.me`.
+- VERITAS checked the exact signed commit. All six declared numeric boundaries
+  passed, while the aggregate verdict correctly remained `INCONCLUSIVE`
+  because the evidence is still author-controlled; weakening the required
+  deduplication and author-weight evidence produced `MODEL_BOUND` /
+  `HIGH_FRAGILITY` rather than a false upgrade.
+- The governed SSWP witness passed Git integrity, lockfile, deterministic
+  build, tests, and lint for commit `2fdf3cd7`, with Cortex `APPROVED` and
+  attestation seal prefix `95ae4fc193c03b7d`.
