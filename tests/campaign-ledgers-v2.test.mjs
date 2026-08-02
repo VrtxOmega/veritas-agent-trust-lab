@@ -137,6 +137,31 @@ test("records the in-toto Witness verifier invitation once at weight zero", asyn
   assert.equal(qualifying.length, 0);
 });
 
+test("records the OpenHands founding-pilot invitation without inventing revenue", async () => {
+  const ledger = await loadLedger();
+  const outreach = ledger.outreach_denominator_ledger.protocol_v2_records.filter(
+    (entry) => entry.organization_id === "all-hands-ai-openhands",
+  );
+  const proposals = ledger.protocol_v2_effort_ledger.tailored_commercial_proposals.filter(
+    (entry) => entry.organization_id === "all-hands-ai-openhands",
+  );
+  const qualifying = ledger.qualifying_event_ledger.protocol_v2_events.filter(
+    (entry) => entry.organization_id === "all-hands-ai-openhands",
+  );
+
+  assert.equal(outreach.length, 1);
+  assert.equal(outreach[0].purpose, "founding_paid_pilot_offer");
+  assert.equal(outreach[0].private_evidence.message_id, "19fc03dde8d58377");
+  assert.equal(outreach[0].follow_up_eligible_at, "2026-08-09T02:11:47Z");
+  assert.equal(outreach[0].count_weight, 0);
+  assert.equal(proposals.length, 1);
+  assert.equal(proposals[0].amount_usd, "750.00");
+  assert.equal(proposals[0].settled_payment_usd, "0.00");
+  assert.equal(proposals[0].delivery_acknowledged, false);
+  assert.equal(proposals[0].count_weight, 0);
+  assert.equal(qualifying.length, 0);
+});
+
 test("recomputes Protocol v2 progress without moving untouched evidence minima", async () => {
   const ledger = await loadLedger();
   const progress = ledger.progress;
@@ -164,7 +189,7 @@ test("recomputes Protocol v2 progress without moving untouched evidence minima",
     0,
   );
   assert.equal(progress.catalog_and_editorial_events, 3);
-  assert.equal(progress.outreach_initial_contacts, 50);
+  assert.equal(progress.outreach_initial_contacts, 51);
   assert.equal(progress.outreach_follow_ups, 0);
   assert.equal(progress.settled_revenue_usd, "0.00");
   assert.deepEqual(progress.remaining, {
