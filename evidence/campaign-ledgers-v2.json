@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-08-02T01:54:08Z",
+  "as_of": "2026-08-02T02:11:47Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -1202,12 +1202,53 @@
         },
         "count_weight": 0,
         "nonclaim": "Outreach is not an independent verifier run, technical review, compatible implementation, validation, adoption, endorsement, affiliation, or payment."
+      },
+      {
+        "organization_id": "all-hands-ai-openhands",
+        "channel": "email",
+        "audience": "open_source_coding_agent_product_team",
+        "purpose": "founding_paid_pilot_offer",
+        "source_relevance": "OpenHands publicly describes agents that can modify code, run commands, browse the web, and call APIs, making a bounded review of one repository-changing or tool-calling workflow directly relevant to consequential agent-action evidence, permission, approval, and monitoring boundaries.",
+        "public_basis_url": "https://github.com/All-Hands-AI/OpenHands",
+        "public_contact_basis_url": "https://github.com/All-Hands-AI",
+        "initial_contact_at": "2026-08-02T02:11:47Z",
+        "tailored": true,
+        "status": "sent_no_substantive_response",
+        "follow_up_eligible_at": "2026-08-09T02:11:47Z",
+        "follow_up_at": null,
+        "private_evidence": {
+          "provider": "gmail",
+          "message_id": "19fc03dde8d58377",
+          "sent_readback_verified": true
+        },
+        "count_weight": 0,
+        "nonclaim": "Outreach, delivery, receipt, interest, a scoping call, or an unpaid agreement is not validation, adoption, endorsement, affiliation, settled revenue, or a completed commercial milestone."
       }
     ]
   },
   "protocol_v2_effort_ledger": {
     "new_external_technical_contribution_lanes": [],
-    "tailored_commercial_proposals": []
+    "tailored_commercial_proposals": [
+      {
+        "organization_id": "all-hands-ai-openhands",
+        "offer_id": "agent-action-assurance-founding-pilot-v1",
+        "channel": "email",
+        "amount_usd": "750.00",
+        "scope": "One real OpenHands workflow, up to five consequential operations, six tailored hostile cases, a replayable evidence packet, prioritized remediation, one retest, and a 60-minute technical walkthrough.",
+        "proposed_at": "2026-08-02T02:11:47Z",
+        "status": "sent_no_substantive_response",
+        "follow_up_eligible_at": "2026-08-09T02:11:47Z",
+        "settled_payment_usd": "0.00",
+        "delivery_acknowledged": false,
+        "private_evidence": {
+          "provider": "gmail",
+          "message_id": "19fc03dde8d58377",
+          "sent_readback_verified": true
+        },
+        "count_weight": 0,
+        "nonclaim": "This proposal does not establish demand, a sale, settled revenue, pilot delivery, adoption, endorsement, affiliation, or technical validation."
+      }
+    ]
   },
   "progress": {
     "technical_state": "ACTIVE",
@@ -1224,7 +1265,7 @@
     "catalog_and_editorial_events": 3,
     "maximum_single_category_share_basis_points": 3333,
     "settled_revenue_usd": "0.00",
-    "outreach_initial_contacts": 50,
+    "outreach_initial_contacts": 51,
     "outreach_follow_ups": 0,
     "negative_outcomes": 1,
     "declines": 0,

@@ -479,3 +479,55 @@ invitation at zero weight unless a qualifying external action later occurs.
 - Live main must remain at 9 qualifying events, 9 validators, 9 organizations,
   0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
   0 verifier runs, 3 catalog events, and $0 settled revenue.
+
+## OpenHands founding-pilot invitation
+
+### Goal
+
+Open one arms-length commercial lane with a technically matched agent team by
+offering the published $750 founding pilot for one bounded OpenHands workflow.
+
+### Scope
+
+- One tailored initial email to the public `contact@all-hands.dev` address.
+- One Protocol v2 outreach-denominator record and one commercial-proposal
+  effort record, both at zero qualifying weight.
+- Focused regression coverage proving that only the outreach denominator
+  changes before any settled payment and completed delivery.
+
+### Non-Goals
+
+- Do not claim adoption, endorsement, affiliation, validation, or revenue.
+- Do not request production credentials, secrets, or unrestricted access.
+- Do not characterize this as certification, a comprehensive security audit,
+  legal advice, compliance approval, or a security guarantee.
+- Do not count delivery, receipt, interest, a call, or an unpaid agreement.
+- Do not follow up before seven days unless the recipient responds or invites
+  continued contact.
+- Do not open another outreach lane during this campaign turn.
+
+### Steps
+
+- [x] Verify the live Protocol v2 baseline and absence of a new qualifying
+  external action.
+- [x] Verify OpenHands relevance from its public docs and GitHub organization.
+- [x] Prove exact Gmail and ledger deduplication before contact.
+- [x] Send one bounded $750 pilot invitation and read it back from Gmail.
+- [x] Record the invitation once at zero weight and preserve every evidence
+  and commercial outcome count.
+- [x] Run ledger, regression, lint, build, diff, and VERITAS checks.
+- [x] Run the governed SSWP witness after committing the exact patch.
+- [ ] Publish through one clean pull request and read back live main.
+
+### Verification
+
+- Gmail readback must match the recipient, subject, body, sent time, and ID.
+- `npm run validate:external`
+- `npm run lint`
+- `npm test`
+- `npm run build:pages`
+- `git diff --check`
+- Live main must remain at 9 qualifying events, 9 validators, 9 organizations,
+  0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
+  0 verifier runs, 3 catalog events, and $0 settled revenue; only initial
+  outreach may rise from 50 to 51.
