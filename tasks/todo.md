@@ -564,7 +564,7 @@ is independently verified.
 - [x] Prove exact canonical-ledger and Gmail deduplication.
 - [x] Send one tailored invitation and read back the exact Gmail thread.
 - [x] Record it once at zero weight and update the outreach snapshot.
-- [ ] Run validation, regression, lint, build, diff, VERITAS, and SSWP gates.
+- [x] Run validation, regression, lint, build, diff, VERITAS, and SSWP gates.
 - [ ] Publish one clean PR and live-read merged canonical state.
 
 ### Verification
@@ -580,3 +580,17 @@ is independently verified.
   0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
   0 verifier runs, 3 catalog events, and $0 settled revenue; only initial
   outreach may rise from 51 to 52.
+
+### Local gate outcome
+
+- `npm run validate:external`, lint, the production build, the Pages build,
+  and all 59 Node tests passed; `git diff --check` was clean.
+- Signed commit `aa064d426e46eae18c448d7c6aea128a2ee8cdc9` has a good
+  signature from `VrtxOmega@pm.me` and changes only the three planned files.
+- VERITAS ran all ten gates on the exact signed commit. All seven numeric
+  boundaries passed, while the aggregate result correctly remained
+  `INCONCLUSIVE` because the evidence is author-controlled; removing required
+  receipts also produced `MODEL_BOUND` fragility rather than a false upgrade.
+- The governed SSWP witness passed Git integrity, lockfile, deterministic
+  build, tests, and lint for commit `aa064d42`, with Cortex `APPROVED` and
+  attestation seal prefix `0380acebc239a764`.
