@@ -531,3 +531,52 @@ offering the published $750 founding pilot for one bounded OpenHands workflow.
   0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
   0 verifier runs, 3 catalog events, and $0 settled revenue; only initial
   outreach may rise from 50 to 51.
+
+## Snyk Agent Scan hostile-case invitation
+
+### Goal
+
+Advance the missing hostile-case or blind-label categories through one
+technically grounded invitation to a current Snyk Agent Scan contributor while
+keeping the invitation at zero weight until a qualifying outside submission
+is independently verified.
+
+### Scope
+
+- One initial email to Luca Beurer-Kellner using the public Snyk address in
+  current `snyk/agent-scan` commit metadata.
+- One Protocol v2 outreach-denominator record with current Agent Scan threat
+  relevance, immutable contact provenance, and a seven-day follow-up boundary.
+- Focused regression coverage proving only the outreach denominator changes.
+
+### Non-Goals
+
+- No endorsement, partnership, promotion, favorable result, vulnerability
+  claim, reciprocal action, automatic hostile-case promotion, or campaign
+  evidence count.
+- Do not treat delivery, receipt, silence, interest, or thanks as evidence.
+- Do not send a follow-up before seven days unless the recipient responds or
+  explicitly invites continued contact.
+
+### Steps
+
+- [x] Verify current public Agent Scan relevance and contact provenance.
+- [x] Prove exact canonical-ledger and Gmail deduplication.
+- [x] Send one tailored invitation and read back the exact Gmail thread.
+- [x] Record it once at zero weight and update the outreach snapshot.
+- [ ] Run validation, regression, lint, build, diff, VERITAS, and SSWP gates.
+- [ ] Publish one clean PR and live-read merged canonical state.
+
+### Verification
+
+- Gmail thread `19fc05bf22622bd6` must match the exact recipient, subject,
+  body, and `2026-08-02T02:44:39Z` send time.
+- `npm run validate:external`
+- `npm run lint`
+- `npm test`
+- `npm run build:pages`
+- `git diff --check`
+- Live main must remain at 9 qualifying events, 9 validators, 9 organizations,
+  0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
+  0 verifier runs, 3 catalog events, and $0 settled revenue; only initial
+  outreach may rise from 51 to 52.
