@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-08-02T16:50:08Z",
+  "as_of": "2026-08-02T19:20:19Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -134,8 +134,8 @@
           "independence_basis": "The actor is distinct from VrtxOmega, owns the external repository containing the pinned RCL fixture corpus, and submitted the review with GitHub OWNER association."
         },
         "action": "verified_pinned_fixture_provenance_confirmed_the_reported_method_and_result_and_identified_a_fixture_contract_label_fault",
-        "validation_claim": "The external repository owner independently verified the pinned commit, fixture hash, corpus counts, and acceptance controls; confirmed that the separate verifier's method and 11/11 result reflect the intended fixture contract; identified that the fixture incorrectly labels Python sorted compact JSON as JCS while omitting a future-dated checker-timestamp coverage limit; and later reported that the review lifecycle produced merged fixture corrections plus follow-on per-case currency tracking in a second corpus.",
-        "scope": "This validates one substantive external technical review of the campaign-produced cross-evaluation against the pinned RCL fixture contract and records the same actor's verified upstream corrections and downstream corpus impact without treating them as additional independent events.",
+        "validation_claim": "The external repository owner independently verified the pinned commit, fixture hash, corpus counts, and acceptance controls; confirmed that the separate verifier's method and 11/11 result reflect the intended fixture contract; identified that the fixture incorrectly labels Python sorted compact JSON as JCS while omitting a future-dated checker-timestamp coverage limit; and later reported that the review lifecycle produced merged fixture corrections, repository-discovery metadata correction, follow-on per-case currency tracking, and a separately packaged DGB corpus carrying self-contained executed verdicts and inline limitations.",
+        "scope": "This validates one substantive external technical review of the campaign-produced cross-evaluation against the pinned RCL fixture contract and records the same actor's verified upstream corrections, discovery lesson, and downstream corpus impact without treating them as additional independent events or extending the report to the DGB bundle.",
         "does_not_establish": [
           "an independent execution of the separate verifier",
           "an independent verifier run",
@@ -219,7 +219,59 @@
                 "source_comment_at": "2026-08-02T16:48:39Z",
                 "scope": "VrtxOmega answered the owner's discovery-path question with the recovered GitHub repository-search query and distinguished search-driven discovery from design-driven selection and use. This author response carries zero evidence weight."
               },
-              "verified_at": "2026-08-02T16:50:08Z"
+              "discovery_and_oracle_impact": {
+                "status": "verified_same_actor_same_subject_lifecycle_extension",
+                "source_comment_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5159760228",
+                "source_comment_id": "5159760228",
+                "source_comment_node_id": "IC_kwDOQWUPMs8AAAABM4uxZA",
+                "source_comment_at": "2026-08-02T18:32:18Z",
+                "no_reply_requested": true,
+                "owner_statements": [
+                  "The recovered GitHub query showed that repository metadata caused discovery while portable fixture design caused selection and successful use; the owner said those two problems had previously been fused.",
+                  "The owner updated the stale repository description after learning that in:name,description matched the field that surfaced the repository.",
+                  "The owner said the acceptance controls and pinned evaluation time are best understood as preventing a verifier from passing for the wrong reason and that this is the first design lesson they would tell another fixture author to copy.",
+                  "The owner said the decision-governance corpus under fixtures/dgb was packaged in the same self-contained, executed-verdict, inline-defect style because of this exchange, while explicitly stating that the original report does not extend to it."
+                ],
+                "repository_discovery_metadata": {
+                  "recovered_query": "agent security benchmark in:name,description stars:>20 pushed:>2026-06-01",
+                  "matched_fields": [
+                    "name",
+                    "description"
+                  ],
+                  "current_description": "603 security tests for AI agent systems — MCP, A2A, x402/L402, decision governance, benchmark integrity, human-in-the-loop, skill supply chain. Commit-pinned OWASP Agentic v1.1 T1–T17 coverage report. AIUC-1 pre-cert, NIST AI 800-2 aligned. v4.13.0",
+                  "verification_method": "GitHub repository metadata API readback after the owner described the correction",
+                  "verified_at": "2026-08-02T19:20:19Z"
+                },
+                "dgb_portable_bundle": {
+                  "owner_attribution_scope": "The repository owner attributed the packaging approach to this exchange but explicitly excluded the DGB bundle from the scope of VrtxOmega's report.",
+                  "initial_packaging_commit": "b79e3f3eee9a664a963135a89fe873d9dcf9899c",
+                  "current_main_commit": "d407ca0895248b49a916ec983d55b2c36591ad25",
+                  "readme_path": "fixtures/dgb/README.md",
+                  "readme_sha256": "7b1ffd066d883020627098da248b2cf25afa9d06b26b394b274bb9e03e79b276",
+                  "bundle_path": "fixtures/dgb/dgb-corpus-bundle.v1.json",
+                  "bundle_sha256": "c024c62714ec0e48999aecd2d3c1923edd4d2b364e1d50151976bd8a54e42e33",
+                  "declared_counts": {
+                    "cases": 52,
+                    "tool_entries": 85
+                  },
+                  "verified_characteristics": [
+                    "reviewable without installing or trusting the package",
+                    "expected scanner verdicts produced by execution rather than hand assignment",
+                    "limitations, grounding defects, and single-author boundaries declared in the bundle and README"
+                  ],
+                  "verified_at": "2026-08-02T19:20:19Z"
+                },
+                "acknowledgement": {
+                  "type": "heart_reaction_only",
+                  "reaction_id": "391704787",
+                  "actor": "VrtxOmega",
+                  "created_at": "2026-08-02T19:17:46Z",
+                  "written_reply": false,
+                  "count_weight": 0
+                },
+                "verified_at": "2026-08-02T19:20:19Z"
+              },
+              "verified_at": "2026-08-02T19:20:19Z"
             }
           }
         },
@@ -301,7 +353,7 @@
         "signal_type": "same_actor_same_subject_upstream_resolution",
         "subject_id": "msaleme/red-team-blue-team-agent-fabric#304",
         "occurred_at": "2026-08-01T22:30:37Z",
-        "response_scope": "The repository owner reported that the encoding-label and future-timestamp coverage corrections prompted by issue #304 were merged through PR #307 at commit 70a38a86dcfa65b66f04c5655c3c8244fec838fe. The fixture self-description changed from hash 0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb to 4164151383605d9d68230d81cc9ae1dd31eb5cfb3fb1348289abf71ee64773ea, while fixtures, counts, and public keys remained unchanged. The same owner later stated that this report-driven review lifecycle also produced merged PRs #310, #311, and #312 and changed a second corpus to track currency per case rather than depend on a stale audit snapshot.",
+        "response_scope": "The repository owner reported that the encoding-label and future-timestamp coverage corrections prompted by issue #304 were merged through PR #307 at commit 70a38a86dcfa65b66f04c5655c3c8244fec838fe. The fixture self-description changed from hash 0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb to 4164151383605d9d68230d81cc9ae1dd31eb5cfb3fb1348289abf71ee64773ea, while fixtures, counts, and public keys remained unchanged. The same owner later stated that this report-driven review lifecycle also produced merged PRs #310, #311, and #312, changed a second corpus to track currency per case rather than depend on a stale audit snapshot, caused the stale repository description to be corrected after the discovery query was recovered, sharpened the anti-false-positive rationale for acceptance controls and pinned evaluation time, and influenced the self-contained DGB corpus packaging.",
         "verification": {
           "method": "GitHub issue-comment, pull-request, merge-commit, changed-file, merge-actor, and commit API readback",
           "source_comment_id": "5153753219",
@@ -316,11 +368,18 @@
             "msaleme/red-team-blue-team-agent-fabric#311",
             "msaleme/red-team-blue-team-agent-fabric#312"
           ],
-          "verified_at": "2026-08-02T16:50:08Z"
+          "final_source_comment_id": "5159760228",
+          "repository_description_verified": true,
+          "dgb_bundle_paths": [
+            "fixtures/dgb/README.md",
+            "fixtures/dgb/dgb-corpus-bundle.v1.json"
+          ],
+          "author_acknowledgement_reaction_id": "391704787",
+          "verified_at": "2026-08-02T19:20:19Z"
         },
         "related_qualifying_event_id": "VTL-V2-20260801-003",
         "count_weight": 0,
-        "reason_not_counted": "The same external actor resolved and extended the same technical subject already counted once as VTL-V2-20260801-003. The merged corrections and downstream corpus changes strengthen that event's provenance and practical impact but are not a second independent validator, organization, category, subject, or verifier run.",
+        "reason_not_counted": "The same external actor resolved and extended the same technical subject already counted once as VTL-V2-20260801-003. The merged corrections, repository-description update, clarified oracle-design rationale, DGB packaging, and author heart reaction strengthen that event's provenance and practical impact but are not a second independent validator, organization, category, subject, or verifier run.",
         "does_not_establish": [
           "an independent verifier run",
           "a second independent validation event",

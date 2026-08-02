@@ -656,3 +656,58 @@ with its verified downstream corpus impact without creating a duplicate event.
 - The governed SSWP witness passed Git integrity, lockfile, deterministic
   build, tests, and lint for commit `2fdf3cd7`, with Cortex `APPROVED` and
   attestation seal prefix `95ae4fc193c03b7d`.
+
+## RCL discovery and oracle-design impact
+
+### Goal
+
+Preserve the external repository owner's final same-subject impact statement:
+the recovered discovery path caused a repository-description correction and
+sharpened the acceptance-control and pinned-time rationale carried into the
+separately packaged DGB corpus, without manufacturing another validation.
+
+### Scope
+
+- One heart reaction on owner comment `5159760228`; no written reply.
+- One lifecycle extension inside existing event `VTL-V2-20260801-003` and its
+  existing zero-weight companion record.
+- Focused regression coverage proving the campaign still counts one RCL event
+  and one same-actor zero-weight record.
+- A read-only discovery-surface audit of PCF, SSWP, and VERITAS; change only a
+  specific, evidence-backed metadata or packaging gap.
+
+### Non-Goals
+
+- No new validation, verifier run, adopter report, endorsement, certification,
+  partnership, payment, execution-authority claim, or review of `fixtures/dgb/`.
+- Do not claim the external report covers the DGB bundle or independently
+  caused every DGB implementation detail.
+- Do not reply after the owner explicitly said no reply was needed.
+- Do not count the reaction, repository-description update, new explanation,
+  DGB packaging, or same-owner follow-on separately.
+
+### Steps
+
+- [x] Verify owner comment `5159760228`, the live repository description, and
+  the self-contained `fixtures/dgb/` bundle.
+- [x] Add and read back one heart reaction without a written reply.
+- [x] Extend the existing qualifying and zero-weight lifecycle records.
+- [x] Add focused regression coverage and run local gates.
+- [ ] Run VERITAS and governed SSWP gates on the exact signed change.
+- [ ] Publish one clean PR, merge only after green Actions, and live-read the
+  unchanged canonical campaign state.
+
+### Verification
+
+- Owner comment:
+  `https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5159760228`.
+- Reaction ID `391704787` must remain a single `VrtxOmega` heart reaction.
+- `npm run validate:external`
+- `npm run lint`
+- `npm test`
+- `npm run build:pages`
+- `git diff --check`
+- Live main must remain at 9 qualifying events, 9 validators, 9 organizations,
+  0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
+  0 verifier runs, 3 catalog events, 52 initial contacts, and $0 settled
+  revenue.

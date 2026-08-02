@@ -99,6 +99,28 @@ test("records the RCL fixture-contract owner review once without calling it a ve
     ],
   );
   assert.equal(followOn.discovery_response.source_comment_id, "5159349132");
+  const discoveryImpact = followOn.discovery_and_oracle_impact;
+  assert.equal(discoveryImpact.source_comment_id, "5159760228");
+  assert.equal(discoveryImpact.no_reply_requested, true);
+  assert.equal(
+    discoveryImpact.repository_discovery_metadata.recovered_query,
+    "agent security benchmark in:name,description stars:>20 pushed:>2026-06-01",
+  );
+  assert.match(
+    discoveryImpact.repository_discovery_metadata.current_description,
+    /603 security tests/,
+  );
+  assert.equal(
+    discoveryImpact.dgb_portable_bundle.initial_packaging_commit,
+    "b79e3f3eee9a664a963135a89fe873d9dcf9899c",
+  );
+  assert.deepEqual(discoveryImpact.dgb_portable_bundle.declared_counts, {
+    cases: 52,
+    tool_entries: 85,
+  });
+  assert.equal(discoveryImpact.acknowledgement.reaction_id, "391704787");
+  assert.equal(discoveryImpact.acknowledgement.written_reply, false);
+  assert.equal(discoveryImpact.acknowledgement.count_weight, 0);
   assert.equal(nonqualifying.length, 1);
   assert.equal(
     nonqualifying[0].signal_type,
@@ -111,6 +133,13 @@ test("records the RCL fixture-contract owner review once without calling it a ve
     "msaleme/red-team-blue-team-agent-fabric#311",
     "msaleme/red-team-blue-team-agent-fabric#312",
   ]);
+  assert.equal(nonqualifying[0].verification.final_source_comment_id, "5159760228");
+  assert.equal(nonqualifying[0].verification.repository_description_verified, true);
+  assert.deepEqual(nonqualifying[0].verification.dgb_bundle_paths, [
+    "fixtures/dgb/README.md",
+    "fixtures/dgb/dgb-corpus-bundle.v1.json",
+  ]);
+  assert.equal(nonqualifying[0].verification.author_acknowledgement_reaction_id, "391704787");
 });
 
 test("records the OpenGuardrails reply as zero-weight nonparticipation", async () => {

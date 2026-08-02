@@ -33,3 +33,16 @@ public proof surface from the same scoped evidence without rewriting historical
 snapshots. When outside review is the objective, publish one focused GitHub
 intake issue with appropriate labels and repository topics; documentation alone
 is not a discoverability strategy.
+
+## Discovery and oracle quality are separate gates
+
+**Mistake pattern:** Assuming a self-contained artifact will be discovered
+because it is reproducible conflates repository retrieval with successful
+independent use. A rejection-only corpus or wall-clock freshness check can also
+let an incorrect verifier appear correct after discovery.
+
+**Prevention rule:** Put the actual search language in repository descriptions
+and topics, then make selected artifacts independently runnable with clean
+positive controls, hostile cases, pinned time or state, executed expectations,
+and explicit limitations. Test retrieval and pass-for-the-wrong-reason failure
+modes separately.
