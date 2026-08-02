@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-08-02T02:44:39Z",
+  "as_of": "2026-08-02T16:50:08Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -134,8 +134,8 @@
           "independence_basis": "The actor is distinct from VrtxOmega, owns the external repository containing the pinned RCL fixture corpus, and submitted the review with GitHub OWNER association."
         },
         "action": "verified_pinned_fixture_provenance_confirmed_the_reported_method_and_result_and_identified_a_fixture_contract_label_fault",
-        "validation_claim": "The external repository owner independently verified the pinned commit, fixture hash, corpus counts, and acceptance controls; confirmed that the separate verifier's method and 11/11 result reflect the intended fixture contract; and identified that the fixture incorrectly labels Python sorted compact JSON as JCS while omitting a future-dated checker-timestamp coverage limit.",
-        "scope": "This validates one substantive external technical review of the campaign-produced cross-evaluation against the pinned RCL fixture contract and records the owner's correction to the source fixture description.",
+        "validation_claim": "The external repository owner independently verified the pinned commit, fixture hash, corpus counts, and acceptance controls; confirmed that the separate verifier's method and 11/11 result reflect the intended fixture contract; identified that the fixture incorrectly labels Python sorted compact JSON as JCS while omitting a future-dated checker-timestamp coverage limit; and later reported that the review lifecycle produced merged fixture corrections plus follow-on per-case currency tracking in a second corpus.",
+        "scope": "This validates one substantive external technical review of the campaign-produced cross-evaluation against the pinned RCL fixture contract and records the same actor's verified upstream corrections and downstream corpus impact without treating them as additional independent events.",
         "does_not_establish": [
           "an independent execution of the separate verifier",
           "an independent verifier run",
@@ -182,7 +182,45 @@
               "public_keys"
             ],
             "resolution_scope": "The external repository owner merged the promised metadata correction without changing any verdict, receipt, signature, fixture, count, or public key. The original pinned hash remains valid at the immutable reviewed commit.",
-            "verified_at": "2026-08-01T23:37:49Z"
+            "verified_at": "2026-08-01T23:37:49Z",
+            "follow_on_impact": {
+              "status": "verified_same_actor_same_subject_lifecycle_extension",
+              "source_comment_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5159003936",
+              "source_comment_id": "5159003936",
+              "source_comment_node_id": "IC_kwDOQWUPMs8AAAABM4AnIA",
+              "source_comment_at": "2026-08-02T15:51:22Z",
+              "owner_statement": "The repository owner stated that the report caused three additional merged corpus changes and that a second corpus now uses per-case currency tracking instead of relying on a stale audit snapshot.",
+              "merged_pull_requests": [
+                {
+                  "pull_request": "msaleme/red-team-blue-team-agent-fabric#310",
+                  "title": "DGB: withdraw 7 unsupportable citations, and make executable_test coverage checkable",
+                  "merge_commit": "5a76f432da5840d11d73a6124d7d0e10909fc046",
+                  "merged_at": "2026-08-02T14:23:11Z",
+                  "merged_by": "msaleme"
+                },
+                {
+                  "pull_request": "msaleme/red-team-blue-team-agent-fabric#311",
+                  "title": "DGB: re-adjudicate all 25 revised cases against their current text",
+                  "merge_commit": "318da8b3de344e68ca3fa3897ce890d7e7669271",
+                  "merged_at": "2026-08-02T14:50:13Z",
+                  "merged_by": "msaleme"
+                },
+                {
+                  "pull_request": "msaleme/red-team-blue-team-agent-fabric#312",
+                  "title": "docs(paper): correct the grounding figure, and say why it is not a trend",
+                  "merge_commit": "1b46dc52164d0f69ac5d984684b20e6395bfeab8",
+                  "merged_at": "2026-08-02T15:29:49Z",
+                  "merged_by": "msaleme"
+                }
+              ],
+              "discovery_response": {
+                "source_comment_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5159349132",
+                "source_comment_id": "5159349132",
+                "source_comment_at": "2026-08-02T16:48:39Z",
+                "scope": "VrtxOmega answered the owner's discovery-path question with the recovered GitHub repository-search query and distinguished search-driven discovery from design-driven selection and use. This author response carries zero evidence weight."
+              },
+              "verified_at": "2026-08-02T16:50:08Z"
+            }
           }
         },
         "conflict_disclosures": {
@@ -263,7 +301,7 @@
         "signal_type": "same_actor_same_subject_upstream_resolution",
         "subject_id": "msaleme/red-team-blue-team-agent-fabric#304",
         "occurred_at": "2026-08-01T22:30:37Z",
-        "response_scope": "The repository owner reported that the encoding-label and future-timestamp coverage corrections prompted by issue #304 were merged through PR #307 at commit 70a38a86dcfa65b66f04c5655c3c8244fec838fe. The fixture self-description changed from hash 0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb to 4164151383605d9d68230d81cc9ae1dd31eb5cfb3fb1348289abf71ee64773ea, while fixtures, counts, and public keys remained unchanged.",
+        "response_scope": "The repository owner reported that the encoding-label and future-timestamp coverage corrections prompted by issue #304 were merged through PR #307 at commit 70a38a86dcfa65b66f04c5655c3c8244fec838fe. The fixture self-description changed from hash 0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb to 4164151383605d9d68230d81cc9ae1dd31eb5cfb3fb1348289abf71ee64773ea, while fixtures, counts, and public keys remained unchanged. The same owner later stated that this report-driven review lifecycle also produced merged PRs #310, #311, and #312 and changed a second corpus to track currency per case rather than depend on a stale audit snapshot.",
         "verification": {
           "method": "GitHub issue-comment, pull-request, merge-commit, changed-file, merge-actor, and commit API readback",
           "source_comment_id": "5153753219",
@@ -272,11 +310,17 @@
           "correction_merge_commit": "70a38a86dcfa65b66f04c5655c3c8244fec838fe",
           "correction_merged_at": "2026-08-01T22:30:12Z",
           "correction_merged_by": "msaleme",
-          "verified_at": "2026-08-01T23:37:49Z"
+          "follow_on_source_comment_id": "5159003936",
+          "follow_on_pull_requests": [
+            "msaleme/red-team-blue-team-agent-fabric#310",
+            "msaleme/red-team-blue-team-agent-fabric#311",
+            "msaleme/red-team-blue-team-agent-fabric#312"
+          ],
+          "verified_at": "2026-08-02T16:50:08Z"
         },
         "related_qualifying_event_id": "VTL-V2-20260801-003",
         "count_weight": 0,
-        "reason_not_counted": "The same external actor resolved the same technical subject already counted once as VTL-V2-20260801-003. The merged correction strengthens that event's provenance and practical impact but is not a second independent validator, organization, category, subject, or verifier run.",
+        "reason_not_counted": "The same external actor resolved and extended the same technical subject already counted once as VTL-V2-20260801-003. The merged corrections and downstream corpus changes strengthen that event's provenance and practical impact but are not a second independent validator, organization, category, subject, or verifier run.",
         "does_not_establish": [
           "an independent verifier run",
           "a second independent validation event",
