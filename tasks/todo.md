@@ -594,3 +594,50 @@ is independently verified.
 - The governed SSWP witness passed Git integrity, lockfile, deterministic
   build, tests, and lint for commit `aa064d42`, with Cortex `APPROVED` and
   attestation seal prefix `0380acebc239a764`.
+
+## RCL follow-on impact and discovery response
+
+### Goal
+
+Answer the external repository owner's discovery-path question from the exact
+preserved Codex session record, and strengthen the existing RCL technical event
+with its verified downstream corpus impact without creating a duplicate event.
+
+### Scope
+
+- One public response on `msaleme/red-team-blue-team-agent-fabric#304` using
+  the recovered GitHub repository-search query and inspection sequence.
+- Same-actor follow-on metadata for merged PRs #310, #311, and #312.
+- Focused regression coverage proving the lifecycle remains one qualifying
+  event plus one zero-weight same-subject record.
+
+### Non-Goals
+
+- No new validation, verifier-run, adopter, endorsement, certification,
+  partnership, payment, or execution-authority claim.
+- Do not infer that portable fixture packaging caused the initial GitHub search
+  result; distinguish search-driven discovery from design-driven selection.
+- Do not count the author response or three same-owner follow-on PRs separately.
+
+### Steps
+
+- [x] Recover the exact repository-search query and original candidate output.
+- [x] Verify the owner's new comment and merged PRs #310, #311, and #312.
+- [x] Post and read back the exact discovery response.
+- [x] Enrich the existing qualifying and zero-weight lifecycle records.
+- [ ] Run JSON, regression, lint, build, diff, VERITAS, and SSWP gates.
+- [ ] Publish one clean PR and live-read unchanged campaign counts.
+
+### Verification
+
+- Public response:
+  `https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5159349132`.
+- `npm run validate:external`
+- `npm run lint`
+- `npm test`
+- `npm run build:pages`
+- `git diff --check`
+- Live main must remain at 9 qualifying events, 9 validators, 9 organizations,
+  0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
+  0 verifier runs, 3 catalog events, 52 initial contacts, and $0 settled
+  revenue.

@@ -88,6 +88,17 @@ test("records the RCL fixture-contract owner review once without calling it a ve
     qualifying[0].verification.upstream_resolution.correction_merge_commit,
     "70a38a86dcfa65b66f04c5655c3c8244fec838fe",
   );
+  const followOn = qualifying[0].verification.upstream_resolution.follow_on_impact;
+  assert.equal(followOn.source_comment_id, "5159003936");
+  assert.deepEqual(
+    followOn.merged_pull_requests.map((entry) => entry.pull_request),
+    [
+      "msaleme/red-team-blue-team-agent-fabric#310",
+      "msaleme/red-team-blue-team-agent-fabric#311",
+      "msaleme/red-team-blue-team-agent-fabric#312",
+    ],
+  );
+  assert.equal(followOn.discovery_response.source_comment_id, "5159349132");
   assert.equal(nonqualifying.length, 1);
   assert.equal(
     nonqualifying[0].signal_type,
@@ -95,6 +106,11 @@ test("records the RCL fixture-contract owner review once without calling it a ve
   );
   assert.equal(nonqualifying[0].count_weight, 0);
   assert.equal(nonqualifying[0].related_qualifying_event_id, qualifying[0].id);
+  assert.deepEqual(nonqualifying[0].verification.follow_on_pull_requests, [
+    "msaleme/red-team-blue-team-agent-fabric#310",
+    "msaleme/red-team-blue-team-agent-fabric#311",
+    "msaleme/red-team-blue-team-agent-fabric#312",
+  ]);
 });
 
 test("records the OpenGuardrails reply as zero-weight nonparticipation", async () => {
