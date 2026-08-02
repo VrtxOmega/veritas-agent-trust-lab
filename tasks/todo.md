@@ -428,3 +428,54 @@ Record the external repository owner's merged correction prompted by issue
 - Live GitHub readback must remain 9 qualifying events, nine validators, six
   technical events, three catalog events, 49 initial contacts, zero follow-ups,
   one negative outcome, three closed lanes, and $0 settled revenue.
+
+## in-toto Witness verifier invitation
+
+### Goal
+
+Advance the missing independent-verifier category with one tailored initial
+invitation to a publicly listed in-toto Witness maintainer, while keeping the
+invitation at zero weight unless a qualifying external action later occurs.
+
+### Scope
+
+- One initial email to Cole Kennedy using the public email on his GitHub
+  profile and his listed maintainer role in `in-toto/witness`.
+- One Protocol v2 outreach-denominator record with exact source relevance,
+  message provenance, and a seven-day follow-up boundary.
+- Focused regression coverage proving that campaign counts remain unchanged.
+
+### Non-Goals
+
+- Do not ask for endorsement, partnership, promotion, or a favorable result.
+- Do not treat delivery, receipt, silence, thanks, or interest as evidence.
+- Do not claim that Witness or in-toto validates, adopts, or is affiliated with
+  VERITAS, PCF, or SSWP.
+- Do not send a follow-up before the ledger-derived eligibility time unless the
+  recipient responds or explicitly invites continued contact.
+- Do not open another outreach lane during this campaign turn.
+
+### Steps
+
+- [x] Verify the live Protocol v2 ledger, Trust Lab issues, recorded GitHub
+  lanes, and Gmail for new external actions.
+- [x] Verify candidate relevance and public contact basis from current
+  first-party GitHub records.
+- [x] Prove exact Gmail and ledger deduplication before contact.
+- [x] Send one tailored initial invitation and read it back from Gmail.
+- [x] Record it once at weight zero and preserve every progress count.
+- [x] Run ledger, regression, lint, build, diff, SSWP, and VERITAS checks.
+- [ ] Publish through one clean pull request and read back live main.
+
+### Verification
+
+- Gmail readback must match the exact recipient, subject, body, sent time, and
+  message ID.
+- `npm run validate:external`
+- `npm run lint`
+- `npm test`
+- `npm run build:pages`
+- `git diff --check`
+- Live main must remain at 9 qualifying events, 9 validators, 9 organizations,
+  0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
+  0 verifier runs, 3 catalog events, and $0 settled revenue.

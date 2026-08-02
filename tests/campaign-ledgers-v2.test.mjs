@@ -120,6 +120,23 @@ test("records the OpenGuardrails reply as zero-weight nonparticipation", async (
   assert.equal(qualifying.length, 0);
 });
 
+test("records the in-toto Witness verifier invitation once at weight zero", async () => {
+  const ledger = await loadLedger();
+  const outreach = ledger.outreach_denominator_ledger.protocol_v2_records.filter(
+    (entry) => entry.organization_id === "in-toto-witness",
+  );
+  const qualifying = ledger.qualifying_event_ledger.protocol_v2_events.filter(
+    (entry) => entry.organization_id === "in-toto-witness",
+  );
+
+  assert.equal(outreach.length, 1);
+  assert.equal(outreach[0].purpose, "independent_verifier_run_or_bounded_hostile_review");
+  assert.equal(outreach[0].private_evidence.message_id, "19fc02d76c0277a5");
+  assert.equal(outreach[0].follow_up_eligible_at, "2026-08-09T01:53:52Z");
+  assert.equal(outreach[0].count_weight, 0);
+  assert.equal(qualifying.length, 0);
+});
+
 test("recomputes Protocol v2 progress without moving untouched evidence minima", async () => {
   const ledger = await loadLedger();
   const progress = ledger.progress;
@@ -147,7 +164,7 @@ test("recomputes Protocol v2 progress without moving untouched evidence minima",
     0,
   );
   assert.equal(progress.catalog_and_editorial_events, 3);
-  assert.equal(progress.outreach_initial_contacts, 49);
+  assert.equal(progress.outreach_initial_contacts, 50);
   assert.equal(progress.outreach_follow_ups, 0);
   assert.equal(progress.settled_revenue_usd, "0.00");
   assert.deepEqual(progress.remaining, {
