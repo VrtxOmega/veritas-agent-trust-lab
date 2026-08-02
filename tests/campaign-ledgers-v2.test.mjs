@@ -162,6 +162,23 @@ test("records the OpenHands founding-pilot invitation without inventing revenue"
   assert.equal(qualifying.length, 0);
 });
 
+test("records the Snyk Agent Scan hostile-case invitation once at weight zero", async () => {
+  const ledger = await loadLedger();
+  const outreach = ledger.outreach_denominator_ledger.protocol_v2_records.filter(
+    (entry) => entry.organization_id === "snyk-agent-scan",
+  );
+  const qualifying = ledger.qualifying_event_ledger.protocol_v2_events.filter(
+    (entry) => entry.organization_id === "snyk-agent-scan",
+  );
+
+  assert.equal(outreach.length, 1);
+  assert.equal(outreach[0].purpose, "blind_participation_or_external_hostile_case");
+  assert.equal(outreach[0].private_evidence.message_id, "19fc05bf22622bd6");
+  assert.equal(outreach[0].follow_up_eligible_at, "2026-08-09T02:44:39Z");
+  assert.equal(outreach[0].count_weight, 0);
+  assert.equal(qualifying.length, 0);
+});
+
 test("recomputes Protocol v2 progress without moving untouched evidence minima", async () => {
   const ledger = await loadLedger();
   const progress = ledger.progress;
@@ -189,7 +206,7 @@ test("recomputes Protocol v2 progress without moving untouched evidence minima",
     0,
   );
   assert.equal(progress.catalog_and_editorial_events, 3);
-  assert.equal(progress.outreach_initial_contacts, 51);
+  assert.equal(progress.outreach_initial_contacts, 52);
   assert.equal(progress.outreach_follow_ups, 0);
   assert.equal(progress.settled_revenue_usd, "0.00");
   assert.deepEqual(progress.remaining, {
