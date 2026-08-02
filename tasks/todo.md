@@ -693,7 +693,9 @@ separately packaged DGB corpus, without manufacturing another validation.
 - [x] Add and read back one heart reaction without a written reply.
 - [x] Extend the existing qualifying and zero-weight lifecycle records.
 - [x] Add focused regression coverage and run local gates.
-- [ ] Run VERITAS and governed SSWP gates on the exact signed change.
+- [x] Run VERITAS and governed SSWP gates on the exact signed change.
+- [x] Audit PCF, SSWP, and Trust Lab discovery metadata and live-read the
+  smallest justified topic changes.
 - [ ] Publish one clean PR, merge only after green Actions, and live-read the
   unchanged canonical campaign state.
 
@@ -711,3 +713,33 @@ separately packaged DGB corpus, without manufacturing another validation.
   0 blind label sets, 6 technical events, 0 adopter reports, 0 hostile cases,
   0 verifier runs, 3 catalog events, 52 initial contacts, and $0 settled
   revenue.
+
+### Local gate outcome
+
+- `npm run validate:external`, lint, all 59 Node tests, the production build,
+  the Pages build, and `git diff --check` passed.
+- Signed commit `ae4a64859a78594ec6322b59868f4204f2709c19` has a good
+  signature from `VrtxOmega@pm.me` and changes only the four planned files.
+- VERITAS claim `cdaf96cec791a06f12bab2830c2b6b9be2974a74c51e82a01cafdea99378a183`
+  passed all seven numeric boundaries. The aggregate verdict correctly stayed
+  `INCONCLUSIVE` for insufficient independence; removing any required receipt
+  produced `MODEL_BOUND` / `HIGH_FRAGILITY`. Final seal prefix:
+  `7999ddf2060d4498`.
+- The governed SSWP witness passed Git integrity, lockfile, deterministic
+  build, tests, and lint for commit `ae4a6485`, with Cortex `APPROVED` and
+  attestation seal prefix `3a07e263e34c4534`.
+
+### Discovery-surface audit outcome
+
+- Trust Lab already leads with a `Help wanted` independent-review description
+  and uses 19 relevant agent-security, assurance, red-team, reproducibility,
+  and independent-verification topics; no metadata change was justified.
+- PCF already had an accurate maintainer-facing description. Added only
+  `ai-assisted-development`, `ai-code-review`, and `reproducibility` topics,
+  then read back the 13-topic live state.
+- SSWP already had an accurate AI-augmented attestation description. Added
+  only `ai-agents`, `ai-security`, `software-attestation`, `reproducibility`,
+  `independent-verification`, and `evidence`, then read back the 13-topic live
+  state.
+- These metadata changes improve retrieval; they are author activity and carry
+  zero campaign evidence weight.
