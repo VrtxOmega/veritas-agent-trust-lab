@@ -1,3 +1,4 @@
+```json
 {
   "schema_version": "1.0.0",
   "challenge_id": "veritas-public-contract-external-verification-v1",
@@ -41,6 +42,7 @@
     {
       "id": "independent-result-recomputation",
       "title": "Independent result recomputation",
+      "description": "Reimplement the six public case families in another code path or language without importing the reference evaluator. Run all six clean and all six tampered modes.",
       "required_case_families": [
         "forged-verdict",
         "parameter-swap",
@@ -58,11 +60,16 @@
         "execution_authorized"
       ],
       "positive_controls": 6,
-      "hostile_cases": 6
+      "hostile_cases": 6,
+      "expected_clean_disposition": "APPROVED",
+      "expected_tampered_disposition": "REJECTED",
+      "expected_execution_authorized_clean": true,
+      "expected_execution_authorized_tampered": false
     },
     {
       "id": "action-boundary-mutation",
       "title": "Break the action boundary",
+      "description": "Attempt command or operation substitution, target or filesystem-root broadening, nonce replay, fake evaluator independence, or refuting-evidence deletion.",
       "required_mutations": [
         "operation_or_command_substitution",
         "target_or_filesystem_root_broadening",
@@ -72,47 +79,101 @@
       ],
       "positive_control_rule": "Pair every hostile mutation with the unchanged clean packet.",
       "positive_controls": 5,
-      "hostile_cases": 5
+      "hostile_cases": 5,
+      "mutation_definitions": {
+        "operation_or_command_substitution": "Replace the approved operation or command string with a different operation or command and submit the packet for evaluation. A conforming implementation MUST reject any packet where the evaluated operation does not match the approved operation.",
+        "target_or_filesystem_root_broadening": "Replace a scoped target path with a broader path such as the filesystem root or a parent directory. A conforming implementation MUST reject any packet where the evaluated target is broader than or outside the approved target scope.",
+        "consumed_nonce_reuse": "Submit a previously consumed nonce in a new evaluation packet. A conforming implementation MUST reject any packet whose nonce has already been consumed in a prior evaluation.",
+        "correlated_evaluator_quorum": "Construct a multi-evaluator quorum where all evaluators share a common dependency, seed, model, or configuration such that they cannot provide independent verdicts. A conforming implementation MUST reject a quorum that fails an independence check.",
+        "refuting_evidence_deletion": "Remove or suppress evidence artifacts that contradict or qualify the stated verdict before submitting the packet. A conforming implementation MUST reject any packet where required evidence artifacts are missing, truncated, or whose checksums do not match declared values."
+      }
     },
     {
       "id": "monitoring-and-revocation",
       "title": "Break monitoring and revocation",
-      "required_mutations": [
-        "heartbeat_outside_ttl",
+      "description": "Attempt stale, missing, future-dated, replayed, out-of-order, or broken-chain heartbeat cases.",
+      "required_heartbeat_cases": [
+        "stale_heartbeat",
         "missing_heartbeat",
-        "future_dated_heartbeat"
+        "future_dated_heartbeat",
+        "replayed_heartbeat",
+        "out_of_order_heartbeat",
+        "broken_chain_heartbeat"
       ],
-      "optional_extension_mutations": [
-        "out_of_order_sequence",
-        "replayed_sequence",
-        "broken_predecessor_chain"
-      ],
-      "positive_control_rule": "Include a heartbeat inside its declared TTL.",
-      "positive_controls": 1,
-      "hostile_cases": 3
+      "positive_control_rule": "Pair every hostile heartbeat case with a valid current heartbeat as a clean control.",
+      "positive_controls": 6,
+      "hostile_cases": 6,
+      "heartbeat_case_definitions": {
+        "stale_heartbeat": "Submit a heartbeat whose timestamp is older than the maximum allowed heartbeat interval. A conforming implementation MUST treat a stale heartbeat as a monitoring failure and MUST NOT authorize execution.",
+        "missing_heartbeat": "Submit an evaluation packet with no associated heartbeat record. A conforming implementation MUST treat a missing heartbeat as a monitoring failure and MUST NOT authorize execution.",
+        "future_dated_heartbeat": "Submit a heartbeat whose timestamp is set to a future time beyond acceptable clock skew. A conforming implementation MUST reject a future-dated heartbeat as invalid.",
+        "replayed_heartbeat": "Submit a previously accepted heartbeat record a second time for a new evaluation. A conforming implementation MUST reject a replayed heartbeat whose identifier or sequence has already been consumed.",
+        "out_of_order_heartbeat": "Submit heartbeats in a sequence that violates the expected monotonic ordering. A conforming implementation MUST reject an out-of-order heartbeat that breaks the chain.",
+        "broken_chain_heartbeat": "Submit a heartbeat chain where one or more chain links are missing, altered, or whose cryptographic binding to the prior heartbeat does not verify. A conforming implementation MUST reject a broken-chain heartbeat."
+      },
+      "expected_clean_disposition": "MONITORING_ACTIVE",
+      "expected_hostile_disposition": "MONITORING_FAILURE",
+      "expected_execution_authorized_clean": true,
+      "expected_execution_authorized_hostile": false
     }
   ],
-  "accepted_result_classes": [
-    "independent_reproduction",
-    "substantive_technical_review",
-    "externally_discovered_defect",
-    "compatible_implementation"
-  ],
-  "submission": {
-    "issue_template": "external-verification.yml",
-    "public_url": "https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=external-verification.yml",
-    "security_contact": "VrtxOmega@pm.me",
-    "automatic_validation_weight": 0,
-    "counting_rule": "A report remains uncounted until identity, independence, method, provenance, scope, deduplication, and Protocol v2 caps are verified."
+  "minimum_deliverable": {
+    "required_steps": [
+      "Verify the pinned commit and SHA-256 artifact hashes listed in reference_contract.artifacts.",
+      "Publish a separate implementation or review harness at an immutable commit.",
+      "Publish the dependency lock file and exact reproduction commands.",
+      "Run clean positive controls as well as all hostile cases.",
+      "Report expected versus observed results for every case.",
+      "Report every mismatch, bypass, disagreement, and untested boundary.",
+      "Disclose relationships, compensation, reused code, model assistance, and shared dependencies."
+    ],
+    "disqualifying_conditions": [
+      "A verifier that rejects everything does not reproduce the contract.",
+      "A verifier that approves everything does not reproduce the contract.",
+      "Importing, calling, wrapping, transpiling, or vendoring the reference evaluator as the submitted implementation.",
+      "Omitting positive controls.",
+      "Omitting required result fields from reported output."
+    ]
   },
-  "does_not_establish": [
-    "endorsement",
-    "certification",
-    "broad VERITAS efficacy",
-    "production security",
-    "factual truth",
-    "adoption",
-    "payment",
-    "execution authority"
-  ]
-}
+  "submission": {
+    "report_form": "https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=external-verification.yml",
+    "required_report_fields": [
+      "track_id",
+      "submitter_identity_and_relationships",
+      "implementation_repository_and_immutable_commit",
+      "dependency_lock_file_reference",
+      "exact_reproduction_commands",
+      "per_case_expected_vs_observed_results",
+      "mismatches_and_bypasses",
+      "untested_boundaries",
+      "ai_model_and_tool_disclosure",
+      "compensation_disclosure"
+    ]
+  },
+  "weight_and_counting": {
+    "initial_weight": 0,
+    "weight_review_criteria": [
+      "identity",
+      "method",
+      "provenance",
+      "independence",
+      "scope",
+      "deduplication",
+      "protocol_v2_caps"
+    ],
+    "notes": [
+      "Opening a report does not automatically count as validation.",
+      "Every submission begins at weight zero until all review criteria are assessed.",
+      "Participation does not establish endorsement, certification, broad VERITAS efficacy, production security, factual truth, adoption, payment, or execution authority."
+    ]
+  },
+  "ai_agent_participation": {
+    "welcome": true,
+    "eligible_agents": [
+      "Codex",
+      "Claude Code",
+      "Gemini CLI",
+      "OpenHands",
+      "Aider",
+      "Cline",
+      "
