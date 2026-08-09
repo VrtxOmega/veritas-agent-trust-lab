@@ -140,6 +140,114 @@ test("records the RCL fixture-contract owner review once without calling it a ve
     "fixtures/dgb/dgb-corpus-bundle.v1.json",
   ]);
   assert.equal(nonqualifying[0].verification.author_acknowledgement_reaction_id, "391704787");
+  assert.equal(
+    discoveryImpact.repository_accuracy_sweep.merge_commit,
+    "19dbfb871d1379a42bbfa22fa06bb2edda58a2c0",
+  );
+  assert.equal(
+    discoveryImpact.repository_accuracy_sweep.permanent_credit.path,
+    "README.md",
+  );
+  assert.equal(
+    nonqualifying[0].verification.repository_accuracy_sweep_pr,
+    "msaleme/red-team-blue-team-agent-fabric#323",
+  );
+  assert.equal(
+    nonqualifying[0].verification.permanent_credit_path,
+    "README.md#independent-reproduction",
+  );
+});
+
+test("counts the merged GitHub Copilot skill as one accepted integration", async () => {
+  const ledger = await loadLedger();
+  const qualifying = ledger.qualifying_event_ledger.protocol_v2_events.filter(
+    (entry) => entry.subject_id === "github/awesome-copilot#2476",
+  );
+
+  assert.equal(qualifying.length, 1);
+  assert.equal(qualifying[0].category, "accepted_external_integration");
+  assert.equal(qualifying[0].category_group, "technical");
+  assert.equal(qualifying[0].actor.id, "github:aaronpowell");
+  assert.equal(qualifying[0].verification.approved_by, "aaronpowell");
+  assert.equal(qualifying[0].verification.merged_by, "aaronpowell");
+  assert.equal(
+    qualifying[0].verification.immutable_ref,
+    "f83a8a942cfeaec67a6159d10e92bcfcc2d7f683",
+  );
+  assert.deepEqual(qualifying[0].verification.changed_files, [
+    "skills/verify-agent-action/SKILL.md",
+    "docs/README.skills.md",
+  ]);
+  assert.equal(
+    qualifying[0].verification.install_command,
+    "gh skills install github/awesome-copilot verify-agent-action",
+  );
+  assert.match(
+    qualifying[0].does_not_establish.join(" "),
+    /certification or endorsement/i,
+  );
+  assert.equal(
+    qualifying[0].dedupe_key,
+    "github:aaronpowell|accepted_external_integration|github/awesome-copilot#2476",
+  );
+  assert.equal(qualifying[0].count_weight, 1);
+});
+
+test("records the nmrs merge as closure of the frozen historical review", async () => {
+  const ledger = await loadLedger();
+  const nonqualifying = ledger.nonqualifying_signal_ledger.protocol_v2_records.filter(
+    (entry) => entry.subject_id === "freedesktop-rs/nmrs#521",
+  );
+  const closed = ledger.closed_lane_ledger.filter(
+    (entry) => entry.subject_id === "freedesktop-rs/nmrs#521",
+  );
+
+  assert.equal(nonqualifying.length, 1);
+  assert.equal(nonqualifying[0].count_weight, 0);
+  assert.equal(nonqualifying[0].related_qualifying_event_id, "VTL-EXT-20260730-006");
+  assert.equal(
+    nonqualifying[0].verification.merge_commit,
+    "f459910b8d906dc8d13095adc07ab7a2a098b8e2",
+  );
+  assert.equal(
+    nonqualifying[0].verification.maintainer_final_commit,
+    "c9b052c1efb70f49712d729ebb3384f678ebbdf7",
+  );
+  assert.equal(closed.length, 1);
+  assert.equal(closed[0].count_weight, 0);
+  assert.equal(closed[0].related_qualifying_event_id, "VTL-EXT-20260730-006");
+});
+
+test("records the AgentTrust rejection as negative, declined, closed, and zero weight", async () => {
+  const ledger = await loadLedger();
+  const subject = "agentrust-io/awesome-ai-governance#48";
+  const qualifying = ledger.qualifying_event_ledger.protocol_v2_events.filter(
+    (entry) => entry.subject_id === subject,
+  );
+  const nonqualifying = ledger.nonqualifying_signal_ledger.protocol_v2_records.filter(
+    (entry) => entry.subject_id === subject,
+  );
+  const negative = ledger.negative_outcome_ledger.filter(
+    (entry) => entry.subject_id === subject,
+  );
+  const declines = ledger.decline_ledger.filter(
+    (entry) => entry.subject_id === subject,
+  );
+  const closed = ledger.closed_lane_ledger.filter(
+    (entry) => entry.subject_id === subject,
+  );
+
+  assert.equal(qualifying.length, 0);
+  assert.equal(nonqualifying.length, 1);
+  assert.equal(nonqualifying[0].verification.comment_id, "5161877198");
+  assert.equal(nonqualifying[0].count_weight, 0);
+  assert.equal(negative.length, 1);
+  assert.equal(negative[0].count_weight, 0);
+  assert.equal(declines.length, 1);
+  assert.equal(declines[0].count_weight, 0);
+  assert.match(declines[0].next_condition, /independently attributable users/i);
+  assert.equal(closed.length, 1);
+  assert.equal(closed[0].count_weight, 0);
 });
 
 test("records the OpenGuardrails reply as zero-weight nonparticipation", async () => {
@@ -234,13 +342,14 @@ test("recomputes Protocol v2 progress without moving untouched evidence minima",
       0,
     );
 
-  assert.equal(qualifyingCount, 9);
+  assert.equal(qualifyingCount, 10);
   assert.equal(progress.qualifying_events, qualifyingCount);
-  assert.equal(progress.distinct_independent_validators, 9);
-  assert.equal(progress.unrelated_organizations_or_communities, 9);
-  assert.equal(progress.technical_reproductions_reviews_or_integrations, 6);
-  assert.equal(progress.maximum_single_category_share_basis_points, 3333);
+  assert.equal(progress.distinct_independent_validators, 10);
+  assert.equal(progress.unrelated_organizations_or_communities, 10);
+  assert.equal(progress.technical_reproductions_reviews_or_integrations, 7);
+  assert.equal(progress.maximum_single_category_share_basis_points, 3000);
   assert.equal(progress.negative_outcomes, ledger.negative_outcome_ledger.length);
+  assert.equal(progress.declines, ledger.decline_ledger.length);
   assert.equal(progress.closed_lanes, ledger.closed_lane_ledger.length);
   assert.equal(progress.pre_reveal_blind_label_sets, 0);
   assert.equal(progress.structured_adopter_reports, 0);
@@ -255,11 +364,11 @@ test("recomputes Protocol v2 progress without moving untouched evidence minima",
   assert.equal(progress.outreach_follow_ups, 0);
   assert.equal(progress.settled_revenue_usd, "0.00");
   assert.deepEqual(progress.remaining, {
-    qualifying_events: 41,
-    distinct_independent_validators: 16,
-    unrelated_organizations_or_communities: 1,
+    qualifying_events: 40,
+    distinct_independent_validators: 15,
+    unrelated_organizations_or_communities: 0,
     pre_reveal_blind_label_sets: 15,
-    technical_reproductions_reviews_or_integrations: 4,
+    technical_reproductions_reviews_or_integrations: 3,
     structured_adopter_reports: 5,
     repeat_use_adopter_reports: 2,
     independently_proposed_or_executed_hostile_cases: 5,

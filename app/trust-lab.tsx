@@ -628,7 +628,7 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>Nine independently attributable outside actions now qualify.</h2>
+              <h2>Ten independently attributable outside actions now qualify.</h2>
               <p>
                 Three external curators merged scoped Trust Lab catalogue or
                 watchlist entries. A separate repository owner independently reproduced a concrete
@@ -639,15 +639,22 @@ export function TrustLab() {
                 regression fix. A Trail of Bits collaborator then required a
                 concrete documentation correction, and a freedesktop-rs member
                 approved a separate contribution while considering its source
-                break. A Rask repository actor then closed a reachability patch
+                break, then later selected the original error-return approach
+                and merged it. A Rask repository actor then closed a reachability patch
                 without merge and identified the unaddressed root cause as the
                 mangling collision. That unfavorable review counts once and is
                 separately recorded as a negative outcome and closed lane. The
                 red-team/blue-team repository owner also verified the pinned
                 RCL fixture provenance, confirmed the reported method and 11/11
                 result against the intended contract, and corrected the source
-                fixture&apos;s encoding label and coverage limit. That is one
-                substantive review, not an independent verifier run.
+                fixture&apos;s encoding label and coverage limit. A later
+                maintainer-authored accuracy sweep permanently credited the
+                scoped reproduction in the upstream README without attributing
+                the sweep&apos;s other findings to VrtxOmega. That remains one
+                substantive review, not an independent verifier run. A GitHub
+                Awesome Copilot maintainer also approved and merged the
+                non-executing verify-agent-action skill as one accepted
+                external integration, not certification or endorsement.
               </p>
             </div>
           </header>
@@ -684,7 +691,7 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Three curator decisions, one reproduction, two integrations, and three reviews are public.</h3>
+              <h3>Three curator decisions, one reproduction, three integrations, and three reviews are public.</h3>
               <p>
                 GitHub records separate external merge actors for
                 systempromptio pull request #27, gmh5225 pull request #18, and
@@ -702,15 +709,21 @@ export function TrustLab() {
                 corrections, then merged the corrected pull request. Its review
                 and merge also remain one event. The nmrs member separately
                 approved pull request #521 while retaining the merge decision
-                for source-compatibility review. The Rask repository actor
+                for source-compatibility review, then merged it after selecting
+                the contributor&apos;s original error-return approach. The Rask repository actor
                 separately closed pull request #469 without merge and stated
                 that the patch addressed the symptom rather than the mangling
                 collision. That negative root-cause review is counted once.
                 The red-team/blue-team repository owner separately verified the
                 pinned RCL fixture provenance and intended contract, then
                 corrected the fixture&apos;s JCS label and future-timestamp
-                coverage limit. That review does not establish an independent
-                verifier execution.
+                coverage limit. PR #323 later made the scoped reproduction a
+                permanent upstream README credit while the maintainer performed
+                the broader accuracy sweep. That review does not establish an
+                independent verifier execution. The github/awesome-copilot
+                maintainer separately approved and merged verify-agent-action
+                with its generated install index; that community-skill merge
+                does not certify or endorse the wider VERITAS system.
               </p>
             </article>
             <article>
@@ -780,6 +793,21 @@ export function TrustLab() {
               <span>External repository owner verified the pinned provenance and intended contract, then corrected the fixture&apos;s encoding label and coverage limit.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/msaleme/red-team-blue-team-agent-fabric/pull/323" target="_blank" rel="noreferrer">
+              <b>Permanent upstream reproduction credit</b>
+              <span>Maintainer-authored accuracy sweep merged the scoped VrtxOmega reproduction into the repository README; the wider sweep&apos;s other findings remain the maintainer&apos;s work.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/github/awesome-copilot/pull/2476" target="_blank" rel="noreferrer">
+              <b>Merged GitHub Copilot skill integration</b>
+              <span>External maintainer approved and merged the non-executing verify-agent-action skill and generated install index.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/agentrust-io/awesome-ai-governance/pull/48#issuecomment-5161877198" target="_blank" rel="noreferrer">
+              <b>Recorded catalog decline</b>
+              <span>Zero-weight rejection for missing independent adoption; explicitly a timing judgment, not a technical verdict.</span>
+              <i>↗</i>
+            </a>
             <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/protocol/campaign-protocol-v2.json" target="_blank" rel="noreferrer">
               <b>Signed Campaign Protocol v2</b>
               <span>Prospective diversity caps, evidence minima, commercial boundary, and negative stop rules.</span>
@@ -791,15 +819,16 @@ export function TrustLab() {
             {protocolProgress.qualifying_events}, from{" "}
             {protocolProgress.distinct_independent_validators} distinct validators: three
             scoped curator-fit decisions and one independent technical
-            reproduction, two accepted external integrations, and three
+            reproduction, three accepted external integrations, and three
             substantive external reviews. One review rejected the Rask patch
             for missing the mangling-collision root cause; another confirmed
             the pinned RCL fixture contract without independently running the
             verifier. These do not establish VERITAS
             efficacy, endorsement, product adoption, release inclusion, deployed
-            use of the AgentDoctor Action, merge of the still-open nmrs pull
-            request, correctness or acceptance of the rejected Rask patch, or
-            payment. Independent blind label sets: 0. Verified payments:
+            use of the AgentDoctor Action or verify-agent-action skill,
+            correctness or acceptance of the rejected Rask patch, or payment.
+            The separate AgentTrust catalog decline stays at weight zero.
+            Independent blind label sets: 0. Verified payments:
             ${protocolProgress.settled_revenue_usd}.
           </p>
         </div>
