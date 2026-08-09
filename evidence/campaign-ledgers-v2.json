@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-08-02T19:20:19Z",
+  "as_of": "2026-08-09T20:14:01Z",
   "qualifying_event_ledger": {
     "historical_source": "evidence/external-validation-ledger.json",
     "historical_event_ids": [
@@ -269,9 +269,30 @@
                   "written_reply": false,
                   "count_weight": 0
                 },
-                "verified_at": "2026-08-02T19:20:19Z"
+                "repository_accuracy_sweep": {
+                  "status": "verified_same_actor_same_subject_lifecycle_extension",
+                  "pull_request": "msaleme/red-team-blue-team-agent-fabric#323",
+                  "pull_request_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/pull/323",
+                  "merge_commit": "19dbfb871d1379a42bbfa22fa06bb2edda58a2c0",
+                  "merged_at": "2026-08-03T00:57:46Z",
+                  "merged_by": "msaleme",
+                  "head_commit": "d71e0010f4c779d450f3fc34d46b89a80436a435",
+                  "recorded_verification": {
+                    "passing_tests": 361,
+                    "security_tests": 603,
+                    "test_modules": 44
+                  },
+                  "permanent_credit": {
+                    "path": "README.md",
+                    "heading": "Independent reproduction",
+                    "scope": "The repository now names VrtxOmega as the only external check it had received, records the separate Node verifier and pinned 11/11 match including both acceptance controls, and explicitly limits the result to one external reproduction rather than endorsement or adoption."
+                  },
+                  "boundary": "The repository owner performed the broader accuracy sweep and found additional DOI, guard, count, citation, and metadata defects. The campaign does not attribute every PR #323 finding to VrtxOmega or count this same-actor same-subject lifecycle extension again.",
+                  "verified_at": "2026-08-09T20:14:01Z"
+                },
+                "verified_at": "2026-08-09T20:14:01Z"
               },
-              "verified_at": "2026-08-02T19:20:19Z"
+              "verified_at": "2026-08-09T20:14:01Z"
             }
           }
         },
@@ -282,6 +303,68 @@
           "boundary": "These observable facts establish one repository-owner technical review of the pinned subject and do not establish expertise, honesty, endorsement, source blindness, or independence beyond that separately controlled response."
         },
         "dedupe_key": "github:msaleme|substantive_external_review|msaleme/red-team-blue-team-agent-fabric#304",
+        "count_weight": 1
+      },
+      {
+        "id": "VTL-V2-20260805-004",
+        "status": "qualifying",
+        "category": "accepted_external_integration",
+        "category_group": "technical",
+        "subject_id": "github/awesome-copilot#2476",
+        "organization_id": "github-org:github",
+        "actor": {
+          "id": "github:aaronpowell",
+          "platform": "github",
+          "account": "aaronpowell",
+          "type": "github_account",
+          "relationship": "independent_external_repository_maintainer",
+          "is_bot": false,
+          "independence_basis": "The actor is distinct from VrtxOmega, approved the exact submitted commit, and exercised merge authority in the external github/awesome-copilot repository."
+        },
+        "action": "approved_and_merged_the_non_executing_verify_agent_action_skill",
+        "validation_claim": "An independently attributable maintainer approved and merged VrtxOmega's verify-agent-action skill into github/awesome-copilot, and the merged repository exposes the skill and its installation command in the generated skills index.",
+        "scope": "This validates one accepted external integration of a bounded VERITAS-derived pre-execution review workflow whose required output preserves execution_authorized=false.",
+        "does_not_establish": [
+          "GitHub certification or endorsement of VERITAS",
+          "model-response behavior beyond installation and repository validation",
+          "production deployment or use",
+          "challenge use or independent calibration",
+          "technical correctness or efficacy of the complete VERITAS framework",
+          "security audit",
+          "payment",
+          "execution authority"
+        ],
+        "source_url": "https://github.com/github/awesome-copilot/pull/2476",
+        "occurred_at": "2026-08-05T04:52:42Z",
+        "verification": {
+          "status": "verified",
+          "method": "GitHub pull-request, review, merge-event, commit, check-run, merged-file, and generated-index API readback",
+          "verified_at": "2026-08-09T20:14:01Z",
+          "immutable_ref_type": "git_commit",
+          "immutable_ref": "f83a8a942cfeaec67a6159d10e92bcfcc2d7f683",
+          "pr_head_commit": "ef137f28da60a7f7f44d9187538430547303151f",
+          "approval_review_id": "4861100351",
+          "approval_review_node_id": "PRR_kwDOO6BQUc8AAAABIb6BPw",
+          "approved_commit": "ef137f28da60a7f7f44d9187538430547303151f",
+          "approved_by": "aaronpowell",
+          "merged_by": "aaronpowell",
+          "merged_at": "2026-08-05T04:52:42Z",
+          "merge_event_id": "28988940216",
+          "changed_files": [
+            "skills/verify-agent-action/SKILL.md",
+            "docs/README.skills.md"
+          ],
+          "install_command": "gh skills install github/awesome-copilot verify-agent-action",
+          "required_boundary": "execution_authorized: false",
+          "required_checks_passed": true
+        },
+        "conflict_disclosures": {
+          "explicit_pull_request_disclosure": "The pull request states Assisted-by: OpenAI Codex and Human verification: VrtxOmega.",
+          "observable_relationship": "GitHub identifies VrtxOmega as pull-request author and Aaron Powell as the approving reviewer and merge actor in the external repository.",
+          "campaign_records": "No payment, reciprocal validation, or campaign outreach to the merge actor is recorded.",
+          "boundary": "The merge establishes acceptance of this specific community customization and does not establish endorsement, source blindness, production use, or validity of the wider VERITAS system."
+        },
+        "dedupe_key": "github:aaronpowell|accepted_external_integration|github/awesome-copilot#2476",
         "count_weight": 1
       }
     ]
@@ -353,7 +436,7 @@
         "signal_type": "same_actor_same_subject_upstream_resolution",
         "subject_id": "msaleme/red-team-blue-team-agent-fabric#304",
         "occurred_at": "2026-08-01T22:30:37Z",
-        "response_scope": "The repository owner reported that the encoding-label and future-timestamp coverage corrections prompted by issue #304 were merged through PR #307 at commit 70a38a86dcfa65b66f04c5655c3c8244fec838fe. The fixture self-description changed from hash 0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb to 4164151383605d9d68230d81cc9ae1dd31eb5cfb3fb1348289abf71ee64773ea, while fixtures, counts, and public keys remained unchanged. The same owner later stated that this report-driven review lifecycle also produced merged PRs #310, #311, and #312, changed a second corpus to track currency per case rather than depend on a stale audit snapshot, caused the stale repository description to be corrected after the discovery query was recovered, sharpened the anti-false-positive rationale for acceptance controls and pinned evaluation time, and influenced the self-contained DGB corpus packaging.",
+        "response_scope": "The repository owner reported that the encoding-label and future-timestamp coverage corrections prompted by issue #304 were merged through PR #307 at commit 70a38a86dcfa65b66f04c5655c3c8244fec838fe. The fixture self-description changed from hash 0bc47dab20d1c45100f5525a1798fd84df3fd979d1febb2b5fc1c5a69846befb to 4164151383605d9d68230d81cc9ae1dd31eb5cfb3fb1348289abf71ee64773ea, while fixtures, counts, and public keys remained unchanged. The same owner later stated that this report-driven review lifecycle also produced merged PRs #310, #311, and #312, changed a second corpus to track currency per case rather than depend on a stale audit snapshot, caused the stale repository description to be corrected after the discovery query was recovered, sharpened the anti-false-positive rationale for acceptance controls and pinned evaluation time, and influenced the self-contained DGB corpus packaging. The owner then merged PR #323, whose README permanently records VrtxOmega's scoped reproduction as the repository's only external check while the maintainer-authored wider sweep corrected additional repository accuracy defects.",
         "verification": {
           "method": "GitHub issue-comment, pull-request, merge-commit, changed-file, merge-actor, and commit API readback",
           "source_comment_id": "5153753219",
@@ -374,12 +457,16 @@
             "fixtures/dgb/README.md",
             "fixtures/dgb/dgb-corpus-bundle.v1.json"
           ],
+          "repository_accuracy_sweep_pr": "msaleme/red-team-blue-team-agent-fabric#323",
+          "repository_accuracy_sweep_merge_commit": "19dbfb871d1379a42bbfa22fa06bb2edda58a2c0",
+          "repository_accuracy_sweep_merged_at": "2026-08-03T00:57:46Z",
+          "permanent_credit_path": "README.md#independent-reproduction",
           "author_acknowledgement_reaction_id": "391704787",
-          "verified_at": "2026-08-02T19:20:19Z"
+          "verified_at": "2026-08-09T20:14:01Z"
         },
         "related_qualifying_event_id": "VTL-V2-20260801-003",
         "count_weight": 0,
-        "reason_not_counted": "The same external actor resolved and extended the same technical subject already counted once as VTL-V2-20260801-003. The merged corrections, repository-description update, clarified oracle-design rationale, DGB packaging, and author heart reaction strengthen that event's provenance and practical impact but are not a second independent validator, organization, category, subject, or verifier run.",
+        "reason_not_counted": "The same external actor resolved and extended the same technical subject already counted once as VTL-V2-20260801-003. The merged corrections, repository-description update, clarified oracle-design rationale, DGB packaging, permanent README credit, broader PR #323 accuracy sweep, and author heart reaction strengthen that event's provenance and practical impact but are not a second independent validator, organization, category, subject, or verifier run.",
         "does_not_establish": [
           "an independent verifier run",
           "a second independent validation event",
@@ -387,6 +474,67 @@
           "behavior outside the pinned 11-case fixture corpus",
           "technical correctness or efficacy of VERITAS",
           "adoption",
+          "endorsement",
+          "certification",
+          "payment"
+        ]
+      },
+      {
+        "id": "VTL-NQ-20260803-003",
+        "organization_id": "github-repo:agentrust-io/awesome-ai-governance",
+        "actor_id": "github:imran-siddique",
+        "signal_type": "catalog_submission_declined_for_missing_independent_adoption",
+        "subject_id": "agentrust-io/awesome-ai-governance#48",
+        "occurred_at": "2026-08-03T03:07:07Z",
+        "response_scope": "The external catalog collaborator declined the author-submitted Trust Lab listing because the repository had been created the same day, had one star, and did not yet show independent adoption. The maintainer explicitly called this a timing judgment rather than a verdict on the work and invited a fresh submission after real users exist.",
+        "verification": {
+          "method": "GitHub pull-request, issue-comment, author-association, close-event, and head-commit API readback",
+          "comment_id": "5161877198",
+          "close_event_id": "28865558467",
+          "pr_head_commit": "a4906be75692a21e4914d7943aca50430500da87",
+          "closed_at": "2026-08-03T03:07:08Z",
+          "closed_by": "imran-siddique",
+          "closed_without_merge": true,
+          "verified_at": "2026-08-09T20:14:01Z"
+        },
+        "count_weight": 0,
+        "reason_not_counted": "A curator rejection based on missing independent adoption is recorded as a negative outcome, decline, and closed lane; it is not a qualifying catalog acceptance or technical review.",
+        "does_not_establish": [
+          "product efficacy or technical invalidity",
+          "independent adoption",
+          "catalog acceptance",
+          "endorsement",
+          "certification",
+          "payment"
+        ]
+      },
+      {
+        "id": "VTL-NQ-20260804-004",
+        "organization_id": "github-org:freedesktop-rs",
+        "actor_id": "github:cachebag",
+        "signal_type": "same_actor_same_subject_upstream_merge",
+        "subject_id": "freedesktop-rs/nmrs#521",
+        "occurred_at": "2026-08-04T01:18:41Z",
+        "response_scope": "The same freedesktop-rs member whose approval is frozen as historical event VTL-EXT-20260730-006 later reconsidered the requested typed-source redesign, selected the contributor's original InvalidInput approach for the current release, implemented the final revision on the contributor branch, and merged the VrtxOmega-authored pull request.",
+        "verification": {
+          "method": "GitHub pull-request, commit, merge-event, and merge-actor API readback",
+          "pr_head_commit": "c9b052c1efb70f49712d729ebb3384f678ebbdf7",
+          "original_contributor_commit": "389e5beb64df3521b276dd63a31242be1bc093d6",
+          "typed_redesign_commit": "f644fff6c3a6901cc5407053e246ad8fbc0abcb0",
+          "maintainer_final_commit": "c9b052c1efb70f49712d729ebb3384f678ebbdf7",
+          "merge_commit": "f459910b8d906dc8d13095adc07ab7a2a098b8e2",
+          "merge_event_id": "28921282702",
+          "merged_at": "2026-08-04T01:18:41Z",
+          "merged_by": "cachebag",
+          "verified_at": "2026-08-09T20:14:01Z"
+        },
+        "related_qualifying_event_id": "VTL-EXT-20260730-006",
+        "count_weight": 0,
+        "reason_not_counted": "Historical event 006 already counts this actor and contribution lifecycle. The later merge strengthens and closes that event without becoming an eleventh validation.",
+        "does_not_establish": [
+          "release inclusion",
+          "product adoption",
+          "technical correctness or efficacy of VERITAS",
           "endorsement",
           "certification",
           "payment"
@@ -425,9 +573,57 @@
         "certification",
         "payment"
       ]
+    },
+    {
+      "id": "VTL-NEG-20260803-002",
+      "subject_id": "agentrust-io/awesome-ai-governance#48",
+      "organization_id": "github-repo:agentrust-io/awesome-ai-governance",
+      "actor_id": "github:imran-siddique",
+      "outcome": "catalog_submission_declined_for_missing_independent_adoption",
+      "occurred_at": "2026-08-03T03:07:07Z",
+      "source_url": "https://github.com/agentrust-io/awesome-ai-governance/pull/48#issuecomment-5161877198",
+      "verification": {
+        "method": "GitHub pull-request, issue-comment, author-association, close-event, and head-commit API readback",
+        "comment_id": "5161877198",
+        "close_event_id": "28865558467",
+        "pr_head_commit": "a4906be75692a21e4914d7943aca50430500da87",
+        "closed_at": "2026-08-03T03:07:08Z",
+        "closed_by": "imran-siddique",
+        "closed_without_merge": true,
+        "verified_at": "2026-08-09T20:14:01Z"
+      },
+      "count_weight": 0,
+      "reason_not_counted_as_event": "The outcome is an explicit negative catalog decision and decline, not an accepted catalog integration or substantive technical review.",
+      "does_not_establish": [
+        "product efficacy or technical invalidity",
+        "independent adoption",
+        "catalog acceptance",
+        "endorsement",
+        "certification",
+        "payment"
+      ]
     }
   ],
-  "decline_ledger": [],
+  "decline_ledger": [
+    {
+      "id": "VTL-DECLINE-20260803-001",
+      "subject_id": "agentrust-io/awesome-ai-governance#48",
+      "organization_id": "github-repo:agentrust-io/awesome-ai-governance",
+      "actor_id": "github:imran-siddique",
+      "outcome": "declined_with_reapply_after_adoption_invitation",
+      "occurred_at": "2026-08-03T03:07:07Z",
+      "source_url": "https://github.com/agentrust-io/awesome-ai-governance/pull/48#issuecomment-5161877198",
+      "verification": {
+        "comment_id": "5161877198",
+        "closed_at": "2026-08-03T03:07:08Z",
+        "closed_by": "imran-siddique",
+        "verified_at": "2026-08-09T20:14:01Z"
+      },
+      "count_weight": 0,
+      "reason_not_counted_as_event": "The decline is tracked separately from qualifying evidence and may not be converted into a curator-acceptance event.",
+      "next_condition": "Open a fresh pull request only after the Trust Lab has independently attributable users or adoption evidence."
+    }
+  ],
   "closed_lane_ledger": [
     {
       "subject_id": "pranee54/AgentDoctor#18",
@@ -511,6 +707,59 @@
         "product efficacy",
         "independent calibration",
         "adoption",
+        "endorsement",
+        "certification",
+        "payment"
+      ]
+    },
+    {
+      "subject_id": "agentrust-io/awesome-ai-governance#48",
+      "organization_id": "github-repo:agentrust-io/awesome-ai-governance",
+      "actor_id": "github:imran-siddique",
+      "outcome": "declined_and_closed_without_merge_for_missing_independent_adoption",
+      "closed_at": "2026-08-03T03:07:08Z",
+      "source_url": "https://github.com/agentrust-io/awesome-ai-governance/pull/48",
+      "verification": {
+        "comment_id": "5161877198",
+        "close_event_id": "28865558467",
+        "pr_head_commit": "a4906be75692a21e4914d7943aca50430500da87",
+        "closed_by": "imran-siddique",
+        "closed_without_merge": true,
+        "verified_at": "2026-08-09T20:14:01Z"
+      },
+      "count_weight": 0,
+      "reason_not_counted_as_new_event": "The catalog lane closed without acceptance and is recorded as a negative denominator, not qualifying evidence.",
+      "does_not_establish": [
+        "technical invalidity",
+        "catalog fit after future adoption",
+        "endorsement",
+        "certification",
+        "payment"
+      ]
+    },
+    {
+      "subject_id": "freedesktop-rs/nmrs#521",
+      "organization_id": "github-org:freedesktop-rs",
+      "actor_id": "github:cachebag",
+      "outcome": "maintainer_selected_original_error_return_approach_and_merged",
+      "closed_at": "2026-08-04T01:18:41Z",
+      "source_url": "https://github.com/freedesktop-rs/nmrs/pull/521",
+      "verification": {
+        "pr_head_commit": "c9b052c1efb70f49712d729ebb3384f678ebbdf7",
+        "maintainer_final_commit": "c9b052c1efb70f49712d729ebb3384f678ebbdf7",
+        "merge_commit": "f459910b8d906dc8d13095adc07ab7a2a098b8e2",
+        "merge_event_id": "28921282702",
+        "merged_by": "cachebag",
+        "merged_at": "2026-08-04T01:18:41Z",
+        "verified_at": "2026-08-09T20:14:01Z"
+      },
+      "related_qualifying_event_id": "VTL-EXT-20260730-006",
+      "count_weight": 0,
+      "reason_not_counted_as_new_event": "Historical event 006 already counts this actor and contribution lifecycle; the merge is its zero-weight closure.",
+      "does_not_establish": [
+        "release inclusion",
+        "product adoption",
+        "technical correctness or efficacy of VERITAS",
         "endorsement",
         "certification",
         "payment"
@@ -1377,29 +1626,29 @@
   "progress": {
     "technical_state": "ACTIVE",
     "commercial_state": "UNMET",
-    "qualifying_events": 9,
-    "distinct_independent_validators": 9,
-    "unrelated_organizations_or_communities": 9,
+    "qualifying_events": 10,
+    "distinct_independent_validators": 10,
+    "unrelated_organizations_or_communities": 10,
     "pre_reveal_blind_label_sets": 0,
-    "technical_reproductions_reviews_or_integrations": 6,
+    "technical_reproductions_reviews_or_integrations": 7,
     "structured_adopter_reports": 0,
     "repeat_use_adopter_reports": 0,
     "independently_proposed_or_executed_hostile_cases": 0,
     "independent_verifier_runs_cross_evaluations_or_compatible_implementations": 0,
     "catalog_and_editorial_events": 3,
-    "maximum_single_category_share_basis_points": 3333,
+    "maximum_single_category_share_basis_points": 3000,
     "settled_revenue_usd": "0.00",
     "outreach_initial_contacts": 52,
     "outreach_follow_ups": 0,
-    "negative_outcomes": 1,
-    "declines": 0,
-    "closed_lanes": 3,
+    "negative_outcomes": 2,
+    "declines": 1,
+    "closed_lanes": 5,
     "remaining": {
-      "qualifying_events": 41,
-      "distinct_independent_validators": 16,
-      "unrelated_organizations_or_communities": 1,
+      "qualifying_events": 40,
+      "distinct_independent_validators": 15,
+      "unrelated_organizations_or_communities": 0,
       "pre_reveal_blind_label_sets": 15,
-      "technical_reproductions_reviews_or_integrations": 4,
+      "technical_reproductions_reviews_or_integrations": 3,
       "structured_adopter_reports": 5,
       "repeat_use_adopter_reports": 2,
       "independently_proposed_or_executed_hostile_cases": 5,

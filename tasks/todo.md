@@ -1,3 +1,44 @@
+## Public evidence refresh — 2026-08-09
+
+### Goal
+
+Bring the canonical Protocol v2 ledger and rendered Trust Lab current through
+the GitHub Copilot skill merge, nmrs lifecycle closure, RCL PR #323 permanent
+credit, and AgentTrust catalog decline without double counting.
+
+### Scope
+
+- `evidence/campaign-ledgers-v2.json`
+- `tests/campaign-ledgers-v2.test.mjs`
+- `README.md`
+- `app/trust-lab.tsx`
+
+### Non-Goals
+
+- Do not edit the frozen Protocol v1 event records or hashes.
+- Do not turn same-actor nmrs/RCL follow-ons into new qualifying events.
+- Do not call the GitHub community-skill merge certification or endorsement.
+- Do not attribute every maintainer-authored PR #323 finding to VrtxOmega.
+
+### Steps
+
+- [x] Verify every upstream state, actor, commit, review, check, and public file.
+- [x] Add one accepted external integration for github/awesome-copilot #2476.
+- [x] Record nmrs, RCL, and AgentTrust lifecycle evidence at zero new weight.
+- [x] Recompute the balanced progress block and add focused tests.
+- [x] Align README and rendered campaign language to the canonical ledger.
+- [ ] Run full lint, test, Pages build, ledger, diff, VERITAS, and SSWP gates.
+- [ ] Open, merge, deploy, and live-read the public update.
+
+### Verification
+
+- `npm run validate:external`
+- `npm run lint`
+- `npm test`
+- `npm run build:pages`
+- `git diff --check`
+- GitHub API and live Pages readbacks after merge
+
 ## Plan
 
 ### Goal

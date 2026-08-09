@@ -68,7 +68,7 @@ repository's MIT license applies only to this public demonstrator.
 
 ## External evidence
 
-Nine independently attributable outside actions currently qualify:
+Ten independently attributable outside actions currently qualify:
 
 - three external curators merged scoped Trust Lab catalogue entries, including
   the project-owner merge of the explicitly new-project `WATCHLIST.md` entry in
@@ -81,7 +81,8 @@ Nine independently attributable outside actions currently qualify:
 - a Trail of Bits Dylint collaborator identified inaccurate rustdoc, required
   the generated README to be corrected with it, and merged the corrected fix;
 - a freedesktop-rs member approved the campaign-produced nmrs fix while holding
-  its merge to consider the intentional source-breaking API change;
+  its merge to consider the intentional source-breaking API change, then later
+  selected the contributor's original error-return approach and merged the PR;
 - a Rask repository actor closed the campaign-produced reachability patch
   without merge and identified the missed root cause as the mangling collision.
   This unfavorable review is counted once and separately recorded as a negative
@@ -89,8 +90,19 @@ Nine independently attributable outside actions currently qualify:
 - the red-team/blue-team repository owner independently verified the pinned RCL
   fixture provenance, confirmed that the separate verifier's method and 11/11
   result reflect the intended contract, and corrected the fixture's JCS label
-  and future-timestamp coverage limit. This is one substantive review, not an
-  independent verifier run.
+  and future-timestamp coverage limit. A later maintainer-authored accuracy
+  sweep permanently credited that scoped reproduction in the upstream README.
+  This remains one substantive review, not an independent verifier run, and
+  VrtxOmega is not credited with every issue found in the broader sweep;
+- a `github/awesome-copilot` maintainer approved and merged the non-executing
+  `verify-agent-action` skill and its generated installation index entry. This
+  is one accepted external integration, not GitHub certification or endorsement
+  of VERITAS.
+
+The AgentTrust governance catalog separately declined a same-day listing for
+lack of independent adoption, explicitly calling it a timing judgment rather
+than a verdict on the work. That result is preserved as a zero-weight negative
+outcome, decline, and closed lane.
 
 The canonical ledger links every actor and immutable source. These events
 validate only the action stated for each record. They do not establish
@@ -166,9 +178,9 @@ The commercial milestone is separate: at least **$750 settled at the published
 pilot price** from an unrelated arms-length buyer, followed by delivery and
 buyer acknowledgement. Payment does not end the technical campaign.
 
-Current machine-checked Protocol v2 baseline: **9/50 qualifying events, 9
-independent validators, 9 unrelated organizations or communities, 0/15 blind
-label sets, 6/10 technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3
+Current machine-checked Protocol v2 baseline: **10/50 qualifying events, 10
+independent validators, 10 unrelated organizations or communities, 0/15 blind
+label sets, 7/10 technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3
 independent verifier runs, and $0/$750 settled revenue**.
 
 The canonical
@@ -186,11 +198,12 @@ coverage, or scoped curator acceptance. Bots, CI, traffic, author activity,
 open PRs, sent outreach, thanks-only comments, self-tests, CLA or legal
 signatures, reciprocal or paid engagement, and duplicate signals never count.
 
-The nine events comprise three scoped curator decisions, one independent
-technical reproduction, two accepted external integrations, and two
-substantive external reviews plus the RCL fixture-contract owner review. One
-review is an unfavorable root-cause rejection; the RCL review is not an
-independent verifier run. Each record states its narrower claim and nonclaims.
+The ten events comprise three scoped curator decisions, one independent
+technical reproduction, three accepted external integrations, and three
+substantive external reviews. One counted review is an unfavorable root-cause
+rejection; the RCL review is not an independent verifier run. The separate
+AgentTrust catalog rejection remains zero-weight. Each record states its
+narrower claim and nonclaims.
 
 The machine-readable
 [Protocol v2 ledgers](evidence/campaign-ledgers-v2.json) keep qualifying events,

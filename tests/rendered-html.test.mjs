@@ -30,13 +30,13 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /Reveal privately \(weight 0\)/);
   assert.match(visibleHtml, /When the evaluation boundary became the attack surface/);
   assert.match(visibleHtml, /No direct Internet access was not no path to the Internet/);
-  assert.match(visibleHtml, /Nine independently attributable outside actions now qualify/);
+  assert.match(visibleHtml, /Ten independently attributable outside actions now qualify/);
   assert.match(visibleHtml, /PROTOCOL V2 \/ BALANCED EVIDENCE/);
-  assert.match(visibleHtml, /<strong>9<small>\/50<\/small><\/strong>/);
+  assert.match(visibleHtml, /<strong>10<small>\/50<\/small><\/strong>/);
   assert.match(visibleHtml, /Blind labels:\s+0\/15/);
-  assert.match(visibleHtml, /Technical:\s+6\/10/);
+  assert.match(visibleHtml, /Technical:\s+7\/10/);
   assert.match(visibleHtml, /Settled\s+arms-length pilot revenue: \$0\.00\/\$750/);
-  assert.match(visibleHtml, /Qualifying external validations:\s+9/s);
+  assert.match(visibleHtml, /Qualifying external validations:\s+10/s);
   assert.match(visibleHtml, /Third merged curator decision/);
   assert.match(visibleHtml, /Reproduced, corrected, and merged/);
   assert.match(
@@ -52,6 +52,9 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /symptom rather than the mangling collision/);
   assert.match(visibleHtml, /RCL fixture-contract owner review/);
   assert.match(visibleHtml, /not an independent verifier run/);
+  assert.match(visibleHtml, /Permanent upstream reproduction credit/);
+  assert.match(visibleHtml, /Merged GitHub Copilot skill integration/);
+  assert.match(visibleHtml, /Recorded catalog decline/);
   assert.match(visibleHtml, /Contribute the evidence that is still missing/);
   assert.match(visibleHtml, /Submit an adopter report/);
   assert.match(visibleHtml, /Agent Action Assurance/);
