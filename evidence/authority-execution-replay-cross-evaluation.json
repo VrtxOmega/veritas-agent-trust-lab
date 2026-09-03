@@ -1,0 +1,123 @@
+{
+  "schema": "https://vrtxomega.tech/schemas/veritas-agent-trust-lab/authority-execution-replay/v0.1",
+  "result": "PASS_WITH_LIMITS",
+  "packet_sha256": "afaf6090332d636e3c36a6110073e601c2348a38222520d29184cc602ea83a08",
+  "summary": {
+    "controls_matched": 3,
+    "controls_total": 3,
+    "exact_action_allow_survives": true,
+    "deny_controls_survive": true,
+    "reject_everything_protected": true,
+    "source_files_verified": true,
+    "manifest_verified": true,
+    "tamper_regressions_detected": 6,
+    "tamper_regressions_total": 6
+  },
+  "scenarios": [
+    {
+      "id": "allow-exact-action",
+      "policy_decision": "ALLOW_EXACT_ACTION",
+      "expected_occurred": true,
+      "observed_occurred": true,
+      "attempted_action_sha256": "84ba1cc94422c20a5a06b70d5bd73d934285a2445d02cbfd7487e987730781f0",
+      "authorized_action_sha256": "84ba1cc94422c20a5a06b70d5bd73d934285a2445d02cbfd7487e987730781f0",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": "deny-wrong-target",
+      "policy_decision": "DENY_WRONG_TARGET",
+      "expected_occurred": false,
+      "observed_occurred": false,
+      "attempted_action_sha256": "1e4b1374022bef6c1a61b52c6fcc499ef535abe63608ee251b5ab5ba1bb54b91",
+      "authorized_action_sha256": "1e4b1374022bef6c1a61b52c6fcc499ef535abe63608ee251b5ab5ba1bb54b91",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": "deny-post-approval-mutation",
+      "policy_decision": "DENY_POST_APPROVAL_MUTATION",
+      "expected_occurred": false,
+      "observed_occurred": false,
+      "attempted_action_sha256": "d9350305639674be568a5237f2f14354e8229b7a1851f35aca1418505e052cdc",
+      "authorized_action_sha256": "84ba1cc94422c20a5a06b70d5bd73d934285a2445d02cbfd7487e987730781f0",
+      "match": true,
+      "errors": []
+    }
+  ],
+  "limitations": [
+    {
+      "code": "WRONG_TARGET_POLICY_NOT_INDEPENDENTLY_DERIVABLE",
+      "detail": "No machine-readable policy artifact defines the permitted target. In the wrong-target control, authorized_action and delegated_authority.action_digest both equal the attempted customer-002 action, so the denial is reproducible only as a declared policy label plus denial observation."
+    },
+    {
+      "code": "SPONSORSHIP_IS_LOCAL_UNSIGNED_METADATA",
+      "detail": "The sponsorship record is schema- and scope-checked but is not cryptographically bound to the action or an external identity; the source explicitly disclaims external identity binding."
+    }
+  ],
+  "errors": [],
+  "execution_authorized": false,
+  "source": {
+    "repository": "msaleme/authority-execution-replay",
+    "commit": "ad0b7d66878111fa272a2c3fb6a26538e144b904",
+    "packet_path": "source/replay-packets/authority-execution-replay-v1.json",
+    "packet_sha256": "afaf6090332d636e3c36a6110073e601c2348a38222520d29184cc602ea83a08",
+    "manifest_sha256": "9a3e2e44a7602cf35710fd6d82ccee22022ee1044700064ec551ed444ea4bb94"
+  },
+  "tamper_regressions": [
+    {
+      "id": "action-retargeting",
+      "detected": true,
+      "expected_code": "EXACT_ACTION_BINDING_MISMATCH",
+      "observed_codes": [
+        "EXACT_ACTION_BINDING_MISMATCH",
+        "MUTATION_BASELINE_BINDING_MISMATCH",
+        "MUTATION_CONTROL_SHAPE_MISMATCH"
+      ]
+    },
+    {
+      "id": "source-digest-corruption",
+      "detected": true,
+      "expected_code": "PACKET_SOURCE_DIGEST_MISMATCH",
+      "observed_codes": [
+        "PACKET_SOURCE_DIGEST_MISMATCH",
+        "SOURCE_DIGEST_MISMATCH"
+      ]
+    },
+    {
+      "id": "policy-decision-flip",
+      "detected": true,
+      "expected_code": "POLICY_DECISION_MISMATCH",
+      "observed_codes": [
+        "POLICY_DECISION_MISMATCH"
+      ]
+    },
+    {
+      "id": "occurrence-claim-flip",
+      "detected": true,
+      "expected_code": "OCCURRENCE_CLAIM_MISMATCH",
+      "observed_codes": [
+        "OCCURRENCE_CLAIM_MISMATCH",
+        "RECORDED_EXPECTATION_MISMATCH"
+      ]
+    },
+    {
+      "id": "mutation-erasure",
+      "detected": true,
+      "expected_code": "EXPECTED_MUTATION_MISSING",
+      "observed_codes": [
+        "EXPECTED_MUTATION_MISSING",
+        "MUTATION_CONTROL_SHAPE_MISMATCH"
+      ]
+    },
+    {
+      "id": "production-scope-widening",
+      "detected": true,
+      "expected_code": "PACKET_SCOPE_WIDENED",
+      "observed_codes": [
+        "PACKET_SCOPE_WIDENED"
+      ]
+    }
+  ],
+  "manifest_errors": []
+}
