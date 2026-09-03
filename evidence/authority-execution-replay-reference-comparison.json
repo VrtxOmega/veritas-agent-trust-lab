@@ -1,0 +1,95 @@
+{
+  "schema": "https://vrtxomega.tech/schemas/veritas-agent-trust-lab/authority-execution-replay-reference-comparison/v0.1",
+  "result": "DIVERGENCE_FOUND",
+  "source": {
+    "repository": "msaleme/authority-execution-replay",
+    "commit": "ad0b7d66878111fa272a2c3fb6a26538e144b904",
+    "packet_sha256": "afaf6090332d636e3c36a6110073e601c2348a38222520d29184cc602ea83a08",
+    "reference_verifier_sha256": "4f4e30e058436ad2eac9295634f225bbc070b8e7acb738b41c8b67f1160c56e0"
+  },
+  "independence_freeze": {
+    "commit": "d232be9e0b0680acf49c2e2e9516e08102df3c52",
+    "signed": true,
+    "verifier_sha256": "2bff98daf6a8417a66b4833b77882cbec9fd6c714042b3be39bc129cd8ee705c",
+    "tests_sha256": "ecbbf2921e2eb4e03caa4f1b5ca28d48aeac443c80d64c07226bc801c9f01845",
+    "pre_reference_report_sha256": "40b1adeb5da4d72570628e462baf672335405e1fda126cc7ae9e25bfca0bf075"
+  },
+  "baseline": {
+    "separate_result": "PASS_WITH_LIMITS",
+    "controls_matched": 3,
+    "tamper_classes_detected": 6,
+    "reference_result": "PASS",
+    "reference_tests_passed": 66,
+    "execution_authorized": false
+  },
+  "tamper_interpretation": {
+    "pre_reveal": "top-level packet scope widening",
+    "reference": "human sponsorship scope widening",
+    "separate_verifier_rejects_both": true
+  },
+  "semantic_probes": [
+    {
+      "id": "duplicate-controls",
+      "mutation": "replace both deny controls with copies of the allow control",
+      "reference_result": "PASS",
+      "separate_result": "FAIL",
+      "separate_codes": [
+        "DUPLICATE_CONTROL_ID",
+        "REQUIRED_CONTROLS_MISSING"
+      ]
+    },
+    {
+      "id": "authorized-action-corruption",
+      "mutation": "replace allow authorized_action with a different digest",
+      "reference_result": "PASS",
+      "separate_result": "FAIL",
+      "separate_codes": [
+        "AUTHORIZED_ACTION_BINDING_MISMATCH",
+        "EXACT_ACTION_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "id": "expected-occurrence-flip",
+      "mutation": "flip allow expected.occurred to false",
+      "reference_result": "PASS",
+      "separate_result": "FAIL",
+      "separate_codes": [
+        "EXPECTED_OCCURRENCE_MISMATCH",
+        "RECORDED_EXPECTATION_MISMATCH"
+      ]
+    },
+    {
+      "id": "top-level-scope-widening",
+      "mutation": "change packet scope to include production",
+      "reference_result": "PASS",
+      "separate_result": "FAIL",
+      "separate_codes": [
+        "PACKET_SCOPE_WIDENED"
+      ]
+    },
+    {
+      "id": "claim-boundary-erasure",
+      "mutation": "replace the synthetic-only claim boundary",
+      "reference_result": "PASS",
+      "separate_result": "FAIL",
+      "separate_codes": [
+        "CLAIM_BOUNDARY_CHANGED"
+      ]
+    },
+    {
+      "id": "delegated-fixture-substitution",
+      "mutation": "change the delegated fixture id without changing the profile authorization",
+      "reference_result": "PASS",
+      "separate_result": "FAIL",
+      "separate_codes": [
+        "FIXTURE_ID_UNDECLARED",
+        "PROFILE_AUTHORITY_MISMATCH"
+      ]
+    }
+  ],
+  "limitations": [
+    "The wrong-target policy decision is declared but cannot be independently derived from a supplied machine-readable policy artifact.",
+    "The outer packet hash detects byte mutation only when a caller checks it; the reference verifier itself does not verify that hash or the manifest.",
+    "All evidence is synthetic and author-supplied; this is not a production or external-identity result."
+  ]
+}
