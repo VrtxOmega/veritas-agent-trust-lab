@@ -1,5 +1,7 @@
 # Generalized quorum follow-on — 2026-09-05
 
+**Later same-day update:** an external Agent Gate report has now been received and project-reproduced. See [the received-result continuation](AGENT_GATE_EXTERNAL_RESULT_20260905.md). The prospective and 16:43 UTC observations below remain historical snapshots, not the latest evaluation status. Campaign weight remains zero.
+
 ## Status
 
 **Recorded at zero additional Protocol v2 weight.** This is follow-on impact from the already-counted `github:msaleme` substantive review lifecycle, not a new validator, organization, hostile run, verifier run, adoption event, endorsement, certification, or payment.
