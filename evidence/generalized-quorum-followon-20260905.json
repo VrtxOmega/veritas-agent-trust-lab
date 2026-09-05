@@ -29,7 +29,20 @@
       "status": "promised_not_executed",
       "intent": "external owner states they will point their harness at the Agent Gate demonstrator and return findings, including a clean run",
       "qualifies_now": false,
-      "required_before_counting": "actual outside run plus preserved protocol-compliant evidence"
+      "required_before_counting": "actual outside run plus preserved protocol-compliant evidence",
+      "continuation": {
+        "checked_at": "2026-09-05T16:43:36Z",
+        "status": "pending_no_result_established",
+        "counting_boundary": "Apply existing individual and organization caps with no automatic promotion; the actor has already reached the individual cap.",
+        "target_repository": "VrtxOmega/veritas",
+        "target_commit": "256daeb85dae7ac004ae9893df858f58c87ec523",
+        "evaluator_guide_commit": "0a3f789771c868649c7dc2730d94f1956822d141",
+        "source_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5552971891",
+        "verification": "GitHub thread readback contains no Agent Gate result after the author's publication correction. The volunteered evaluation remains pending; absence of a result in this thread is not proof that no private work exists.",
+        "related_handoff_url": "https://github.com/VrtxOmega/veritas/issues/4#issuecomment-5553252098",
+        "intake_instructions": "docs/EXTERNAL_VERIFICATION_CHALLENGE.md#incoming-findings-preserve-before-assessing",
+        "count_weight": 0
+      }
     },
     "count_weight": 0,
     "counting_reason": "Same actor follow-on to already-counted technical lifecycles; the actor has reached the Protocol v2 individual cap. A future promised evaluation is not a completed verifier or hostile-case event.",

@@ -74,3 +74,55 @@ test("external remediation preserves the unresolved wrong-target policy limit", 
     /maintainer-reported/i,
   );
 });
+
+test("Snyk follow-up continues the original lane once with no qualifying weight", async () => {
+  const baseline = await load("../evidence/campaign-ledgers-v2.json");
+  const addendum = await load("../evidence/campaign-ledger-addendum-20260905.json");
+  const original = baseline.outreach_denominator_ledger.protocol_v2_records.filter(
+    (entry) => entry.organization_id === "snyk-agent-scan",
+  );
+  const continuations = addendum.nonqualifying_signal_additions.filter(
+    (entry) => entry.organization_id === "snyk-agent-scan",
+  );
+  assert.equal(original.length, 1);
+  assert.equal(original[0].follow_up_at, null, "August baseline stays historical");
+  assert.equal(continuations.length, 1);
+  const continuation = continuations[0];
+  assert.equal(continuation.private_evidence.original_message_and_thread_id, original[0].private_evidence.message_id);
+  assert.equal(continuation.private_evidence.follow_up_message_id, "1a0726f9082d0eca");
+  assert.equal(continuation.follow_up_allowance_consumed, true);
+  assert.equal(continuation.follow_ups_used, 1);
+  assert.equal(continuation.follow_ups_remaining, 0);
+  assert.equal(continuation.status, "follow_up_sent_no_response_or_evaluation_established");
+  assert.equal(continuation.count_weight, 0);
+  assert.equal(new Set(addendum.nonqualifying_signal_additions.map((entry) => entry.id)).size,
+    addendum.nonqualifying_signal_additions.length);
+  assert.equal(addendum.qualifying_event_additions.some((entry) => entry.organization_id === "snyk-agent-scan"), false);
+});
+
+test("Agent Gate promise stays pinned and pending without changing campaign totals", async () => {
+  const addendum = await load("../evidence/campaign-ledger-addendum-20260905.json");
+  const followon = await load("../evidence/generalized-quorum-followon-20260905.json");
+  const pending = followon.record.prospective_agent_gate_evaluation;
+  assert.equal(followon.record.id, "VTL-V2-NQ-20260905-002");
+  assert.equal(followon.record.count_weight, 0);
+  assert.equal(pending.status, "promised_not_executed");
+  assert.equal(pending.qualifies_now, false);
+  assert.equal(pending.continuation.status, "pending_no_result_established");
+  assert.equal(pending.continuation.count_weight, 0);
+  assert.equal(pending.continuation.target_repository, "VrtxOmega/veritas");
+  assert.equal(pending.continuation.target_commit, "256daeb85dae7ac004ae9893df858f58c87ec523");
+  assert.equal(pending.continuation.evaluator_guide_commit, "0a3f789771c868649c7dc2730d94f1956822d141");
+  assert.deepEqual(addendum.current_totals, {
+    qualifying_events: 11,
+    distinct_independent_validators: 10,
+    unrelated_organizations_or_communities: 10,
+    pre_reveal_blind_label_sets: 0,
+    technical_reproductions_reviews_or_integrations: 8,
+    structured_adopter_reports: 0,
+    repeat_use_adopter_reports: 0,
+    independently_proposed_or_executed_hostile_cases: 0,
+    independent_verifier_runs_cross_evaluations_or_compatible_implementations: 0,
+    settled_revenue_usd: "0.00",
+  });
+});

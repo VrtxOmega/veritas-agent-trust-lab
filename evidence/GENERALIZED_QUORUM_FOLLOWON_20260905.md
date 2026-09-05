@@ -29,6 +29,25 @@ The owner states an intention to point their harness at the VERITAS Agent Gate d
 
 The methodological boundary is useful but non-counting: a clean result from an instrument demonstrably capable of failing is still a result. The Agent Gate demonstrator therefore exposes both positive acceptance controls and deliberately falsifiable negative cases.
 
+### September 5 continuation
+
+The existing prospective record remains **pending, with no result established**.
+The frozen Agent Gate target is
+[`256daeb85dae7ac004ae9893df858f58c87ec523`](https://github.com/VrtxOmega/veritas/tree/256daeb85dae7ac004ae9893df858f58c87ec523);
+the separately pinned evaluator guide is at
+[`0a3f789771c868649c7dc2730d94f1956822d141`](https://github.com/VrtxOmega/veritas/blob/0a3f789771c868649c7dc2730d94f1956822d141/evaluation/EVALUATE_AGENT_GATE.md).
+GitHub thread readback on September 5 found no Agent Gate result after the
+[publication correction](https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5552971891).
+This does not establish whether private work exists. A promise is not execution,
+and any later result requires separate evidence review and existing cap checks.
+Reuse this record and the existing [intake instructions](../docs/EXTERNAL_VERIFICATION_CHALLENGE.md#incoming-findings-preserve-before-assessing).
+
+The [handoff correction](https://github.com/VrtxOmega/veritas/issues/4#issuecomment-5553252098)
+also clarifies that PR #5's earlier description as "independently reviewed"
+meant a separate project-side diff/CI check, not independent external review.
+The Snyk/Agent Scan invitation's consumed follow-up is recorded separately in
+the existing September campaign addendum at zero qualifying weight.
+
 ## Counting boundary
 
 Current campaign totals remain unchanged at 11/50 qualifying events, 8/10 technical events, 10 distinct validators, 10 unrelated organization/community families, 0/5 independently proposed or executed hostile cases, 0/3 independent verifier runs/cross-evaluations/compatible implementations, and $0 settled revenue.
