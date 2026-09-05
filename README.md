@@ -68,7 +68,7 @@ repository's MIT license applies only to this public demonstrator.
 
 ## External evidence
 
-Ten independently attributable outside actions currently qualify:
+Eleven independently attributable outside actions currently qualify:
 
 - three external curators merged scoped Trust Lab catalogue entries, including
   the project-owner merge of the explicitly new-project `WATCHLIST.md` entry in
@@ -94,6 +94,16 @@ Ten independently attributable outside actions currently qualify:
   sweep permanently credited that scoped reproduction in the upstream README.
   This remains one substantive review, not an independent verifier run, and
   VrtxOmega is not credited with every issue found in the broader sweep;
+- the same external owner later published a separate synthetic authority-to-
+  execution replay packet. VrtxOmega froze a separately authored verifier
+  before reading the reference verifier, then found six semantic acceptance
+  gaps. The owner independently reproduced the clearest fail-open defect—three
+  copies of the allow control satisfied a three-control length check—merged a
+  verifier hardening PR, and added one regression per reported mutation class.
+  This is counted once as the owner's second substantive external review. It
+  does **not** count as an independent verifier run of VERITAS or as six hostile
+  cases, and the wrong-target denial remains not independently derivable from a
+  shipped machine-readable policy artifact;
 - a `github/awesome-copilot` maintainer approved and merged the non-executing
   `verify-agent-action` skill and its generated installation index entry. This
   is one accepted external integration, not GitHub certification or endorsement
@@ -178,15 +188,21 @@ The commercial milestone is separate: at least **$750 settled at the published
 pilot price** from an unrelated arms-length buyer, followed by delivery and
 buyer acknowledgement. Payment does not end the technical campaign.
 
-Current machine-checked Protocol v2 baseline: **10/50 qualifying events, 10
-independent validators, 10 unrelated organizations or communities, 0/15 blind
-label sets, 7/10 technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3
-independent verifier runs, and $0/$750 settled revenue**.
+Current Protocol v2 state: **11/50 qualifying events, 10 independent validators,
+10 unrelated organizations or communities, 0/15 blind label sets, 8/10
+technical events, 0/5 adopter reports, 0/5 hostile cases, 0/3 independent
+verifier runs, and $0/$750 settled revenue**.
 
-The canonical
+The historical
 [external-validation ledger](evidence/external-validation-ledger.json) records
 the source, actor, scope, immutable evidence, nonclaims, and deduplication key
-for every counted event. It also keeps open lanes at weight zero. Recompute it:
+for the original counted events. The August 9 Protocol v2 baseline remains in
+[evidence/campaign-ledgers-v2.json](evidence/campaign-ledgers-v2.json), while
+the append-only
+[September 5 evidence addendum](evidence/campaign-ledger-addendum-20260905.json)
+records the new authority-replay reproduction without rewriting the earlier
+record. Together they form the current campaign state. Recompute the baseline
+with:
 
 ```bash
 npm run validate:external
@@ -198,21 +214,23 @@ coverage, or scoped curator acceptance. Bots, CI, traffic, author activity,
 open PRs, sent outreach, thanks-only comments, self-tests, CLA or legal
 signatures, reciprocal or paid engagement, and duplicate signals never count.
 
-The ten events comprise three scoped curator decisions, one independent
-technical reproduction, three accepted external integrations, and three
+The eleven events comprise three scoped curator decisions, one independent
+technical reproduction, three accepted external integrations, and four
 substantive external reviews. One counted review is an unfavorable root-cause
-rejection; the RCL review is not an independent verifier run. The separate
-AgentTrust catalog rejection remains zero-weight. Each record states its
-narrower claim and nonclaims.
+rejection. The two msaleme-owned subjects are separate technical review
+lifecycles but remain one external validator/organization family and together
+reach that actor's Protocol v2 cap of two events. Neither author-side
+cross-evaluation counts as an independent verifier run. The separate AgentTrust
+catalog rejection remains zero-weight. Each record states its narrower claim
+and nonclaims.
 
-The machine-readable
-[Protocol v2 ledgers](evidence/campaign-ledgers-v2.json) keep qualifying events,
-commercial payments, nonqualifying signals, negative outcomes, declines, closed
-lanes, and the outreach denominator logically separate. The signed public
-Protocol v2 commit is the prospective collection boundary. The legacy verifier
-continues to protect the original six-event ledger; a separate follow-up change
-will add automated recomputation of the new diversity caps, evidence minima,
-outreach spacing, and commercial boundary.
+The machine-readable Protocol v2 baseline and append-only addendum keep
+qualifying events, commercial payments, nonqualifying signals, negative
+outcomes, declines, closed lanes, and the outreach denominator logically
+separate. The signed public Protocol v2 commit is the prospective collection
+boundary. The legacy verifier continues to protect the original six-event
+ledger; focused tests protect the addendum's deduplication, individual-cap,
+residual-risk, and zero-weight author-activity boundaries.
 
 The preregistered collection window closes November 30, 2026. The effort budget
 allows at most 100 tailored initial contacts, 100 follow-ups sent no sooner than
