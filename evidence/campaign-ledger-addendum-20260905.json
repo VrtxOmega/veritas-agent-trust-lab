@@ -1,0 +1,120 @@
+{
+  "schema_version": "2.0.0-addendum.1",
+  "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
+  "baseline_ledger": "evidence/campaign-ledgers-v2.json",
+  "baseline_as_of": "2026-08-09T20:14:01Z",
+  "as_of": "2026-09-05T05:30:00Z",
+  "purpose": "Append-only Protocol v2 continuation for evidence occurring after the August 9 baseline. The baseline ledger remains unmodified historical evidence; current campaign totals are the baseline plus this reviewed addendum.",
+  "qualifying_event_additions": [
+    {
+      "id": "VTL-V2-20260904-005",
+      "status": "qualifying",
+      "category": "substantive_external_review",
+      "category_group": "technical",
+      "subject_id": "msaleme/authority-execution-replay#1",
+      "organization_id": "github-owner:msaleme",
+      "organization_rollup": "msaleme",
+      "actor": {
+        "id": "github:msaleme",
+        "platform": "github",
+        "account": "msaleme",
+        "type": "github_account",
+        "relationship": "independent_external_repository_owner",
+        "is_bot": false,
+        "independence_basis": "The actor is distinct from VrtxOmega, owns the external authority-execution-replay repository, independently reproduced the reported verifier defect, authored and merged the remediation, and added regression coverage."
+      },
+      "action": "independently_reproduced_cross_evaluation_defects_then_merged_verifier_and_regression_fixes",
+      "validation_claim": "The external repository owner independently reproduced a real fail-open verifier defect surfaced by VrtxOmega's separately frozen cross-evaluation, confirmed that three copies of the allow control could satisfy a three-control length check, and merged a remediation that adds exact-control-set, packet-to-manifest, scope, claim-boundary, action-binding, occurrence, and delegated-authority checks with six regression classes.",
+      "scope": "One substantive external technical review and upstream remediation of the campaign-produced authority-to-execution replay cross-evaluation against the pinned synthetic owned-fixture packet at ad0b7d6. This counts the external owner's reproduction and corrective action once; VrtxOmega's own verifier implementation, probes, tests, and follow-up reply carry zero independent-validation weight.",
+      "does_not_establish": [
+        "an independent verifier run of VERITAS by an outside party",
+        "an independently proposed hostile case against VERITAS",
+        "production enforcement or live MCP/API behavior",
+        "external identity binding",
+        "authenticated integrity when both packet and adjacent manifest can be rewritten",
+        "independent derivability of the deny-wrong-target policy decision",
+        "adoption",
+        "endorsement",
+        "certification",
+        "payment",
+        "execution authority"
+      ],
+      "source_url": "https://github.com/msaleme/authority-execution-replay/pull/1",
+      "occurred_at": "2026-09-04T20:47:28Z",
+      "verification": {
+        "status": "verified",
+        "method": "GitHub repository and merged pull-request API readback plus immutable campaign cross-evaluation artifact",
+        "verified_at": "2026-09-05T05:30:00Z",
+        "immutable_ref_type": "git_commit",
+        "immutable_ref": "a659492a8bb6fd335f0056176d252ebda875d62b",
+        "source_repository": "msaleme/authority-execution-replay",
+        "source_commit_evaluated": "ad0b7d66878111fa272a2c3fb6a26538e144b904",
+        "cross_evaluation_freeze_commit": "d232be9e0b0680acf49c2e2e9516e08102df3c52",
+        "packet_sha256": "afaf6090332d636e3c36a6110073e601c2348a38222520d29184cc602ea83a08",
+        "remediation_pr": "msaleme/authority-execution-replay#1",
+        "remediation_merge_commit": "a659492a8bb6fd335f0056176d252ebda875d62b",
+        "remediation_merged_at": "2026-09-04T20:47:28Z",
+        "external_owner_reported_regression_state": {
+          "preexisting_tests_passed": 66,
+          "new_regressions": 6,
+          "reported_total_passed": 72,
+          "boundary": "These are upstream maintainer-reported results from the merged PR, not a test run performed by this ledger update."
+        },
+        "reproduced_defect": "The reference verifier required only scenarios.length == 3; three copies of the valid allow control passed while the success message claimed all three distinct controls had been verified.",
+        "new_semantic_checks": [
+          "packet SHA-256 equals manifest.packet_sha256 when the manifest is the held-fixed trust anchor",
+          "exact required-control set with each control present exactly once",
+          "synthetic scope pin",
+          "claim_boundary pin",
+          "authorized_action equals delegated authority digest",
+          "top-level expected.occurred is checked",
+          "delegated_authority equals the profile authorization"
+        ],
+        "open_residual": "deny-wrong-target remains a declared scenario-to-decision mapping rather than a decision independently derivable from a supplied machine-readable target policy; upstream identifies that as a v2 fixture change."
+      },
+      "conflict_disclosures": {
+        "prior_relationship": "The same actor previously supplied the already-counted RCL substantive review under VTL-V2-20260801-003.",
+        "individual_cap_effect": "This is the actor's second counted Protocol v2 event and therefore reaches, but does not exceed, the preregistered individual cap of two.",
+        "organization_diversity_effect": "The new repository is controlled by the same external owner as the earlier RCL event, so this event adds no new unrelated organization/community to the campaign diversity total.",
+        "reciprocity": "No payment, reciprocal validation agreement, or favorable-outcome requirement is recorded. The external artifact was evaluated independently and a mismatch was considered a valid outcome.",
+        "boundary": "The external owner's reproduction validates the reported defect and remediation lifecycle only; it does not make VrtxOmega an independent validator of VERITAS."
+      },
+      "dedupe_key": "github:msaleme|substantive_external_review|msaleme/authority-execution-replay#1",
+      "count_weight": 1
+    }
+  ],
+  "nonqualifying_signal_additions": [
+    {
+      "id": "VTL-V2-NQ-20260904-001",
+      "status": "recorded_zero_weight",
+      "signal_type": "author_cross_evaluation_and_follow_up",
+      "subject_id": "msaleme/authority-execution-replay",
+      "actor_id": "github:VrtxOmega",
+      "source_paths": [
+        "evidence/AUTHORITY_EXECUTION_REPLAY_CROSS_EVALUATION.md",
+        "evidence/AUTHORITY_EXECUTION_REPLAY_REFERENCE_COMPARISON.md"
+      ],
+      "reason": "The verifier implementation, mutation probes, and follow-up reply were performed by the campaign author. They are useful technical artifacts but cannot satisfy the protocol's independent-human requirement and do not count as an independent verifier run or hostile case.",
+      "count_weight": 0
+    }
+  ],
+  "current_totals": {
+    "qualifying_events": 11,
+    "distinct_independent_validators": 10,
+    "unrelated_organizations_or_communities": 10,
+    "pre_reveal_blind_label_sets": 0,
+    "technical_reproductions_reviews_or_integrations": 8,
+    "structured_adopter_reports": 0,
+    "repeat_use_adopter_reports": 0,
+    "independently_proposed_or_executed_hostile_cases": 0,
+    "independent_verifier_runs_cross_evaluations_or_compatible_implementations": 0,
+    "settled_revenue_usd": "0.00"
+  },
+  "counting_notes": [
+    "The new event is one substantive external review, not six events for six regression classes.",
+    "The same msaleme actor already had one counted event; this is the actor's second and final event permitted by the individual cap unless Protocol v2 is prospectively amended.",
+    "The second msaleme-owned repository does not create a new unrelated-organization count.",
+    "The author's separately written verifier is not independent evidence about VERITAS and therefore leaves the verifier minimum at 0/3.",
+    "No open pull request, bot result, CI run, author reply, private inquiry, or unmerged contribution is converted into a qualifying event."
+  ]
+}
