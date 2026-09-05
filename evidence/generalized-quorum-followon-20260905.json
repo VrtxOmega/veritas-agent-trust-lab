@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0-followon.1",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-09-05T16:43:36Z",
+  "as_of": "2026-09-05T19:29:24Z",
   "record": {
     "id": "VTL-V2-NQ-20260905-002",
     "status": "recorded_zero_weight",
@@ -54,6 +54,54 @@
       "hostile_cases": 0,
       "independent_verifier_runs": 0,
       "settled_revenue_usd": "0.00"
-    }
+    },
+    "current_evaluation_status": "external_report_received_and_project_reproduced",
+    "received_evaluations": [
+      {
+        "source_comment_id": "5554102070",
+        "source_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5554102070",
+        "source_created_at": "2026-09-05T19:03:21Z",
+        "source_updated_at_at_capture": "2026-09-05T19:03:21Z",
+        "recorded_at": "2026-09-05T19:29:24Z",
+        "actor_id": "github:msaleme",
+        "target_commit": "256daeb85dae7ac004ae9893df858f58c87ec523",
+        "archive_commit": "a153bff98e7b59761fff3eff840762542394af95",
+        "archive_url": "https://github.com/VrtxOmega/veritas/blob/a153bff98e7b59761fff3eff840762542394af95/evaluation/external/msaleme-20260905/report.md",
+        "report_sha256": "2561f3b4c6b71766d56d38ceedcc53ba2d84712837c28ce4040b9498a8e92c61",
+        "extracted_probe_sha256": "717d522609e794ad0074b90b4787ca4eaf0243ef362866a4e1753cf94f6e2c12",
+        "reported_result": {"cases": 18, "matching_outcomes": 17, "mismatched_verdicts": 0, "exceptions": 1},
+        "reported_interpretation": "Clean within the tested documented contract; float exception is an observation, not an asserted contract finding.",
+        "method_scope": "Reporter states contract-derived probe rather than adapted author tests, Python 3.12, clean tracked files and specimen-local imports. The existing relationship includes prior technical cross-evaluation; this is not evidence of source blindness, a paid audit or institution-wide endorsement.",
+        "external_deliberate_wrong_result_calibration": "not_demonstrated_in_supplied_probe",
+        "project_reproduction": {
+          "classification": "project_side_not_independent_external",
+          "workflow_run": 33987139311,
+          "workflow_job": 101362709000,
+          "workflow_url": "https://github.com/VrtxOmega/veritas/actions/runs/33987139311",
+          "harness_commit": "a153bff98e7b59761fff3eff840762542394af95",
+          "checked_out_kit_merge_commit": "6ef888357b14a49ed461e751faa3fa9442cfa458",
+          "python": "3.12.14",
+          "original_author_suite_setup_passes": 17,
+          "original_probe_matches": 17,
+          "original_probe_exceptions": 1,
+          "new_project_mutant_calibrations_detected": 2,
+          "artifact_id": 9975500296,
+          "artifact_zip_sha256": "1605cbaf905a52e8453c42adaf0fdcaccc676377ca9e8d6400180b8d45dfb5f0",
+          "artifact_retention_limit": "CI artifact retention is finite; original report, extraction and replay source are preserved in Git. This record is a log-readback summary, not a raw external execution log."
+        },
+        "separate_project_followon": "A valid ticket followed by float-at-recheck raises before consumption; original-action retry shadow-allows on frozen v0.1 in memory and file stores. Confirmed by project-side Python 3.12.14 CI. This conflicts with the unqualified burn-on-failed-recheck statement. It is not one of the external 18 cases, not an execution bypass, and not two successful consumptions. Remediation belongs to a later revision.",
+        "limitations": [
+          "Original float case raises in approvals_for/digest_action before evaluate_and_issue.",
+          "Supplied probe does not assert execution_authorized, first successful recheck, or exact reason strings; reason inspection is reporter-described manual work.",
+          "Original script is observational, not a nonzero-exit CI gate; new wrapper/calibrations are project-side.",
+          "Preserve the reporter's disclosed double-call instrument correction; do not rewrite 17/18 as 18/18."
+        ],
+        "reply_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5554207604",
+        "dedupe_key": "github:msaleme|agent_gate_v0.1|5554102070",
+        "count_weight": 0,
+        "counting_reason": "Completed external report preserved, but the existing Protocol v2 individual cap is already reached. Neither this report, our reproduction, nor an eventual evaluator PR creates an additional qualifying event.",
+        "does_not_establish": ["production security", "authenticated approver identity", "certification", "adoption", "payment", "execution authority"]
+      }
+    ]
   }
 }
