@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0-followon.1",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-09-05T13:32:00Z",
+  "as_of": "2026-09-05T16:43:36Z",
   "record": {
     "id": "VTL-V2-NQ-20260905-002",
     "status": "recorded_zero_weight",
