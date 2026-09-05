@@ -1,0 +1,46 @@
+{
+  "schema_version": "2.0.0-followon.1",
+  "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
+  "as_of": "2026-09-05T13:32:00Z",
+  "record": {
+    "id": "VTL-V2-NQ-20260905-002",
+    "status": "recorded_zero_weight",
+    "signal_type": "same_actor_generalized_methodological_follow_on_and_prospective_evaluation_commitment",
+    "subject_id": "msaleme/red-team-blue-team-agent-fabric#304",
+    "actor_id": "github:msaleme",
+    "source_comment_id": "5552124181",
+    "source_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5552124181",
+    "related_qualifying_events": ["VTL-V2-20260801-003", "VTL-V2-20260904-005"],
+    "reported_follow_on_impact": {
+      "catalog_case": "FB-013",
+      "catalog_case_name": "Approval Quorum Above Threshold",
+      "defect_shape": "routing/counting assertion labeled as quorum without distinct approver identities or action-bound approval artifacts",
+      "replacement_properties": [
+        "above-threshold routing",
+        "two distinct approvals bound to the action satisfy quorum",
+        "the same approver twice does not satisfy quorum",
+        "an approval bound to a different action does not count"
+      ],
+      "binding_fields_reported": ["destination", "amount", "nonce"],
+      "mutation_control": "counting-only quorum injected and FB-013 required to fail against it",
+      "attributed_principle": "acceptance-control principle: rejection-only testing does not demonstrate the intended control"
+    },
+    "prospective_agent_gate_evaluation": {
+      "status": "promised_not_executed",
+      "intent": "external owner states they will point their harness at the Agent Gate demonstrator and return findings, including a clean run",
+      "qualifies_now": false,
+      "required_before_counting": "actual outside run plus preserved protocol-compliant evidence"
+    },
+    "count_weight": 0,
+    "counting_reason": "Same actor follow-on to already-counted technical lifecycles; the actor has reached the Protocol v2 individual cap. A future promised evaluation is not a completed verifier or hostile-case event.",
+    "current_totals_unchanged": {
+      "qualifying_events": 11,
+      "technical_events": 8,
+      "distinct_validators": 10,
+      "unrelated_organizations_or_communities": 10,
+      "hostile_cases": 0,
+      "independent_verifier_runs": 0,
+      "settled_revenue_usd": "0.00"
+    }
+  }
+}
