@@ -126,3 +126,37 @@ test("Agent Gate promise stays pinned and pending without changing campaign tota
     settled_revenue_usd: "0.00",
   });
 });
+
+const assertSnapshotCoversReadback = (snapshot) => {
+  const cutoff = Date.parse(snapshot.as_of);
+  const readback = Date.parse(
+    snapshot.record.prospective_agent_gate_evaluation.continuation.checked_at,
+  );
+  assert.ok(Number.isFinite(cutoff), "snapshot cutoff must be a valid timestamp");
+  assert.ok(Number.isFinite(readback), "readback must be a valid timestamp");
+  assert.ok(cutoff >= readback, "snapshot cutoff must cover the appended readback");
+};
+
+test("follow-on snapshot cutoff covers its appended readback", async () => {
+  const followon = await load("../evidence/generalized-quorum-followon-20260905.json");
+  assertSnapshotCoversReadback(followon);
+});
+
+test("snapshot cutoff guard rejects the original stale cutoff and malformed timestamps", async () => {
+  const followon = await load("../evidence/generalized-quorum-followon-20260905.json");
+  const sameTime = structuredClone(followon);
+  sameTime.as_of = sameTime.record.prospective_agent_gate_evaluation.continuation.checked_at;
+  assert.doesNotThrow(() => assertSnapshotCoversReadback(sameTime));
+
+  const stale = structuredClone(followon);
+  stale.as_of = "2026-09-05T13:32:00Z";
+  assert.throws(() => assertSnapshotCoversReadback(stale), /snapshot cutoff must cover/);
+
+  const malformedCutoff = structuredClone(followon);
+  malformedCutoff.as_of = "invalid";
+  assert.throws(() => assertSnapshotCoversReadback(malformedCutoff), /cutoff must be a valid timestamp/);
+
+  const malformedReadback = structuredClone(followon);
+  malformedReadback.record.prospective_agent_gate_evaluation.continuation.checked_at = "invalid";
+  assert.throws(() => assertSnapshotCoversReadback(malformedReadback), /readback must be a valid timestamp/);
+});
