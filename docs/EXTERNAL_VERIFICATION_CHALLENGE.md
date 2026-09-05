@@ -125,14 +125,67 @@ retain the failing case and add a regression when appropriate.
 
 Use the
 [`External verification` issue form](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/new?template=external-verification.yml).
-Link an immutable implementation commit and attach or link the machine-readable
-results. If a finding could expose a live system or secret, report it privately
+An issue comment or short counterexample in your own format is also welcome;
+the form and JSON schema are optional reporting aids, not intake requirements.
+Link an implementation revision and original artifacts when available; missing
+metadata can be clarified during assessment. If a finding could expose a live system or secret, report it privately
 to `VrtxOmega@pm.me` before opening a public issue.
 
 A submitted report is not automatically counted as independent validation.
 Identity, method, artifact provenance, relationship disclosures, scope, and
 Protocol v2 caps must be verified first. One review-and-correction lifecycle is
 one event, not multiple events.
+
+## Incoming findings: preserve before assessing
+
+Use the existing Protocol v2 ledgers/addenda and any existing prospective record.
+Link the original outreach or result record and source identifier to prevent
+duplicate entries; preserve the August baseline. An invitation, volunteered run,
+project-side review, self-test, or CI success is not an external evaluation.
+A structurally valid report is not proof that an experiment happened and must
+not automatically change evidence class or campaign totals.
+
+1. **Preserve the source first.** Retain the received report in its own format,
+   source URL/message reference, receipt time, and original artifacts or an
+   access-controlled copy with SHA-256 hashes. A mutable link alone is not a
+   preserved artifact. Keep any normalized JSON, redacted copy, or summary
+   separately linked to the original; do not overwrite it. Keep private replies,
+   email addresses, and private logs out of the public repository without consent.
+2. **Identify the experiment.** Record the exact target repository and commit,
+   the contract/document revision used for expected behavior, harness repository
+   and commit/version, dependencies/environment, inputs, commands, and raw logs.
+   Record expected versus observed behavior and any missing metadata as unknown.
+   Retain positive acceptance and deliberate-negative calibration observations
+   and their artifacts. Missing calibration limits a clean-run claim; it is not
+   grounds to reject a concrete counterexample at intake.
+3. **Reproduce before remediation.** Preserve the failing fixture and reproduce
+   against the reported frozen revision before changing code. Record our attempt,
+   environment, expected/observed output, and differences from the reporter's
+   result separately. If reproduction is blocked or disagrees, retain the finding
+   as unresolved/inconclusive with the reason; do not mark it fixed or erase it.
+   Keep a later fix and retest at a new revision linked to the original failure.
+4. **Assess without changing the historical claim.** Keep implementation defects,
+   known limits, evaluator/instrument defects, and unresolved disagreements
+   distinct, with reasons and links to supporting evidence. A known-limit
+   classification must cite a limit already present in the tested contract.
+   A real violation of a frozen documented guarantee cannot be dismissed by
+   adding a broader disclaimer afterward. Preserve the reporter's interpretation
+   alongside any differing project assessment. Protocol v2 identity, provenance,
+   independence, deduplication, and cap review governs any later count decision;
+   technical value can remain even when count weight is zero.
+
+For the **separate Agent Gate v0.1 lane**, the target is
+[`VrtxOmega/veritas@256daeb85dae7ac004ae9893df858f58c87ec523`](https://github.com/VrtxOmega/veritas/tree/256daeb85dae7ac004ae9893df858f58c87ec523).
+Use its [frozen contract](https://github.com/VrtxOmega/veritas/blob/256daeb85dae7ac004ae9893df858f58c87ec523/AGENT_GATE_DEMONSTRATOR.md)
+and record the [evaluator guide revision](https://github.com/VrtxOmega/veritas/blob/0a3f789771c868649c7dc2730d94f1956822d141/evaluation/EVALUATE_AGENT_GATE.md)
+separately. This lane evaluates the actual Python specimen through
+`evaluate_and_issue` and ticket recheck; the browser challenge's independent
+reimplementation rule above does not forbid importing this specimen. A clean
+Agent Gate run needs legitimate acceptance and an observable deliberately broken
+semantic calibration control. Minimal duplicate-control or cross-action
+counterexamples through `evaluate_and_issue` are welcome without schema conversion.
+Do not conflate the browser baseline, later packaging commits, or project tests
+with an outside run of the frozen Agent Gate target.
 
 ## What participation does not imply
 

@@ -3,7 +3,7 @@
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
   "baseline_ledger": "evidence/campaign-ledgers-v2.json",
   "baseline_as_of": "2026-08-09T20:14:01Z",
-  "as_of": "2026-09-05T05:30:00Z",
+  "as_of": "2026-09-05T16:43:36Z",
   "purpose": "Append-only Protocol v2 continuation for evidence occurring after the August 9 baseline. The baseline ledger remains unmodified historical evidence; current campaign totals are the baseline plus this reviewed addendum.",
   "qualifying_event_additions": [
     {
@@ -95,6 +95,36 @@
         "evidence/AUTHORITY_EXECUTION_REPLAY_REFERENCE_COMPARISON.md"
       ],
       "reason": "The verifier implementation, mutation probes, and follow-up reply were performed by the campaign author. They are useful technical artifacts but cannot satisfy the protocol's independent-human requirement and do not count as an independent verifier run or hostile case.",
+      "count_weight": 0
+    },
+    {
+      "id": "VTL-V2-NQ-20260905-003",
+      "status": "follow_up_sent_no_response_or_evaluation_established",
+      "signal_type": "existing_outreach_lane_follow_up",
+      "organization_id": "snyk-agent-scan",
+      "actor_id": "github:VrtxOmega",
+      "channel": "email",
+      "baseline_record": "evidence/campaign-ledgers-v2.json#/outreach_denominator_ledger/protocol_v2_records",
+      "initial_contact_at": "2026-08-02T02:44:39Z",
+      "follow_up_date": "2026-09-05",
+      "follow_up_allowance_consumed": true,
+      "follow_ups_used": 1,
+      "follow_ups_remaining": 0,
+      "next_action": "No further reminder or renewed solicitation through another channel unless the recipient invites further discussion.",
+      "scope": "Luca Beurer-Kellner's existing Snyk/Agent Scan lane: one bounded counterexample involving duplicate or cross-action approvals producing contract-qualified SHADOW_ALLOW through evaluate_and_issue; a minimal report in the evaluator's own format is welcome.",
+      "target_repository": "VrtxOmega/veritas",
+      "target_commit": "256daeb85dae7ac004ae9893df858f58c87ec523",
+      "evaluator_guide_commit": "0a3f789771c868649c7dc2730d94f1956822d141",
+      "source_url": "https://github.com/VrtxOmega/veritas/issues/4#issuecomment-5553252098",
+      "private_evidence": {
+        "provider": "gmail",
+        "original_message_and_thread_id": "19fc05bf22622bd6",
+        "follow_up_message_id": "1a0726f9082d0eca",
+        "verification_basis": "The continuation comment records Gmail thread readback confirming the follow-up is labeled SENT; this ledger update relies on that confirmed send record, not a new mailbox read.",
+        "boundary": "Mailbox provenance references only, not public evidence of delivery, receipt, response, engagement, or evaluation. No email address or private correspondence is published here."
+      },
+      "dedupe_key": "gmail:19fc05bf22622bd6|follow_up|1a0726f9082d0eca",
+      "reason": "Continuation of the August invitation, not a new contact or external result. The single follow-up allowance is used. Neither invitation nor follow-up carries qualifying weight.",
       "count_weight": 0
     }
   ],
