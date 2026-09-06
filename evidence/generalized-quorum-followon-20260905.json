@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0-followon.1",
   "protocol_id": "veritas-agent-trust-lab-balanced-evidence-v2",
-  "as_of": "2026-09-05T19:29:24Z",
+  "as_of": "2026-09-06T14:44:40Z",
   "record": {
     "id": "VTL-V2-NQ-20260905-002",
     "status": "recorded_zero_weight",
@@ -55,7 +55,8 @@
       "independent_verifier_runs": 0,
       "settled_revenue_usd": "0.00"
     },
-    "current_evaluation_status": "external_report_received_and_project_reproduced",
+    "current_evaluation_status": "second_external_evaluation_report_received",
+    "latest_evaluation_source_comment_id": "5559674991",
     "received_evaluations": [
       {
         "source_comment_id": "5554102070",
@@ -101,6 +102,146 @@
         "count_weight": 0,
         "counting_reason": "Completed external report preserved, but the existing Protocol v2 individual cap is already reached. Neither this report, our reproduction, nor an eventual evaluator PR creates an additional qualifying event.",
         "does_not_establish": ["production security", "authenticated approver identity", "certification", "adoption", "payment", "execution authority"]
+      },
+      {
+        "source_comment_id": "5559674991",
+        "source_url": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/304#issuecomment-5559674991",
+        "source_created_at": "2026-09-06T13:52:57Z",
+        "source_updated_at_at_capture": "2026-09-06T13:52:57Z",
+        "recorded_at": "2026-09-06T14:44:40Z",
+        "actor_id": "github:msaleme",
+        "evaluation_date": "2026-09-06",
+        "evaluation_sequence": 2,
+        "status": "external_second_evaluation_report_received",
+        "reported_classification": "external, author-run; not independent validation of VERITAS",
+        "archive_path": "evidence/external/msaleme-agent-gate-20260906/report.md",
+        "report_sha256": "0e6f4f34e35fc9bbdac8f22af3734eea23502ec7b97080ed9a254c94bf8898ad",
+        "capture_method": "UTF-8/LF comment body preserved from decoded GitHub connector readback, including the original command excerpts. This is a source-text snapshot, not a raw HTTP response or evaluator execution log. Hash checks preserve captured content, not the truth of the reported run.",
+        "previous_evaluation_source_comment_id": "5554102070",
+        "preceding_repair_review_source_comment_id": "5555581661",
+        "does_not_amend_previous_evaluation": true,
+        "target_repository": "VrtxOmega/veritas",
+        "target_commits": {
+          "frozen": "256daeb85dae7ac004ae9893df858f58c87ec523",
+          "repaired": "92f7d9310d102a42941e55131ee869a04651590a"
+        },
+        "evaluator_kit": {
+          "repository": "VrtxOmega/veritas",
+          "commit": "92f7d9310d102a42941e55131ee869a04651590a",
+          "role": "evaluation_tooling_separate_from_target_even_when_commit_equal",
+          "implementation_origin": "project_authored",
+          "reported_executor": "github:msaleme"
+        },
+        "reported_environment": {
+          "python": "3.12",
+          "checkout_method": "two separate clean target checkouts; kit also run from a fresh clone",
+          "identity_checks": "reported before and after for each target",
+          "full_runtime_and_dependency_transcript_supplied": false
+        },
+        "reported_original_probe_runs": [
+          {
+            "target_commit": "256daeb85dae7ac004ae9893df858f58c87ec523",
+            "cases": 18,
+            "matching_outcomes": 17,
+            "mismatched_verdicts": 0,
+            "exceptions": 1,
+            "exception_type": "ValueError",
+            "original_probe_unchanged": true
+          },
+          {
+            "target_commit": "92f7d9310d102a42941e55131ee869a04651590a",
+            "cases": 18,
+            "matching_outcomes": 17,
+            "mismatched_verdicts": 0,
+            "exceptions": 1,
+            "exception_type": "ValueError",
+            "original_probe_unchanged": true
+          }
+        ],
+        "reported_standalone_lifecycle": {
+          "store_scope": "default store only",
+          "sequence": "Use a fresh first ticket for legitimate issuance-and-recheck acceptance. Issue a separate second valid ticket, add a float only at recheck, observe ValueError, then retry the original unmodified action with that second ticket.",
+          "results": [
+            {
+              "target_commit": "256daeb85dae7ac004ae9893df858f58c87ec523",
+              "acceptance_control": "SHADOW_ALLOW",
+              "malformed_recheck": "ValueError",
+              "original_action_retry": "SHADOW_ALLOW"
+            },
+            {
+              "target_commit": "92f7d9310d102a42941e55131ee869a04651590a",
+              "acceptance_control": "SHADOW_ALLOW",
+              "malformed_recheck": "ValueError",
+              "original_action_retry": "DENY",
+              "retry_reason": "approval ticket replay detected"
+            }
+          ]
+        },
+        "reported_external_kit_execution": {
+          "package_validation": "valid",
+          "pytest_evaluation_tests_passed": 11,
+          "pytest_subtests_passed": 18,
+          "test_count_boundary": "11 tests and 18 subtests, not 29 separate tests; not the 42 Agent Gate project-side regression tests.",
+          "replay_script": "evaluation/reproduce_msaleme_20260905.py",
+          "stores": [
+            "memory",
+            "file"
+          ],
+          "retry_results": {
+            "frozen": "SHADOW_ALLOW",
+            "repaired": "DENY"
+          },
+          "calibration": {
+            "implementation_origin": "project_authored",
+            "execution_actor": "github:msaleme",
+            "execution_evidence": "reported_in_second_evaluation_not_retroactive_to_first",
+            "controls": [
+              "incorrect_duplicate_control_allow",
+              "incorrect_positive_control_denial"
+            ],
+            "detected_controls_per_target": 2,
+            "observed_comparison": "MISMATCH",
+            "boundary": "External execution of the existing project-authored mutant/comparison checks; not a separately authored calibration implementation, exhaustive mutation testing, or expansion of the first report."
+          },
+          "non_execution_assertions": "Reporter notes existing assertions at issuance, recheck, replay and retry; their code authorship remains project-side."
+        },
+        "kit_pr_disposition": {
+          "status": "offer_withdrawn_existing_functionality",
+          "reason": "Evaluator says the proposed assertions/calibration already exist and adding a credit-only commit would attach his name to project-authored work.",
+          "pending": false,
+          "contribution_submitted": false,
+          "project_rejection": false,
+          "boundary": "Withdrawn optional duplicate-work PR, not a declined evaluation, negative product verdict, adoption signal or authored integration."
+        },
+        "limitations": {
+          "concurrency_tested": false,
+          "all_canonicalization_errors_tested": false,
+          "mid_commit_storage_failure_tested": false,
+          "project_42_test_suite_reproduced": false,
+          "floats_still_raise": true,
+          "storage_failure_scope": "Code read-through only for mid-commit failure; no exercised mid-commit fault is reported.",
+          "raw_external_execution_logs_supplied": false,
+          "standalone_lifecycle_probe_source_supplied": false,
+          "command_excerpt_omits_required_output": true,
+          "command_excerpt_note": "The pinned replay CLI requires --output. Both published command excerpts omit it; preserve them verbatim. Complete commands in the companion note add --output as project-supplied guidance, not reconstructed evaluator history.",
+          "current_intake_reran_specimens": false
+        },
+        "summary_path": "evidence/AGENT_GATE_EXTERNAL_RETEST_20260906.md",
+        "dedupe_key": "github:msaleme|agent_gate_second_evaluation|5559674991",
+        "count_weight": 0,
+        "counting_reason": "Append to the existing capped actor lifecycle. Protocol v2 individual_event_cap=2 was already reached. No new validator, organization, hostile/verifier campaign count, adoption, authored PR, or payment is inferred. Technical value is preserved independently of scoring.",
+        "does_not_establish": [
+          "independent validation of VERITAS",
+          "production security",
+          "authenticated approver identity",
+          "execution authority",
+          "concurrency correctness",
+          "exhaustive error-path coverage",
+          "mid-commit failure correctness",
+          "external reproduction of all 42 project tests",
+          "adoption",
+          "payment"
+        ]
       }
     ]
   }
