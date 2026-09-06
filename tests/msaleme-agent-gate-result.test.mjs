@@ -9,8 +9,9 @@ test("received Agent Gate report supplements rather than rewrites pending histor
   const record = followon.record;
   assert.equal(record.prospective_agent_gate_evaluation.continuation.checked_at, "2026-09-05T16:43:36Z");
   assert.equal(record.prospective_agent_gate_evaluation.continuation.status, "pending_no_result_established");
-  assert.equal(record.current_evaluation_status, "external_report_received_and_project_reproduced");
-  assert.equal(record.received_evaluations.length, 1);
+  assert.equal(record.current_evaluation_status, "second_external_evaluation_report_received");
+  assert.equal(record.received_evaluations.length, 2);
+  assert.equal(record.latest_evaluation_source_comment_id, "5559674991");
   const received = record.received_evaluations[0];
   assert.equal(received.source_comment_id, "5554102070");
   assert.deepEqual(received.reported_result, { cases: 18, matching_outcomes: 17, mismatched_verdicts: 0, exceptions: 1 });
@@ -38,5 +39,5 @@ test("completed capped-actor result does not inflate qualifying or verifier coun
   assert.equal(addendum.current_totals.independent_verifier_runs_cross_evaluations_or_compatible_implementations, 0);
   assert.equal(addendum.current_totals.independently_proposed_or_executed_hostile_cases, 0);
   assert.equal(addendum.current_totals.settled_revenue_usd, "0.00");
-  assert.ok(addendum.qualifying_event_additions.every((entry) => !JSON.stringify(entry).includes("5554102070")));
+  assert.ok(addendum.qualifying_event_additions.every((entry) => !["5554102070", "5559674991"].some((id) => JSON.stringify(entry).includes(id))));
 });
