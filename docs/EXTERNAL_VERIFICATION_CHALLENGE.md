@@ -25,8 +25,36 @@ The challenge is pinned to commit
 | `public/verification-packet.json` | `87ff8f3784f7509e05ae19bc8f72236f061bff32ce79777c65343ac56609b54f` |
 | `lib/challenge-receipt.js` | `21b8f565ee6155b7eec93e3fa490506f66453cfed7fb2b3c19eea8d4f0f4229e` |
 
-The machine-readable protocol is
-[`protocol/external-verification-challenge-v1.json`](../protocol/external-verification-challenge-v1.json).
+### Pin the challenge documents separately
+
+The evaluated source above predates publication of the challenge documents.
+Checking out `0f3c71f` alone therefore does **not** retrieve the guide or protocol.
+Keep the source baseline fixed and retrieve the original v1 documents from
+[`3903ec2323f7c8060ade54f1dcd01f2299556a66`](https://github.com/VrtxOmega/veritas-agent-trust-lab/tree/3903ec2323f7c8060ade54f1dcd01f2299556a66):
+
+| Challenge document | SHA-256 at the document revision |
+|---|---|
+| [`docs/EXTERNAL_VERIFICATION_CHALLENGE.md`](https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/3903ec2323f7c8060ade54f1dcd01f2299556a66/docs/EXTERNAL_VERIFICATION_CHALLENGE.md) | `69fa599256d546cd833ecd1515e0a1b9efb2a10796766758c523a37b994d037c` |
+| [`protocol/external-verification-challenge-v1.json`](https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/3903ec2323f7c8060ade54f1dcd01f2299556a66/protocol/external-verification-challenge-v1.json) | `0bc4667eb94e71f2879b99489bbf999bff85ba401d5fce4d3860cbeac29c229e` |
+
+For example, from a clone containing both revisions:
+
+```bash
+git show 3903ec2323f7c8060ade54f1dcd01f2299556a66:protocol/external-verification-challenge-v1.json > challenge-protocol.json
+git show 3903ec2323f7c8060ade54f1dcd01f2299556a66:docs/EXTERNAL_VERIFICATION_CHALLENGE.md > challenge-guide.md
+sha256sum challenge-protocol.json challenge-guide.md
+```
+
+Read the pinned prose and JSON together. Record the source revision and document
+revision separately in the report. The [current protocol](../protocol/external-verification-challenge-v1.json)
+also spells out the existing packet-value comparison requirement. If using that
+clarification, record its commit as an additional document revision; it does not
+replace the frozen source or change the original acceptance criteria.
+
+This corrects the retrieval ambiguity reported in [#70](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/70).
+The later corrections on [#71](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/71#issuecomment-5302458776)
+remain part of the report: decision agreement alone does not prove digest
+agreement, while the original prose already required both.
 
 ## Important V4 boundary
 

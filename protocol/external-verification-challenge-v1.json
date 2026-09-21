@@ -1,9 +1,24 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.0.1",
   "challenge_id": "veritas-public-contract-external-verification-v1",
   "title": "Break VERITAS: External Verification Challenge",
   "status": "OPEN",
   "execution_authorized": false,
+  "challenge_documentation": {
+    "commit": "3903ec2323f7c8060ade54f1dcd01f2299556a66",
+    "relationship_to_source": "The v1 challenge documents were published after the frozen evaluated source. Retrieve them at this separate revision, not at reference_contract.commit. The prose and JSON are read together.",
+    "artifacts": [
+      {
+        "path": "docs/EXTERNAL_VERIFICATION_CHALLENGE.md",
+        "sha256": "69fa599256d546cd833ecd1515e0a1b9efb2a10796766758c523a37b994d037c"
+      },
+      {
+        "path": "protocol/external-verification-challenge-v1.json",
+        "sha256": "0bc4667eb94e71f2879b99489bbf999bff85ba401d5fce4d3860cbeac29c229e"
+      }
+    ],
+    "clarification": "This schema revision clarifies retrieval and comparison requirements without changing the frozen source, cases, or original prose acceptance criteria. Its own document revision should also be recorded when used."
+  },
   "reference_contract": {
     "repository": "https://github.com/VrtxOmega/veritas-agent-trust-lab",
     "commit": "0f3c71fdb0e9078d8a5d8684411d0318fe600bb1",
@@ -57,6 +72,13 @@
         "packet",
         "execution_authorized"
       ],
+      "required_comparisons": {
+        "verified_result": "exact value",
+        "disposition": "exact value",
+        "reason_codes": "exact values in the same order",
+        "packet": "Compare case-specific field values, including every digest and count, against the pinned reference. Field presence or matching decisions alone is insufficient.",
+        "execution_authorized": "must be false for every case"
+      },
       "positive_controls": 6,
       "hostile_cases": 6
     },
