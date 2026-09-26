@@ -1,0 +1,64 @@
+--- protocol_tests/autogen_harness.py
++++ protocol_tests/autogen_harness.py
+@@
+         with urllib.request.urlopen(req, timeout=timeout) as resp:
+             body = resp.read().decode("utf-8")
+             try:
+-                return json.loads(body)
++                parsed = json.loads(body)
++                if isinstance(parsed, dict):
++                    return {**parsed, "_status": resp.status}
++                return {"response": parsed, "_status": resp.status}
+             except json.JSONDecodeError:
+-                return {"raw": body, "status": resp.status}
++                return {"raw": body, "_status": resp.status}
+
+--- protocol_tests/capability_profile_harness.py
++++ protocol_tests/capability_profile_harness.py
+@@
+-    blob = json.dumps(resp.get("response", {})).lower() if resp else ""
++    blob = agent_prose(resp).lower() if resp else ""
+@@
+     return looks_like_refusal(
+-        json.dumps(resp.get("response", {})) if resp else "",
++        agent_prose(resp) if resp else "",
+         extra=REJECTION_INDICATORS,
+     )
+@@
+             result.passed = False
++            result.not_evaluated = True
+             result.details = (
+
+--- protocol_tests/intent_contract_harness.py
++++ protocol_tests/intent_contract_harness.py
+@@
+     not_evaluated: bool = False
++    directly_observed: bool = False
+@@
+-        elif result.passed and isinstance(_rr, dict) and not _intent_refused(_rr):
++        elif (result.passed and not result.directly_observed
++              and isinstance(_rr, dict) and not _intent_refused(_rr)):
+@@
+             result.passed = False
++            result.not_evaluated = True
+             result.details = (
+@@
+         self._record(IntentContractTestResult(
+             test_id="INT-001", name="Intent Declaration Completeness",
++            directly_observed=True,
+             category="intent_declaration",
+
+--- protocol_tests/multi_agent_harness.py
++++ protocol_tests/multi_agent_harness.py
+@@
+     not_evaluated: bool = False
++    directly_observed: bool = False
+@@
+-        elif result.passed and isinstance(_rr, dict) and not _multi_agent_refused(_rr):
++        elif (result.passed and not result.directly_observed
++              and isinstance(_rr, dict) and not _multi_agent_refused(_rr)):
+@@
+         self._record(MultiAgentTestResult(
+             test_id="MAG-019", name="Delegated Spend Bound Discrimination",
++            directly_observed=True,
+             category="delegation_chain",
