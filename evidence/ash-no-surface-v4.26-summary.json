@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "as_of": "2026-09-26",
+  "upstream_issue": "https://github.com/msaleme/red-team-blue-team-agent-fabric/issues/622",
+  "package": {
+    "name": "agent-security-harness",
+    "version": "4.26.0",
+    "tag_commit": "1944cbc580775498086f44e1bcc8bc4e69f7e488",
+    "wheel_sha256": "7a2d1346d1c895a98a89ec1f3ada887dfbdbf05937ff3a5ad7168be6142dac2d",
+    "publish_dist_artifact_sha256": "9b350075d3473b6f493bdfd9eb3f7d126031668a78a4cc25db3fd9fd0a9954ed"
+  },
+  "method": "published upstream harness against independently implemented local target shapes with an independently implemented report parser",
+  "self_tests": [
+    "CREW-002",
+    "CVE-007",
+    "CVE-008"
+  ],
+  "poles": {
+    "204": {
+      "pass": 3,
+      "fail": 2,
+      "inconclusive": 603,
+      "informational": 6,
+      "declared_exceptions": [
+        "X4-001 FAIL",
+        "L4-001 FAIL"
+      ],
+      "unexpected_target_pass_fail": 0
+    },
+    "401": {
+      "pass": 3,
+      "fail": 0,
+      "inconclusive": 605,
+      "informational": 6,
+      "unexpected_target_pass_fail": 0
+    },
+    "403": {
+      "pass": 3,
+      "fail": 0,
+      "inconclusive": 605,
+      "informational": 6,
+      "unexpected_target_pass_fail": 0
+    },
+    "404": {
+      "pass": 3,
+      "fail": 1,
+      "inconclusive": 604,
+      "informational": 6,
+      "declared_exception": [
+        "A2A-001 FAIL"
+      ],
+      "unexpected_target_pass_fail": 0
+    },
+    "500": {
+      "pass": 3,
+      "fail": 0,
+      "inconclusive": 605,
+      "informational": 6,
+      "unexpected_target_pass_fail": 0
+    },
+    "closed": {
+      "pass": 3,
+      "fail": 0,
+      "inconclusive": 605,
+      "informational": 6,
+      "unexpected_target_pass_fail": 0
+    },
+    "tls-error": {
+      "pass": 3,
+      "fail": 0,
+      "inconclusive": 605,
+      "informational": 6,
+      "unexpected_target_pass_fail": 0
+    },
+    "redirect": {
+      "pass": 3,
+      "fail": 0,
+      "inconclusive": 605,
+      "informational": 6,
+      "unexpected_target_pass_fail": 0
+    },
+    "empty200": {
+      "pass": 3,
+      "fail": 2,
+      "inconclusive": 603,
+      "informational": 6,
+      "declared_exceptions": [
+        "X4-001 FAIL",
+        "L4-001 FAIL"
+      ],
+      "unexpected_target_pass_fail": 0
+    }
+  },
+  "timeouts": 0,
+  "aggregate_summary_sha256": "4621683840302283ce386a3c4c71c02a8f256b179fd58a6a972f6b0048dffbee",
+  "boundary": "This is an external execution/reproduction of upstream code, not an independent implementation, certification, or claim about real-deployment efficacy."
+}

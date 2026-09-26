@@ -1,0 +1,60 @@
+name: Reproduce ASH no-surface findings
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/ash-no-surface-reproduction.yml"
+      - "scripts/reproduce-ash-no-surface.py"
+      - "evidence/ASH_NO_SURFACE_REPRODUCTION_20260925.md"
+      - "evidence/ASH_NO_SURFACE_RETEST_20260926.md"
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - version: "4.25.0"
+            wheel_sha256: "c704da037ab300aa26ff0a667b43b99a14cbb6df50685325363c320722207fe4"
+          - version: "4.26.0"
+            wheel_sha256: "7a2d1346d1c895a98a89ec1f3ada887dfbdbf05937ff3a5ad7168be6142dac2d"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Download and verify exact upstream wheel
+        shell: bash
+        run: |
+          set -euo pipefail
+          wheel="agent_security_harness-${{ matrix.version }}-py3-none-any.whl"
+          curl --fail --location --retry 3 \
+            -o "$wheel" \
+            "https://github.com/msaleme/red-team-blue-team-agent-fabric/releases/download/v${{ matrix.version }}/$wheel"
+          echo "${{ matrix.wheel_sha256 }}  $wheel" | sha256sum -c -
+          python -m venv .venv
+          .venv/bin/python -m pip install "$wheel"
+
+      - name: Run independent nine-pole reproduction
+        run: |
+          .venv/bin/python scripts/reproduce-ash-no-surface.py \
+            --agent-security .venv/bin/agent-security \
+            --version "${{ matrix.version }}" \
+            --output "ash-no-surface-${{ matrix.version }}"
+
+      - name: Upload raw evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ash-no-surface-${{ matrix.version }}
+          path: ash-no-surface-${{ matrix.version }}/
+          if-no-files-found: error
+          retention-days: 90
