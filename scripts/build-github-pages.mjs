@@ -37,6 +37,7 @@ if (!response.ok) {
 let html = await response.text();
 for (const path of [
   "/assets/",
+  "/_next/",
   "/og.png",
   "/favicon.svg",
   "/verification-packet.json",
@@ -44,10 +45,13 @@ for (const path of [
   html = html.replaceAll(path, `${basePath}${path}`);
 }
 
-html = html.replaceAll(
+for (const localOg of [
   `content="${basePath}/og.png"`,
-  `content="${siteUrl}og.png"`,
-);
+  `content="http://localhost${basePath}/og.png"`,
+  `content="http://localhost:3000${basePath}/og.png"`,
+]) {
+  html = html.replaceAll(localOg, `content="${siteUrl}og.png"`);
+}
 
 html = html.replace(
   "</head>",
