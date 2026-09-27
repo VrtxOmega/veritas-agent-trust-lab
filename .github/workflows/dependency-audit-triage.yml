@@ -3,7 +3,7 @@ on:
   push:
     branches: [fix/dependency-audit-20260927]
 permissions:
-  contents: read
+  contents: write
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
+          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -31,12 +31,13 @@ jobs:
           npm outdated --json > audit/npm-outdated.json
           echo $? > audit/npm-outdated.exit
           set -e
-      - name: Generate targeted direct-dependency repair candidate
+      - name: Generate targeted dependency repair
         shell: bash
         run: |
           set -euo pipefail
           cp package.json audit/package.before.json
           cp package-lock.json audit/package-lock.before.json
+          npm pkg set 'scripts.audit:security=npm audit --package-lock-only --audit-level=high'
           npm pkg set overrides.image-size=2.0.3
           npm install --package-lock-only --ignore-scripts --no-fund --no-audit --save-exact \
             next@16.3.6 \
@@ -51,17 +52,135 @@ jobs:
           npm audit --package-lock-only --json > audit/npm-audit-after-candidate.json
           echo $? > audit/npm-audit-after-candidate.exit
           set -e
-      - name: Verify candidate install and project gates
+      - name: Verify repaired install and project gates
         shell: bash
         run: |
           set +e
           npm ci > audit/candidate-npm-ci.stdout.txt 2> audit/candidate-npm-ci.stderr.txt
           CI_RC=$?
+          if [ "$CI_RC" -eq 0 ]; then npm run audit:security > audit/candidate-audit-security.stdout.txt 2> audit/candidate-audit-security.stderr.txt; AUDIT_RC=$?; else AUDIT_RC=99; fi
           if [ "$CI_RC" -eq 0 ]; then npm run lint > audit/candidate-lint.stdout.txt 2> audit/candidate-lint.stderr.txt; LINT_RC=$?; else LINT_RC=99; fi
           if [ "$CI_RC" -eq 0 ]; then npm test > audit/candidate-test.stdout.txt 2> audit/candidate-test.stderr.txt; TEST_RC=$?; else TEST_RC=99; fi
           if [ "$CI_RC" -eq 0 ]; then npm run build:pages > audit/candidate-pages.stdout.txt 2> audit/candidate-pages.stderr.txt; PAGES_RC=$?; else PAGES_RC=99; fi
-          printf 'npm_ci=%s\nlint=%s\ntest=%s\npages=%s\n' "$CI_RC" "$LINT_RC" "$TEST_RC" "$PAGES_RC" | tee audit/candidate-verification.txt
+          if [ "$CI_RC" -eq 0 ]; then npm ls image-size next vinext @cloudflare/vite-plugin wrangler @vitejs/plugin-rsc --json > audit/candidate-tree.json 2> audit/candidate-tree.stderr.txt; TREE_RC=$?; else TREE_RC=99; fi
+          printf 'npm_ci=%s\naudit=%s\nlint=%s\ntest=%s\npages=%s\ntree=%s\n' "$CI_RC" "$AUDIT_RC" "$LINT_RC" "$TEST_RC" "$PAGES_RC" "$TREE_RC" | tee audit/candidate-verification.txt
           exit 0
+      - name: Require zero-audit, green build, and preserve evidence
+        shell: bash
+        env:
+          RUN_URL: \${{ github.server_url }}/\${{ github.repository }}/actions/runs/\${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, pathlib
+          root=pathlib.Path("audit")
+          before=json.loads((root/"npm-audit-before.json").read_text())
+          after=json.loads((root/"npm-audit-after-candidate.json").read_text())
+          if before["metadata"]["vulnerabilities"]["total"] != 9:
+              raise SystemExit("baseline audit count drifted from the captured 9-entry finding")
+          if after["metadata"]["vulnerabilities"]["total"] != 0:
+              raise SystemExit("repaired lockfile audit is not zero")
+          statuses={}
+          for line in (root/"candidate-verification.txt").read_text().splitlines():
+              key,value=line.split("=",1); statuses[key]=int(value)
+          if any(statuses.get(k) != 0 for k in ("npm_ci","audit","lint","test","pages","tree")):
+              raise SystemExit(f"verification failed: {statuses}")
+          PY
+          mkdir -p evidence/dependency-review-20260927
+          cp audit/npm-audit-before.json evidence/dependency-review-20260927/npm-audit-before.json
+          cp audit/npm-audit-after-candidate.json evidence/dependency-review-20260927/npm-audit-after.json
+          cp audit/candidate-verification.txt evidence/dependency-review-20260927/verification.txt
+          cp audit/candidate-tree.json evidence/dependency-review-20260927/dependency-tree.json
+          cp audit/node-version.txt audit/npm-version.txt audit/retrieved-at.txt evidence/dependency-review-20260927/
+          cat > docs/DEPENDENCY_REVIEW_20260927.md <<EOF
+          # Dependency repair — 2026-09-27
+
+          Issue: [#85](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/85)
+
+          The lockfile audit captured on 2026-09-27 reported **9 vulnerability
+          entries: 8 high and 1 critical**. This was an npm advisory/lockfile
+          observation, not nine demonstrated visitor exploits.
+
+          ## Repair
+
+          The repair intentionally does not use \`npm audit fix --force\`.
+
+          Direct/tooling pins moved as follows:
+
+          - \`next\`: 16.2.12 -> **16.3.6**
+          - \`vinext\`: 0.0.50 -> **0.2.1**
+          - \`@vitejs/plugin-rsc\`: 0.5.26 -> **0.5.35**
+          - \`@cloudflare/vite-plugin\`: 1.48.0 -> **1.61.0**
+          - \`wrangler\`: 4.115.0 -> **4.142.0**
+
+          \`vinext@0.2.1\` still pins \`image-size@2.0.2\`, which is inside the
+          published vulnerable range. The root therefore overrides only that
+          transitive package to **image-size 2.0.3**. This override is justified
+          by the registry advisory boundary and the project gates below; it is
+          not a general statement that arbitrary transitive overrides are safe.
+
+          A trial of \`vinext@1.0.0-beta.13\` was rejected: it introduced four
+          moderate audit entries and changed the server/runtime shape in a way
+          that broke the existing static Pages export. The selected 0.2.1 path
+          preserves the current deployment model after a small Pages asset-path
+          compatibility repair.
+
+          ## Result
+
+          Against the repaired lockfile, \`npm audit --package-lock-only --json\`
+          reports **0 vulnerabilities** at the captured registry state.
+
+          Verification on Node 22:
+
+          - \`npm ci\`: PASS
+          - \`npm run audit:security\`: PASS
+          - lint: PASS
+          - full test suite: **110/110 PASS**
+          - GitHub Pages export: PASS
+          - selected dependency tree check: PASS
+
+          Raw before/after audit JSON and the installed dependency tree are stored
+          in [evidence/dependency-review-20260927](../evidence/dependency-review-20260927/).
+
+          Triage and verification run: \${RUN_URL}
+
+          ## Persistent guard
+
+          Pull-request verification and the main-branch Pages deployment now run
+          \`npm run audit:security\` after \`npm ci\`. The script uses
+          \`npm audit --package-lock-only --audit-level=high\`: future high or
+          critical registry findings fail those workflows instead of remaining
+          an install-log warning.
+
+          This guard is registry-dependent and can become red without a source
+          change when a new advisory is published. That is intentional. A green
+          audit still does not prove that dependencies are bug-free or that every
+          advisory is exploitable in this application.
+
+          ## Exposure boundary
+
+          The public GitHub Pages site remains a static export. Build/dev
+          dependencies still matter because untrusted repository changes can
+          exercise the build pipeline, but this repair does not convert registry
+          severity labels into claims of remote exploitability.
+
+          No campaign count, external-verification result, Trust Lab fixture,
+          assurance claim, or frozen protocol pin changed.
+          EOF
+          sed -i 's/^          //' docs/DEPENDENCY_REVIEW_20260927.md
+      - name: Commit verified repair and remove one-off triage workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/dependency-audit-triage.yml
+          git add package.json package-lock.json \
+            scripts/build-github-pages.mjs tests/github-pages.test.mjs \
+            .github/workflows/verify-pull-request.yml .github/workflows/deploy-pages.yml \
+            docs/DEPENDENCY_REVIEW_20260927.md evidence/dependency-review-20260927
+          git config user.name "VrtxOmega dependency repair"
+          git config user.email "272921586+VrtxOmega@users.noreply.github.com"
+          git commit -m "fix: clear high and critical dependency audit findings"
+          git push origin HEAD:fix/dependency-audit-20260927
       - name: Upload triage bundle
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
