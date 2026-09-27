@@ -59,17 +59,20 @@ test("equivalent UTC timestamp spellings and sub-millisecond precision remain ju
   for (const [heartbeat, expectedAge] of cases) {
     const result = assessHeartbeat(input(heartbeat));
     assert.equal(result.fresh, true, heartbeat);
-    // JS Number precision at epoch-millisecond scale is sub-microsecond,
-    // but not nanosecond; keep the behavioral assertion inside 1 microsecond.
-    assert.ok(Math.abs(result.ageSeconds - expectedAge) < 1e-6, heartbeat);
+    assert.ok(Math.abs(result.ageSeconds - expectedAge) < 1e-12, heartbeat);
   }
 
-  const future = assessHeartbeat({
-    evaluatedAt: "2030-01-01T00:00:30.000000Z",
-    lastHeartbeat: "2030-01-01T00:00:30.000001+00:00",
-  });
-  assert.equal(future.fresh, false);
-  assert.equal(future.reasonCodes[0], "HEARTBEAT_FUTURE");
+  for (const heartbeat of [
+    "2030-01-01T00:00:30.000001+00:00",
+    "2030-01-01T00:00:30.000000001Z",
+  ]) {
+    const future = assessHeartbeat({
+      evaluatedAt: "2030-01-01T00:00:30.000000000Z",
+      lastHeartbeat: heartbeat,
+    });
+    assert.equal(future.fresh, false, heartbeat);
+    assert.equal(future.reasonCodes[0], "HEARTBEAT_FUTURE", heartbeat);
+  }
 
   for (const invalid of [
     "2030-01-01T00:00:60Z",
