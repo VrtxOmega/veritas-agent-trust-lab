@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const read = (path) => readFile(new URL(`../${path}`, import.meta.url));
 
 test("external verification protocol pins the public contract and positive controls", async () => {
   const protocol = JSON.parse(
@@ -26,7 +26,11 @@ test("external verification protocol pins the public contract and positive contr
   }
 
   for (const artifact of protocol.reference_contract.artifacts) {
-    const digest = createHash("sha256").update(await read(artifact.path)).digest("hex");
+    // The challenge names immutable source, not whichever revision is on main.
+    const source = execFileSync("git", ["show", `${protocol.reference_contract.commit}:${artifact.path}`], {
+      cwd: new URL("..", import.meta.url), stdio: ["ignore", "pipe", "pipe"],
+    });
+    const digest = createHash("sha256").update(source).digest("hex");
     assert.equal(digest, artifact.sha256, `${artifact.path} hash drifted`);
   }
 
