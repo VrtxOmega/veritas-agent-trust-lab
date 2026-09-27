@@ -49,6 +49,37 @@ test("fresh, exactly-at-TTL and zero-TTL controls remain reachable", () => {
   }
 });
 
+test("equivalent UTC timestamp spellings and sub-millisecond precision remain judgeable", () => {
+  const cases = [
+    ["2030-01-01T00:00:25.1Z", 4.9],
+    ["2030-01-01T00:00:25.123456Z", 4.876544],
+    ["2030-01-01T00:00:25+00:00", 5],
+    ["2030-01-01T00:00:25.123456+00:00", 4.876544],
+  ];
+  for (const [heartbeat, expectedAge] of cases) {
+    const result = assessHeartbeat(input(heartbeat));
+    assert.equal(result.fresh, true, heartbeat);
+    assert.ok(Math.abs(result.ageSeconds - expectedAge) < 1e-9, heartbeat);
+  }
+
+  const future = assessHeartbeat({
+    evaluatedAt: "2030-01-01T00:00:30.000000Z",
+    lastHeartbeat: "2030-01-01T00:00:30.000001+00:00",
+  });
+  assert.equal(future.fresh, false);
+  assert.equal(future.reasonCodes[0], "HEARTBEAT_FUTURE");
+
+  for (const invalid of [
+    "2030-01-01T00:00:60Z",
+    "2030-02-30T00:00:25.123456Z",
+    "2030-01-01T00:00:25-00:00",
+    "2030-01-01T00:00:25+01:00",
+    "2030-01-01T00:00:25.1234567890Z",
+  ]) {
+    assert.equal(assessHeartbeat(input(invalid)).reasonCodes[0], "HEARTBEAT_INVALID", invalid);
+  }
+});
+
 test("TTL+1ms and historical stale cases revoke with the original reason codes", () => {
   for (const heartbeat of ["2030-01-01T00:00:19.999Z", "2030-01-01T00:00:00Z"]) {
     const r = assessHeartbeat(input(heartbeat));
@@ -83,6 +114,18 @@ test("case, edge whitespace and compatibility variants do not inflate groups", (
     evaluator(" frontier-family-a ", " redteam-v4 ", " corpus-alpha "),
     evaluator("ｆｒｏｎｔｉｅｒ-family-a"),
   ]), 1);
+});
+
+test("runs of interior spaces collapse without erasing meaningful word boundaries", () => {
+  assert.equal(countDeclaredEvaluatorGroups([
+    evaluator("clau de"),
+    evaluator("clau  de"),
+    evaluator("clau\u00a0\u00a0de"),
+  ]), 1);
+  assert.equal(countDeclaredEvaluatorGroups([
+    evaluator("clau de"),
+    evaluator("claude"),
+  ]), 2);
 });
 
 test("non-ASCII case variants cannot inflate declared groups", () => {
