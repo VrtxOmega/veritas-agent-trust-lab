@@ -85,6 +85,15 @@ test("case, edge whitespace and compatibility variants do not inflate groups", (
   ]), 1);
 });
 
+test("non-ASCII case variants cannot inflate declared groups", () => {
+  // JS lowercasing is not full Unicode case folding. Unsupported label
+  // alphabets fail closed instead of minting extra claimed evaluators.
+  for (const [a, b] of [["Σ", "ς"], ["Straße", "STRASSE"], ["İ", "i"], ["модель", "МОДЕЛЬ"]]) {
+    assert.throws(() => countDeclaredEvaluatorGroups([evaluator(a), evaluator(b)]), TypeError);
+  }
+  assert.equal(countDeclaredEvaluatorGroups([evaluator("ALPHA"), evaluator("alpha")]), 1);
+});
+
 test("distinct declared triples and duplicate declarations remain distinguishable", () => {
   assert.equal(countDeclaredEvaluatorGroups([
     evaluator("frontier-family-a"), evaluator("deterministic-checker", "none", "fixture-source"),

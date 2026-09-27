@@ -50,7 +50,7 @@ This does **not** verify a signature, authenticate a monitor or issue authority.
 
 ## #83: declaration grouping, and what remains unresolved
 
-The delimiter collision and case/trailing-space inflation reproduced on the unchanged original function. A new `countDeclaredEvaluatorGroups` helper uses a JSON tuple of NFKC-normalized, edge-trimmed, lowercased identifier labels. Invalid or missing declarations throw rather than creating a group. Delimiter-containing distinct tuples stay distinct; cosmetic aliases collapse.
+The delimiter collision and case/trailing-space inflation reproduced on the unchanged original function. A new `countDeclaredEvaluatorGroups` helper uses a JSON tuple of NFKC-normalized, edge-trimmed, ASCII-lowercased identifier labels. After normalization, labels must contain only printable ASCII; unsupported alphabets fail closed rather than pretending JavaScript lowercasing is full Unicode case folding. Invalid or missing declarations throw rather than creating a group. Delimiter-containing distinct tuples stay distinct; cosmetic aliases collapse.
 
 The three fields remain `model_family`, `prompt_ancestry` and `retrieval_set`. The case summary no longer claims code-path independence is checked when it is not. Historical output names such as `independent_group_count` remain for fixture compatibility; they describe a **simulated declared grouping**, not authenticated independence.
 
@@ -69,3 +69,9 @@ The forged-verdict CLEAN result remains ALLOW while `claimed_result` is CONFLICT
 Local focused run: **45/45 Node tests**, including 23 new regression tests plus existing engine, frozen-protocol and receipt tests. The wider source-only run passed **105/105**; it excluded the two suites requiring generated build assets. The public PR workflow additionally performs the normal install, lint, production build, complete Node suite and Pages export. A local focused pass is not represented as a full-build pass; read the actual CI result before merge.
 
 The nonce store/atomicity, full Track 2/3 mutation population, browser interaction, universal canonicalization equivalence and the non-public V4 kernel remain outside this result. Attribution: external findings by **@tolegm / AstraNL**; replay, comparator calibrations and remediation are project-side work.
+
+## Review follow-up: Unicode case variants
+
+Automated review of the initial repair (`da48315`) identified that JavaScript `toLowerCase()` leaves Greek final sigma distinct from ordinary sigma. The new non-ASCII case regression failed on that revision. The helper now requires printable ASCII after NFKC normalization and trimming, then lowercases that explicitly supported alphabet. Greek sigma, sharp-s, dotted-I and Cyrillic cases cannot mint extra declared groups; fullwidth ASCII compatibility forms remain supported. This is a narrowed identifier contract, not a claim to implement universal Unicode case folding. The original twelve-case full-object comparison still passes.
+
+The initial full PR CI run [36324679618](https://github.com/VrtxOmega/veritas-agent-trust-lab/actions/runs/36324679618) passed installation, lint, production build, 108/108 tests and Pages export. After this review correction, local source-only tests passed 106/106, including 24 new regressions. Read the final-head CI result for the complete updated build/test count. The install log's dependency audit warnings are tracked separately in #85 and are not erased by the successful tests.
