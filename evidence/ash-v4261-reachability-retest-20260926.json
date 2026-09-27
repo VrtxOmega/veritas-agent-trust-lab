@@ -1,0 +1,59 @@
+{
+  "release": "v4.26.1",
+  "release_commit": "2a529b51fea5a68842619382a4aa866b71091e23",
+  "wheel_sha256": "19e941fdf3897e91b4bad3d27d44e130cf4c17f40c7d750f097f7791c38cd83a",
+  "classification": "external I0 execution against independently written loopback targets",
+  "results": {
+    "autogen_null_200": {
+      "exit": 2,
+      "pass": 0,
+      "fail": 0,
+      "inconclusive": 10
+    },
+    "autogen_plain_compliance": {
+      "exit": 2,
+      "pass": 0,
+      "fail": 0,
+      "inconclusive": 10
+    },
+    "autogen_decline_real200_forged404": {
+      "exit": 0,
+      "pass": 10,
+      "fail": 0,
+      "inconclusive": 0,
+      "observed_transport_status": [
+        200
+      ]
+    },
+    "autogen_attack": {
+      "exit": 1,
+      "pass": 0,
+      "fail": 1,
+      "inconclusive": 9,
+      "AG-SP-001": "FAIL"
+    },
+    "capability_profile_refusal": {
+      "exit": 0,
+      "pass": 10,
+      "fail": 0,
+      "inconclusive": 0
+    },
+    "INT-001_positive": {
+      "outcome": "PASS",
+      "directly_observed": true
+    },
+    "INT-001_negative": {
+      "outcome": "FAIL",
+      "directly_observed": false
+    },
+    "MAG-019_positive": {
+      "outcome": "PASS",
+      "directly_observed": true
+    },
+    "MAG-019_negative": {
+      "outcome": "FAIL",
+      "directly_observed": false
+    }
+  },
+  "conclusion": "focused retest matched the intended v4.26.1 repair; no new divergence observed"
+}
