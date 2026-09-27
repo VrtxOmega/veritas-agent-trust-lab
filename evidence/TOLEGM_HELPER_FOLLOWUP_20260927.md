@@ -78,5 +78,17 @@ New regressions cover:
 - one-space vs two-space/NBSP-run declared labels;
 - preservation of a meaningful single-space distinction.
 
+## Review follow-up: preserve nanosecond ordering
+
+Automated review of the first compatibility patch identified that adding a
+fractional millisecond value to an epoch-sized JavaScript `Number` can erase
+nanosecond distinctions. That matters because the contract says there is no
+future-clock tolerance.
+
+The corrected helper carries the parsed instant as integer nanoseconds until
+after subtraction. A 1 ns future heartbeat is therefore rejected exactly, while
+the small age delta is converted to seconds only for the returned public value.
+The regression pins both 1 µs and 1 ns future cases.
+
 The immutable v1 challenge source, Track 1 result, campaign count, and
 `execution_authorized: false` boundary are unchanged.
