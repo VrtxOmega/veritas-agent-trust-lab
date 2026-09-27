@@ -47,7 +47,7 @@ Verification on Node 22:
 Raw before/after audit JSON and the installed dependency tree are stored
 in [evidence/dependency-review-20260927](../evidence/dependency-review-20260927/).
 
-Triage and verification run: ${RUN_URL}
+Triage and verification run: https://github.com/VrtxOmega/veritas-agent-trust-lab/actions/runs/36327439522
 
 ## Persistent guard
 
