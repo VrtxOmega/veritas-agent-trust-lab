@@ -40,6 +40,7 @@ jobs:
           npm install --package-lock-only --ignore-scripts --no-fund --no-audit --save-exact \
             next@16.3.6 \
             vinext@1.0.0-beta.13 \
+            @vitejs/plugin-rsc@0.5.35 \
             @cloudflare/vite-plugin@1.61.0 \
             wrangler@4.142.0
           cp package.json audit/package.candidate.json
