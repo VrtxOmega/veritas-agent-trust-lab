@@ -21,12 +21,16 @@ test("GitHub Pages export preserves interactive assets under the project path", 
       readFile(join(target, "verification-packet.json"), "utf8"),
     ]);
     assert.match(html, /https:\/\/vrtxomega\.github\.io\/veritas-agent-trust-lab\//);
-    assert.match(html, /\/veritas-agent-trust-lab\/assets\/index-/);
+    assert.match(
+      html,
+      /\/veritas-agent-trust-lab\/(?:assets|_next\/static)\//,
+    );
     assert.match(
       html,
       /content="https:\/\/vrtxomega\.github\.io\/veritas-agent-trust-lab\/og\.png"/,
     );
-    assert.doesNotMatch(html, /(?:href|src)="\/assets\//);
+    assert.doesNotMatch(html, /(?:href|src)="\/(?:assets|_next)\//);
+    assert.doesNotMatch(html, /url\(\/_next\//);
     assert.match(packet, /"public_url": "https:\/\/vrtxomega\.github\.io\/veritas-agent-trust-lab\/"/);
   } finally {
     await rm(target, { recursive: true, force: true });

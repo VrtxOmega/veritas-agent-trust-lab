@@ -1,0 +1,56 @@
+{
+  "version": "0.1.0",
+  "name": "veritas-omega-agent-trust-lab",
+  "dependencies": {
+    "@cloudflare/vite-plugin": {
+      "version": "1.61.0",
+      "resolved": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-1.61.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "wrangler": {
+          "version": "4.142.0"
+        }
+      }
+    },
+    "@vitejs/plugin-rsc": {
+      "version": "0.5.35",
+      "resolved": "https://registry.npmjs.org/@vitejs/plugin-rsc/-/plugin-rsc-0.5.35.tgz",
+      "overridden": false
+    },
+    "next": {
+      "version": "16.3.6",
+      "resolved": "https://registry.npmjs.org/next/-/next-16.3.6.tgz",
+      "overridden": false
+    },
+    "vinext": {
+      "version": "0.2.1",
+      "resolved": "https://registry.npmjs.org/vinext/-/vinext-0.2.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@unpic/react": {
+          "version": "1.0.2",
+          "resolved": "https://registry.npmjs.org/@unpic/react/-/react-1.0.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "next": {
+              "version": "16.3.6"
+            }
+          }
+        },
+        "@vitejs/plugin-rsc": {
+          "version": "0.5.35"
+        },
+        "image-size": {
+          "version": "2.0.3",
+          "resolved": "https://registry.npmjs.org/image-size/-/image-size-2.0.3.tgz",
+          "overridden": true
+        }
+      }
+    },
+    "wrangler": {
+      "version": "4.142.0",
+      "resolved": "https://registry.npmjs.org/wrangler/-/wrangler-4.142.0.tgz",
+      "overridden": false
+    }
+  }
+}
