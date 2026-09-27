@@ -1,0 +1,34 @@
+{
+  "source_commit": "0f3c71fdb0e9078d8a5d8684411d0318fe600bb1",
+  "document_commit": "3903ec2323f7c8060ade54f1dcd01f2299556a66",
+  "gist_revision": "f65d3f3ec1c32023c5e504f1187b6a4644d6c7db",
+  "class": "project-side replay; not an additional independent evaluation",
+  "python": "3.13.5",
+  "node": "v22.16.0",
+  "platform": "Linux x86_64",
+  "cases": 12,
+  "full_object_matches": 12,
+  "clean_allows": 6,
+  "tampered_blocks": 6,
+  "execution_authorized": false,
+  "regenerated_files_byte_identical": {
+    "implementation_results.json": "8312f1ccb46722dbf53f358b0f3cb89917e673e319fe5b8a56f7b924d401bd58",
+    "reference_results.json": "8312f1ccb46722dbf53f358b0f3cb89917e673e319fe5b8a56f7b924d401bd58",
+    "comparison.json": "c60ebf45e8c073abd6cfe68ff04099993927e8c2ad8bd45dc629fb2dfa5ca1ac",
+    "reference_probes.json": "4f77b7eb49759895419243aec89dd19d17fe4dac5c290bcf2859c01bc59292d0",
+    "implementation_probes.json": "0b78f80978f7c65e2a465bcb766a8ee30034e4f4ab8873d8cc5254fcf1a28c32"
+  },
+  "project_side_comparator_calibration": {
+    "digest": "detected",
+    "count": "detected",
+    "all_allow": "detected",
+    "all_block": "detected",
+    "authority_type": "detected",
+    "missing": "detected",
+    "duplicate": "detected",
+    "extra": "detected"
+  },
+  "inputs_unchanged": true,
+  "model_family_independence": "not established; reported Claude correlation with #71 retained",
+  "campaign_count_changed": false
+}

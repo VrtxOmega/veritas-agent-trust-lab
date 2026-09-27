@@ -1,0 +1,69 @@
+{
+ "source_sha256_checked": "60c8d7e26fa0a352401b391015618c56b9be39d59c4b7cc4d5b24ec3f8d726c2",
+ "quorum": {
+  "fixture_clean": {
+   "independent_group_count": 2,
+   "quorum_met": true
+  },
+  "fixture_tampered": {
+   "independent_group_count": 1,
+   "quorum_met": false
+  },
+  "delimiter_collision": {
+   "independent_group_count": 1,
+   "quorum_met": false
+  },
+  "case_variant_same_family": {
+   "independent_group_count": 2,
+   "quorum_met": true
+  },
+  "whitespace_variant": {
+   "independent_group_count": 2,
+   "quorum_met": true
+  }
+ },
+ "monitor_rule": {
+  "evaluated_at": "2030-01-01T00:00:30Z",
+  "note": "stale=false means the reference returns ALLOW and lifecycle ACTIVE",
+  "fixture_clean_25s": {
+   "heartbeat": "2030-01-01T00:00:25Z",
+   "age_seconds": 5,
+   "stale": false
+  },
+  "fixture_tampered_00s": {
+   "heartbeat": "2030-01-01T00:00:00Z",
+   "age_seconds": 30,
+   "stale": true
+  },
+  "exactly_at_ttl": {
+   "heartbeat": "2030-01-01T00:00:20Z",
+   "age_seconds": 10,
+   "stale": false
+  },
+  "future_dated_by_270s": {
+   "heartbeat": "2030-01-01T00:05:00Z",
+   "age_seconds": -270,
+   "stale": false
+  },
+  "future_dated_by_one_day": {
+   "heartbeat": "2030-01-02T00:00:30Z",
+   "age_seconds": -86400,
+   "stale": false
+  },
+  "missing_undefined": {
+   "heartbeat": null,
+   "age_seconds": "NaN",
+   "stale": false
+  },
+  "missing_empty_string": {
+   "heartbeat": "",
+   "age_seconds": "NaN",
+   "stale": false
+  },
+  "unparseable": {
+   "heartbeat": "not-a-timestamp",
+   "age_seconds": "NaN",
+   "stale": false
+  }
+ }
+}
