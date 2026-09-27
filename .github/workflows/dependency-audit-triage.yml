@@ -1,0 +1,59 @@
+name: Dependency audit triage
+on:
+  push:
+    branches: [fix/dependency-audit-20260927]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Capture exact audit before changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p audit
+          node --version | tee audit/node-version.txt
+          npm --version | tee audit/npm-version.txt
+          date -u +%FT%TZ | tee audit/retrieved-at.txt
+          set +e
+          npm audit --package-lock-only --json > audit/npm-audit-before.json
+          echo $? > audit/npm-audit-before.exit
+          npm outdated --json > audit/npm-outdated.json
+          echo $? > audit/npm-outdated.exit
+          set -e
+          npm view next version > audit/next-latest.txt
+          npm view vinext version > audit/vinext-latest.txt
+          npm view @cloudflare/vite-plugin version > audit/cloudflare-vite-plugin-latest.txt
+          npm view wrangler version > audit/wrangler-latest.txt
+      - name: Generate non-force lockfile repair candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp package-lock.json audit/package-lock.before.json
+          npm audit fix --package-lock-only --ignore-scripts --no-fund --no-audit
+          cp package-lock.json audit/package-lock.audit-fix.json
+          set +e
+          npm audit --package-lock-only --json > audit/npm-audit-after-compatible-fix.json
+          echo $? > audit/npm-audit-after-compatible-fix.exit
+          set -e
+          git diff -- package-lock.json > audit/audit-fix-lock.patch
+      - name: Restore repository lockfile
+        shell: bash
+        run: git checkout -- package-lock.json
+      - name: Upload triage bundle
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: dependency-audit-triage
+          path: audit/
+          retention-days: 30
+          if-no-files-found: error
