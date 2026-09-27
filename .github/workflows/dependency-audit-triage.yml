@@ -7,7 +7,7 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Capture exact audit before changes
+      - name: Capture current audit and registry candidates
         shell: bash
         run: |
           set -euo pipefail
@@ -25,32 +25,65 @@ jobs:
           node --version | tee audit/node-version.txt
           npm --version | tee audit/npm-version.txt
           date -u +%FT%TZ | tee audit/retrieved-at.txt
+          for pkg in next vinext @cloudflare/vite-plugin wrangler; do
+            safe="$(printf '%s' "$pkg" | tr '/@' '__')"
+            npm view "$pkg" version | tee "audit/\${safe}-latest.txt"
+          done
           set +e
           npm audit --package-lock-only --json > audit/npm-audit-before.json
           echo $? > audit/npm-audit-before.exit
           npm outdated --json > audit/npm-outdated.json
           echo $? > audit/npm-outdated.exit
           set -e
-          npm view next version > audit/next-latest.txt
-          npm view vinext version > audit/vinext-latest.txt
-          npm view @cloudflare/vite-plugin version > audit/cloudflare-vite-plugin-latest.txt
-          npm view wrangler version > audit/wrangler-latest.txt
-      - name: Generate non-force lockfile repair candidate
+      - name: Generate compatible-only npm audit candidate
         shell: bash
         run: |
           set -euo pipefail
-          cp package-lock.json audit/package-lock.before.json
-          npm audit fix --package-lock-only --ignore-scripts --no-fund --no-audit
-          cp package-lock.json audit/package-lock.audit-fix.json
+          cp package.json audit/package.compat-before.json
+          cp package-lock.json audit/package-lock.compat-before.json
+          set +e
+          npm audit fix --package-lock-only --ignore-scripts --no-fund --no-audit > audit/audit-fix-compatible.stdout.txt 2> audit/audit-fix-compatible.stderr.txt
+          echo $? > audit/audit-fix-compatible.exit
+          set -e
+          cp package.json audit/package.compat-after.json
+          cp package-lock.json audit/package-lock.compat-after.json
           set +e
           npm audit --package-lock-only --json > audit/npm-audit-after-compatible-fix.json
           echo $? > audit/npm-audit-after-compatible-fix.exit
           set -e
-          git diff -- package-lock.json > audit/audit-fix-lock.patch
-      - name: Restore repository lockfile
+          git diff -- package.json package-lock.json > audit/audit-fix-compatible.patch
+          git checkout -- package.json package-lock.json
+      - name: Generate latest direct-dependency candidate
         shell: bash
-        run: git checkout -- package-lock.json
+        run: |
+          set -euo pipefail
+          NEXT="$(cat audit/next-latest.txt)"
+          VINEXT="$(cat audit/vinext-latest.txt)"
+          CF="$(cat audit/__cloudflare_vite-plugin-latest.txt)"
+          WRANGLER="$(cat audit/wrangler-latest.txt)"
+          printf 'next=%s\nvinext=%s\ncloudflare=%s\nwrangler=%s\n' "$NEXT" "$VINEXT" "$CF" "$WRANGLER" | tee audit/latest-direct-versions.txt
+          npm install --package-lock-only --ignore-scripts --no-fund --no-audit --save-exact \
+            "next@$NEXT" "vinext@$VINEXT" "@cloudflare/vite-plugin@$CF" "wrangler@$WRANGLER"
+          cp package.json audit/package.latest-direct.json
+          cp package-lock.json audit/package-lock.latest-direct.json
+          set +e
+          npm audit --package-lock-only --json > audit/npm-audit-after-latest-direct.json
+          echo $? > audit/npm-audit-after-latest-direct.exit
+          set -e
+          git diff -- package.json package-lock.json > audit/latest-direct.patch
+      - name: Verify latest direct-dependency candidate
+        shell: bash
+        run: |
+          set +e
+          npm ci > audit/latest-direct-npm-ci.stdout.txt 2> audit/latest-direct-npm-ci.stderr.txt
+          CI_RC=$?
+          if [ "$CI_RC" -eq 0 ]; then npm run lint > audit/latest-direct-lint.stdout.txt 2> audit/latest-direct-lint.stderr.txt; LINT_RC=$?; else LINT_RC=99; fi
+          if [ "$CI_RC" -eq 0 ]; then npm test > audit/latest-direct-test.stdout.txt 2> audit/latest-direct-test.stderr.txt; TEST_RC=$?; else TEST_RC=99; fi
+          if [ "$CI_RC" -eq 0 ]; then npm run build:pages > audit/latest-direct-pages.stdout.txt 2> audit/latest-direct-pages.stderr.txt; PAGES_RC=$?; else PAGES_RC=99; fi
+          printf 'npm_ci=%s\nlint=%s\ntest=%s\npages=%s\n' "$CI_RC" "$LINT_RC" "$TEST_RC" "$PAGES_RC" | tee audit/latest-direct-verification.txt
+          exit 0
       - name: Upload triage bundle
+        if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: dependency-audit-triage
