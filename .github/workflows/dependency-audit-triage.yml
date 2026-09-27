@@ -37,6 +37,7 @@ jobs:
           set -euo pipefail
           cp package.json audit/package.before.json
           cp package-lock.json audit/package-lock.before.json
+          npm pkg set overrides.image-size=2.0.3
           npm install --package-lock-only --ignore-scripts --no-fund --no-audit --save-exact \
             next@16.3.6 \
             vinext@0.2.1 \
