@@ -150,6 +150,31 @@ Each track requires clean positive controls as well as hostile cases, a pinned
 artifact hash, public reproduction commands, mismatch reporting, and
 relationship or AI-assistance disclosure.
 
+A September 27 Track 1 submission from **tolegm / AstraNL** is now publicly
+replayed and preserved in [issue #81](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/81).
+Their separate Python implementation matched all **12 complete frozen result
+objects** and regenerated five result files byte-for-byte, including every
+packet digest/count and boolean `execution_authorized: false`. Their adjacent
+probes also exposed heartbeat-freshness and declared evaluator-grouping defects
+outside the fixed twelve-case claim. Those bounded demonstrator defects were
+reproduced and repaired in
+[PR #84](https://github.com/VrtxOmega/veritas-agent-trust-lab/pull/84);
+authenticated evaluator independence remains explicitly unresolved in
+[issue #83](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/83).
+
+The report disclosed Claude assistance and same-model-family correlation with
+an earlier submission. The project therefore keeps the original campaign
+counts unchanged rather than relabeling this as independent model-family
+validation. The external implementation/result remains attributable to
+tolegm / AstraNL; the replay, comparator calibrations, and remediation are
+project-side follow-up work.
+
+The separate Agent Security Harness feedback loop is also now closed through
+the released v4.26.1 artifact: the focused retest and hardened rerunner are
+recorded in [PR #80](https://github.com/VrtxOmega/veritas-agent-trust-lab/pull/80).
+That work remains external I0 execution of the upstream harness, not
+independent validation of its full 640-test suite.
+
 The challenge covers this MIT-licensed public demonstrator, not the complete
 V4 kernel. The V4 archive is not included because its current license notice
 does not grant public distribution or modification rights. A report remains
