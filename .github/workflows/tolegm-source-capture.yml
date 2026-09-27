@@ -9,25 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Fetch public sources without executing them
+      - name: Fetch public git objects without executing repository code
         shell: bash
         run: |
           set -euo pipefail
           export GIT_TERMINAL_PROMPT=0
           mkdir -p sources
           git clone --quiet --no-checkout https://github.com/VrtxOmega/veritas-agent-trust-lab.git lab
-          git -C lab archive --format=tar 93e7dc2fff160d70fae5be4edaee4692cc1d276f > sources/main.tar
-          git -C lab archive --format=tar 0f3c71fdb0e9078d8a5d8684411d0318fe600bb1 > sources/frozen.tar
-          git -C lab archive --format=tar 3903ec2323f7c8060ade54f1dcd01f2299556a66 docs/EXTERNAL_VERIFICATION_CHALLENGE.md protocol/external-verification-challenge-v1.json > sources/protocol.tar
-          git clone --quiet --no-checkout https://gist.github.com/a5ed5b3e7f2c6c0c09d6c4642705ad51.git track1
-          test "$(git -C track1 rev-parse f65d3f3ec1c32023c5e504f1187b6a4644d6c7db^{commit})" = f65d3f3ec1c32023c5e504f1187b6a4644d6c7db
-          git -C track1 archive --format=tar f65d3f3ec1c32023c5e504f1187b6a4644d6c7db > sources/track1.tar
-          git -C lab archive --format=tar origin/evidence/ash-v4261-reachability-retest-20260926 > sources/ash-retest-branch.tar
-          sha256sum sources/*.tar > sources/SHA256SUMS
-      - name: Upload source snapshot
+          git -C lab bundle create ../sources/lab.bundle --all
+          sha256sum sources/lab.bundle > sources/SHA256SUMS
+      - name: Upload source history
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: tolegm-pinned-public-sources
+          name: tolegm-public-git-history
           path: sources/
           retention-days: 30
           if-no-files-found: error
