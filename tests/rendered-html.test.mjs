@@ -30,13 +30,27 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /Reveal privately \(weight 0\)/);
   assert.match(visibleHtml, /When the evaluation boundary became the attack surface/);
   assert.match(visibleHtml, /No direct Internet access was not no path to the Internet/);
-  assert.match(visibleHtml, /Ten independently attributable outside actions now qualify/);
+  const { current_totals: current } = JSON.parse(await readFile(
+    new URL("../evidence/campaign-ledger-addendum-20260905.json", import.meta.url), "utf8",
+  ));
+  const protocol = JSON.parse(await readFile(
+    new URL("../protocol/campaign-protocol-v2.json", import.meta.url), "utf8",
+  ));
+  const target = protocol.technical_completion_requirements.qualifying_events_minimum;
+  assert.ok(visibleHtml.includes(`${current.qualifying_events} independently attributable outside actions now qualify`));
   assert.match(visibleHtml, /PROTOCOL V2 \/ BALANCED EVIDENCE/);
-  assert.match(visibleHtml, /<strong>10<small>\/50<\/small><\/strong>/);
+  assert.ok(visibleHtml.includes(`<strong>${current.qualifying_events}<small>/${target}</small></strong>`));
+  assert.match(visibleHtml, new RegExp(`${target - current.qualifying_events} qualifying\\s+events remain`));
   assert.match(visibleHtml, /Blind labels:\s+0\/15/);
-  assert.match(visibleHtml, /Technical:\s+7\/10/);
+  assert.match(visibleHtml, new RegExp(`Technical:\\s+${current.technical_reproductions_reviews_or_integrations}/10`));
+  assert.match(visibleHtml, /Adopter reports:\s+0\/5/);
+  assert.match(visibleHtml, /Hostile cases:\s+0\/5/);
+  assert.match(visibleHtml, /Verifier runs:\s+0\/3/);
   assert.match(visibleHtml, /Settled\s+arms-length pilot revenue: \$0\.00\/\$750/);
-  assert.match(visibleHtml, /Qualifying external validations:\s+10/s);
+  assert.match(visibleHtml, new RegExp(`Qualifying external validations:\\s+${current.qualifying_events}, from\\s+${current.distinct_independent_validators} distinct validators`));
+  assert.match(visibleHtml, /campaign-ledger-addendum-20260905\.json/);
+  assert.match(visibleHtml, /Authority-replay owner review/);
+  assert.match(visibleHtml, /href="https:\/\/github\.com\/msaleme\/authority-execution-replay\/pull\/1"/);
   assert.match(visibleHtml, /Third merged curator decision/);
   assert.match(visibleHtml, /Reproduced, corrected, and merged/);
   assert.match(
@@ -56,6 +70,12 @@ test("server renders the finished public lab", async () => {
   assert.match(visibleHtml, /Merged GitHub Copilot skill integration/);
   assert.match(visibleHtml, /Recorded catalog decline/);
   assert.match(visibleHtml, /Contribute the evidence that is still missing/);
+  assert.match(visibleHtml, /12 complete frozen result objects/);
+  assert.match(visibleHtml, /same-model-family correlation/);
+  assert.match(visibleHtml, /helper residuals closed/);
+  assert.match(visibleHtml, /Authenticated evaluator identity and real independence remain open/);
+  assert.match(visibleHtml, /issues\/81#issuecomment-5858452988/);
+  assert.match(visibleHtml, /issues\/83/);
   assert.match(visibleHtml, /Submit an adopter report/);
   assert.match(visibleHtml, /Agent Action Assurance/);
   assert.match(visibleHtml, /Inspect sample dossier/);

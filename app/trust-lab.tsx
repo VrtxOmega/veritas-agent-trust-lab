@@ -16,7 +16,8 @@ import {
   createChallengeReceipt,
 } from "@/lib/challenge-receipt.js";
 import validationLedger from "@/evidence/external-validation-ledger.json";
-import campaignLedgersV2 from "@/evidence/campaign-ledgers-v2.json";
+import campaignAddendum from "@/evidence/campaign-ledger-addendum-20260905.json";
+import campaignProtocol from "@/protocol/campaign-protocol-v2.json";
 
 type Stage = { name: string; state: "pass" | "fail"; detail: string };
 type Result = {
@@ -60,9 +61,12 @@ type ChallengeReceipt = {
   verification_note: string;
 };
 
-const campaignTarget = validationLedger.campaign.validation_target;
+const campaignTarget = campaignProtocol.technical_completion_requirements.qualifying_events_minimum;
 const openLaneCount = validationLedger.open_lanes.length;
-const protocolProgress = campaignLedgersV2.progress;
+// The August ledger is a historical baseline. The reviewed append-only
+// addendum records current totals without rewriting that frozen evidence.
+const protocolProgress = campaignAddendum.current_totals;
+const remainingEvents = Math.max(0, campaignTarget - protocolProgress.qualifying_events);
 
 const compact = (value: unknown) => {
   const text = String(value);
@@ -628,7 +632,7 @@ export function TrustLab() {
           <header className="section-heading">
             <span>06 / EXTERNAL</span>
             <div>
-              <h2>Ten independently attributable outside actions now qualify.</h2>
+              <h2>{protocolProgress.qualifying_events} independently attributable outside actions now qualify.</h2>
               <p>
                 Three external curators merged scoped Trust Lab catalogue or
                 watchlist entries. A separate repository owner independently reproduced a concrete
@@ -655,6 +659,10 @@ export function TrustLab() {
                 Awesome Copilot maintainer also approved and merged the
                 non-executing verify-agent-action skill as one accepted
                 external integration, not certification or endorsement.
+                The same RCL repository owner later reproduced a separate
+                authority-replay verifier defect and merged its remediation.
+                That is one additional technical review, with no new validator
+                or organization and no independent VERITAS verifier-run credit.
               </p>
             </div>
           </header>
@@ -674,7 +682,7 @@ export function TrustLab() {
               />
             </div>
             <p>
-              {protocolProgress.remaining.qualifying_events} qualifying
+              {remainingEvents} qualifying
               events remain. Blind labels:{" "}
               {protocolProgress.pre_reveal_blind_label_sets}/15. Technical:{" "}
               {protocolProgress.technical_reproductions_reviews_or_integrations}/10.
@@ -691,7 +699,7 @@ export function TrustLab() {
           <div className="principles">
             <article>
               <span>WHAT IT PROVES</span>
-              <h3>Three curator decisions, one reproduction, three integrations, and three reviews are public.</h3>
+              <h3>Three curator decisions, one reproduction, three integrations, and four reviews are public.</h3>
               <p>
                 GitHub records separate external merge actors for
                 systempromptio pull request #27, gmh5225 pull request #18, and
@@ -724,6 +732,10 @@ export function TrustLab() {
                 maintainer separately approved and merged verify-agent-action
                 with its generated install index; that community-skill merge
                 does not certify or endorse the wider VERITAS system.
+                The authority-replay owner&apos;s separate reproduction and
+                remediation count once as that actor&apos;s second review,
+                reaching the two-event individual cap. The author-side verifier
+                and six mutation probes add no campaign weight.
               </p>
             </article>
             <article>
@@ -798,6 +810,16 @@ export function TrustLab() {
               <span>Maintainer-authored accuracy sweep merged the scoped VrtxOmega reproduction into the repository README; the wider sweep&apos;s other findings remain the maintainer&apos;s work.</span>
               <i>↗</i>
             </a>
+            <a href="https://github.com/msaleme/authority-execution-replay/pull/1" target="_blank" rel="noreferrer">
+              <b>Authority-replay owner review</b>
+              <span>The same RCL owner reproduced a separate verifier defect and merged its repair; one technical review, no new validator or organization, and no independent VERITAS verifier run.</span>
+              <i>↗</i>
+            </a>
+            <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/blob/main/evidence/campaign-ledger-addendum-20260905.json" target="_blank" rel="noreferrer">
+              <b>Current campaign totals and evidence</b>
+              <span>Reviewed September 5 addendum to the preserved August baseline, including scopes, caps, and zero-weight follow-ups.</span>
+              <i>↗</i>
+            </a>
             <a href="https://github.com/github/awesome-copilot/pull/2476" target="_blank" rel="noreferrer">
               <b>Merged GitHub Copilot skill integration</b>
               <span>External maintainer approved and merged the non-executing verify-agent-action skill and generated install index.</span>
@@ -819,11 +841,12 @@ export function TrustLab() {
             {protocolProgress.qualifying_events}, from{" "}
             {protocolProgress.distinct_independent_validators} distinct validators: three
             scoped curator-fit decisions and one independent technical
-            reproduction, three accepted external integrations, and three
+            reproduction, three accepted external integrations, and four
             substantive external reviews. One review rejected the Rask patch
             for missing the mangling-collision root cause; another confirmed
             the pinned RCL fixture contract without independently running the
-            verifier. These do not establish VERITAS
+            verifier. The same owner&apos;s authority-replay review adds no new
+            validator or organization. These do not establish VERITAS
             efficacy, endorsement, product adoption, release inclusion, deployed
             use of the AgentDoctor Action or verify-agent-action skill,
             correctness or acceptance of the rejected Rask patch, or payment.
@@ -899,6 +922,20 @@ export function TrustLab() {
                 Rebuild one bounded verification path without importing the
                 reference evaluator. Run clean controls and hostile cases,
                 publish exact commands, and report every mismatch or bypass.
+              </p>
+              <p>
+                tolegm / AstraNL&apos;s separate Python implementation matched
+                12 complete frozen result objects. The report disclosed Claude
+                assistance and same-model-family correlation with an earlier
+                submission; campaign counts remain unchanged.
+              </p>
+              <p>
+                The reporter&apos;s follow-up marked the{" "}
+                <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/81#issuecomment-5858452988" target="_blank" rel="noreferrer">helper residuals closed</a>
+                {" "}after probing the two merged helpers. That was not a
+                whole-project review or a new challenge track. Authenticated
+                evaluator identity and real independence remain open in{" "}
+                <a href="https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/83" target="_blank" rel="noreferrer">issue #83</a>.
               </p>
               <a
                 className="primary-link"

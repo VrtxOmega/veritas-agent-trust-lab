@@ -52,7 +52,8 @@ The tests demonstrate, on synthetic author-designed fixtures, that:
 - every tampered fixture blocks or revokes;
 - changed action parameters break exact binding;
 - replayed nonces fail;
-- correlated evaluators do not satisfy a two-independent-source quorum;
+- matching declared evaluator groups do not satisfy the simulated two-group
+  quorum; these labels do not authenticate identity or real independence;
 - removed evidence changes sealed evidence identity;
 - stale monitoring revokes the lifecycle;
 - every result fixes `execution_authorized` to `false`.
@@ -158,8 +159,12 @@ packet digest/count and boolean `execution_authorized: false`. Their adjacent
 probes also exposed heartbeat-freshness and declared evaluator-grouping defects
 outside the fixed twelve-case claim. Those bounded demonstrator defects were
 reproduced and repaired in
-[PR #84](https://github.com/VrtxOmega/veritas-agent-trust-lab/pull/84);
-authenticated evaluator independence remains explicitly unresolved in
+[PR #84](https://github.com/VrtxOmega/veritas-agent-trust-lab/pull/84) and the
+helper compatibility follow-up
+[PR #88](https://github.com/VrtxOmega/veritas-agent-trust-lab/pull/88).
+The reporter [re-probed the two merged helpers and closed those residuals](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/81#issuecomment-5858452988).
+That was a helper probe, not a whole-project review or new challenge track.
+Authenticated evaluator identity and real independence remain unresolved in
 [issue #83](https://github.com/VrtxOmega/veritas-agent-trust-lab/issues/83).
 
 The report disclosed Claude assistance and same-model-family correlation with
