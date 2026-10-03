@@ -32,10 +32,24 @@ score, and the mapping does not claim that VERITAS would have prevented it.
 
 ## Run and verify
 
+Use Node.js 22.13 or newer, npm, Git, and Python 3.12 or newer. The Python
+standard library is sufficient for the retest-runner regressions; expose
+`python` on Windows or `python3` on Linux. Clone with Git rather than downloading
+a source ZIP: the suite reads immutable Git objects to verify the frozen
+challenge pins. A shallow clone needs `git fetch --unshallow` before testing.
+
 ```bash
+git clone https://github.com/VrtxOmega/veritas-agent-trust-lab.git
+cd veritas-agent-trust-lab
 npm ci
 npm test
 ```
+
+The same commands work on Windows; PowerShell users can use `npm.cmd` for each
+npm command. Pull-request checks include a native Windows checkout with
+`core.autocrlf=true`. Repository attributes keep issue templates in LF form
+and preserve captured external evidence byte-for-byte, including its hash
+checks. Local Wrangler logging is configured in `vite.config.ts`.
 
 The Node test suite and the browser use the same engine in
 `lib/trust-engine.js`.

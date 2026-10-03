@@ -27,3 +27,24 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build:pages
+
+  verify-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Exercise Windows checkout line endings
+        run: git config --global core.autocrlf true
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build:pages
