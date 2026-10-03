@@ -1,0 +1,5 @@
+# Issue-form checks inspect line structure on every platform.
+.github/ISSUE_TEMPLATE/*.yml text eol=lf
+
+# Captured evidence is checked by its exact bytes, never normalized on checkout.
+evidence/external/** -text
