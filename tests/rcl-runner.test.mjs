@@ -140,6 +140,27 @@ test("RCL runner enforces the decoded limit for compressed HTTP responses", asyn
   );
 });
 
+for (const [name, status, headers, expectedError] of [
+  ["unsuccessful status", 503, {}, /Fixture fetch failed: HTTP 503/],
+  ["oversized declared length", 200, { "content-length": limit + 1 }, /Fixture exceeds 2097152 bytes/],
+]) {
+  test(`RCL runner promptly rejects ${name} without waiting for a response body`, async (t) => {
+    const url = await serve(t, (_request, response) => {
+      response.writeHead(status, headers);
+      response.flushHeaders();
+      // Headers alone establish rejection; the body deliberately never finishes.
+    });
+    await assert.rejects(
+      run(process.execPath, [runner, "--url", url, "--expected-sha256", "0".repeat(64)], { timeout: 5000 }),
+      (error) => {
+        assert.equal(error.killed, false, "runner waited for the rejected response body");
+        assert.match(error.stderr, expectedError);
+        return true;
+      },
+    );
+  });
+}
+
 test("RCL runner rejects oversized local input and still rejects a wrong digest", async (t) => {
   const input = join(await temporaryDirectory(t), "fixture.json");
   for (const [bytes, expectedError] of [
