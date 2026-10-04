@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { readFile, writeFile } from "node:fs/promises";
+import { createReadStream } from "node:fs";
+import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 import {
@@ -68,10 +69,23 @@ function parseArgs(argv) {
   return args;
 }
 
+async function readLimited(stream) {
+  const chunks = [];
+  let length = 0;
+  for await (const chunk of stream) {
+    length += chunk.length;
+    if (length > MAX_FIXTURE_BYTES) {
+      // Exiting iteration closes the file stream or cancels the response body.
+      throw new Error(`Fixture exceeds ${MAX_FIXTURE_BYTES} bytes`);
+    }
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks, length);
+}
+
 async function loadFixtureBytes(args) {
-  let bytes;
   if (args.input) {
-    bytes = await readFile(resolve(args.input));
+    return readLimited(createReadStream(resolve(args.input)));
   } else {
     const response = await fetch(args.url, {
       headers: { accept: "application/json" },
@@ -79,18 +93,16 @@ async function loadFixtureBytes(args) {
       signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     if (!response.ok) {
+      await response.body?.cancel();
       throw new Error(`Fixture fetch failed: HTTP ${response.status}`);
     }
     const declaredLength = Number(response.headers.get("content-length"));
     if (Number.isFinite(declaredLength) && declaredLength > MAX_FIXTURE_BYTES) {
+      await response.body?.cancel();
       throw new Error(`Fixture exceeds ${MAX_FIXTURE_BYTES} bytes`);
     }
-    bytes = Buffer.from(await response.arrayBuffer());
+    return readLimited(response.body ?? []);
   }
-  if (bytes.length > MAX_FIXTURE_BYTES) {
-    throw new Error(`Fixture exceeds ${MAX_FIXTURE_BYTES} bytes`);
-  }
-  return bytes;
 }
 
 function markdown(report) {
