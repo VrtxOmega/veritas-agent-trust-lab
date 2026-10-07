@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
-import { copyFile, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { promisify } from "node:util";
@@ -54,7 +54,9 @@ for (const failure of ["missing client", "worker import", "server render", "inva
 
 test("Pages export replaces a previous artifact only after preparing the complete new artifact", async (t) => {
   const { root, output } = await fixture(t);
+  const previousMode = (await stat(output)).mode;
   await run(process.execPath, ["scripts/build-github-pages.mjs", output], { cwd: root });
+  assert.equal((await stat(output)).mode, previousMode, "export directory keeps normal creation permissions");
   assert.match(await readFile(join(output, "index.html"), "utf8"), /<body>export<\/body>/);
   assert.equal(await readFile(join(output, "assets/app.js"), "utf8"), "/* asset */\n");
   assert.equal(await readFile(join(output, ".nojekyll"), "utf8"), "");

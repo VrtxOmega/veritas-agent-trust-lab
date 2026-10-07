@@ -82,13 +82,16 @@ async function prepareArtifact(target) {
 
 // Preserve the last artifact if copying, rendering, or packet preparation fails.
 await mkdir(dirname(outputDir), { recursive: true });
-const stagingDir = await mkdtemp(join(dirname(outputDir), ".veritas-pages-"));
+const stagingRoot = await mkdtemp(join(dirname(outputDir), ".veritas-pages-"));
+const stagingDir = join(stagingRoot, "artifact");
 try {
+  // mkdtemp is private (0700); the exported artifact needs normal mkdir permissions.
+  await mkdir(stagingDir);
   await prepareArtifact(stagingDir);
   await rm(outputDir, { recursive: true, force: true });
   await rename(stagingDir, outputDir);
 } finally {
-  await rm(stagingDir, { recursive: true, force: true });
+  await rm(stagingRoot, { recursive: true, force: true });
 }
 
 process.stdout.write(
